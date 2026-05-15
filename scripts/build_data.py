@@ -12,12 +12,17 @@ Inputs:
 Outputs:
     web/public/data/buses.geojson
     web/public/data/lines.geojson
+    web/public/data/manifest.json
 
 Behavior:
     - Buses not reachable from the slack are kept in the GeoJSON (for the map)
       but excluded from the load flow.
     - If no loads are defined (sum p_mw == 0), the load flow is skipped and
       buses/lines are emitted with null result fields.
+    - DC load flow is used (rundcpp). AC (runpp) requires explicit transformer
+      models between the mixed-voltage buses in this network; deferred.
+    - After DC flow, HVDC import at Ormoc is captured from ext_grid results and
+      stored on the Ormoc bus feature and in manifest.json.
 """
 
 from __future__ import annotations
@@ -25,11 +30,14 @@ from __future__ import annotations
 import copy
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
 import pandapower as pp
 import pandapower.topology as top
+
+from constants import HVDC_CAPACITY_MW
 
 ROOT = Path(__file__).resolve().parent.parent
 BUSES_CSV = ROOT / "data" / "buses.csv"
@@ -40,7 +48,7 @@ OUTPUT_DIR = ROOT / "web" / "public" / "data"
 def load_inputs() -> tuple[pd.DataFrame, pd.DataFrame]:
     if not BUSES_CSV.exists() or not LINES_CSV.exists():
         sys.exit(
-            "Missing input CSVs. Run scripts/process_raw.py first to "
+            "Missing input CSVs. Run scripts/process_temp.py first to "
             "generate data/buses.csv and data/lines.csv."
         )
     return pd.read_csv(BUSES_CSV), pd.read_csv(LINES_CSV)
@@ -80,11 +88,13 @@ def build_network(buses_df: pd.DataFrame, lines_df: pd.DataFrame):
 
     missing = []
     has_parallel = "parallel" in lines_df.columns
+    has_c = "c_nf_per_km" in lines_df.columns
     for _, row in lines_df.iterrows():
         if row["from_bus"] not in bus_idx or row["to_bus"] not in bus_idx:
             missing.append(row["line_id"])
             continue
         parallel = int(row["parallel"]) if has_parallel and pd.notna(row["parallel"]) else 1
+        c_nf = float(row["c_nf_per_km"]) if has_c and pd.notna(row.get("c_nf_per_km")) else 0.0
         pp.create_line_from_parameters(
             net,
             from_bus=bus_idx[row["from_bus"]],
@@ -92,7 +102,7 @@ def build_network(buses_df: pd.DataFrame, lines_df: pd.DataFrame):
             length_km=float(row["length_km"]),
             r_ohm_per_km=float(row["r_ohm_per_km"]),
             x_ohm_per_km=float(row["x_ohm_per_km"]),
-            c_nf_per_km=0,
+            c_nf_per_km=c_nf,
             max_i_ka=float(row["max_i_ka"]),
             parallel=parallel,
             name=row["line_id"],
@@ -114,6 +124,8 @@ def emit_geojson(
     net,
     has_results: bool,
     connected_buses: set[str],
+    hvdc_import_mw: float | None = None,
+    power_flow_mode: str = "none",
 ) -> None:
     bus_features = []
     for _, row in buses_df.iterrows():
@@ -128,6 +140,11 @@ def emit_geojson(
                 props["va_degree"] = float(net.res_bus.at[idx, "va_degree"])
             except (KeyError, IndexError):
                 pass
+        # Attach HVDC import MW to the slack/HVDC bus for frontend display.
+        if props.get("bus_type") == "hvdc":
+            props["hvdc_import_mw"] = (
+                round(hvdc_import_mw, 1) if hvdc_import_mw is not None else None
+            )
         bus_features.append({
             "type": "Feature",
             "geometry": {"type": "Point", "coordinates": [float(row["x"]), float(row["y"])]},
@@ -175,6 +192,21 @@ def emit_geojson(
     print(f"Wrote {OUTPUT_DIR / 'buses.geojson'} ({len(bus_features)} buses)")
     print(f"Wrote {OUTPUT_DIR / 'lines.geojson'} ({len(line_features)} lines)")
 
+    submarine_count = int(lines_df["is_submarine"].sum()) if "is_submarine" in lines_df.columns else 0
+    manifest = {
+        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "power_flow_mode": power_flow_mode,
+        "n_buses": len(bus_features),
+        "n_lines": len(line_features),
+        "n_submarine_lines": submarine_count,
+        "total_load_mw": round(float(buses_df["p_mw"].sum()), 1) if "p_mw" in buses_df.columns else None,
+        "total_gen_mw": round(float(buses_df["gen_mw"].sum()), 1) if "gen_mw" in buses_df.columns else None,
+        "hvdc_import_mw": round(hvdc_import_mw, 1) if hvdc_import_mw is not None else None,
+        "hvdc_capacity_mw": HVDC_CAPACITY_MW,
+    }
+    (OUTPUT_DIR / "manifest.json").write_text(json.dumps(manifest, indent=2))
+    print(f"Wrote {OUTPUT_DIR / 'manifest.json'}")
+
 
 def main() -> None:
     buses_df, lines_df = load_inputs()
@@ -194,10 +226,13 @@ def main() -> None:
         net.load["p_mw"].sum() if not net.load.empty else 0
     )
     has_results = False
+    hvdc_import_mw: float | None = None
 
     if total_load > 0:
         # DC load flow: tolerant of mixed-voltage networks, computes active power
         # and line loading. vm_pu is not solved (stays at 1.0); va_degree is computed.
+        # Note: switching to AC (runpp) requires explicit transformer models between
+        # the 350/230/138 kV buses — deferred to a future refactor.
         net_run = copy.deepcopy(net)
         unsup = list(top.unsupplied_buses(net_run))
         if unsup:
@@ -205,6 +240,18 @@ def main() -> None:
         try:
             pp.rundcpp(net_run)
             print(f"DC load flow converged on {len(net_run.bus)} connected buses.")
+
+            # Capture HVDC import: ext_grid p_mw > 0 means Luzon injecting into Visayas.
+            if not net_run.res_ext_grid.empty:
+                hvdc_import_mw = float(net_run.res_ext_grid["p_mw"].iloc[0])
+                if abs(hvdc_import_mw) > HVDC_CAPACITY_MW:
+                    print(
+                        f"WARNING: HVDC import {hvdc_import_mw:.0f} MW exceeds "
+                        f"rated capacity {HVDC_CAPACITY_MW} MW."
+                    )
+                direction = "import" if hvdc_import_mw >= 0 else "export"
+                print(f"HVDC ({direction}): {hvdc_import_mw:+.1f} MW at Ormoc.")
+
             for _, lrow in net_run.line.iterrows():
                 idx = net.line.index[net.line["name"] == lrow["name"]]
                 if len(idx):
@@ -224,7 +271,11 @@ def main() -> None:
     else:
         print("No loads defined (p_mw==0 everywhere). Skipping load flow.")
 
-    emit_geojson(buses_df, lines_df, net, has_results, connected_names)
+    emit_geojson(
+        buses_df, lines_df, net, has_results, connected_names,
+        hvdc_import_mw=hvdc_import_mw,
+        power_flow_mode="DC" if has_results else "none",
+    )
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ import { useTheme } from "./hooks/useTheme.js";
 import { ISLANDS, VOLTAGE_LEVELS } from "./lib/styles.js";
 
 export default function App() {
-  const { buses, lines, loading, error } = useGridData();
+  const { buses, lines, manifest, loading, error } = useGridData();
   const [theme, toggleTheme] = useTheme();
   const [selectedIslands, setSelectedIslands] = useState(ISLANDS);
   const [selectedVoltages, setSelectedVoltages] = useState(VOLTAGE_LEVELS);
@@ -42,7 +42,7 @@ export default function App() {
           onSelect={setSelected}
           theme={theme}
         />
-        <StatsPanel buses={visibleBuses} />
+        <StatsPanel buses={visibleBuses} manifest={manifest} />
         <Legend />
         <InfoPanel selected={selected} onClose={() => setSelected(null)} />
         {loading && (

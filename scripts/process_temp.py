@@ -16,6 +16,20 @@ from pathlib import Path
 
 import pandas as pd
 
+from constants import (
+    CODE_INFO,
+    DISPATCH_FACTOR,
+    DROP_CODES,
+    HVDC_CAPACITY_MW,  # noqa: F401 — re-exported for pipeline consistency
+    LOAD_MW_PER_FEEDER,
+    LOAD_PF_QP_RATIO,
+    MERGE_CODES,
+    SLACK_BUS,
+    SUBMARINE_PAIRS,
+    SUBMARINE_XLPE,
+    VISAYAS_PREFIXES,
+)
+
 ROOT = Path(__file__).resolve().parent.parent
 TEMP_BUSES = ROOT / "data" / "temp" / "buses.csv"
 TEMP_LINES = ROOT / "data" / "temp" / "lines.csv"
@@ -23,105 +37,9 @@ TEMP_GENERATORS = ROOT / "data" / "temp" / "generators.csv"
 TEMP_LOADS = ROOT / "data" / "temp" / "loads.csv"
 LOAD_ESTIMATES = ROOT / "data" / "load_estimates.csv"
 
-# Each feeder attachment in loads.csv has no MW values; we assign a default
-# per attachment so that the sum across Visayas (~140 feeders × 12) approximates
-# the ~2 GW Visayas peak demand. q_mvar is derived from a typical 0.96 PF.
-LOAD_MW_PER_FEEDER = 12.0
-LOAD_PF_QP_RATIO = 0.30
-
 OUT_BUSES = ROOT / "data" / "buses.csv"
 OUT_LINES = ROOT / "data" / "lines.csv"
 OUT_GENERATORS = ROOT / "data" / "generators.csv"
-
-# Capacity factors by generation technology — applied to p_nom to estimate
-# typical operating output for a snapshot DC load flow.
-DISPATCH_FACTOR = {
-    "Coal":       0.80,
-    "Geothermal": 0.85,
-    "Biomass":    0.70,
-    "Hydro":      0.50,
-    "ROR":        0.40,
-    "Solar":      0.25,
-    "Wind":       0.30,
-    "Diesel":     0.30,
-}
-
-VISAYAS_PREFIXES = {"04", "05", "06", "07", "08"}
-SLACK_BUS = "Ormoc"
-
-# Merge duplicate NGCP nodes into one canonical bus (same physical facility).
-MERGE_CODES = {"04STARITATAP": "04STARITA"}
-
-# Drop these (distribution/internal nodes, no useful coordinates).
-DROP_CODES: set[str] = set()
-
-# Pairs known to be submarine cables. Anything else is overhead — this avoids
-# the false positive on Leyte↔Samar (San Juanico Bridge is overhead).
-SUBMARINE_PAIRS = {
-    frozenset({"05MAGDUGO", "06CALATRAVA"}),  # Cebu-Negros 230 kV
-    frozenset({"05SAMBOAN", "06AMLAN"}),       # Cebu-Negros 138 kV
-    frozenset({"05DAANBNTAY", "04TABANGO"}),   # Cebu-Leyte 230 kV
-    frozenset({"05DUMANJUG", "07CORELLA"}),    # Cebu-Bohol
-    frozenset({"04MAASIN", "07UBAY"}),         # Leyte-Bohol
-    frozenset({"06GAHIT", "08STBARBRA"}),      # Negros-Panay
-    frozenset({"08BANTAP", "08BVISTA"}),       # Panay-Guimaras
-}
-
-# NGCP v1_code → (readable_name, island, bus_type).
-CODE_INFO: dict[str, tuple[str, str, str]] = {
-    "04ORMOC":      ("Ormoc",             "Leyte",    "hvdc"),
-    "04BABATNGN":   ("Babatngon",         "Leyte",    "substation"),
-    "04MAASIN":     ("Maasin",            "Leyte",    "substation"),
-    "04TABANGO":    ("Tabango",           "Leyte",    "substation"),
-    "04ISABEL":     ("Isabel",            "Leyte",    "substation"),
-    "04KANANGA":    ("Kananga",           "Leyte",    "substation"),
-    "04TONGONA":    ("Tongonan",          "Leyte",    "generator"),
-    "04CALBAYOG":   ("Calbayog",          "Samar",    "substation"),
-    "04PARANAS":    ("Paranas (Wright)",  "Samar",    "substation"),
-    "04STARITA":    ("Sta. Rita",         "Samar",    "substation"),
-    "05CEBU":       ("Cebu",              "Cebu",     "substation"),
-    "05MANDAUE":    ("Mandaue",           "Cebu",     "substation"),
-    "05LAPULAPU":   ("Lapu-Lapu (Pusok)", "Cebu",     "substation"),
-    "05MAGDUGO":    ("Magdugo",           "Cebu",     "substation"),
-    "05DAANBNTAY":  ("Daanbantayan",      "Cebu",     "substation"),
-    "05DAANLUNSOD": ("Daan Lungsod",      "Cebu",     "substation"),
-    "05COMPSTLA":   ("Compostela",        "Cebu",     "substation"),
-    "05COLON":      ("Colon",             "Cebu",     "substation"),
-    "05TOLEDO":     ("Toledo",            "Cebu",     "substation"),
-    "05TOLBESS":    ("Toledo BESS",       "Cebu",     "bess"),
-    "05CALUNG":     ("Calong-calong",     "Cebu",     "substation"),
-    "05NAGA":       ("Naga (Visayas)",    "Cebu",     "substation"),
-    "05QUIOT":      ("Quiot",             "Cebu",     "substation"),
-    "05SAMBOAN":    ("Samboan",           "Cebu",     "substation"),
-    "05DUMANJUG":   ("Dumanjug",          "Cebu",     "substation"),
-    "05KSPC":       ("KSPC",              "Cebu",     "generator"),
-    "05THERMA":     ("Therma Visayas",    "Cebu",     "generator"),
-    "06BACOLOD":    ("Bacolod",           "Negros",   "substation"),
-    "06CADIZ":      ("Cadiz",             "Negros",   "substation"),
-    "06AMLAN":      ("Amlan",             "Negros",   "substation"),
-    "06MABINAY":    ("Mabinay",           "Negros",   "substation"),
-    "06KABANKALAN": ("Kabankalan",        "Negros",   "substation"),
-    "06KBANBESS":   ("Kabankalan BESS",   "Negros",   "bess"),
-    "06SNCARLOS":   ("San Carlos",        "Negros",   "substation"),
-    "06CALATRAVA":  ("Calatrava",         "Negros",   "substation"),
-    "06HELIOS":     ("Helios Solar",      "Negros",   "generator"),
-    "06GAHIT":      ("E.B. Magalona",     "Negros",   "substation"),
-    "06PGPP1":      ("Palinpinon 1",      "Negros",   "generator"),
-    "06PGPP2":      ("Palinpinon 2",      "Negros",   "generator"),
-    "07CORELLA":    ("Corella",           "Bohol",    "substation"),
-    "07UBAY":       ("Ubay",              "Bohol",    "substation"),
-    "07TAPAL":      ("Tapal",             "Bohol",    "substation"),
-    "08BAROTAC":    ("Barotac Viejo",     "Panay",    "substation"),
-    "08PANITAN":    ("Panitan",           "Panay",    "substation"),
-    "08DINGLE":     ("Dingle",            "Panay",    "substation"),
-    "08STBARBRA":   ("Sta. Barbara",      "Panay",    "substation"),
-    "08SNJOSE":     ("San Jose",          "Panay",    "substation"),
-    "08ILOILO1":    ("Iloilo (PEDC)",     "Panay",    "substation"),
-    "08CONCEPCION": ("Concepcion",        "Panay",    "substation"),
-    "08NABAS":      ("Nabas",             "Panay",    "substation"),
-    "08BANTAP":     ("Bantap",            "Panay",    "substation"),
-    "08BVISTA":     ("Buenavista (Guimaras)", "Guimaras", "substation"),
-}
 
 
 def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -310,8 +228,21 @@ def main() -> None:
         s_nom_mva = float(row["s_nom"])
         r_total = float(row["r"])
         x_total = float(row["x"])
-        max_i_ka = s_nom_mva / (math.sqrt(3) * v_line)
         is_submarine = frozenset({bus0, bus1}) in SUBMARINE_PAIRS
+
+        # Submarine spans: use calibrated XLPE 630 mm² parameters (IEC 60840)
+        # instead of NGCP total impedance ÷ haversine distance, which is
+        # unreliable — cable routing ≠ straight-line path.
+        if is_submarine:
+            r_per_km = SUBMARINE_XLPE["r_ohm_per_km"]
+            x_per_km = SUBMARINE_XLPE["x_ohm_per_km"]
+            c_per_km = SUBMARINE_XLPE["c_nf_per_km"]
+            max_i_ka = SUBMARINE_XLPE["max_i_ka"]
+        else:
+            r_per_km = round(r_total / length_km, 6)
+            x_per_km = round(x_total / length_km, 6)
+            c_per_km = 0.0  # overhead shunt capacitance omitted (DC flow; needed for AC)
+            max_i_ka = round(s_nom_mva / (math.sqrt(3) * v_line), 4)
 
         rec = {
             "line_id": f"L_{name_from}_{name_to}_{v_line}"
@@ -321,9 +252,10 @@ def main() -> None:
             "to_bus": name_to,
             "voltage_kv": v_line,
             "length_km": round(length_km, 3),
-            "r_ohm_per_km": round(r_total / length_km, 6),
-            "x_ohm_per_km": round(x_total / length_km, 6),
-            "max_i_ka": round(max_i_ka, 4),
+            "r_ohm_per_km": r_per_km,
+            "x_ohm_per_km": x_per_km,
+            "c_nf_per_km":  c_per_km,
+            "max_i_ka": max_i_ka,
             "is_submarine": is_submarine,
             "cable_type": "submarine_xlpe" if is_submarine else "overhead",
             "parallel": cables,

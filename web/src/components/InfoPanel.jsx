@@ -82,6 +82,18 @@ function BusPanel({ p }) {
         </Section>
       )}
 
+      {p.bus_type === "hvdc" && p.hvdc_import_mw != null && (
+        <Section title="HVDC link">
+          <Row label="Luzon interchange">
+            {p.hvdc_import_mw >= 0
+              ? `+${p.hvdc_import_mw.toFixed(0)} MW import`
+              : `${p.hvdc_import_mw.toFixed(0)} MW export`}
+          </Row>
+          <Row label="Rated capacity">440 MW</Row>
+          <Row label="Role">Leyte–Luzon ±350 kV DC</Row>
+        </Section>
+      )}
+
       {hasResults && (
         <Section title="Flow">
           <Row label="Voltage">{formatNumber(p.vm_pu, 3)} pu</Row>
