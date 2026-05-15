@@ -1,0 +1,31 @@
+from_bus,to_bus,voltage_kv,length_km,is_submarine,cable_type,notes
+Kananga,Ormoc,230,14,False,overhead,Leyte 230 kV backbone
+Kananga,Tongonan,230,7,False,overhead,geothermal step-up
+Isabel,Kananga,138,38,False,overhead,Leyte central spine
+Isabel,Ormoc,138,15,False,overhead,Leyte alt route
+Tabango,Kananga,230,28,False,overhead,Leyte northern backbone
+Sta. Rita,Calbayog,138,80,False,overhead,Samar 138 kV
+Sta. Rita,Paranas (Wright),138,42,False,overhead,Samar 138 kV
+Allen,Catarman,69,40,False,overhead,Northern Samar 69 kV
+Catarman,Calbayog,69,50,False,overhead,Northern Samar 69 kV
+Catbalogan,Paranas (Wright),69,18,False,overhead,Western Samar 69 kV
+Borongan,Quinapondan,69,52,False,overhead,Eastern Samar 69 kV
+Magdugo,Naga (Visayas),138,15,False,overhead,Cebu south backbone
+Naga (Visayas),Colon,138,7,False,overhead,Cebu south backbone
+Bacolod,E.B. Magalona,230,25,False,overhead,Negros 230 kV
+E.B. Magalona,Cadiz,230,15,False,overhead,Negros 230 kV
+Bacolod,Calatrava,138,55,False,overhead,Negros east-west
+Bacolod,Kabankalan,138,82,False,overhead,Negros south spine
+Kabankalan,Mabinay,138,35,False,overhead,Negros south
+Mabinay,Amlan,138,35,False,overhead,Negros east coast
+E.B. Magalona,Sta. Barbara,138,73,True,submarine_xlpe,Negros-Panay interconnect
+Sta. Barbara,Iloilo (PEDC),138,14,False,overhead,Iloilo loop
+Sta. Barbara,Dingle,138,28,False,overhead,Iloilo loop
+Dingle,Barotac Viejo,138,21,False,overhead,Panay backbone
+Barotac Viejo,Concepcion,138,32,False,overhead,Panay backbone
+Concepcion,Panitan,138,30,False,overhead,Panay backbone
+Panitan,Nabas,138,90,False,overhead,Panay-Aklan
+Sta. Barbara,San Jose,138,70,False,overhead,Iloilo-Antique
+Corella,Tagbilaran,138,8,False,overhead,Bohol main
+Tagbilaran,BDPP Switchyard,69,3,False,overhead,Bohol diesel
+Ubay,PB 104,69,3,False,overhead,Bohol diesel plant

@@ -1,0 +1,91 @@
+Substation_Name,Voltage_Level,Island,Status,Longitude_X,Latitude_Y
+Ormoc,138/230 kV,Leyte,Existing,124.629,11.045
+Babatngon,138 kV,Leyte,Existing,124.935,11.266
+Maasin,138 kV,Leyte,Existing,124.843,10.155
+Tabango,138/230 kV,Leyte,Existing,124.405,11.317
+Isabel,138 kV,Leyte,Existing,124.453,10.923
+Kananga,138/230 kV,Leyte,Existing,124.588,11.185
+Tongonan,138 kV (Gen),Leyte,Existing,124.645,11.135
+Lemon LES,69 kV,Leyte,Existing,124.532,11.231
+Simangan LES,69 kV,Leyte,Existing,124.551,11.055
+Tolosa LES,69 kV,Leyte,Existing,125.033,11.121
+Himayangan LES,69 kV,Leyte,Existing,125.155,10.355
+Biliran LES,69 kV,Biliran,Existing,124.475,11.517
+Paranas (Wright),138/69 kV,Samar,Existing,125.022,11.782
+Calbayog,138/69 kV,Samar,Existing,124.593,12.067
+Sta. Rita,138/69 kV,Samar,Existing,124.947,11.373
+Catarman,69 kV,Samar,Existing,124.641,12.493
+Allen,69 kV,Samar,Existing,124.286,12.498
+Catbalogan,69 kV,Samar,Existing,124.886,11.776
+Taft,69 kV,Samar,Existing,125.421,11.906
+Quinapondan,69 kV,Samar,Existing,125.485,11.168
+Borongan,69 kV,Samar,Existing,125.432,11.609
+Bobon LES,69 kV,Samar,Existing,124.564,12.516
+Palanas Cara LES,69 kV,Samar,Existing,124.498,12.164
+Capoocan Cara LES,69 kV,Samar,Existing,124.381,12.247
+San Agustin LES,69 kV,Samar,Existing,124.697,11.972
+Buenavista LES,69 kV,Samar,Existing,124.786,11.875
+Lacang (Catubig),69 kV,Samar,Existing,124.967,12.428
+Gadgaran LES,69 kV,Samar,Existing,124.617,12.033
+Cebu,138/230 kV,Cebu,Existing,123.904,10.334
+Mandaue,138/69 kV,Cebu,Existing,123.948,10.336
+Lapu-Lapu (Pusok),138/69 kV,Cebu,Existing,123.978,10.322
+Magdugo,230 kV,Cebu,Existing,123.684,10.347
+Daanbantayan,230/69 kV,Cebu,Existing,123.987,11.233
+Compostela,138/69 kV,Cebu,Existing,123.979,10.455
+Colon,138/69 kV,Cebu,Existing,123.704,10.231
+Toledo,138/34.5 kV,Cebu,Existing,123.641,10.385
+Calong-calong,138/69 kV,Cebu,Existing,123.921,10.315
+Naga (Visayas),138/69 kV,Cebu,Existing,123.754,10.211
+Quiot,138 kV,Cebu,Existing,123.869,10.297
+Samboan,138/69 kV,Cebu,Existing,123.332,9.455
+Dumanjug,230 kV,Cebu,Existing,123.551,10.054
+Medellin LES,69 kV,Cebu,Existing,123.955,11.135
+Sogod LES,69 kV,Cebu,Existing,124.011,10.755
+Balamban LES,69 kV,Cebu,Existing,123.715,10.515
+Carmen LES,69 kV,Cebu,Existing,124.035,10.585
+Sibonga LES,69 kV,Cebu,Existing,123.615,10.015
+AYA SS,138 kV,Cebu,Existing,123.655,10.375
+Bacolod,138/230 kV,Negros,Existing,122.955,10.638
+Cadiz,138/230 kV,Negros,Existing,123.315,10.925
+Amlan,138/69 kV,Negros,Existing,123.215,9.444
+Mabinay,138/69 kV,Negros,Existing,122.932,9.725
+Kabankalan,138/69 kV,Negros,Existing,122.812,9.985
+San Carlos,138/69 kV,Negros,Existing,123.415,10.485
+E.B. Magalona,138/230 kV,Negros,Existing,123.011,10.841
+Calatrava,230 kV,Negros,Existing,123.485,10.595
+Guihulngan LES,69 kV,Negros,Existing,123.275,10.125
+Siaton LES,69 kV,Negros,Existing,123.115,9.075
+Bayawan LES,69 kV,Negros,Existing,122.685,9.375
+Silay LES,69 kV,Negros,Existing,122.985,10.715
+Valladolid LES,69 kV,Negros,Existing,122.835,10.455
+Tadlong LES,69 kV,Negros,Existing,122.885,9.585
+Ubay,138/69 kV,Bohol,Existing,124.475,10.055
+Corella,138/69 kV,Bohol,Existing,123.911,9.685
+Tagbilaran,69 kV,Bohol,Existing,123.865,9.645
+Trinidad LES,69 kV,Bohol,Existing,124.345,10.115
+Alicia LES,69 kV,Bohol,Existing,124.455,9.925
+Tubigon LES,69 kV,Bohol,Existing,123.955,9.955
+Loay LES,69 kV,Bohol,Existing,124.015,9.615
+Garcia Hernandez LES,69 kV,Bohol,Existing,124.285,9.625
+Pajo LES,69 kV,Bohol,Existing,123.855,9.685
+Guindulman LES,69 kV,Bohol,Existing,124.435,9.765
+BDPP Switchyard,69 kV,Bohol,Existing,123.875,9.645
+PB 104,69 kV (Gen),Bohol,Existing,124.485,10.065
+Sta. Barbara,138/69 kV,Panay,Existing,122.531,10.825
+Panitan,138/69 kV,Panay,Existing,122.785,11.455
+Dingle,138/69 kV,Panay,Existing,122.655,11.025
+San Jose,138/69 kV,Panay,Existing,121.945,10.745
+Nabas,138/69 kV,Panay,Existing,122.062,11.833
+Barotac Viejo,230/138 kV,Panay,Existing,122.845,11.045
+Concepcion,138/69 kV,Panay,Existing,123.111,11.233
+Iloilo (PEDC),138/69 kV,Panay,Existing,122.585,10.711
+Caticlan LES,69 kV,Panay,Existing,121.935,11.925
+Boracay LES,69 kV,Panay,Existing,121.925,11.975
+Miagao LES,69 kV,Panay,Existing,122.235,10.645
+Altavas LES,69 kV,Panay,Existing,122.485,11.545
+Lezo LES,69 kV,Panay,Existing,122.335,11.665
+Andagao LES,69 kV,Panay,Existing,122.385,11.715
+Culasi LES,69 kV,Panay,Existing,122.065,11.425
+Sara LES,69 kV,Panay,Existing,123.015,11.265
+Roxas LES,69 kV,Panay,Existing,122.755,11.585

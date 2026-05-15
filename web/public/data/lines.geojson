@@ -1,0 +1,1958 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.904,
+            10.334
+          ],
+          [
+            123.869,
+            10.297
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Cebu_Quiot",
+        "from_bus": "Cebu",
+        "to_bus": "Quiot",
+        "voltage_kv": 69,
+        "length_km": 2.755,
+        "r_ohm_per_km": 0.3,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.4,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 94.91245181523111,
+        "p_from_mw": 90.74504022583208,
+        "i_from_ka": 0.22778988435655467
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.904,
+            10.334
+          ],
+          [
+            123.704,
+            10.231
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Cebu_Colon",
+        "from_bus": "Cebu",
+        "to_bus": "Colon",
+        "voltage_kv": 69,
+        "length_km": 8.736,
+        "r_ohm_per_km": 0.3,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.4,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 92.65288732814241,
+        "p_from_mw": 88.58468859280408,
+        "i_from_ka": 0.22236692958754178
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.345,
+            10.115
+          ],
+          [
+            124.475,
+            10.055
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Trinidad_LES_Ubay",
+        "from_bus": "Trinidad LES",
+        "to_bus": "Ubay",
+        "voltage_kv": 69,
+        "length_km": 21.044,
+        "r_ohm_per_km": 0.3,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.4,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 5.399550529194856e-14,
+        "p_from_mw": 2.5812336558698507e-14,
+        "i_from_ka": 2.1598202116779425e-16
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.455,
+            9.925
+          ],
+          [
+            124.475,
+            10.055
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Alicia_LES_Ubay",
+        "from_bus": "Alicia LES",
+        "to_bus": "Ubay",
+        "voltage_kv": 69,
+        "length_km": 22.587,
+        "r_ohm_per_km": 0.3,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.4,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 1.348885353993794e-14,
+        "p_from_mw": 6.448292788099678e-15,
+        "i_from_ka": 5.3955414159751764e-17
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.843,
+            10.155
+          ],
+          [
+            124.475,
+            10.055
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Maasin_Ubay",
+        "from_bus": "Maasin",
+        "to_bus": "Ubay",
+        "voltage_kv": 138,
+        "length_km": 34.481,
+        "r_ohm_per_km": 0.0754,
+        "x_ohm_per_km": 0.121,
+        "max_i_ka": 0.645,
+        "is_submarine": true,
+        "cable_type": "submarine_xlpe",
+        "loading_percent": 135.36009604657187,
+        "p_from_mw": 208.6844467227254,
+        "i_from_ka": 0.8730726195003886
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.911,
+            9.685
+          ],
+          [
+            124.475,
+            10.055
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Corella_Ubay",
+        "from_bus": "Corella",
+        "to_bus": "Ubay",
+        "voltage_kv": 138,
+        "length_km": 92.4,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 127.8824066880247,
+        "p_from_mw": -198.68444672272676,
+        "i_from_ka": 0.8312356434721606
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.911,
+            9.685
+          ],
+          [
+            123.855,
+            9.685
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Corella_Pajo_LES",
+        "from_bus": "Corella",
+        "to_bus": "Pajo LES",
+        "voltage_kv": 230,
+        "length_km": 18.201,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 142.40817519319944,
+        "p_from_mw": 161.68444672272716,
+        "i_from_ka": 0.6764388321676973
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.551,
+            10.054
+          ],
+          [
+            123.855,
+            9.685
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Dumanjug_Pajo_LES",
+        "from_bus": "Dumanjug",
+        "to_bus": "Pajo LES",
+        "voltage_kv": 230,
+        "length_km": 52.711,
+        "r_ohm_per_km": 0.0754,
+        "x_ohm_per_km": 0.121,
+        "max_i_ka": 0.645,
+        "is_submarine": true,
+        "cable_type": "submarine_xlpe",
+        "loading_percent": 209.74847509075815,
+        "p_from_mw": -161.6844467227266,
+        "i_from_ka": 0.405863299300617
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.485,
+            10.595
+          ],
+          [
+            123.415,
+            10.485
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Calatrava_San_Carlos",
+        "from_bus": "Calatrava",
+        "to_bus": "San Carlos",
+        "voltage_kv": 138,
+        "length_km": 5.593,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 7.723749420597527,
+        "p_from_mw": 12.000000000000817,
+        "i_from_ka": 0.03012262274033035
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.315,
+            10.925
+          ],
+          [
+            123.485,
+            10.595
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Cadiz_Calatrava",
+        "from_bus": "Cadiz",
+        "to_bus": "Calatrava",
+        "voltage_kv": 230,
+        "length_km": 52.478,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 33.624635595821196,
+        "p_from_mw": -127.25347626492365,
+        "i_from_ka": 0.31943403816030136
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.485,
+            10.595
+          ],
+          [
+            123.641,
+            10.385
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Calatrava_Toledo",
+        "from_bus": "Calatrava",
+        "to_bus": "Toledo",
+        "voltage_kv": 230,
+        "length_km": 26.148,
+        "r_ohm_per_km": 0.0754,
+        "x_ohm_per_km": 0.121,
+        "max_i_ka": 0.645,
+        "is_submarine": true,
+        "cable_type": "submarine_xlpe",
+        "loading_percent": 176.748258945742,
+        "p_from_mw": -272.4925122290596,
+        "i_from_ka": 0.6840157621200217
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.987,
+            11.233
+          ],
+          [
+            124.405,
+            11.317
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Daanbantayan_Tabango",
+        "from_bus": "Daanbantayan",
+        "to_bus": "Tabango",
+        "voltage_kv": 230,
+        "length_km": 30.937,
+        "r_ohm_per_km": 0.0754,
+        "x_ohm_per_km": 0.121,
+        "max_i_ka": 0.645,
+        "is_submarine": true,
+        "cable_type": "submarine_xlpe",
+        "loading_percent": 184.20550191861057,
+        "p_from_mw": -473.3155532772531,
+        "i_from_ka": 1.1881254873750382
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.405,
+            11.317
+          ],
+          [
+            124.645,
+            11.135
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Tabango_Tongonan",
+        "from_bus": "Tabango",
+        "to_bus": "Tongonan",
+        "voltage_kv": 230,
+        "length_km": 42.825,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 88.24782309803277,
+        "p_from_mw": -200.38597408798054,
+        "i_from_ka": 0.5030125916587868
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.978,
+            10.322
+          ],
+          [
+            123.948,
+            10.336
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Lapu-Lapu_(Pusok)_Mandaue",
+        "from_bus": "Lapu-Lapu (Pusok)",
+        "to_bus": "Mandaue",
+        "voltage_kv": 138,
+        "length_km": 0.925,
+        "r_ohm_per_km": 0.0754,
+        "x_ohm_per_km": 0.121,
+        "max_i_ka": 0.645,
+        "is_submarine": true,
+        "cable_type": "submarine_xlpe",
+        "loading_percent": 32.43176436297064,
+        "p_from_mw": -49.99999999999805,
+        "i_from_ka": 0.20918488014116063
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.843,
+            10.155
+          ],
+          [
+            124.629,
+            11.045
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Maasin_Ormoc",
+        "from_bus": "Maasin",
+        "to_bus": "Ormoc",
+        "voltage_kv": 138,
+        "length_km": 113.963,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 140.75532238901866,
+        "p_from_mw": -218.68444672272517,
+        "i_from_ka": 0.9149095955286214
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.704,
+            10.231
+          ],
+          [
+            123.869,
+            10.297
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Colon_Quiot",
+        "from_bus": "Colon",
+        "to_bus": "Quiot",
+        "voltage_kv": 69,
+        "length_km": 2.395,
+        "r_ohm_per_km": 0.3,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.4,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 82.36135900675238,
+        "p_from_mw": -78.74504022582386,
+        "i_from_ka": 0.32944543602700954
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.921,
+            10.315
+          ],
+          [
+            123.704,
+            10.231
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Calong-calong_Colon",
+        "from_bus": "Calong-calong",
+        "to_bus": "Colon",
+        "voltage_kv": 69,
+        "length_km": 3.386,
+        "r_ohm_per_km": 0.3,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.4,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 8.367395205650126,
+        "p_from_mw": -8.000000000003228,
+        "i_from_ka": 0.03346958082260051
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.684,
+            10.347
+          ],
+          [
+            123.641,
+            10.385
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Magdugo_Toledo",
+        "from_bus": "Magdugo",
+        "to_bus": "Toledo",
+        "voltage_kv": 138,
+        "length_km": 6.81,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 139.4290253256876,
+        "p_from_mw": 216.62384585476707,
+        "i_from_ka": 0.5437731987701816
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.904,
+            10.334
+          ],
+          [
+            123.684,
+            10.347
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Cebu_Magdugo",
+        "from_bus": "Cebu",
+        "to_bus": "Magdugo",
+        "voltage_kv": 230,
+        "length_km": 33.392,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 22.720338168276268,
+        "p_from_mw": 85.98582445863296,
+        "i_from_ka": 0.21584321259862455
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.551,
+            10.054
+          ],
+          [
+            123.684,
+            10.347
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Dumanjug_Magdugo",
+        "from_bus": "Dumanjug",
+        "to_bus": "Magdugo",
+        "voltage_kv": 230,
+        "length_km": 51.051,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 28.146429810711478,
+        "p_from_mw": 106.52103656715443,
+        "i_from_ka": 0.26739108320175903
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.215,
+            9.444
+          ],
+          [
+            123.332,
+            9.455
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Amlan_Samboan",
+        "from_bus": "Amlan",
+        "to_bus": "Samboan",
+        "voltage_kv": 138,
+        "length_km": 14.701,
+        "r_ohm_per_km": 0.0754,
+        "x_ohm_per_km": 0.121,
+        "max_i_ka": 0.645,
+        "is_submarine": true,
+        "cable_type": "submarine_xlpe",
+        "loading_percent": 37.30138584987097,
+        "p_from_mw": -57.50748777093797,
+        "i_from_ka": 0.24059393873166776
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.593,
+            12.067
+          ],
+          [
+            125.022,
+            11.782
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Calbayog_Paranas_(Wright)",
+        "from_bus": "Calbayog",
+        "to_bus": "Paranas (Wright)",
+        "voltage_kv": 138,
+        "length_km": 62.637,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 8.234228684815273,
+        "p_from_mw": -12.793105891587274,
+        "i_from_ka": 0.05352248645129928
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.935,
+            11.266
+          ],
+          [
+            125.022,
+            11.782
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Babatngon_Paranas_(Wright)",
+        "from_bus": "Babatngon",
+        "to_bus": "Paranas (Wright)",
+        "voltage_kv": 138,
+        "length_km": 57.055,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 24.870476787829894,
+        "p_from_mw": 38.64000567627046,
+        "i_from_ka": 0.16165809912089432
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.935,
+            11.266
+          ],
+          [
+            124.629,
+            11.045
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Babatngon_Ormoc",
+        "from_bus": "Babatngon",
+        "to_bus": "Ormoc",
+        "voltage_kv": 138,
+        "length_km": 78.027,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 28.08870571307866,
+        "p_from_mw": -43.64000567627048,
+        "i_from_ka": 0.1825765871350113
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.629,
+            11.045
+          ],
+          [
+            124.645,
+            11.135
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Ormoc_Tongonan",
+        "from_bus": "Ormoc",
+        "to_bus": "Tongonan",
+        "voltage_kv": 230,
+        "length_km": 5.704,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 133.26196344673036,
+        "p_from_mw": 302.60042023342794,
+        "i_from_ka": 0.7595931916463631
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.286,
+            12.498
+          ],
+          [
+            124.629,
+            11.045
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Allen_Ormoc",
+        "from_bus": "Allen",
+        "to_bus": "Ormoc",
+        "voltage_kv": 230,
+        "length_km": 257.918,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 5.60174589603316,
+        "p_from_mw": -6.35999432372953,
+        "i_from_ka": 0.05321658601231501
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.904,
+            10.334
+          ],
+          [
+            123.948,
+            10.336
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Cebu_Mandaue",
+        "from_bus": "Cebu",
+        "to_bus": "Mandaue",
+        "voltage_kv": 138,
+        "length_km": 6.951,
+        "r_ohm_per_km": 0.0754,
+        "x_ohm_per_km": 0.121,
+        "max_i_ka": 0.645,
+        "is_submarine": true,
+        "cable_type": "submarine_xlpe",
+        "loading_percent": 71.34988159853538,
+        "p_from_mw": 109.99999999999567,
+        "i_from_ka": 0.2761240417863319
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.904,
+            10.334
+          ],
+          [
+            123.979,
+            10.455
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Cebu_Compostela",
+        "from_bus": "Cebu",
+        "to_bus": "Compostela",
+        "voltage_kv": 138,
+        "length_km": 16.604,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 293.06193673449957,
+        "p_from_mw": -455.31555327725414,
+        "i_from_ka": 1.1429415532645482
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.979,
+            10.455
+          ],
+          [
+            123.987,
+            11.233
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Compostela_Daanbantayan",
+        "from_bus": "Compostela",
+        "to_bus": "Daanbantayan",
+        "voltage_kv": 230,
+        "length_km": 90.745,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 204.91995418973437,
+        "p_from_mw": -465.3155532772531,
+        "i_from_ka": 1.9467395648024763
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.551,
+            10.054
+          ],
+          [
+            123.332,
+            9.455
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Dumanjug_Samboan",
+        "from_bus": "Dumanjug",
+        "to_bus": "Samboan",
+        "voltage_kv": 230,
+        "length_km": 72.585,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 24.293371245413407,
+        "p_from_mw": 55.163410155571555,
+        "i_from_ka": 0.1384722160988564
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.704,
+            10.231
+          ],
+          [
+            123.641,
+            10.385
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Colon_Toledo",
+        "from_bus": "Colon",
+        "to_bus": "Toledo",
+        "voltage_kv": 138,
+        "length_km": 16.952,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 48.83254732915457,
+        "p_from_mw": 75.86866637428552,
+        "i_from_ka": 0.31741155763950474
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.704,
+            10.231
+          ],
+          [
+            123.332,
+            9.455
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Colon_Samboan",
+        "from_bus": "Colon",
+        "to_bus": "Samboan",
+        "voltage_kv": 138,
+        "length_km": 101.883,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 1.5087556769588706,
+        "p_from_mw": 2.3440776153645637,
+        "i_from_ka": 0.009806911900232659
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            125.022,
+            11.782
+          ],
+          [
+            125.421,
+            11.906
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Paranas_(Wright)_Taft",
+        "from_bus": "Paranas (Wright)",
+        "to_bus": "Taft",
+        "voltage_kv": 138,
+        "length_km": 52.421,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 3.8618747102985096,
+        "p_from_mw": 3.0000000000000075,
+        "i_from_ka": 0.012551092808470157
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.588,
+            11.185
+          ],
+          [
+            124.629,
+            11.045
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Kananga_Ormoc",
+        "from_bus": "Kananga",
+        "to_bus": "Ormoc",
+        "voltage_kv": 230,
+        "length_km": 14.0,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 46.08108094033001,
+        "p_from_mw": -174.39528000211467,
+        "i_from_ka": 0.4377702689331351
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.588,
+            11.185
+          ],
+          [
+            124.645,
+            11.135
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Kananga_Tongonan",
+        "from_bus": "Kananga",
+        "to_bus": "Tongonan",
+        "voltage_kv": 230,
+        "length_km": 7.0,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 45.014140348697666,
+        "p_from_mw": -102.21444614544752,
+        "i_from_ka": 0.2565805999875767
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.453,
+            10.923
+          ],
+          [
+            124.588,
+            11.185
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Isabel_Kananga",
+        "from_bus": "Isabel",
+        "to_bus": "Kananga",
+        "voltage_kv": 138,
+        "length_km": 38.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 9.216913052828824,
+        "p_from_mw": 14.319853041710527,
+        "i_from_ka": 0.05990993484338735
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.453,
+            10.923
+          ],
+          [
+            124.629,
+            11.045
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Isabel_Ormoc",
+        "from_bus": "Isabel",
+        "to_bus": "Ormoc",
+        "voltage_kv": 138,
+        "length_km": 15.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 14.366079333226821,
+        "p_from_mw": -22.319853041710527,
+        "i_from_ka": 0.09337951566597436
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.405,
+            11.317
+          ],
+          [
+            124.588,
+            11.185
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Tabango_Kananga",
+        "from_bus": "Tabango",
+        "to_bus": "Kananga",
+        "voltage_kv": 230,
+        "length_km": 28.0,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 74.23101517997934,
+        "p_from_mw": -280.9295791892726,
+        "i_from_ka": 0.7051946442098036
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.947,
+            11.373
+          ],
+          [
+            124.593,
+            12.067
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Sta_Rita_Calbayog",
+        "from_bus": "Sta. Rita",
+        "to_bus": "Calbayog",
+        "voltage_kv": 138,
+        "length_km": 80.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 3.1196866169698954,
+        "p_from_mw": 4.846899784683219,
+        "i_from_ka": 0.02027796301030432
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.947,
+            11.373
+          ],
+          [
+            125.022,
+            11.782
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Sta_Rita_Paranas_(Wright)",
+        "from_bus": "Sta. Rita",
+        "to_bus": "Paranas (Wright)",
+        "voltage_kv": 138,
+        "length_km": 42.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 6.337915542218645,
+        "p_from_mw": -9.846899784683218,
+        "i_from_ka": 0.04119645102442119
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.286,
+            12.498
+          ],
+          [
+            124.641,
+            12.493
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Allen_Catarman",
+        "from_bus": "Allen",
+        "to_bus": "Catarman",
+        "voltage_kv": 69,
+        "length_km": 40.0,
+        "r_ohm_per_km": 0.3,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.4,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 4.936751297432013,
+        "p_from_mw": 2.3599943237295347,
+        "i_from_ka": 0.019747005189728054
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.641,
+            12.493
+          ],
+          [
+            124.593,
+            12.067
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Catarman_Calbayog",
+        "from_bus": "Catarman",
+        "to_bus": "Calbayog",
+        "voltage_kv": 69,
+        "length_km": 50.0,
+        "r_ohm_per_km": 0.3,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.4,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 5.522492709626455,
+        "p_from_mw": -2.6400056762704796,
+        "i_from_ka": 0.02208997083850582
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.886,
+            11.776
+          ],
+          [
+            125.022,
+            11.782
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Catbalogan_Paranas_(Wright)",
+        "from_bus": "Catbalogan",
+        "to_bus": "Paranas (Wright)",
+        "voltage_kv": 69,
+        "length_km": 18.0,
+        "r_ohm_per_km": 0.3,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.4,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 16.734790411293503,
+        "p_from_mw": -8.000000000000002,
+        "i_from_ka": 0.06693916164517402
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            125.432,
+            11.609
+          ],
+          [
+            125.485,
+            11.168
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Borongan_Quinapondan",
+        "from_bus": "Borongan",
+        "to_bus": "Quinapondan",
+        "voltage_kv": 69,
+        "length_km": 52.0,
+        "r_ohm_per_km": 0.3,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.4,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": null,
+        "p_from_mw": null,
+        "i_from_ka": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.684,
+            10.347
+          ],
+          [
+            123.754,
+            10.211
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Magdugo_Naga_(Visayas)",
+        "from_bus": "Magdugo",
+        "to_bus": "Naga (Visayas)",
+        "voltage_kv": 138,
+        "length_km": 15.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 34.83216918477318,
+        "p_from_mw": -54.11698482897835,
+        "i_from_ka": 0.13584545982061544
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.754,
+            10.211
+          ],
+          [
+            123.704,
+            10.231
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Naga_(Visayas)_Colon",
+        "from_bus": "Naga (Visayas)",
+        "to_bus": "Colon",
+        "voltage_kv": 138,
+        "length_km": 7.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 42.55591860537035,
+        "p_from_mw": -66.11698482897862,
+        "i_from_ka": 0.2766134709349073
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            122.955,
+            10.638
+          ],
+          [
+            123.011,
+            10.841
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Bacolod_EB_Magalona",
+        "from_bus": "Bacolod",
+        "to_bus": "E.B. Magalona",
+        "voltage_kv": 230,
+        "length_km": 25.0,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 17.900903302108436,
+        "p_from_mw": 67.746523735075,
+        "i_from_ka": 0.1700585813700301
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.011,
+            10.841
+          ],
+          [
+            123.315,
+            10.925
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_EB_Magalona_Cadiz",
+        "from_bus": "E.B. Magalona",
+        "to_bus": "Cadiz",
+        "voltage_kv": 230,
+        "length_km": 15.0,
+        "r_ohm_per_km": 0.06,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.95,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 29.661132603673302,
+        "p_from_mw": -112.25347626492577,
+        "i_from_ka": 0.28178075973489636
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            122.955,
+            10.638
+          ],
+          [
+            123.485,
+            10.595
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Bacolod_Calatrava",
+        "from_bus": "Bacolod",
+        "to_bus": "Calatrava",
+        "voltage_kv": 138,
+        "length_km": 55.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 46.820996689088176,
+        "p_from_mw": -121.23903596413976,
+        "i_from_ka": 0.30433647847907314
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            122.955,
+            10.638
+          ],
+          [
+            122.812,
+            9.985
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Bacolod_Kabankalan",
+        "from_bus": "Bacolod",
+        "to_bus": "Kabankalan",
+        "voltage_kv": 138,
+        "length_km": 82.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 17.061432776021277,
+        "p_from_mw": -26.507487770936823,
+        "i_from_ka": 0.06653958782648299
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            122.812,
+            9.985
+          ],
+          [
+            122.932,
+            9.725
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Kabankalan_Mabinay",
+        "from_bus": "Kabankalan",
+        "to_bus": "Mabinay",
+        "voltage_kv": 138,
+        "length_km": 35.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 26.716119551767704,
+        "p_from_mw": -41.50748777093709,
+        "i_from_ka": 0.17365477708649008
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            122.932,
+            9.725
+          ],
+          [
+            123.215,
+            9.444
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Mabinay_Amlan",
+        "from_bus": "Mabinay",
+        "to_bus": "Amlan",
+        "voltage_kv": 138,
+        "length_km": 35.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 31.86528583216562,
+        "p_from_mw": -49.507487770936955,
+        "i_from_ka": 0.20712435790907652
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.011,
+            10.841
+          ],
+          [
+            122.531,
+            10.825
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_EB_Magalona_Sta_Barbara",
+        "from_bus": "E.B. Magalona",
+        "to_bus": "Sta. Barbara",
+        "voltage_kv": 138,
+        "length_km": 73.0,
+        "r_ohm_per_km": 0.0754,
+        "x_ohm_per_km": 0.121,
+        "max_i_ka": 0.645,
+        "is_submarine": true,
+        "cable_type": "submarine_xlpe",
+        "loading_percent": 100.53846952521266,
+        "p_from_mw": 154.99999999999963,
+        "i_from_ka": 0.389083877062573
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            122.531,
+            10.825
+          ],
+          [
+            122.585,
+            10.711
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Sta_Barbara_Iloilo_(PEDC)",
+        "from_bus": "Sta. Barbara",
+        "to_bus": "Iloilo (PEDC)",
+        "voltage_kv": 138,
+        "length_km": 14.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 45.055204953482665,
+        "p_from_mw": 70.00000000000026,
+        "i_from_ka": 0.2928588321976373
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            122.531,
+            10.825
+          ],
+          [
+            122.655,
+            11.025
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Sta_Barbara_Dingle",
+        "from_bus": "Sta. Barbara",
+        "to_bus": "Dingle",
+        "voltage_kv": 138,
+        "length_km": 28.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 30.251351897338147,
+        "p_from_mw": 46.99999999999984,
+        "i_from_ka": 0.19663378733269796
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            122.655,
+            11.025
+          ],
+          [
+            122.845,
+            11.045
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Dingle_Barotac_Viejo",
+        "from_bus": "Dingle",
+        "to_bus": "Barotac Viejo",
+        "voltage_kv": 138,
+        "length_km": 21.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 23.814894046840575,
+        "p_from_mw": 36.99999999999973,
+        "i_from_ka": 0.15479681130446374
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            122.845,
+            11.045
+          ],
+          [
+            123.111,
+            11.233
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Barotac_Viejo_Concepcion",
+        "from_bus": "Barotac Viejo",
+        "to_bus": "Concepcion",
+        "voltage_kv": 138,
+        "length_km": 32.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 14.160207271094597,
+        "p_from_mw": 22.000000000000146,
+        "i_from_ka": 0.055224808357268916
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.111,
+            11.233
+          ],
+          [
+            122.785,
+            11.455
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Concepcion_Panitan",
+        "from_bus": "Concepcion",
+        "to_bus": "Panitan",
+        "voltage_kv": 138,
+        "length_km": 30.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 9.011040990696483,
+        "p_from_mw": 13.999999999999972,
+        "i_from_ka": 0.05857176643952714
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            122.785,
+            11.455
+          ],
+          [
+            122.062,
+            11.833
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Panitan_Nabas",
+        "from_bus": "Panitan",
+        "to_bus": "Nabas",
+        "voltage_kv": 138,
+        "length_km": 90.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 3.8618747102984954,
+        "p_from_mw": 5.999999999999993,
+        "i_from_ka": 0.025102185616940224
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            122.531,
+            10.825
+          ],
+          [
+            121.945,
+            10.745
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Sta_Barbara_San_Jose",
+        "from_bus": "Sta. Barbara",
+        "to_bus": "San Jose",
+        "voltage_kv": 138,
+        "length_km": 70.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 5.149166280397925,
+        "p_from_mw": 7.999999999999883,
+        "i_from_ka": 0.03346958082258651
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.911,
+            9.685
+          ],
+          [
+            123.865,
+            9.645
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Corella_Tagbilaran",
+        "from_bus": "Corella",
+        "to_bus": "Tagbilaran",
+        "voltage_kv": 138,
+        "length_km": 8.0,
+        "r_ohm_per_km": 0.12,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.65,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 32.18228925248654,
+        "p_from_mw": 24.999999999999254,
+        "i_from_ka": 0.10459244007058126
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            123.865,
+            9.645
+          ],
+          [
+            123.875,
+            9.645
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Tagbilaran_BDPP_Switchyard",
+        "from_bus": "Tagbilaran",
+        "to_bus": "BDPP Switchyard",
+        "voltage_kv": 69,
+        "length_km": 3.0,
+        "r_ohm_per_km": 0.3,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.4,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 1.1836983772620219e-14,
+        "p_from_mw": -5.658623015502846e-15,
+        "i_from_ka": 4.7347935090480876e-17
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.475,
+            10.055
+          ],
+          [
+            124.485,
+            10.065
+          ]
+        ]
+      },
+      "properties": {
+        "line_id": "L_Ubay_PB_104",
+        "from_bus": "Ubay",
+        "to_bus": "PB 104",
+        "voltage_kv": 69,
+        "length_km": 3.0,
+        "r_ohm_per_km": 0.3,
+        "x_ohm_per_km": 0.4,
+        "max_i_ka": 0.4,
+        "is_submarine": false,
+        "cable_type": "overhead",
+        "loading_percent": 5.279177445362747e-13,
+        "p_from_mw": 2.523689781881026e-13,
+        "i_from_ka": 1.0558354890725495e-15
+      }
+    }
+  ]
+}

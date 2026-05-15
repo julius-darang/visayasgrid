@@ -1,0 +1,46 @@
+name,p_mw,q_mvar,notes
+Cebu,80,24,Cebu City load center
+Mandaue,60,18,Mandaue industrial
+Lapu-Lapu (Pusok),50,15,Mactan
+Magdugo,30,9,Cebu industrial
+Toledo,20,6,Toledo copper smelter area
+Colon,15,4.5,Cebu south
+Naga (Visayas),12,3.6,Cebu south
+Quiot,12,3.6,Cebu City
+Compostela,10,3,Cebu central-north
+Calong-calong,8,2.4,Cebu
+Daanbantayan,8,2.4,Cebu north
+Bacolod,80,24,Bacolod City
+E.B. Magalona,25,7.5,Negros central
+Cadiz,15,4.5,Negros north
+Calatrava,12,3.6,Negros east
+San Carlos,12,3.6,Negros east
+Kabankalan,15,4.5,Negros south
+Mabinay,8,2.4,Negros south
+Amlan,8,2.4,Negros Oriental
+Iloilo (PEDC),70,21,Iloilo City
+Sta. Barbara,30,9,Iloilo provincial
+Barotac Viejo,15,4.5,Panay 230 kV node
+Dingle,10,3,Iloilo
+Concepcion,8,2.4,Iloilo north
+Panitan,8,2.4,Capiz
+Nabas,6,1.8,Aklan
+San Jose,8,2.4,Antique
+Ormoc,15,4.5,Ormoc City
+Kananga,10,3,Leyte
+Isabel,8,2.4,Leyte central
+Babatngon,5,1.5,Northern Leyte
+Maasin,10,3,Southern Leyte
+Tabango,8,2.4,Leyte north
+Calbayog,15,4.5,Samar
+Catbalogan,8,2.4,Samar
+Sta. Rita,5,1.5,Samar
+Paranas (Wright),5,1.5,Samar
+Catarman,5,1.5,Northern Samar
+Allen,4,1.2,Samar tip
+Borongan,5,1.5,Eastern Samar
+Quinapondan,3,0.9,Samar
+Taft,3,0.9,Samar
+Tagbilaran,25,7.5,Tagbilaran Bohol
+Corella,12,3.6,Bohol main
+Ubay,10,3,Bohol northeast

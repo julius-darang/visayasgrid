@@ -1,0 +1,2255 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.629,
+          11.045
+        ]
+      },
+      "properties": {
+        "name": "Ormoc",
+        "x": 124.629,
+        "y": 11.045,
+        "v_nom": 230,
+        "voltages_kv": "138,230",
+        "island": "Leyte",
+        "bus_type": "substation",
+        "p_mw": 15.0,
+        "q_mvar": 4.5,
+        "is_slack": true,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": 0.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.935,
+          11.266
+        ]
+      },
+      "properties": {
+        "name": "Babatngon",
+        "x": 124.935,
+        "y": 11.266,
+        "v_nom": 138,
+        "voltages_kv": "138",
+        "island": "Leyte",
+        "bus_type": "substation",
+        "p_mw": 5.0,
+        "q_mvar": 1.5,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -4.097832086697998
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.843,
+          10.155
+        ]
+      },
+      "properties": {
+        "name": "Maasin",
+        "x": 124.843,
+        "y": 10.155,
+        "v_nom": 138,
+        "voltages_kv": "138",
+        "island": "Leyte",
+        "bus_type": "substation",
+        "p_mw": 10.0,
+        "q_mvar": 3.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -29.992054763358908
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.405,
+          11.317
+        ]
+      },
+      "properties": {
+        "name": "Tabango",
+        "x": 124.405,
+        "y": 11.317,
+        "v_nom": 230,
+        "voltages_kv": "138,230",
+        "island": "Leyte",
+        "bus_type": "substation",
+        "p_mw": 8.0,
+        "q_mvar": 2.4,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -4.465631815030712
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.453,
+          10.923
+        ]
+      },
+      "properties": {
+        "name": "Isabel",
+        "x": 124.453,
+        "y": 10.923,
+        "v_nom": 138,
+        "voltages_kv": "138",
+        "island": "Leyte",
+        "bus_type": "substation",
+        "p_mw": 8.0,
+        "q_mvar": 2.4,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -0.4029090669950366
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.588,
+          11.185
+        ]
+      },
+      "properties": {
+        "name": "Kananga",
+        "x": 124.588,
+        "y": 11.185,
+        "v_nom": 230,
+        "voltages_kv": "138,230",
+        "island": "Leyte",
+        "bus_type": "substation",
+        "p_mw": 10.0,
+        "q_mvar": 3.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -1.0577662696085282
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.645,
+          11.135
+        ]
+      },
+      "properties": {
+        "name": "Tongonan",
+        "x": 124.645,
+        "y": 11.135,
+        "v_nom": 138,
+        "voltages_kv": "138",
+        "island": "Leyte",
+        "bus_type": "generator",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -0.747783701851933
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.532,
+          11.231
+        ]
+      },
+      "properties": {
+        "name": "Lemon LES",
+        "x": 124.532,
+        "y": 11.231,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Leyte",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.551,
+          11.055
+        ]
+      },
+      "properties": {
+        "name": "Simangan LES",
+        "x": 124.551,
+        "y": 11.055,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Leyte",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.033,
+          11.121
+        ]
+      },
+      "properties": {
+        "name": "Tolosa LES",
+        "x": 125.033,
+        "y": 11.121,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Leyte",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.155,
+          10.355
+        ]
+      },
+      "properties": {
+        "name": "Himayangan LES",
+        "x": 125.155,
+        "y": 10.355,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Leyte",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.475,
+          11.517
+        ]
+      },
+      "properties": {
+        "name": "Biliran LES",
+        "x": 124.475,
+        "y": 11.517,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Biliran",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.022,
+          11.782
+        ]
+      },
+      "properties": {
+        "name": "Paranas (Wright)",
+        "x": 125.022,
+        "y": 11.782,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 5.0,
+        "q_mvar": 1.5,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -6.750942609873458
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.593,
+          12.067
+        ]
+      },
+      "properties": {
+        "name": "Calbayog",
+        "x": 124.593,
+        "y": 12.067,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 15.0,
+        "q_mvar": 4.5,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -7.715285303986955
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.947,
+          11.373
+        ]
+      },
+      "properties": {
+        "name": "Sta. Rita",
+        "x": 124.947,
+        "y": 11.373,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 5.0,
+        "q_mvar": 1.5,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -7.248649048771302
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.641,
+          12.493
+        ]
+      },
+      "properties": {
+        "name": "Catarman",
+        "x": 124.641,
+        "y": 12.493,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 5.0,
+        "q_mvar": 1.5,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -8.350703002541373
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.286,
+          12.498
+        ]
+      },
+      "properties": {
+        "name": "Allen",
+        "x": 124.286,
+        "y": 12.498,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 4.0,
+        "q_mvar": 1.2,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -7.896285142681568
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.886,
+          11.776
+        ]
+      },
+      "properties": {
+        "name": "Catbalogan",
+        "x": 124.886,
+        "y": 11.776,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 8.0,
+        "q_mvar": 2.4,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -7.44412406333986
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.421,
+          11.906
+        ]
+      },
+      "properties": {
+        "name": "Taft",
+        "x": 125.421,
+        "y": 11.906,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 3.0,
+        "q_mvar": 0.9,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -6.940199198270137
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.485,
+          11.168
+        ]
+      },
+      "properties": {
+        "name": "Quinapondan",
+        "x": 125.485,
+        "y": 11.168,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 3.0,
+        "q_mvar": 0.9,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.432,
+          11.609
+        ]
+      },
+      "properties": {
+        "name": "Borongan",
+        "x": 125.432,
+        "y": 11.609,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 5.0,
+        "q_mvar": 1.5,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.564,
+          12.516
+        ]
+      },
+      "properties": {
+        "name": "Bobon LES",
+        "x": 124.564,
+        "y": 12.516,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.498,
+          12.164
+        ]
+      },
+      "properties": {
+        "name": "Palanas Cara LES",
+        "x": 124.498,
+        "y": 12.164,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.381,
+          12.247
+        ]
+      },
+      "properties": {
+        "name": "Capoocan Cara LES",
+        "x": 124.381,
+        "y": 12.247,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.697,
+          11.972
+        ]
+      },
+      "properties": {
+        "name": "San Agustin LES",
+        "x": 124.697,
+        "y": 11.972,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.786,
+          11.875
+        ]
+      },
+      "properties": {
+        "name": "Buenavista LES",
+        "x": 124.786,
+        "y": 11.875,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.967,
+          12.428
+        ]
+      },
+      "properties": {
+        "name": "Lacang (Catubig)",
+        "x": 124.967,
+        "y": 12.428,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.617,
+          12.033
+        ]
+      },
+      "properties": {
+        "name": "Gadgaran LES",
+        "x": 124.617,
+        "y": 12.033,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.904,
+          10.334
+        ]
+      },
+      "properties": {
+        "name": "Cebu",
+        "x": 123.904,
+        "y": 10.334,
+        "v_nom": 230,
+        "voltages_kv": "138,230",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 80.0,
+        "q_mvar": 24.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -60.47529495493187
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.948,
+          10.336
+        ]
+      },
+      "properties": {
+        "name": "Mandaue",
+        "x": 123.948,
+        "y": 10.336,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 60.0,
+        "q_mvar": 18.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -60.57550062681831
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.978,
+          10.322
+        ]
+      },
+      "properties": {
+        "name": "Lapu-Lapu (Pusok)",
+        "x": 123.978,
+        "y": 10.322,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 50.0,
+        "q_mvar": 15.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -60.5923375048954
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.684,
+          10.347
+        ]
+      },
+      "properties": {
+        "name": "Magdugo",
+        "x": 123.684,
+        "y": 10.347,
+        "v_nom": 230,
+        "voltages_kv": "230",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 30.0,
+        "q_mvar": 9.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -61.71922581798161
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.987,
+          11.233
+        ]
+      },
+      "properties": {
+        "name": "Daanbantayan",
+        "x": 123.987,
+        "y": 11.233,
+        "v_nom": 230,
+        "voltages_kv": "69,230",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 8.0,
+        "q_mvar": 2.4,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -6.384659780991353
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.979,
+          10.455
+        ]
+      },
+      "properties": {
+        "name": "Compostela",
+        "x": 123.979,
+        "y": 10.455,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 10.0,
+        "q_mvar": 3.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -57.19998683274603
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.704,
+          10.231
+        ]
+      },
+      "properties": {
+        "name": "Colon",
+        "x": 123.704,
+        "y": 10.231,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 15.0,
+        "q_mvar": 4.5,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -60.810567691969084
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.641,
+          10.385
+        ]
+      },
+      "properties": {
+        "name": "Toledo",
+        "x": 123.641,
+        "y": 10.385,
+        "v_nom": 138,
+        "voltages_kv": "34,138",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 20.0,
+        "q_mvar": 6.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -62.35834275306527
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.921,
+          10.315
+        ]
+      },
+      "properties": {
+        "name": "Calong-calong",
+        "x": 123.921,
+        "y": 10.315,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 8.0,
+        "q_mvar": 2.4,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -60.84316647532239
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.754,
+          10.211
+        ]
+      },
+      "properties": {
+        "name": "Naga (Visayas)",
+        "x": 123.754,
+        "y": 10.211,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 12.0,
+        "q_mvar": 3.6,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -61.36754247234751
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.869,
+          10.297
+        ]
+      },
+      "properties": {
+        "name": "Quiot",
+        "x": 123.869,
+        "y": 10.297,
+        "v_nom": 138,
+        "voltages_kv": "138",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 12.0,
+        "q_mvar": 3.6,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -60.58360567731347
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.332,
+          9.455
+        ]
+      },
+      "properties": {
+        "name": "Samboan",
+        "x": 123.332,
+        "y": 9.455,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -61.09797523568528
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.551,
+          10.054
+        ]
+      },
+      "properties": {
+        "name": "Dumanjug",
+        "x": 123.551,
+        "y": 10.054,
+        "v_nom": 230,
+        "voltages_kv": "230",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -59.363272997153274
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.955,
+          11.135
+        ]
+      },
+      "properties": {
+        "name": "Medellin LES",
+        "x": 123.955,
+        "y": 11.135,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.011,
+          10.755
+        ]
+      },
+      "properties": {
+        "name": "Sogod LES",
+        "x": 124.011,
+        "y": 10.755,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.715,
+          10.515
+        ]
+      },
+      "properties": {
+        "name": "Balamban LES",
+        "x": 123.715,
+        "y": 10.515,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.035,
+          10.585
+        ]
+      },
+      "properties": {
+        "name": "Carmen LES",
+        "x": 124.035,
+        "y": 10.585,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.615,
+          10.015
+        ]
+      },
+      "properties": {
+        "name": "Sibonga LES",
+        "x": 123.615,
+        "y": 10.015,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.655,
+          10.375
+        ]
+      },
+      "properties": {
+        "name": "AYA SS",
+        "x": 123.655,
+        "y": 10.375,
+        "v_nom": 138,
+        "voltages_kv": "138",
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.955,
+          10.638
+        ]
+      },
+      "properties": {
+        "name": "Bacolod",
+        "x": 122.955,
+        "y": 10.638,
+        "v_nom": 230,
+        "voltages_kv": "138,230",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 80.0,
+        "q_mvar": 24.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -66.18102188286309
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.315,
+          10.925
+        ]
+      },
+      "properties": {
+        "name": "Cadiz",
+        "x": 123.315,
+        "y": 10.925,
+        "v_nom": 230,
+        "voltages_kv": "138,230",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 15.0,
+        "q_mvar": 4.5,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -66.18529402488792
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.215,
+          9.444
+        ]
+      },
+      "properties": {
+        "name": "Amlan",
+        "x": 123.215,
+        "y": 9.444,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 8.0,
+        "q_mvar": 2.4,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -61.40574156390819
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.932,
+          9.725
+        ]
+      },
+      "properties": {
+        "name": "Mabinay",
+        "x": 122.932,
+        "y": 9.725,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 8.0,
+        "q_mvar": 2.4,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -63.4910167923257
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.812,
+          9.985
+        ]
+      },
+      "properties": {
+        "name": "Kabankalan",
+        "x": 122.812,
+        "y": 9.985,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 15.0,
+        "q_mvar": 4.5,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -65.23932881419705
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.415,
+          10.485
+        ]
+      },
+      "properties": {
+        "name": "San Carlos",
+        "x": 123.415,
+        "y": 10.485,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 12.0,
+        "q_mvar": 3.6,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -63.32120172803437
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.011,
+          10.841
+        ]
+      },
+      "properties": {
+        "name": "E.B. Magalona",
+        "x": 123.011,
+        "y": 10.841,
+        "v_nom": 230,
+        "voltages_kv": "138,230",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 25.0,
+        "q_mvar": 7.5,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -66.91478178583147
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.485,
+          10.595
+        ]
+      },
+      "properties": {
+        "name": "Calatrava",
+        "x": 123.485,
+        "y": 10.595,
+        "v_nom": 230,
+        "voltages_kv": "230",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 12.0,
+        "q_mvar": 3.6,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -63.29212449901508
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.275,
+          10.125
+        ]
+      },
+      "properties": {
+        "name": "Guihulngan LES",
+        "x": 123.275,
+        "y": 10.125,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.115,
+          9.075
+        ]
+      },
+      "properties": {
+        "name": "Siaton LES",
+        "x": 123.115,
+        "y": 9.075,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.685,
+          9.375
+        ]
+      },
+      "properties": {
+        "name": "Bayawan LES",
+        "x": 122.685,
+        "y": 9.375,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.985,
+          10.715
+        ]
+      },
+      "properties": {
+        "name": "Silay LES",
+        "x": 122.985,
+        "y": 10.715,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.835,
+          10.455
+        ]
+      },
+      "properties": {
+        "name": "Valladolid LES",
+        "x": 122.835,
+        "y": 10.455,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.885,
+          9.585
+        ]
+      },
+      "properties": {
+        "name": "Tadlong LES",
+        "x": 122.885,
+        "y": 9.585,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Negros",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.475,
+          10.055
+        ]
+      },
+      "properties": {
+        "name": "Ubay",
+        "x": 124.475,
+        "y": 10.055,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Bohol",
+        "bus_type": "substation",
+        "p_mw": 10.0,
+        "q_mvar": 3.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -32.611562977883764
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.911,
+          9.685
+        ]
+      },
+      "properties": {
+        "name": "Corella",
+        "x": 123.911,
+        "y": 9.685,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Bohol",
+        "bus_type": "substation",
+        "p_mw": 12.0,
+        "q_mvar": 3.6,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -54.70484790320237
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.865,
+          9.645
+        ]
+      },
+      "properties": {
+        "name": "Tagbilaran",
+        "x": 123.865,
+        "y": 9.645,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Bohol",
+        "bus_type": "substation",
+        "p_mw": 25.0,
+        "q_mvar": 7.5,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -54.945535907878195
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.345,
+          10.115
+        ]
+      },
+      "properties": {
+        "name": "Trinidad LES",
+        "x": 124.345,
+        "y": 10.115,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Bohol",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -32.611562977883764
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.455,
+          9.925
+        ]
+      },
+      "properties": {
+        "name": "Alicia LES",
+        "x": 124.455,
+        "y": 9.925,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Bohol",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -32.611562977883764
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.955,
+          9.955
+        ]
+      },
+      "properties": {
+        "name": "Tubigon LES",
+        "x": 123.955,
+        "y": 9.955,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Bohol",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.015,
+          9.615
+        ]
+      },
+      "properties": {
+        "name": "Loay LES",
+        "x": 124.015,
+        "y": 9.615,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Bohol",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.285,
+          9.625
+        ]
+      },
+      "properties": {
+        "name": "Garcia Hernandez LES",
+        "x": 124.285,
+        "y": 9.625,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Bohol",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.855,
+          9.685
+        ]
+      },
+      "properties": {
+        "name": "Pajo LES",
+        "x": 123.855,
+        "y": 9.685,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Bohol",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -58.246353605798376
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.435,
+          9.765
+        ]
+      },
+      "properties": {
+        "name": "Guindulman LES",
+        "x": 124.435,
+        "y": 9.765,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Bohol",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.875,
+          9.645
+        ]
+      },
+      "properties": {
+        "name": "BDPP Switchyard",
+        "x": 123.875,
+        "y": 9.645,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Bohol",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -54.945535907878195
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.485,
+          10.065
+        ]
+      },
+      "properties": {
+        "name": "PB 104",
+        "x": 124.485,
+        "y": 10.065,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Bohol",
+        "bus_type": "generator",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -32.611562977883764
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.531,
+          10.825
+        ]
+      },
+      "properties": {
+        "name": "Sta. Barbara",
+        "x": 122.531,
+        "y": 10.825,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 30.0,
+        "q_mvar": 9.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -68.39766479467936
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.785,
+          11.455
+        ]
+      },
+      "properties": {
+        "name": "Panitan",
+        "x": 122.785,
+        "y": 11.455,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 8.0,
+        "q_mvar": 2.4,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -71.72690941295642
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.655,
+          11.025
+        ]
+      },
+      "properties": {
+        "name": "Dingle",
+        "x": 122.655,
+        "y": 11.025,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 10.0,
+        "q_mvar": 3.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -69.98139186544634
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.945,
+          10.745
+        ]
+      },
+      "properties": {
+        "name": "San Jose",
+        "x": 121.945,
+        "y": 10.745,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 8.0,
+        "q_mvar": 2.4,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -69.07159120777168
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.062,
+          11.833
+        ]
+      },
+      "properties": {
+        "name": "Nabas",
+        "x": 122.062,
+        "y": 11.833,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 6.0,
+        "q_mvar": 1.8,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -72.37676702558117
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.845,
+          11.045
+        ]
+      },
+      "properties": {
+        "name": "Barotac Viejo",
+        "x": 122.845,
+        "y": 11.045,
+        "v_nom": 230,
+        "voltages_kv": "138,230",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 15.0,
+        "q_mvar": 4.5,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -70.91646476361194
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.111,
+          11.233
+        ]
+      },
+      "properties": {
+        "name": "Concepcion",
+        "x": 123.111,
+        "y": 11.233,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 8.0,
+        "q_mvar": 2.4,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -71.22146460313716
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.585,
+          10.711
+        ]
+      },
+      "properties": {
+        "name": "Iloilo (PEDC)",
+        "x": 122.585,
+        "y": 10.711,
+        "v_nom": 138,
+        "voltages_kv": "69,138",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 70.0,
+        "q_mvar": 21.0,
+        "is_slack": false,
+        "connected": true,
+        "vm_pu": 1.0,
+        "va_degree": -69.57703601759094
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.935,
+          11.925
+        ]
+      },
+      "properties": {
+        "name": "Caticlan LES",
+        "x": 121.935,
+        "y": 11.925,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.925,
+          11.975
+        ]
+      },
+      "properties": {
+        "name": "Boracay LES",
+        "x": 121.925,
+        "y": 11.975,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.235,
+          10.645
+        ]
+      },
+      "properties": {
+        "name": "Miagao LES",
+        "x": 122.235,
+        "y": 10.645,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.485,
+          11.545
+        ]
+      },
+      "properties": {
+        "name": "Altavas LES",
+        "x": 122.485,
+        "y": 11.545,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.335,
+          11.665
+        ]
+      },
+      "properties": {
+        "name": "Lezo LES",
+        "x": 122.335,
+        "y": 11.665,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.385,
+          11.715
+        ]
+      },
+      "properties": {
+        "name": "Andagao LES",
+        "x": 122.385,
+        "y": 11.715,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.065,
+          11.425
+        ]
+      },
+      "properties": {
+        "name": "Culasi LES",
+        "x": 122.065,
+        "y": 11.425,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.015,
+          11.265
+        ]
+      },
+      "properties": {
+        "name": "Sara LES",
+        "x": 123.015,
+        "y": 11.265,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.755,
+          11.585
+        ]
+      },
+      "properties": {
+        "name": "Roxas LES",
+        "x": 122.755,
+        "y": 11.585,
+        "v_nom": 69,
+        "voltages_kv": "69",
+        "island": "Panay",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "connected": false,
+        "vm_pu": null,
+        "va_degree": null
+      }
+    }
+  ]
+}

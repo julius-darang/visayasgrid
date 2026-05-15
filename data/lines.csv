@@ -1,0 +1,64 @@
+line_id,from_bus,to_bus,voltage_kv,length_km,r_ohm_per_km,x_ohm_per_km,max_i_ka,is_submarine,cable_type
+L_Cebu_Quiot,Cebu,Quiot,69,2.755,0.3,0.4,0.4,False,overhead
+L_Cebu_Colon,Cebu,Colon,69,8.736,0.3,0.4,0.4,False,overhead
+L_Trinidad_LES_Ubay,Trinidad LES,Ubay,69,21.044,0.3,0.4,0.4,False,overhead
+L_Alicia_LES_Ubay,Alicia LES,Ubay,69,22.587,0.3,0.4,0.4,False,overhead
+L_Maasin_Ubay,Maasin,Ubay,138,34.481,0.0754,0.121,0.645,True,submarine_xlpe
+L_Corella_Ubay,Corella,Ubay,138,92.4,0.12,0.4,0.65,False,overhead
+L_Corella_Pajo_LES,Corella,Pajo LES,230,18.201,0.06,0.4,0.95,False,overhead
+L_Dumanjug_Pajo_LES,Dumanjug,Pajo LES,230,52.711,0.0754,0.121,0.645,True,submarine_xlpe
+L_Calatrava_San_Carlos,Calatrava,San Carlos,138,5.593,0.12,0.4,0.65,False,overhead
+L_Cadiz_Calatrava,Cadiz,Calatrava,230,52.478,0.06,0.4,0.95,False,overhead
+L_Calatrava_Toledo,Calatrava,Toledo,230,26.148,0.0754,0.121,0.645,True,submarine_xlpe
+L_Daanbantayan_Tabango,Daanbantayan,Tabango,230,30.937,0.0754,0.121,0.645,True,submarine_xlpe
+L_Tabango_Tongonan,Tabango,Tongonan,230,42.825,0.06,0.4,0.95,False,overhead
+L_Lapu-Lapu_(Pusok)_Mandaue,Lapu-Lapu (Pusok),Mandaue,138,0.925,0.0754,0.121,0.645,True,submarine_xlpe
+L_Maasin_Ormoc,Maasin,Ormoc,138,113.963,0.12,0.4,0.65,False,overhead
+L_Colon_Quiot,Colon,Quiot,69,2.395,0.3,0.4,0.4,False,overhead
+L_Calong-calong_Colon,Calong-calong,Colon,69,3.386,0.3,0.4,0.4,False,overhead
+L_Magdugo_Toledo,Magdugo,Toledo,138,6.81,0.12,0.4,0.65,False,overhead
+L_Cebu_Magdugo,Cebu,Magdugo,230,33.392,0.06,0.4,0.95,False,overhead
+L_Dumanjug_Magdugo,Dumanjug,Magdugo,230,51.051,0.06,0.4,0.95,False,overhead
+L_Amlan_Samboan,Amlan,Samboan,138,14.701,0.0754,0.121,0.645,True,submarine_xlpe
+L_Calbayog_Paranas_(Wright),Calbayog,Paranas (Wright),138,62.637,0.12,0.4,0.65,False,overhead
+L_Babatngon_Paranas_(Wright),Babatngon,Paranas (Wright),138,57.055,0.12,0.4,0.65,False,overhead
+L_Babatngon_Ormoc,Babatngon,Ormoc,138,78.027,0.12,0.4,0.65,False,overhead
+L_Ormoc_Tongonan,Ormoc,Tongonan,230,5.704,0.06,0.4,0.95,False,overhead
+L_Allen_Ormoc,Allen,Ormoc,230,257.918,0.06,0.4,0.95,False,overhead
+L_Cebu_Mandaue,Cebu,Mandaue,138,6.951,0.0754,0.121,0.645,True,submarine_xlpe
+L_Cebu_Compostela,Cebu,Compostela,138,16.604,0.12,0.4,0.65,False,overhead
+L_Compostela_Daanbantayan,Compostela,Daanbantayan,230,90.745,0.06,0.4,0.95,False,overhead
+L_Dumanjug_Samboan,Dumanjug,Samboan,230,72.585,0.06,0.4,0.95,False,overhead
+L_Colon_Toledo,Colon,Toledo,138,16.952,0.12,0.4,0.65,False,overhead
+L_Colon_Samboan,Colon,Samboan,138,101.883,0.12,0.4,0.65,False,overhead
+L_Paranas_(Wright)_Taft,Paranas (Wright),Taft,138,52.421,0.12,0.4,0.65,False,overhead
+L_Kananga_Ormoc,Kananga,Ormoc,230,14.0,0.06,0.4,0.95,False,overhead
+L_Kananga_Tongonan,Kananga,Tongonan,230,7.0,0.06,0.4,0.95,False,overhead
+L_Isabel_Kananga,Isabel,Kananga,138,38.0,0.12,0.4,0.65,False,overhead
+L_Isabel_Ormoc,Isabel,Ormoc,138,15.0,0.12,0.4,0.65,False,overhead
+L_Tabango_Kananga,Tabango,Kananga,230,28.0,0.06,0.4,0.95,False,overhead
+L_Sta_Rita_Calbayog,Sta. Rita,Calbayog,138,80.0,0.12,0.4,0.65,False,overhead
+L_Sta_Rita_Paranas_(Wright),Sta. Rita,Paranas (Wright),138,42.0,0.12,0.4,0.65,False,overhead
+L_Allen_Catarman,Allen,Catarman,69,40.0,0.3,0.4,0.4,False,overhead
+L_Catarman_Calbayog,Catarman,Calbayog,69,50.0,0.3,0.4,0.4,False,overhead
+L_Catbalogan_Paranas_(Wright),Catbalogan,Paranas (Wright),69,18.0,0.3,0.4,0.4,False,overhead
+L_Borongan_Quinapondan,Borongan,Quinapondan,69,52.0,0.3,0.4,0.4,False,overhead
+L_Magdugo_Naga_(Visayas),Magdugo,Naga (Visayas),138,15.0,0.12,0.4,0.65,False,overhead
+L_Naga_(Visayas)_Colon,Naga (Visayas),Colon,138,7.0,0.12,0.4,0.65,False,overhead
+L_Bacolod_EB_Magalona,Bacolod,E.B. Magalona,230,25.0,0.06,0.4,0.95,False,overhead
+L_EB_Magalona_Cadiz,E.B. Magalona,Cadiz,230,15.0,0.06,0.4,0.95,False,overhead
+L_Bacolod_Calatrava,Bacolod,Calatrava,138,55.0,0.12,0.4,0.65,False,overhead
+L_Bacolod_Kabankalan,Bacolod,Kabankalan,138,82.0,0.12,0.4,0.65,False,overhead
+L_Kabankalan_Mabinay,Kabankalan,Mabinay,138,35.0,0.12,0.4,0.65,False,overhead
+L_Mabinay_Amlan,Mabinay,Amlan,138,35.0,0.12,0.4,0.65,False,overhead
+L_EB_Magalona_Sta_Barbara,E.B. Magalona,Sta. Barbara,138,73.0,0.0754,0.121,0.645,True,submarine_xlpe
+L_Sta_Barbara_Iloilo_(PEDC),Sta. Barbara,Iloilo (PEDC),138,14.0,0.12,0.4,0.65,False,overhead
+L_Sta_Barbara_Dingle,Sta. Barbara,Dingle,138,28.0,0.12,0.4,0.65,False,overhead
+L_Dingle_Barotac_Viejo,Dingle,Barotac Viejo,138,21.0,0.12,0.4,0.65,False,overhead
+L_Barotac_Viejo_Concepcion,Barotac Viejo,Concepcion,138,32.0,0.12,0.4,0.65,False,overhead
+L_Concepcion_Panitan,Concepcion,Panitan,138,30.0,0.12,0.4,0.65,False,overhead
+L_Panitan_Nabas,Panitan,Nabas,138,90.0,0.12,0.4,0.65,False,overhead
+L_Sta_Barbara_San_Jose,Sta. Barbara,San Jose,138,70.0,0.12,0.4,0.65,False,overhead
+L_Corella_Tagbilaran,Corella,Tagbilaran,138,8.0,0.12,0.4,0.65,False,overhead
+L_Tagbilaran_BDPP_Switchyard,Tagbilaran,BDPP Switchyard,69,3.0,0.3,0.4,0.4,False,overhead
+L_Ubay_PB_104,Ubay,PB 104,69,3.0,0.3,0.4,0.4,False,overhead
