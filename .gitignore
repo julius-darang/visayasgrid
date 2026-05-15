@@ -27,5 +27,5 @@ dist/
 *.swp
 *.swo
 
-# Large raw OSM dump (28 MB) — pipeline only needs the CSVs distilled from it
-data/raw/visayas_power_raw.geojson
+# Large raw OSM dump (28 MB) — kept locally for reference, not committed
+archive/osm-pipeline/visayas_power_raw.geojson

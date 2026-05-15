@@ -21,7 +21,7 @@ TEMP_BUSES = ROOT / "data" / "temp" / "buses.csv"
 TEMP_LINES = ROOT / "data" / "temp" / "lines.csv"
 TEMP_GENERATORS = ROOT / "data" / "temp" / "generators.csv"
 TEMP_LOADS = ROOT / "data" / "temp" / "loads.csv"
-LOAD_ESTIMATES = ROOT / "data" / "raw" / "load_estimates.csv"
+LOAD_ESTIMATES = ROOT / "data" / "load_estimates.csv"
 
 # Each feeder attachment in loads.csv has no MW values; we assign a default
 # per attachment so that the sum across Visayas (~140 feeders × 12) approximates
@@ -254,12 +254,20 @@ def main() -> None:
             dispatch_total=("dispatch_mw", "sum"),
             carriers=("carrier", lambda c: ",".join(sorted(set(c)))),
         ).to_dict("index")
+        # Primary carrier = the one contributing the most installed capacity at this bus.
+        primary = (
+            visayas_gens.groupby(["substation", "carrier"])["p_nom"].sum()
+            .reset_index().sort_values("p_nom", ascending=False)
+            .drop_duplicates("substation").set_index("substation")["carrier"].to_dict()
+        )
+        buses_df["primary_carrier"] = ""
         for i, row in buses_df.iterrows():
             if row["name"] in by_bus:
                 d = by_bus[row["name"]]
                 buses_df.at[i, "gen_capacity_mw"] = round(d["p_nom_total"], 2)
                 buses_df.at[i, "gen_mw"] = round(d["dispatch_total"], 2)
                 buses_df.at[i, "gen_carriers"] = d["carriers"]
+                buses_df.at[i, "primary_carrier"] = primary.get(row["name"], "")
 
         gen_out = visayas_gens[["name", "substation", "p_nom", "carrier",
                                  "build_year", "dispatch_mw"]].copy()

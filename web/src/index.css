@@ -6,3 +6,45 @@ html, body, #root {
   height: 100%;
   margin: 0;
 }
+
+body {
+  background: #ffffff;
+}
+
+html.dark body {
+  background: #0f172a;
+}
+
+/* Always-visible bus name labels rendered via react-leaflet Tooltip. */
+.leaflet-tooltip.bus-label {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: #475569;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0 2px;
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow:
+    0 0 3px #ffffff, 0 0 3px #ffffff, 0 0 3px #ffffff;
+}
+
+.leaflet-tooltip.bus-label::before {
+  display: none;
+}
+
+html.dark .leaflet-tooltip.bus-label {
+  color: #cbd5e1;
+  text-shadow:
+    0 0 3px #0f172a, 0 0 3px #0f172a, 0 0 3px #0f172a;
+}
+
+/* Subtle flow arrow shadow for visibility on both themes. */
+.flow-arrow {
+  pointer-events: none;
+}
+
+html.dark .flow-arrow div {
+  text-shadow: 0 0 3px #0f172a, 0 0 3px #0f172a, 0 0 3px #0f172a !important;
+}

@@ -6,8 +6,8 @@ Usage:
     .venv/bin/python scripts/build_data.py
 
 Inputs:
-    data/buses.csv     produced by process_raw.py
-    data/lines.csv     produced by process_raw.py
+    data/buses.csv     produced by process_temp.py
+    data/lines.csv     produced by process_temp.py
 
 Outputs:
     web/public/data/buses.geojson

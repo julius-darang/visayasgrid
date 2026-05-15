@@ -18,30 +18,50 @@ export const ISLANDS = [
   "Guimaras",
 ];
 
+export const CARRIER_COLORS = {
+  Coal:       "#1f2937",
+  Geothermal: "#16a34a",
+  Solar:      "#facc15",
+  Wind:       "#06b6d4",
+  Hydro:      "#2563eb",
+  Biomass:    "#84cc16",
+  Diesel:     "#ea580c",
+  ROR:        "#60a5fa",
+};
+
+export const CARRIER_LIST = Object.keys(CARRIER_COLORS);
+
 export function colorForVoltage(kv) {
   return VOLTAGE_COLORS[kv] ?? "#888";
 }
 
+export function colorForCarrier(carrier) {
+  return CARRIER_COLORS[carrier] ?? "#6b7280";
+}
+
 export function colorForLoading(pct) {
-  if (pct == null) return "#888";
+  if (pct == null) return "#94a3b8";
   if (pct > 100) return "#9b2226";
   if (pct >= 80) return "#e63946";
   if (pct >= 50) return "#f4a261";
   return "#2d6a4f";
 }
 
-export function radiusForVoltage(kv) {
-  if (kv >= 230) return 7;
-  if (kv >= 138) return 6;
-  return 5;
+export function radiusForBus(props) {
+  const v = Number(props.v_nom);
+  const base = v >= 230 ? 6 : v >= 138 ? 5 : 4;
+  // Bus with significant generation gets a size bump (logarithmic).
+  const gen = Number(props.gen_capacity_mw || 0);
+  if (gen > 0) return base + Math.min(6, Math.log10(gen + 1) * 2.5);
+  return base;
 }
 
 export function lineStyle(feature) {
   const { loading_percent, is_submarine } = feature.properties;
   return {
     color: colorForLoading(loading_percent),
-    weight: 3,
+    weight: 2.5,
     opacity: 0.85,
-    dashArray: is_submarine ? "6 4" : undefined,
+    dashArray: is_submarine ? "6 5" : undefined,
   };
 }

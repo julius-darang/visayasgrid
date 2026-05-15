@@ -25,6 +25,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": -0.21569744852790024
@@ -54,6 +55,7 @@
         "gen_capacity_mw": 11.0,
         "gen_mw": 3.3,
         "gen_carriers": "Diesel",
+        "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": -1.4623462129498588
@@ -83,6 +85,7 @@
         "gen_capacity_mw": 70.7,
         "gen_mw": 21.21,
         "gen_carriers": "Diesel",
+        "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": -0.09597798289836372
@@ -112,6 +115,7 @@
         "gen_capacity_mw": 490.1,
         "gen_mw": 416.59,
         "gen_carriers": "Geothermal",
+        "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 7.754582593689023
@@ -141,6 +145,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": -0.4764118294528048
@@ -170,6 +175,7 @@
         "gen_capacity_mw": 67.0,
         "gen_mw": 17.95,
         "gen_carriers": "Geothermal,Solar",
+        "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 0.0
@@ -199,6 +205,7 @@
         "gen_capacity_mw": 15.2,
         "gen_mw": 6.08,
         "gen_carriers": "ROR",
+        "primary_carrier": "ROR",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": -1.0043351949191344
@@ -228,6 +235,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": -0.40502797672804525
@@ -257,6 +265,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 11.460401614753051
@@ -286,6 +295,7 @@
         "gen_capacity_mw": 120.5,
         "gen_mw": 102.42,
         "gen_carriers": "Geothermal",
+        "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 0.054055175803043136
@@ -315,6 +325,7 @@
         "gen_capacity_mw": 49.0,
         "gen_mw": 12.25,
         "gen_carriers": "Solar",
+        "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.165915924397144
@@ -344,6 +355,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 22.74197319523
@@ -373,6 +385,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 25.86056750692226
@@ -402,6 +415,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 12.365926600533145
@@ -431,6 +445,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 12.088656779520235
@@ -460,6 +475,7 @@
         "gen_capacity_mw": 249.7,
         "gen_mw": 199.76,
         "gen_carriers": "Coal",
+        "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 29.486685374101338
@@ -489,6 +505,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.15929439003684
@@ -518,6 +535,7 @@
         "gen_capacity_mw": 206.0,
         "gen_mw": 164.8,
         "gen_carriers": "Coal",
+        "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 25.881572735307916
@@ -547,6 +565,7 @@
         "gen_capacity_mw": 45.5,
         "gen_mw": 13.65,
         "gen_carriers": "Diesel",
+        "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 22.25796193328494
@@ -576,6 +595,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.193553796770914
@@ -605,6 +625,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 22.261436762709412
@@ -634,6 +655,7 @@
         "gen_capacity_mw": 33.0,
         "gen_mw": 9.9,
         "gen_carriers": "Diesel",
+        "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 25.15076688608382
@@ -663,6 +685,7 @@
         "gen_capacity_mw": 65.0,
         "gen_mw": 19.5,
         "gen_carriers": "Diesel",
+        "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.68535113052385
@@ -692,6 +715,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 27.027699934563437
@@ -721,6 +745,7 @@
         "gen_capacity_mw": 338.0,
         "gen_mw": 270.4,
         "gen_carriers": "Coal",
+        "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.27134144269942
@@ -750,6 +775,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.165915924397144
@@ -779,6 +805,7 @@
         "gen_capacity_mw": 123.6,
         "gen_mw": 78.88,
         "gen_carriers": "Coal,Diesel",
+        "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.155803638160712
@@ -808,6 +835,7 @@
         "gen_capacity_mw": 27.4,
         "gen_mw": 12.38,
         "gen_carriers": "Biomass,ROR,Solar",
+        "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 27.337146840440152
@@ -837,6 +865,7 @@
         "gen_capacity_mw": 132.1,
         "gen_mw": 60.47,
         "gen_carriers": "Biomass,Diesel,Solar",
+        "primary_carrier": "Biomass",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 25.976965631303166
@@ -866,6 +895,7 @@
         "gen_capacity_mw": 84.4,
         "gen_mw": 40.86,
         "gen_carriers": "Biomass,Solar",
+        "primary_carrier": "Biomass",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.037050356700014
@@ -895,6 +925,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.101617185672918
@@ -924,6 +955,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 25.995199806600088
@@ -953,6 +985,7 @@
         "gen_capacity_mw": 105.0,
         "gen_mw": 26.25,
         "gen_carriers": "Solar",
+        "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.04136735890441
@@ -982,6 +1015,7 @@
         "gen_capacity_mw": 30.0,
         "gen_mw": 21.0,
         "gen_carriers": "Biomass",
+        "primary_carrier": "Biomass",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.12762591170916
@@ -1011,6 +1045,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.12519750212038
@@ -1040,6 +1075,7 @@
         "gen_capacity_mw": 20.0,
         "gen_mw": 14.0,
         "gen_carriers": "Biomass",
+        "primary_carrier": "Biomass",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.536466468257313
@@ -1069,6 +1105,7 @@
         "gen_capacity_mw": 110.5,
         "gen_mw": 93.92,
         "gen_carriers": "Geothermal",
+        "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 27.730296828813707
@@ -1098,6 +1135,7 @@
         "gen_capacity_mw": 127.0,
         "gen_mw": 107.95,
         "gen_carriers": "Geothermal",
+        "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 27.857285096955795
@@ -1127,6 +1165,7 @@
         "gen_capacity_mw": 105.6,
         "gen_mw": 35.17,
         "gen_carriers": "Biomass,Solar",
+        "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.13255563567338
@@ -1156,6 +1195,7 @@
         "gen_capacity_mw": 26.1,
         "gen_mw": 8.82,
         "gen_carriers": "Diesel,ROR",
+        "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": -2.5383493064966167
@@ -1185,6 +1225,7 @@
         "gen_capacity_mw": 29.0,
         "gen_mw": 8.7,
         "gen_carriers": "Diesel",
+        "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": -1.8284983738668488
@@ -1214,6 +1255,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": -1.8098810821246851
@@ -1243,6 +1285,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 25.316091266335587
@@ -1272,6 +1315,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.055281287259934
@@ -1301,6 +1345,7 @@
         "gen_capacity_mw": 54.0,
         "gen_mw": 16.2,
         "gen_carriers": "Wind",
+        "primary_carrier": "Wind",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 24.351706981278742
@@ -1330,6 +1375,7 @@
         "gen_capacity_mw": 135.0,
         "gen_mw": 108.0,
         "gen_carriers": "Coal",
+        "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 27.332015496845745
@@ -1359,6 +1405,7 @@
         "gen_capacity_mw": 81.0,
         "gen_mw": 30.7,
         "gen_carriers": "Biomass,Diesel",
+        "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 25.418200270161464
@@ -1388,6 +1435,7 @@
         "gen_capacity_mw": 317.4,
         "gen_mw": 253.92,
         "gen_carriers": "Coal",
+        "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 26.541052130484125
@@ -1417,6 +1465,7 @@
         "gen_capacity_mw": 74.1,
         "gen_mw": 24.03,
         "gen_carriers": "Diesel,ROR,Wind",
+        "primary_carrier": "Wind",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 24.04876622568549
@@ -1446,6 +1495,7 @@
         "gen_capacity_mw": 0.0,
         "gen_mw": 0.0,
         "gen_carriers": null,
+        "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 24.56672158575338
@@ -1475,6 +1525,7 @@
         "gen_capacity_mw": 5.7,
         "gen_mw": 1.43,
         "gen_carriers": "Solar",
+        "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 25.544042230183198
@@ -1504,6 +1555,7 @@
         "gen_capacity_mw": 32.1,
         "gen_mw": 10.44,
         "gen_carriers": "Diesel,ROR",
+        "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 25.870638814622282

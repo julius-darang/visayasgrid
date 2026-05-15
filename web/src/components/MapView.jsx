@@ -1,14 +1,53 @@
-import { MapContainer, TileLayer, CircleMarker, Polyline } from "react-leaflet";
+import { Fragment } from "react";
+import L from "leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  CircleMarker,
+  Polyline,
+  Marker,
+  Tooltip,
+} from "react-leaflet";
 import {
   colorForVoltage,
-  radiusForVoltage,
+  colorForCarrier,
+  colorForLoading,
+  radiusForBus,
   lineStyle,
 } from "../lib/styles.js";
 
 const VISAYAS_CENTER = [10.7, 123.5];
 const ZOOM = 8;
+const FLOW_ARROW_MIN_MW = 30;
 
-export default function MapView({ buses, lines, onSelect }) {
+const TILE_URLS = {
+  light: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+  dark: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+};
+
+function bearing([lat1, lon1], [lat2, lon2]) {
+  const toRad = (d) => (d * Math.PI) / 180;
+  const φ1 = toRad(lat1);
+  const φ2 = toRad(lat2);
+  const Δλ = toRad(lon2 - lon1);
+  const y = Math.sin(Δλ) * Math.cos(φ2);
+  const x = Math.cos(φ1) * Math.sin(φ2) - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
+  return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
+}
+
+function flowArrowIcon(rotation, color) {
+  return L.divIcon({
+    html: `<div style="transform: rotate(${rotation}deg); color: ${color}; font-size: 12px; line-height: 12px;">▶</div>`,
+    iconSize: [12, 12],
+    iconAnchor: [6, 6],
+    className: "flow-arrow",
+  });
+}
+
+export default function MapView({ buses, lines, onSelect, theme }) {
+  const isDark = theme === "dark";
+  const busStroke = isDark ? "#e2e8f0" : "#1e293b";
+
   return (
     <MapContainer
       center={VISAYAS_CENTER}
@@ -18,41 +57,84 @@ export default function MapView({ buses, lines, onSelect }) {
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+        url={TILE_URLS[isDark ? "dark" : "light"]}
         subdomains="abcd"
         maxZoom={19}
       />
+
       {lines.features.map((f, i) => {
         const coords = f.geometry.coordinates.map(([x, y]) => [y, x]);
+        const pmw = f.properties.p_from_mw;
+        const showArrow = pmw != null && Math.abs(pmw) >= FLOW_ARROW_MIN_MW;
+        let arrow = null;
+        if (showArrow) {
+          const [a, b] = coords;
+          const mid = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+          const dir = pmw >= 0 ? bearing(a, b) : bearing(b, a);
+          const icon = flowArrowIcon(
+            dir - 90,
+            colorForLoading(f.properties.loading_percent),
+          );
+          arrow = <Marker position={mid} icon={icon} interactive={false} />;
+        }
         return (
-          <Polyline
-            key={`line-${i}`}
-            positions={coords}
-            pathOptions={lineStyle(f)}
-            eventHandlers={{
-              click: () => onSelect({ kind: "line", feature: f }),
-            }}
-          />
+          <Fragment key={`line-${i}`}>
+            <Polyline
+              positions={coords}
+              pathOptions={lineStyle(f)}
+              eventHandlers={{
+                click: () => onSelect({ kind: "line", feature: f }),
+              }}
+            />
+            {arrow}
+          </Fragment>
         );
       })}
+
       {buses.features.map((f, i) => {
         const [x, y] = f.geometry.coordinates;
         const v = Number(f.properties.v_nom);
+        const radius = radiusForBus(f.properties);
+        const hasGen = (f.properties.gen_capacity_mw || 0) > 0;
+
         return (
-          <CircleMarker
-            key={`bus-${i}`}
-            center={[y, x]}
-            radius={radiusForVoltage(v)}
-            pathOptions={{
-              color: "#111",
-              weight: 1,
-              fillColor: colorForVoltage(v),
-              fillOpacity: 0.9,
-            }}
-            eventHandlers={{
-              click: () => onSelect({ kind: "bus", feature: f }),
-            }}
-          />
+          <Fragment key={`bus-${i}`}>
+            {hasGen && (
+              <CircleMarker
+                center={[y, x]}
+                radius={radius + 3}
+                pathOptions={{
+                  color: colorForCarrier(f.properties.primary_carrier),
+                  weight: 2,
+                  fillColor: "transparent",
+                  fillOpacity: 0,
+                  interactive: false,
+                }}
+              />
+            )}
+            <CircleMarker
+              center={[y, x]}
+              radius={radius}
+              pathOptions={{
+                color: busStroke,
+                weight: 1,
+                fillColor: colorForVoltage(v),
+                fillOpacity: 0.92,
+              }}
+              eventHandlers={{
+                click: () => onSelect({ kind: "bus", feature: f }),
+              }}
+            >
+              <Tooltip
+                permanent
+                direction="right"
+                offset={[radius + 2, 0]}
+                className="bus-label"
+              >
+                {f.properties.name}
+              </Tooltip>
+            </CircleMarker>
+          </Fragment>
         );
       })}
     </MapContainer>
