@@ -17,8 +17,10 @@ export default function MapView({ buses, lines, onSelect }) {
       preferCanvas
     >
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+        subdomains="abcd"
+        maxZoom={19}
       />
       {lines.features.map((f, i) => {
         const coords = f.geometry.coordinates.map(([x, y]) => [y, x]);

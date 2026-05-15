@@ -1,0 +1,116 @@
+generator_id,substation,p_nom_mw,carrier,build_year,dispatch_mw
+04BILGPP_G01,Ormoc,2.0,Geothermal,2024,1.7
+04CLBYBNK_G01,Calbayog,11.0,Diesel,2024,3.3
+04IASMOD_G01,Isabel,10.0,Diesel,2022,3.0
+04IASMOD_G02,Isabel,10.1,Diesel,2022,3.03
+04IASMOD_G03,Isabel,15.1,Diesel,2022,4.53
+04IASMOD_G04,Isabel,10.2,Diesel,2022,3.06
+04IASMOD_G05,Isabel,15.1,Diesel,2022,4.53
+04IASMOD_G06,Isabel,10.2,Diesel,2022,3.06
+04LEYTE_A,Kananga,490.1,Geothermal,1997,416.58
+04LGPP_G01,Tongonan,120.5,Geothermal,1983,102.42
+04PHSOL_G01,Ormoc,24.5,Solar,2015,6.12
+04SEPSOL_G01,Ormoc,40.5,Solar,2016,10.12
+04TAFT_G01,Paranas (Wright),15.2,ROR,2022,6.08
+05CARMENDPP_U01,Toledo,10.0,Diesel,1979,3.0
+05CARMENDPP_U02,Toledo,10.0,Diesel,1979,3.0
+05CARMENDPP_U03,Toledo,10.0,Diesel,1979,3.0
+05CARMENDPP_U04,Toledo,10.0,Diesel,1979,3.0
+05CEDC_U01,Daan Lungsod,83.2,Coal,2010,66.56
+05CEDC_U02,Daan Lungsod,83.4,Coal,2010,66.72
+05CEDC_U03,Daan Lungsod,83.1,Coal,2011,66.48
+05CPPC_U01,Quiot,6.5,Diesel,1998,1.95
+05CPPC_U02,Quiot,6.5,Diesel,1998,1.95
+05CPPC_U03,Quiot,6.5,Diesel,1998,1.95
+05CPPC_U04,Quiot,6.5,Diesel,1998,1.95
+05CPPC_U05,Quiot,6.5,Diesel,1998,1.95
+05CPPC_U06,Quiot,6.5,Diesel,1998,1.95
+05CPPC_U07,Quiot,6.5,Diesel,1998,1.95
+05CPPC_U08,Quiot,6.5,Diesel,1998,1.95
+05CPPC_U09,Quiot,6.5,Diesel,1998,1.95
+05CPPC_U10,Quiot,6.5,Diesel,1998,1.95
+05EAUC_U01,Lapu-Lapu (Pusok),11.5,Diesel,1997,3.45
+05EAUC_U02,Lapu-Lapu (Pusok),11.0,Diesel,1997,3.3
+05EAUC_U03,Lapu-Lapu (Pusok),11.5,Diesel,1997,3.45
+05EAUC_U04,Lapu-Lapu (Pusok),11.5,Diesel,1997,3.45
+05KSPC_G01,KSPC,103.0,Coal,2010,82.4
+05KSPC_G02,KSPC,103.0,Coal,2011,82.4
+05THVI_U01,Therma Visayas,169.0,Coal,2019,135.2
+05THVI_U02,Therma Visayas,169.0,Coal,2019,135.2
+05TOLSOL_G01,Calong-calong,49.0,Solar,2017,12.25
+05TPC_G02,Toledo,83.6,Coal,2015,66.88
+05TPVI_U01,Naga (Visayas),5.5,Diesel,2020,1.65
+05TPVI_U02,Naga (Visayas),5.5,Diesel,2020,1.65
+05TPVI_U03,Naga (Visayas),5.5,Diesel,2020,1.65
+05TPVI_U04,Naga (Visayas),5.5,Diesel,2020,1.65
+05TPVI_U05,Naga (Visayas),5.5,Diesel,2020,1.65
+05TPVI_U06,Naga (Visayas),5.5,Diesel,2020,1.65
+06AMLA_G01,Amlan,0.9,ROR,1961,0.36
+06BISCOM_G01,Kabankalan,30.0,Biomass,2019,21.0
+06CABI_G01,Amlan,12.0,Biomass,2019,8.4
+06CARSOL_G01,Bacolod,27.2,Solar,2016,6.8
+06CENPRI_U01,Bacolod,4.5,Diesel,2016,1.35
+06CENPRI_U02,Bacolod,4.5,Diesel,2016,1.35
+06CENPRI_U03,Bacolod,4.5,Diesel,2016,1.35
+06CENPRI_U04,Bacolod,6.7,Diesel,2017,2.01
+06CENPRI_U05,Bacolod,6.7,Diesel,2019,2.01
+06FFHC_G01,Cadiz,9.0,Biomass,2009,6.3
+06HELIOS_G01,Helios Solar,105.0,Solar,2016,26.25
+06HPCO_G01,Bacolod,2.0,Biomass,2015,1.4
+06HPCO_G02,Bacolod,9.5,Biomass,2015,6.65
+06MANSOL_G01,Cadiz,40.5,Solar,2016,10.12
+06MNTSOL_G01,Amlan,14.5,Solar,2017,3.62
+06NASULO_G01,Palinpinon 2,47.5,Geothermal,2014,40.38
+06NTNEGB_G01,Cadiz,25.0,Biomass,2022,17.5
+06PAL1A_G01,Palinpinon 1,110.5,Geothermal,1983,93.92
+06PAL2A_U01,Palinpinon 2,20.0,Geothermal,1983,17.0
+06PAL2A_U02,Palinpinon 2,20.0,Geothermal,1983,17.0
+06PAL2A_U03,Palinpinon 2,19.5,Geothermal,1983,16.58
+06PAL2A_U04,Palinpinon 2,20.0,Geothermal,1983,17.0
+06SACASL_G01,San Carlos,19.5,Solar,2014,4.88
+06SACASL_G02,San Carlos,19.8,Solar,2015,4.95
+06SACSUN_G01,San Carlos,46.8,Solar,2016,11.7
+06SCBE_G01,Cadiz,7.4,Biomass,2022,5.18
+06SCBIOP_G01,San Carlos,19.5,Biomass,2022,13.65
+06SLYSOL_G01,Bacolod,20.0,Solar,2016,5.0
+06STNEGB_G01,Bacolod,25.0,Biomass,2022,17.5
+06URC_G01,Mabinay,20.0,Biomass,2015,14.0
+06VMC_G01,Cadiz,2.5,Biomass,2015,1.75
+06VMC_G02,Bacolod,21.5,Biomass,2015,15.05
+07BDPP_U01,Corella,4.0,Diesel,1978,1.2
+07BDPP_U02,Corella,4.0,Diesel,1978,1.2
+07BDPP_U03,Corella,4.2,Diesel,1978,1.26
+07BDPP_U04,Corella,4.0,Diesel,1978,1.2
+07JANOPO_G01,Corella,5.0,ROR,1992,2.0
+07LOBOC_G01,Corella,1.2,ROR,2019,0.48
+07LOBOC_G02,Corella,1.2,ROR,2019,0.48
+07SEVILL_G01,Corella,2.5,ROR,2008,1.0
+07TPLPB4_U01,Tapal,7.0,Diesel,2005,2.1
+07TPLPB4_U02,Tapal,7.0,Diesel,2005,2.1
+07TPLPB4_U03,Tapal,7.0,Diesel,2005,2.1
+07TPLPB4_U04,Tapal,8.0,Diesel,2005,2.4
+08CASA_G01,Dingle,8.0,Biomass,2019,5.6
+08CASA_G02,Dingle,8.0,Biomass,2010,5.6
+08COSMO_G01,San Jose,5.7,Solar,2016,1.42
+08NABASDPP_U01,Nabas,3.0,Diesel,2006,0.9
+08NABASDPP_U02,Nabas,3.4,Diesel,2006,1.02
+08PALM_G01,Concepcion,135.0,Coal,2016,108.0
+08PDPP1_U02,Dingle,5.0,Diesel,1981,1.5
+08PDPP1_U03,Dingle,5.0,Diesel,1983,1.5
+08PDPP1_U05,Dingle,5.0,Diesel,1993,1.5
+08PDPP3_C,Dingle,12.0,Diesel,2005,3.6
+08PDPP3_E,Dingle,12.0,Diesel,2005,3.6
+08PDPP3_G,Dingle,13.0,Diesel,2005,3.9
+08PDPP3_H,Dingle,13.0,Diesel,2005,3.9
+08PEDC_U01,Iloilo (PEDC),83.7,Coal,2010,66.96
+08PEDC_U02,Iloilo (PEDC),83.7,Coal,2011,66.96
+08PEDC_U03,Iloilo (PEDC),150.0,Coal,2016,120.0
+08PWIND_G01,Nabas,36.7,Wind,2015,11.01
+08PWIND_G02,Nabas,13.0,Wind,2015,3.9
+08SLWIND_G01,Buenavista (Guimaras),54.0,Wind,2014,16.2
+08STBPB1_U01,Sta. Barbara,6.0,Diesel,1989,1.8
+08STBPB1_U02,Sta. Barbara,6.0,Diesel,1989,1.8
+08STBPB1_U03,Sta. Barbara,6.0,Diesel,1989,1.8
+08STBPB1_U04,Sta. Barbara,6.0,Diesel,1989,1.8
+08SUWECO_G01,Sta. Barbara,8.1,ROR,2016,3.24
+08TIMBA_G01,Nabas,18.0,ROR,2023,7.2

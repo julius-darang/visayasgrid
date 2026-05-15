@@ -1,91 +1,53 @@
-name,x,y,v_nom,voltages_kv,island,bus_type,p_mw,q_mvar,is_slack
-Ormoc,124.629,11.045,230,"138,230",Leyte,substation,15.0,4.5,True
-Babatngon,124.935,11.266,138,138,Leyte,substation,5.0,1.5,False
-Maasin,124.843,10.155,138,138,Leyte,substation,10.0,3.0,False
-Tabango,124.405,11.317,230,"138,230",Leyte,substation,8.0,2.4,False
-Isabel,124.453,10.923,138,138,Leyte,substation,8.0,2.4,False
-Kananga,124.588,11.185,230,"138,230",Leyte,substation,10.0,3.0,False
-Tongonan,124.645,11.135,138,138,Leyte,generator,0.0,0.0,False
-Lemon LES,124.532,11.231,69,69,Leyte,substation,0.0,0.0,False
-Simangan LES,124.551,11.055,69,69,Leyte,substation,0.0,0.0,False
-Tolosa LES,125.033,11.121,69,69,Leyte,substation,0.0,0.0,False
-Himayangan LES,125.155,10.355,69,69,Leyte,substation,0.0,0.0,False
-Biliran LES,124.475,11.517,69,69,Biliran,substation,0.0,0.0,False
-Paranas (Wright),125.022,11.782,138,"69,138",Samar,substation,5.0,1.5,False
-Calbayog,124.593,12.067,138,"69,138",Samar,substation,15.0,4.5,False
-Sta. Rita,124.947,11.373,138,"69,138",Samar,substation,5.0,1.5,False
-Catarman,124.641,12.493,69,69,Samar,substation,5.0,1.5,False
-Allen,124.286,12.498,69,69,Samar,substation,4.0,1.2,False
-Catbalogan,124.886,11.776,69,69,Samar,substation,8.0,2.4,False
-Taft,125.421,11.906,69,69,Samar,substation,3.0,0.9,False
-Quinapondan,125.485,11.168,69,69,Samar,substation,3.0,0.9,False
-Borongan,125.432,11.609,69,69,Samar,substation,5.0,1.5,False
-Bobon LES,124.564,12.516,69,69,Samar,substation,0.0,0.0,False
-Palanas Cara LES,124.498,12.164,69,69,Samar,substation,0.0,0.0,False
-Capoocan Cara LES,124.381,12.247,69,69,Samar,substation,0.0,0.0,False
-San Agustin LES,124.697,11.972,69,69,Samar,substation,0.0,0.0,False
-Buenavista LES,124.786,11.875,69,69,Samar,substation,0.0,0.0,False
-Lacang (Catubig),124.967,12.428,69,69,Samar,substation,0.0,0.0,False
-Gadgaran LES,124.617,12.033,69,69,Samar,substation,0.0,0.0,False
-Cebu,123.904,10.334,230,"138,230",Cebu,substation,80.0,24.0,False
-Mandaue,123.948,10.336,138,"69,138",Cebu,substation,60.0,18.0,False
-Lapu-Lapu (Pusok),123.978,10.322,138,"69,138",Cebu,substation,50.0,15.0,False
-Magdugo,123.684,10.347,230,230,Cebu,substation,30.0,9.0,False
-Daanbantayan,123.987,11.233,230,"69,230",Cebu,substation,8.0,2.4,False
-Compostela,123.979,10.455,138,"69,138",Cebu,substation,10.0,3.0,False
-Colon,123.704,10.231,138,"69,138",Cebu,substation,15.0,4.5,False
-Toledo,123.641,10.385,138,"34,138",Cebu,substation,20.0,6.0,False
-Calong-calong,123.921,10.315,138,"69,138",Cebu,substation,8.0,2.4,False
-Naga (Visayas),123.754,10.211,138,"69,138",Cebu,substation,12.0,3.6,False
-Quiot,123.869,10.297,138,138,Cebu,substation,12.0,3.6,False
-Samboan,123.332,9.455,138,"69,138",Cebu,substation,0.0,0.0,False
-Dumanjug,123.551,10.054,230,230,Cebu,substation,0.0,0.0,False
-Medellin LES,123.955,11.135,69,69,Cebu,substation,0.0,0.0,False
-Sogod LES,124.011,10.755,69,69,Cebu,substation,0.0,0.0,False
-Balamban LES,123.715,10.515,69,69,Cebu,substation,0.0,0.0,False
-Carmen LES,124.035,10.585,69,69,Cebu,substation,0.0,0.0,False
-Sibonga LES,123.615,10.015,69,69,Cebu,substation,0.0,0.0,False
-AYA SS,123.655,10.375,138,138,Cebu,substation,0.0,0.0,False
-Bacolod,122.955,10.638,230,"138,230",Negros,substation,80.0,24.0,False
-Cadiz,123.315,10.925,230,"138,230",Negros,substation,15.0,4.5,False
-Amlan,123.215,9.444,138,"69,138",Negros,substation,8.0,2.4,False
-Mabinay,122.932,9.725,138,"69,138",Negros,substation,8.0,2.4,False
-Kabankalan,122.812,9.985,138,"69,138",Negros,substation,15.0,4.5,False
-San Carlos,123.415,10.485,138,"69,138",Negros,substation,12.0,3.6,False
-E.B. Magalona,123.011,10.841,230,"138,230",Negros,substation,25.0,7.5,False
-Calatrava,123.485,10.595,230,230,Negros,substation,12.0,3.6,False
-Guihulngan LES,123.275,10.125,69,69,Negros,substation,0.0,0.0,False
-Siaton LES,123.115,9.075,69,69,Negros,substation,0.0,0.0,False
-Bayawan LES,122.685,9.375,69,69,Negros,substation,0.0,0.0,False
-Silay LES,122.985,10.715,69,69,Negros,substation,0.0,0.0,False
-Valladolid LES,122.835,10.455,69,69,Negros,substation,0.0,0.0,False
-Tadlong LES,122.885,9.585,69,69,Negros,substation,0.0,0.0,False
-Ubay,124.475,10.055,138,"69,138",Bohol,substation,10.0,3.0,False
-Corella,123.911,9.685,138,"69,138",Bohol,substation,12.0,3.6,False
-Tagbilaran,123.865,9.645,69,69,Bohol,substation,25.0,7.5,False
-Trinidad LES,124.345,10.115,69,69,Bohol,substation,0.0,0.0,False
-Alicia LES,124.455,9.925,69,69,Bohol,substation,0.0,0.0,False
-Tubigon LES,123.955,9.955,69,69,Bohol,substation,0.0,0.0,False
-Loay LES,124.015,9.615,69,69,Bohol,substation,0.0,0.0,False
-Garcia Hernandez LES,124.285,9.625,69,69,Bohol,substation,0.0,0.0,False
-Pajo LES,123.855,9.685,69,69,Bohol,substation,0.0,0.0,False
-Guindulman LES,124.435,9.765,69,69,Bohol,substation,0.0,0.0,False
-BDPP Switchyard,123.875,9.645,69,69,Bohol,substation,0.0,0.0,False
-PB 104,124.485,10.065,69,69,Bohol,generator,0.0,0.0,False
-Sta. Barbara,122.531,10.825,138,"69,138",Panay,substation,30.0,9.0,False
-Panitan,122.785,11.455,138,"69,138",Panay,substation,8.0,2.4,False
-Dingle,122.655,11.025,138,"69,138",Panay,substation,10.0,3.0,False
-San Jose,121.945,10.745,138,"69,138",Panay,substation,8.0,2.4,False
-Nabas,122.062,11.833,138,"69,138",Panay,substation,6.0,1.8,False
-Barotac Viejo,122.845,11.045,230,"138,230",Panay,substation,15.0,4.5,False
-Concepcion,123.111,11.233,138,"69,138",Panay,substation,8.0,2.4,False
-Iloilo (PEDC),122.585,10.711,138,"69,138",Panay,substation,70.0,21.0,False
-Caticlan LES,121.935,11.925,69,69,Panay,substation,0.0,0.0,False
-Boracay LES,121.925,11.975,69,69,Panay,substation,0.0,0.0,False
-Miagao LES,122.235,10.645,69,69,Panay,substation,0.0,0.0,False
-Altavas LES,122.485,11.545,69,69,Panay,substation,0.0,0.0,False
-Lezo LES,122.335,11.665,69,69,Panay,substation,0.0,0.0,False
-Andagao LES,122.385,11.715,69,69,Panay,substation,0.0,0.0,False
-Culasi LES,122.065,11.425,69,69,Panay,substation,0.0,0.0,False
-Sara LES,123.015,11.265,69,69,Panay,substation,0.0,0.0,False
-Roxas LES,122.755,11.585,69,69,Panay,substation,0.0,0.0,False
+name,x,y,v_nom,voltages_kv,island,bus_type,p_mw,q_mvar,is_slack,load_count,gen_capacity_mw,gen_mw,gen_carriers
+Babatngon,124.8966993,11.39550084,138,138,Leyte,substation,24.0,7.2,False,2,0.0,0.0,
+Calbayog,124.6379129,12.05513914,138,138,Samar,substation,36.0,10.8,False,3,11.0,3.3,Diesel
+Isabel,124.4489301,10.91933332,138,138,Leyte,substation,72.0,21.6,False,6,70.7,21.21,Diesel
+Kananga,124.5513085,11.16499313,230,230,Leyte,substation,12.0,3.6,False,1,490.1,416.59,Geothermal
+Maasin,124.7791313,10.16255469,138,138,Leyte,substation,36.0,10.8,False,3,0.0,0.0,
+Ormoc,124.6446783,11.08748498,350,350,Leyte,hvdc,36.0,10.8,True,3,67.0,17.95,"Geothermal,Solar"
+Paranas (Wright),125.0413517,11.76675071,138,138,Samar,substation,36.0,10.8,False,3,15.2,6.08,ROR
+Sta. Rita,125.0020505,11.39500758,138,138,Samar,substation,36.0,10.8,False,3,0.0,0.0,
+Tabango,124.3434864,11.32347232,230,230,Leyte,substation,24.0,7.2,False,2,0.0,0.0,
+Tongonan,124.6375583,11.16131421,138,138,Leyte,generator,12.0,3.6,False,1,120.5,102.42,Geothermal
+Calong-calong,123.6671074,10.41572975,138,138,Cebu,substation,48.0,14.4,False,4,49.0,12.25,Solar
+Cebu,123.9408559,10.36522781,138,138,Cebu,substation,36.0,10.8,False,3,0.0,0.0,
+Colon,123.7598772,10.22268355,138,138,Cebu,substation,60.0,18.0,False,5,0.0,0.0,
+Compostela,124.0065977,10.46649795,230,230,Cebu,substation,36.0,10.8,False,3,0.0,0.0,
+Daanbantayan,123.956809,11.14643391,230,230,Cebu,substation,24.0,7.2,False,2,0.0,0.0,
+Daan Lungsod,123.956809,11.14643391,230,230,Cebu,substation,12.0,3.6,False,1,249.7,199.76,Coal
+Dumanjug,123.4405471,10.03617433,230,230,Cebu,substation,0.0,0.0,False,0,0.0,0.0,
+KSPC,123.7626806,10.21827094,230,230,Cebu,generator,24.0,7.2,False,2,206.0,164.8,Coal
+Lapu-Lapu (Pusok),123.9683067,10.32383347,230,230,Cebu,substation,24.0,7.2,False,2,45.5,13.65,Diesel
+Magdugo,123.665698,10.3457421,230,230,Cebu,substation,30.0,9.0,False,0,0.0,0.0,
+Mandaue,123.9639232,10.33472932,138,138,Cebu,substation,60.0,18.0,False,5,0.0,0.0,
+Naga (Visayas),123.7570366,10.2544303,138,138,Cebu,substation,48.0,14.4,False,4,33.0,9.9,Diesel
+Quiot,123.8561088,10.28792262,138,138,Cebu,substation,12.0,3.6,False,1,65.0,19.5,Diesel
+Samboan,123.3117005,9.552394872,138,138,Cebu,substation,24.0,7.2,False,2,0.0,0.0,
+Therma Visayas,123.6351288,10.35856192,138,138,Cebu,generator,24.0,7.2,False,2,338.0,270.4,Coal
+Toledo BESS,123.6656658,10.34594264,138,138,Cebu,bess,0.0,0.0,False,0,0.0,0.0,
+Toledo,123.6656658,10.34594264,138,138,Cebu,substation,48.0,14.4,False,4,123.6,78.88,"Coal,Diesel"
+Amlan,123.2248121,9.457756504,138,138,Negros,substation,36.0,10.8,False,3,27.4,12.38,"Biomass,ROR,Solar"
+Bacolod,123.1145906,10.67627032,230,230,Negros,substation,96.0,28.8,False,8,132.1,60.47,"Biomass,Diesel,Solar"
+Cadiz,123.2882465,10.93482221,230,230,Negros,substation,60.0,18.0,False,5,84.4,40.86,"Biomass,Solar"
+Calatrava,123.4606946,10.55356153,230,230,Negros,substation,24.0,7.2,False,2,0.0,0.0,
+E.B. Magalona,122.9672809,10.88474544,230,230,Negros,substation,25.0,7.5,False,0,0.0,0.0,
+Helios Solar,123.2985792,10.92420288,230,230,Negros,generator,12.0,3.6,False,1,105.0,26.25,Solar
+Kabankalan,122.848185,10.0192417,138,138,Negros,substation,36.0,10.8,False,3,30.0,21.0,Biomass
+Kabankalan BESS,122.8516924,10.01997881,138,138,Negros,bess,12.0,3.6,False,1,0.0,0.0,
+Mabinay,122.9255255,9.729626783,138,138,Negros,substation,36.0,10.8,False,3,20.0,14.0,Biomass
+Palinpinon 1,123.1774662,9.296893436,138,138,Negros,generator,12.0,3.6,False,1,110.5,93.92,Geothermal
+Palinpinon 2,123.1568919,9.280816763,138,138,Negros,generator,12.0,3.6,False,1,127.0,107.95,Geothermal
+San Carlos,123.4335661,10.51580461,138,138,Negros,substation,12.0,3.6,False,1,105.6,35.17,"Biomass,Solar"
+Corella,123.9593251,9.699520408,138,138,Bohol,substation,36.0,10.8,False,3,26.1,8.82,"Diesel,ROR"
+Tapal,124.5195759,10.06090051,138,138,Bohol,substation,12.0,3.6,False,1,29.0,8.7,Diesel
+Ubay,124.5114284,10.02667044,138,138,Bohol,substation,48.0,14.4,False,4,0.0,0.0,
+Bantap,122.5828264,10.72873409,69,69,Panay,substation,12.0,3.6,False,1,0.0,0.0,
+Barotac Viejo,122.870264,11.03283455,138,138,Panay,substation,24.0,7.2,False,2,0.0,0.0,
+Buenavista (Guimaras),122.6592157,10.71758251,138,138,Guimaras,substation,36.0,10.8,False,3,54.0,16.2,Wind
+Concepcion,123.121373,11.18913152,138,138,Panay,substation,24.0,7.2,False,2,135.0,108.0,Coal
+Dingle,122.6308302,11.02453374,138,138,Panay,substation,96.0,28.8,False,8,81.0,30.7,"Biomass,Diesel"
+Iloilo (PEDC),122.5924279,10.71585001,138,138,Panay,substation,60.0,18.0,False,5,317.4,253.92,Coal
+Nabas,122.0954808,11.81440808,138,138,Panay,substation,48.0,14.4,False,4,74.1,24.03,"Diesel,ROR,Wind"
+Panitan,122.7926197,11.49401092,138,138,Panay,substation,36.0,10.8,False,3,0.0,0.0,
+San Jose,122.5362605,10.99817987,138,138,Panay,substation,36.0,10.8,False,3,5.7,1.43,Solar
+Sta. Barbara,122.5588103,10.83480342,138,138,Panay,substation,60.0,18.0,False,5,32.1,10.44,"Diesel,ROR"

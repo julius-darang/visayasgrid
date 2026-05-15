@@ -45,6 +45,7 @@ AUTHORITATIVE_CSV = RAW_DIR / "substations_authoritative.csv"
 RAW_BUSES = RAW_DIR / "buses.csv"
 RAW_LINES = RAW_DIR / "lines.csv"
 MANUAL_LINES = RAW_DIR / "manual_lines_supplement.csv"
+EXCLUDE_LINES = RAW_DIR / "exclude_lines.csv"
 LOAD_ESTIMATES = RAW_DIR / "load_estimates.csv"
 
 OUT_BUSES = OUT_DIR / "buses.csv"
@@ -287,6 +288,20 @@ def lines_from_paths(paths: list[dict]) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def apply_excludes(derived: pd.DataFrame) -> pd.DataFrame:
+    if not EXCLUDE_LINES.exists():
+        return derived
+    excl = pd.read_csv(EXCLUDE_LINES)
+    pairs = {tuple(sorted([r["from_bus"], r["to_bus"]])) for _, r in excl.iterrows()}
+    before = len(derived)
+    keep_mask = derived.apply(
+        lambda r: tuple(sorted([r["from_bus"], r["to_bus"]])) not in pairs, axis=1,
+    )
+    out = derived[keep_mask].reset_index(drop=True)
+    print(f"Excluded {before - len(out)} OSM-derived lines per exclude_lines.csv.")
+    return out
+
+
 def merge_supplement(derived: pd.DataFrame, valid_names: set[str]) -> pd.DataFrame:
     """Append manual supplement lines; supplement wins on duplicate (from,to) pairs."""
     if not MANUAL_LINES.exists():
@@ -335,6 +350,7 @@ def main() -> None:
     G = build_osm_graph(raw_lines)
     paths = collapse_paths(G, osm_to_canonical)
     lines_df = lines_from_paths(paths)
+    lines_df = apply_excludes(lines_df)
     lines_df = merge_supplement(lines_df, set(canonical["name"]))
 
     print(f"Total lines: {len(lines_df)}")

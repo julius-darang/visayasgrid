@@ -71,11 +71,20 @@ def build_network(buses_df: pd.DataFrame, lines_df: pd.DataFrame):
             if p or q:
                 pp.create_load(net, bus=bus_idx[row["name"]], p_mw=p, q_mvar=q)
 
+    if "gen_mw" in buses_df.columns:
+        for _, row in buses_df.iterrows():
+            g = float(row.get("gen_mw") or 0)
+            if g > 0:
+                pp.create_sgen(net, bus=bus_idx[row["name"]], p_mw=g, q_mvar=0,
+                               name=f"{row['name']}_gen")
+
     missing = []
+    has_parallel = "parallel" in lines_df.columns
     for _, row in lines_df.iterrows():
         if row["from_bus"] not in bus_idx or row["to_bus"] not in bus_idx:
             missing.append(row["line_id"])
             continue
+        parallel = int(row["parallel"]) if has_parallel and pd.notna(row["parallel"]) else 1
         pp.create_line_from_parameters(
             net,
             from_bus=bus_idx[row["from_bus"]],
@@ -85,6 +94,7 @@ def build_network(buses_df: pd.DataFrame, lines_df: pd.DataFrame):
             x_ohm_per_km=float(row["x_ohm_per_km"]),
             c_nf_per_km=0,
             max_i_ka=float(row["max_i_ka"]),
+            parallel=parallel,
             name=row["line_id"],
         )
     if missing:

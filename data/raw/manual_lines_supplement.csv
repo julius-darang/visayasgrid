@@ -1,15 +1,29 @@
 from_bus,to_bus,voltage_kv,length_km,is_submarine,cable_type,notes
-Kananga,Ormoc,230,14,False,overhead,Leyte 230 kV backbone
+Kananga,Ormoc,230,14,False,overhead,Leyte 230 kV backbone (Ormoc hub)
 Kananga,Tongonan,230,7,False,overhead,geothermal step-up
-Isabel,Kananga,138,38,False,overhead,Leyte central spine
-Isabel,Ormoc,138,15,False,overhead,Leyte alt route
-Tabango,Kananga,230,28,False,overhead,Leyte northern backbone
-Sta. Rita,Calbayog,138,80,False,overhead,Samar 138 kV
-Sta. Rita,Paranas (Wright),138,42,False,overhead,Samar 138 kV
-Allen,Catarman,69,40,False,overhead,Northern Samar 69 kV
-Catarman,Calbayog,69,50,False,overhead,Northern Samar 69 kV
+Isabel,Kananga,138,38,False,overhead,Industrial west (Kananga corridor)
+Isabel,Ormoc,138,15,False,overhead,Industrial west alt route
+Tabango,Kananga,230,28,False,overhead,Leyte northern 230 kV backbone
+Tabango,Biliran LES,69,25,False,overhead,Biliran island 69 kV radial from Tabango
+Lemon LES,Kananga,69,6,False,overhead,Leyte LES from Kananga
+Simangan LES,Ormoc,69,9,False,overhead,Leyte LES from Ormoc
+Tolosa LES,Babatngon,69,25,False,overhead,Eastern Leyte LES from Babatngon
+Himayangan LES,Maasin,69,37,False,overhead,Southern Leyte LES from Maasin
+Sta. Rita,Babatngon,138,13,False,overhead,Sta. Rita as tap on Babatngon-Paranas corridor
+Sta. Rita,Paranas (Wright),138,42,False,overhead,Sta. Rita to Paranas hub
+Paranas (Wright),Taft,69,95,False,overhead,Eastern Samar 69 kV radial (long)
+Taft,Borongan,69,42,False,overhead,Eastern Samar 69 kV radial
+Borongan,Quinapondan,69,52,False,overhead,Eastern Samar 69 kV radial tail
+Allen,Catarman,69,40,False,overhead,Northern Samar 69 kV radial
+Catarman,Calbayog,69,50,False,overhead,Northern Samar 69 kV radial
+Catarman,Bobon LES,69,9,False,overhead,Northern Samar LES
+Calbayog,Buenavista LES,69,24,False,overhead,Samar LES from Calbayog
+Paranas (Wright),San Agustin LES,69,30,False,overhead,Samar LES from Paranas
+Calbayog,Gadgaran LES,69,4,False,overhead,Northern Samar LES near Calbayog
+Calbayog,Palanas Cara LES,69,15,False,overhead,Northern Samar LES on corridor
+Catarman,Capoocan Cara LES,69,33,False,overhead,Northern Samar LES on corridor
+Catarman,Lacang (Catubig),69,12,False,overhead,Catubig 69 kV branch
 Catbalogan,Paranas (Wright),69,18,False,overhead,Western Samar 69 kV
-Borongan,Quinapondan,69,52,False,overhead,Eastern Samar 69 kV
 Magdugo,Naga (Visayas),138,15,False,overhead,Cebu south backbone
 Naga (Visayas),Colon,138,7,False,overhead,Cebu south backbone
 Bacolod,E.B. Magalona,230,25,False,overhead,Negros 230 kV
