@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const EMPTY = { type: "FeatureCollection", features: [] };
 
@@ -8,6 +8,13 @@ export function useGridData() {
   const [manifest, setManifest] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [nonce, setNonce] = useState(0);
+
+  const reload = useCallback(() => {
+    setError(null);
+    setLoading(true);
+    setNonce((n) => n + 1);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -31,9 +38,9 @@ export function useGridData() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [nonce]);
 
-  return { buses, lines, manifest, loading, error };
+  return { buses, lines, manifest, loading, error, reload };
 }
 
 export function filterFeatures(fc, { islands, voltages }) {

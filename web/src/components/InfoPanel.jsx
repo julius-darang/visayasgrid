@@ -1,4 +1,5 @@
-import { colorForCarrier } from "../lib/styles.js";
+import { useEffect, useRef } from "react";
+import { colorForCarrier, HVDC_LINK } from "../lib/styles.js";
 
 function formatNumber(v, digits = 2) {
   if (v == null || v === "") return "—";
@@ -47,7 +48,10 @@ function CarrierChips({ carriers }) {
   );
 }
 
-function BusPanel({ p }) {
+function BusPanel({ p, manifest }) {
+  const hvdc = manifest?.hvdc ?? {};
+  const ratedMw = hvdc.rated_mw ?? HVDC_LINK.ratedMw;
+  const linkLabel = hvdc.label ?? HVDC_LINK.label;
   const hasGen = (p.gen_capacity_mw || 0) > 0;
   const hasLoad = (p.p_mw || 0) > 0;
   const hasResults = p.vm_pu != null || p.va_degree != null;
@@ -89,8 +93,8 @@ function BusPanel({ p }) {
               ? `+${p.hvdc_import_mw.toFixed(0)} MW import`
               : `${p.hvdc_import_mw.toFixed(0)} MW export`}
           </Row>
-          <Row label="Rated capacity">440 MW</Row>
-          <Row label="Role">Leyte–Luzon ±350 kV DC</Row>
+          <Row label="Rated capacity">{ratedMw} MW</Row>
+          <Row label="Role">{linkLabel}</Row>
         </Section>
       )}
 
@@ -138,26 +142,54 @@ function LinePanel({ p }) {
   );
 }
 
-export default function InfoPanel({ selected, onClose }) {
+export default function InfoPanel({ selected, onClose, manifest }) {
+  const closeRef = useRef(null);
+
+  useEffect(() => {
+    if (!selected) return;
+    closeRef.current?.focus();
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selected, onClose]);
+
   if (!selected) return null;
   const { kind, feature } = selected;
   const p = feature.properties;
 
   return (
-    <div className="absolute right-4 top-4 z-[1000] w-80 max-h-[calc(100%-2rem)] overflow-y-auto rounded-lg border border-slate-200 bg-white/95 p-4 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/90">
+    <div
+      role="dialog"
+      aria-label={`${kind} details`}
+      className="absolute inset-x-0 bottom-0 z-[1000] max-h-[70vh] animate-slide-up overflow-y-auto rounded-t-2xl border border-slate-200 bg-white/95 p-4 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/95 md:inset-x-auto md:bottom-auto md:right-4 md:top-4 md:max-h-[calc(100%-2rem)] md:w-80 md:animate-fade-in md:rounded-lg md:shadow-sm"
+    >
       <div className="mb-1 flex items-start justify-between">
         <div className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
           {kind}
         </div>
         <button
+          ref={closeRef}
           onClick={onClose}
-          className="-mr-1 -mt-1 rounded px-1.5 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200"
-          aria-label="Close"
+          className="-mr-1 -mt-1 rounded p-1.5 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+          aria-label="Close details"
         >
-          ×
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M3 3l10 10M13 3L3 13"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+            />
+          </svg>
         </button>
       </div>
-      {kind === "bus" ? <BusPanel p={p} /> : <LinePanel p={p} />}
+      {kind === "bus" ? (
+        <BusPanel p={p} manifest={manifest} />
+      ) : (
+        <LinePanel p={p} />
+      )}
     </div>
   );
 }

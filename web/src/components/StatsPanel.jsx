@@ -13,9 +13,23 @@ function formatDate(iso) {
   }
 }
 
+const WRAP =
+  "absolute left-16 top-4 z-[1000] w-[min(14rem,calc(100vw-5rem))] rounded-lg border border-slate-200 bg-white/95 p-3 text-xs shadow-sm backdrop-blur animate-fade-in dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200 md:left-4 md:w-56";
+
 export default function StatsPanel({ buses, manifest }) {
   const features = buses.features;
-  if (!features.length) return null;
+  if (!features.length) {
+    return (
+      <div className={WRAP}>
+        <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+          Visayas snapshot
+        </div>
+        <p className="text-slate-500 dark:text-slate-400">
+          No buses match the current filters.
+        </p>
+      </div>
+    );
+  }
 
   const totalLoad = sum(features, "p_mw");
   const totalGen = sum(features, "gen_mw");
@@ -37,10 +51,12 @@ export default function StatsPanel({ buses, manifest }) {
   const snapshotDate = formatDate(manifest?.generated_at);
 
   return (
-    <div className="absolute left-4 top-4 z-[1000] w-56 rounded-lg border border-slate-200 bg-white/95 p-3 text-xs shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200">
+    <div className={WRAP}>
       <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
         Visayas snapshot
       </div>
+      {/* Net/HVDC use emerald/rose (balance scale) — deliberately distinct
+          from the line-loading colour scale, which is a separate metric. */}
       <div className="grid grid-cols-2 gap-x-3 gap-y-1">
         <span className="text-slate-500 dark:text-slate-400">Demand</span>
         <span className="text-right font-semibold tabular-nums">{totalLoad.toFixed(0)} MW</span>
@@ -76,7 +92,7 @@ export default function StatsPanel({ buses, manifest }) {
       </div>
 
       <details className="mt-2">
-        <summary className="cursor-pointer select-none text-[10px] uppercase tracking-wider text-slate-400 transition hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">
+        <summary className="cursor-pointer select-none rounded text-[10px] uppercase tracking-wider text-slate-400 transition hover:text-slate-600 focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500 dark:hover:text-slate-300">
           By island
         </summary>
         <table className="mt-1.5 w-full text-[11px]">

@@ -14,11 +14,10 @@ import {
   colorForLoading,
   radiusForBus,
   lineStyle,
+  MAP,
 } from "../lib/styles.js";
 
-const VISAYAS_CENTER = [10.7, 123.5];
-const ZOOM = 8;
-const FLOW_ARROW_MIN_MW = 30;
+const FLOW_ARROW_MIN_MW = MAP.flowArrowMinMw;
 
 const TILE_URLS = {
   light: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
@@ -50,10 +49,11 @@ export default function MapView({ buses, lines, onSelect, theme }) {
 
   return (
     <MapContainer
-      center={VISAYAS_CENTER}
-      zoom={ZOOM}
+      center={MAP.center}
+      zoom={MAP.zoom}
       className="h-full w-full"
       preferCanvas
+      aria-label="Interactive map of the Visayas transmission grid. Pan with arrow keys; click a bus or line for details."
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'

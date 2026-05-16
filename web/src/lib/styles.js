@@ -1,3 +1,14 @@
+export const MAP = {
+  center: [10.7, 123.5],
+  zoom: 8,
+  flowArrowMinMw: 30,
+};
+
+export const HVDC_LINK = {
+  ratedMw: 440,
+  label: "Leyte–Luzon ±350 kV DC",
+};
+
 export const VOLTAGE_COLORS = {
   350: "#7209b7",
   230: "#e63946",
@@ -39,12 +50,27 @@ export function colorForCarrier(carrier) {
   return CARRIER_COLORS[carrier] ?? "#6b7280";
 }
 
+export const LOADING_UNKNOWN_COLOR = "#94a3b8";
+
+// Single source for the line-loading colour scale. The legend renders this
+// array directly so the map and legend can never drift apart.
+export const LOADING_SCALE = [
+  { label: "< 50%", color: "#2d6a4f" },
+  { label: "50–80%", color: "#f4a261" },
+  { label: "80–100%", color: "#e63946" },
+  { label: "> 100%", color: "#9b2226" },
+];
+
+const [LOAD_LOW, LOAD_MID, LOAD_HIGH, LOAD_OVER] = LOADING_SCALE.map(
+  (s) => s.color,
+);
+
 export function colorForLoading(pct) {
-  if (pct == null) return "#94a3b8";
-  if (pct > 100) return "#9b2226";
-  if (pct >= 80) return "#e63946";
-  if (pct >= 50) return "#f4a261";
-  return "#2d6a4f";
+  if (pct == null) return LOADING_UNKNOWN_COLOR;
+  if (pct > 100) return LOAD_OVER;
+  if (pct >= 80) return LOAD_HIGH;
+  if (pct >= 50) return LOAD_MID;
+  return LOAD_LOW;
 }
 
 export function radiusForBus(props) {
