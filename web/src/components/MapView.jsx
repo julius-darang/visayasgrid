@@ -96,6 +96,7 @@ export default function MapView({ buses, lines, onSelect, theme }) {
         const v = Number(f.properties.v_nom);
         const radius = radiusForBus(f.properties);
         const hasGen = (f.properties.gen_capacity_mw || 0) > 0;
+        const isHvdc = f.properties.bus_type === "hvdc";
 
         return (
           <Fragment key={`bus-${i}`}>
@@ -109,6 +110,21 @@ export default function MapView({ buses, lines, onSelect, theme }) {
                   fillColor: "transparent",
                   fillOpacity: 0,
                   interactive: false,
+                }}
+              />
+            )}
+            {/* HVDC bus gets a distinct outer ring to mark the Luzon interchange point. */}
+            {isHvdc && (
+              <CircleMarker
+                center={[y, x]}
+                radius={radius + 5}
+                pathOptions={{
+                  color: "#7c3aed",
+                  weight: 2,
+                  fillColor: "transparent",
+                  fillOpacity: 0,
+                  interactive: false,
+                  dashArray: "4 3",
                 }}
               />
             )}

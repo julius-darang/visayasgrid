@@ -2,7 +2,18 @@ function sum(features, field) {
   return features.reduce((s, f) => s + Number(f.properties[field] || 0), 0);
 }
 
-export default function StatsPanel({ buses }) {
+function formatDate(iso) {
+  if (!iso) return null;
+  try {
+    return new Date(iso).toLocaleDateString("en-PH", {
+      year: "numeric", month: "short", day: "numeric",
+    });
+  } catch {
+    return null;
+  }
+}
+
+export default function StatsPanel({ buses, manifest }) {
   const features = buses.features;
   if (!features.length) return null;
 
@@ -11,6 +22,10 @@ export default function StatsPanel({ buses }) {
   const totalCap = sum(features, "gen_capacity_mw");
   const net = totalGen - totalLoad;
 
+  // HVDC import from the slack (Ormoc) bus property — set by build_data.py.
+  const hvdcBus = features.find((f) => f.properties.bus_type === "hvdc");
+  const hvdcMw = hvdcBus?.properties?.hvdc_import_mw ?? null;
+
   const byIsland = {};
   for (const f of features) {
     const i = f.properties.island ?? "—";
@@ -18,6 +33,8 @@ export default function StatsPanel({ buses }) {
     byIsland[i].load += Number(f.properties.p_mw || 0);
     byIsland[i].gen += Number(f.properties.gen_mw || 0);
   }
+
+  const snapshotDate = formatDate(manifest?.generated_at);
 
   return (
     <div className="absolute left-4 top-4 z-[1000] w-56 rounded-lg border border-slate-200 bg-white/95 p-3 text-xs shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200">
@@ -41,6 +58,21 @@ export default function StatsPanel({ buses }) {
         >
           {net >= 0 ? "+" : ""}{net.toFixed(0)} MW
         </span>
+        {hvdcMw !== null && (
+          <>
+            <span className="text-slate-500 dark:text-slate-400">HVDC link</span>
+            <span
+              className={`text-right font-semibold tabular-nums ${
+                hvdcMw >= 0
+                  ? "text-violet-700 dark:text-violet-400"
+                  : "text-amber-700 dark:text-amber-400"
+              }`}
+              title={hvdcMw >= 0 ? "Importing from Luzon" : "Exporting to Luzon"}
+            >
+              {hvdcMw >= 0 ? "+" : ""}{hvdcMw.toFixed(0)} MW
+            </span>
+          </>
+        )}
       </div>
 
       <details className="mt-2">
@@ -68,6 +100,12 @@ export default function StatsPanel({ buses }) {
           </tbody>
         </table>
       </details>
+
+      {snapshotDate && (
+        <div className="mt-2 border-t border-slate-100 pt-1.5 text-[10px] text-slate-400 dark:border-slate-800 dark:text-slate-600">
+          DC flow · {snapshotDate}
+        </div>
+      )}
     </div>
   );
 }

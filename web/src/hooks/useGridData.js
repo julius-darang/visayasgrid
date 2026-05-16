@@ -5,6 +5,7 @@ const EMPTY = { type: "FeatureCollection", features: [] };
 export function useGridData() {
   const [buses, setBuses] = useState(EMPTY);
   const [lines, setLines] = useState(EMPTY);
+  const [manifest, setManifest] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -13,11 +14,13 @@ export function useGridData() {
     Promise.all([
       fetch("/data/buses.geojson").then((r) => (r.ok ? r.json() : EMPTY)),
       fetch("/data/lines.geojson").then((r) => (r.ok ? r.json() : EMPTY)),
+      fetch("/data/manifest.json").then((r) => (r.ok ? r.json() : null)),
     ])
-      .then(([b, l]) => {
+      .then(([b, l, m]) => {
         if (cancelled) return;
         setBuses(b);
         setLines(l);
+        setManifest(m);
         setLoading(false);
       })
       .catch((e) => {
@@ -30,7 +33,7 @@ export function useGridData() {
     };
   }, []);
 
-  return { buses, lines, loading, error };
+  return { buses, lines, manifest, loading, error };
 }
 
 export function filterFeatures(fc, { islands, voltages }) {
