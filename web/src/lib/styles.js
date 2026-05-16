@@ -47,6 +47,21 @@ export function colorForLoading(pct) {
   return "#2d6a4f";
 }
 
+// Voltage magnitude colour scale for AC load flow results.
+// Green = nominal (±3%), amber = caution (±3–5%), red = violation (outside ±5%).
+export const VM_PU_SCALE = [
+  { label: "0.95–0.97 / 1.03–1.05", color: "#f4a261" },
+  { label: "0.97–1.03 (nominal)",    color: "#2d6a4f" },
+  { label: "< 0.95 or > 1.05",       color: "#9b2226" },
+];
+
+export function colorForVoltagePu(pu) {
+  if (pu == null) return "#94a3b8";
+  if (pu < 0.95 || pu > 1.05) return "#9b2226";
+  if (pu < 0.97 || pu > 1.03) return "#f4a261";
+  return "#2d6a4f";
+}
+
 export function radiusForBus(props) {
   const v = Number(props.v_nom);
   const base = v >= 230 ? 6 : v >= 138 ? 5 : 4;

@@ -20,7 +20,8 @@ Each document covers one improvement: **what** changed, **why** it was needed, a
 | [impl/P2-submarine-cables.md](impl/P2-submarine-cables.md) | Replaced estimated submarine cable impedances with IEC 60840 XLPE 630 mm² values |
 | [impl/P4-hvdc-interchange.md](impl/P4-hvdc-interchange.md) | Surfaced the Leyte–Luzon HVDC interchange MW in the UI |
 | [impl/P6-provenance-manifest.md](impl/P6-provenance-manifest.md) | Added `manifest.json` build metadata and "DC flow · date" footer |
-| [impl/P1-ac-loadflow-deferred.md](impl/P1-ac-loadflow-deferred.md) | Why AC load flow was not implemented (mixed-voltage network; transformer models needed) |
+| [impl/P1-ac-loadflow-implemented.md](impl/P1-ac-loadflow-implemented.md) | AC Newton-Raphson load flow — transformer insertion, PV buses, voltage profile |
+| [impl/P1-ac-loadflow-deferred.md](impl/P1-ac-loadflow-deferred.md) | Original deferral analysis (mixed-voltage network; transformer models needed) |
 
 ---
 

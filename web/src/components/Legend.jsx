@@ -1,4 +1,4 @@
-import { VOLTAGE_LEVELS, VOLTAGE_COLORS, CARRIER_COLORS, CARRIER_LIST } from "../lib/styles.js";
+import { VOLTAGE_LEVELS, VOLTAGE_COLORS, CARRIER_COLORS, CARRIER_LIST, VM_PU_SCALE } from "../lib/styles.js";
 
 const LOADING_SCALE = [
   { label: "< 50%", color: "#2d6a4f" },
@@ -17,7 +17,7 @@ function SubHeader({ children }) {
 
 export default function Legend() {
   return (
-    <div className="absolute bottom-4 left-4 z-[1000] grid grid-cols-3 gap-4 rounded-lg border border-slate-200 bg-white/95 p-3 text-[11px] shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200">
+    <div className="absolute bottom-4 left-4 z-[1000] grid grid-cols-4 gap-4 rounded-lg border border-slate-200 bg-white/95 p-3 text-[11px] shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200">
       <div>
         <SubHeader>Bus voltage</SubHeader>
         <div className="space-y-0.5">
@@ -64,6 +64,24 @@ export default function Legend() {
               <span>{c}</span>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div>
+        <SubHeader>Voltage (pu)</SubHeader>
+        <div className="space-y-0.5">
+          {VM_PU_SCALE.map((s) => (
+            <div key={s.label} className="flex items-center gap-2">
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: s.color }}
+              />
+              <span>{s.label}</span>
+            </div>
+          ))}
+        </div>
+        <div className="mt-1 text-slate-400 dark:text-slate-500">
+          AC flow only
         </div>
       </div>
     </div>
