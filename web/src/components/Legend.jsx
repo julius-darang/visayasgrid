@@ -5,6 +5,7 @@ import {
   CARRIER_COLORS,
   CARRIER_LIST,
   LOADING_SCALE,
+  VM_PU_SCALE,
 } from "../lib/styles.js";
 
 function SubHeader({ children }) {
@@ -41,7 +42,7 @@ export default function Legend() {
         <summary className="cursor-pointer select-none rounded-lg px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-slate-400 marker:hidden focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500 md:hidden">
           Legend
         </summary>
-        <div className="grid grid-cols-1 gap-3 px-3 pb-3 sm:grid-cols-3 sm:gap-4 md:pt-3">
+        <div className="grid grid-cols-1 gap-3 px-3 pb-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 md:pt-3">
           <div>
             <SubHeader>Bus voltage</SubHeader>
             <div className="space-y-0.5">
@@ -88,6 +89,24 @@ export default function Legend() {
                   <span>{c}</span>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div>
+            <SubHeader>Voltage (pu)</SubHeader>
+            <div className="space-y-0.5">
+              {VM_PU_SCALE.map((s) => (
+                <div key={s.label} className="flex items-center gap-2">
+                  <span
+                    className="inline-block h-2.5 w-2.5 rounded-full"
+                    style={{ backgroundColor: s.color }}
+                  />
+                  <span>{s.label}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-1 text-slate-400 dark:text-slate-500">
+              AC flow only
             </div>
           </div>
         </div>

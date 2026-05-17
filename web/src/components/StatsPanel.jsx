@@ -119,7 +119,7 @@ export default function StatsPanel({ buses, manifest }) {
 
       {snapshotDate && (
         <div className="mt-2 border-t border-slate-100 pt-1.5 text-[10px] text-slate-400 dark:border-slate-800 dark:text-slate-600">
-          DC flow · {snapshotDate}
+          {manifest?.power_flow_mode ?? "DC"} flow · {snapshotDate}
         </div>
       )}
     </div>
