@@ -17,18 +17,23 @@ export default function App() {
   const [selectedVoltages, setSelectedVoltages] = useState(VOLTAGE_LEVELS);
   const [selected, setSelected] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [colorMode, setColorMode] = useState("nominal");
+  const [focusTarget, setFocusTarget] = useState(null);
   const [hintDismissed, setHintDismissed] = useState(
     () => !!localStorage.getItem(HINT_KEY),
   );
 
-  const filters = { islands: selectedIslands, voltages: selectedVoltages };
+  const filters = useMemo(
+    () => ({ islands: selectedIslands, voltages: selectedVoltages }),
+    [selectedIslands, selectedVoltages],
+  );
   const visibleBuses = useMemo(
     () => filterFeatures(buses, filters),
-    [buses, selectedIslands, selectedVoltages],
+    [buses, filters],
   );
   const visibleLines = useMemo(
     () => filterFeatures(lines, filters),
-    [lines, selectedIslands, selectedVoltages],
+    [lines, filters],
   );
 
   const showHint = !hintDismissed && !loading && !error && !selected;
@@ -41,6 +46,23 @@ export default function App() {
   const select = (s) => {
     setSelected(s);
     if (!hintDismissed) dismissHint();
+  };
+
+  // Select + recenter the map. Used by search and StatsPanel alerts;
+  // plain map clicks intentionally do not recenter.
+  const focusFeature = (feature, kind) => {
+    select({ kind, feature });
+    const g = feature.geometry;
+    let lat;
+    let lng;
+    if (g.type === "Point") {
+      [lng, lat] = g.coordinates;
+    } else {
+      const cs = g.coordinates;
+      const mid = cs[Math.floor(cs.length / 2)] ?? cs[0];
+      [lng, lat] = mid;
+    }
+    setFocusTarget({ lat, lng, zoom: 10, _t: Date.now() });
   };
 
   return (
@@ -57,6 +79,13 @@ export default function App() {
         setSelectedIslands={setSelectedIslands}
         selectedVoltages={selectedVoltages}
         setSelectedVoltages={setSelectedVoltages}
+        colorMode={colorMode}
+        setColorMode={setColorMode}
+        buses={buses}
+        onPick={(f) => {
+          focusFeature(f, "bus");
+          setSidebarOpen(false);
+        }}
         theme={theme}
         onToggleTheme={toggleTheme}
         open={sidebarOpen}
@@ -83,9 +112,17 @@ export default function App() {
           lines={visibleLines}
           onSelect={select}
           theme={theme}
+          colorMode={colorMode}
+          selected={selected}
+          focusTarget={focusTarget}
         />
-        <StatsPanel buses={visibleBuses} manifest={manifest} />
-        <Legend />
+        <StatsPanel
+          buses={visibleBuses}
+          lines={visibleLines}
+          manifest={manifest}
+          onFocus={focusFeature}
+        />
+        <Legend colorMode={colorMode} />
         <InfoPanel
           selected={selected}
           onClose={() => setSelected(null)}

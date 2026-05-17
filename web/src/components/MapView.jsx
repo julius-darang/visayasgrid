@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import L from "leaflet";
 import {
   MapContainer,
@@ -7,9 +7,11 @@ import {
   Polyline,
   Marker,
   Tooltip,
+  useMap,
 } from "react-leaflet";
 import {
   colorForVoltage,
+  colorForVoltagePu,
   colorForCarrier,
   colorForLoading,
   radiusForBus,
@@ -18,6 +20,43 @@ import {
 } from "../lib/styles.js";
 
 const FLOW_ARROW_MIN_MW = MAP.flowArrowMinMw;
+
+function MapController({ target }) {
+  const map = useMap();
+  useEffect(() => {
+    if (!target) return;
+    map.flyTo([target.lat, target.lng], target.zoom ?? map.getZoom(), {
+      duration: 0.6,
+    });
+  }, [target, map]);
+  return null;
+}
+
+// Names of the buses/lines connected to the current selection. Used to dim
+// everything else so the selected element's local topology stands out.
+function connectedSet(selected, lines) {
+  if (!selected) return null;
+  const p = selected.feature.properties;
+  const busNames = new Set();
+  const lineKeys = new Set();
+  const keyOf = (lp) => `${lp.from_bus}|${lp.to_bus}`;
+  if (selected.kind === "bus") {
+    busNames.add(p.name);
+    for (const f of lines.features) {
+      const lp = f.properties;
+      if (lp.from_bus === p.name || lp.to_bus === p.name) {
+        lineKeys.add(keyOf(lp));
+        busNames.add(lp.from_bus);
+        busNames.add(lp.to_bus);
+      }
+    }
+  } else {
+    busNames.add(p.from_bus);
+    busNames.add(p.to_bus);
+    lineKeys.add(keyOf(p));
+  }
+  return { busNames, lineKeys };
+}
 
 const TILE_URLS = {
   light: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
@@ -43,9 +82,18 @@ function flowArrowIcon(rotation, color) {
   });
 }
 
-export default function MapView({ buses, lines, onSelect, theme }) {
+export default function MapView({
+  buses,
+  lines,
+  onSelect,
+  theme,
+  colorMode,
+  selected,
+  focusTarget,
+}) {
   const isDark = theme === "dark";
   const busStroke = isDark ? "#e2e8f0" : "#1e293b";
+  const active = connectedSet(selected, lines);
 
   return (
     <MapContainer
@@ -55,6 +103,7 @@ export default function MapView({ buses, lines, onSelect, theme }) {
       preferCanvas
       aria-label="Interactive map of the Visayas transmission grid. Pan with arrow keys; click a bus or line for details."
     >
+      <MapController target={focusTarget} />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
         url={TILE_URLS[isDark ? "dark" : "light"]}
@@ -64,8 +113,11 @@ export default function MapView({ buses, lines, onSelect, theme }) {
 
       {lines.features.map((f, i) => {
         const coords = f.geometry.coordinates.map(([x, y]) => [y, x]);
+        const lp = f.properties;
+        const dim = active && !active.lineKeys.has(`${lp.from_bus}|${lp.to_bus}`);
         const pmw = f.properties.p_from_mw;
-        const showArrow = pmw != null && Math.abs(pmw) >= FLOW_ARROW_MIN_MW;
+        const showArrow =
+          !dim && pmw != null && Math.abs(pmw) >= FLOW_ARROW_MIN_MW;
         let arrow = null;
         if (showArrow) {
           const [a, b] = coords;
@@ -81,7 +133,10 @@ export default function MapView({ buses, lines, onSelect, theme }) {
           <Fragment key={`line-${i}`}>
             <Polyline
               positions={coords}
-              pathOptions={lineStyle(f)}
+              pathOptions={{
+                ...lineStyle(f),
+                opacity: dim ? 0.12 : lineStyle(f).opacity,
+              }}
               eventHandlers={{
                 click: () => onSelect({ kind: "line", feature: f }),
               }}
@@ -97,6 +152,11 @@ export default function MapView({ buses, lines, onSelect, theme }) {
         const radius = radiusForBus(f.properties);
         const hasGen = (f.properties.gen_capacity_mw || 0) > 0;
         const isHvdc = f.properties.bus_type === "hvdc";
+        const dim = active && !active.busNames.has(f.properties.name);
+        const fill =
+          colorMode === "pu"
+            ? colorForVoltagePu(f.properties.vm_pu)
+            : colorForVoltage(v);
 
         return (
           <Fragment key={`bus-${i}`}>
@@ -109,6 +169,7 @@ export default function MapView({ buses, lines, onSelect, theme }) {
                   weight: 2,
                   fillColor: "transparent",
                   fillOpacity: 0,
+                  opacity: dim ? 0.15 : 1,
                   interactive: false,
                 }}
               />
@@ -123,6 +184,7 @@ export default function MapView({ buses, lines, onSelect, theme }) {
                   weight: 2,
                   fillColor: "transparent",
                   fillOpacity: 0,
+                  opacity: dim ? 0.15 : 1,
                   interactive: false,
                   dashArray: "4 3",
                 }}
@@ -134,8 +196,9 @@ export default function MapView({ buses, lines, onSelect, theme }) {
               pathOptions={{
                 color: busStroke,
                 weight: 1,
-                fillColor: colorForVoltage(v),
-                fillOpacity: 0.92,
+                opacity: dim ? 0.2 : 1,
+                fillColor: fill,
+                fillOpacity: dim ? 0.2 : 0.92,
               }}
               eventHandlers={{
                 click: () => onSelect({ kind: "bus", feature: f }),
@@ -145,7 +208,7 @@ export default function MapView({ buses, lines, onSelect, theme }) {
                 permanent
                 direction="right"
                 offset={[radius + 2, 0]}
-                className="bus-label"
+                className={dim ? "bus-label bus-label-dim" : "bus-label"}
               >
                 {f.properties.name}
               </Tooltip>

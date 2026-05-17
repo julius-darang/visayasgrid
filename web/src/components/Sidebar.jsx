@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import { ISLANDS, VOLTAGE_LEVELS, VOLTAGE_COLORS } from "../lib/styles.js";
 
 function toggle(set, value) {
@@ -7,11 +8,29 @@ function toggle(set, value) {
   return [...next];
 }
 
-function SectionHeader({ children }) {
+function SectionHeader({ children, onAll, onNone }) {
   return (
-    <h2 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-      {children}
-    </h2>
+    <div className="mb-2 flex items-center justify-between">
+      <h2 className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+        {children}
+      </h2>
+      {onAll && (
+        <div className="flex gap-2 text-[10px] text-sky-600 dark:text-sky-400">
+          <button
+            onClick={onAll}
+            className="rounded hover:underline focus-visible:ring-2 focus-visible:ring-sky-500"
+          >
+            All
+          </button>
+          <button
+            onClick={onNone}
+            className="rounded hover:underline focus-visible:ring-2 focus-visible:ring-sky-500"
+          >
+            None
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -25,11 +44,24 @@ export default function Sidebar({
   setSelectedIslands,
   selectedVoltages,
   setSelectedVoltages,
+  colorMode,
+  setColorMode,
+  buses,
+  onPick,
   theme,
   onToggleTheme,
   open,
   onClose,
 }) {
+  const [query, setQuery] = useState("");
+  const results = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    return (buses?.features ?? [])
+      .filter((f) => String(f.properties.name).toLowerCase().includes(q))
+      .slice(0, 8);
+  }, [query, buses]);
+
   return (
     <nav
       aria-label="Grid filters"
@@ -63,7 +95,71 @@ export default function Sidebar({
       </div>
 
       <div className="mb-5">
-        <SectionHeader>Islands</SectionHeader>
+        <label className="relative block">
+          <span className="sr-only">Find a bus</span>
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Find a bus…"
+            className="w-full rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-xs text-slate-700 placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+          />
+          {results.length > 0 && (
+            <ul className="absolute z-10 mt-1 w-full overflow-hidden rounded-md border border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-800">
+              {results.map((f) => (
+                <li key={f.properties.name}>
+                  <button
+                    onClick={() => {
+                      onPick(f, "bus");
+                      setQuery("");
+                    }}
+                    className="block w-full px-2.5 py-1.5 text-left text-xs text-slate-700 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-200 dark:hover:bg-slate-700"
+                  >
+                    {f.properties.name}
+                    <span className="ml-1 text-slate-400">
+                      {f.properties.v_nom} kV
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </label>
+      </div>
+
+      <div className="mb-5">
+        <SectionHeader>Colour buses by</SectionHeader>
+        <div className="grid grid-cols-2 gap-1">
+          {[
+            ["nominal", "Nominal kV"],
+            ["pu", "Voltage (pu)"],
+          ].map(([mode, label]) => (
+            <button
+              key={mode}
+              onClick={() => setColorMode(mode)}
+              aria-pressed={colorMode === mode}
+              className={`rounded-md border px-2 py-1.5 text-xs transition focus-visible:ring-2 focus-visible:ring-sky-500 ${
+                colorMode === mode
+                  ? "border-sky-500 bg-sky-50 text-sky-700 dark:border-sky-500 dark:bg-sky-950 dark:text-sky-300"
+                  : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <p className="mt-1 text-[10px] text-slate-400 dark:text-slate-500">
+          Voltage (pu) shows AC load-flow results only.
+        </p>
+      </div>
+
+      <div className="mb-5">
+        <SectionHeader
+          onAll={() => setSelectedIslands(ISLANDS)}
+          onNone={() => setSelectedIslands([])}
+        >
+          Islands
+        </SectionHeader>
         <div className="space-y-0.5">
           {ISLANDS.map((island) => (
             <label key={island} className={rowClass}>
@@ -82,7 +178,12 @@ export default function Sidebar({
       </div>
 
       <div className="mb-5">
-        <SectionHeader>Voltage</SectionHeader>
+        <SectionHeader
+          onAll={() => setSelectedVoltages(VOLTAGE_LEVELS)}
+          onNone={() => setSelectedVoltages([])}
+        >
+          Voltage
+        </SectionHeader>
         <div className="space-y-0.5">
           {VOLTAGE_LEVELS.map((kv) => (
             <label key={kv} className={rowClass}>

@@ -60,6 +60,10 @@ html.dark body {
   display: none;
 }
 
+.leaflet-tooltip.bus-label-dim {
+  opacity: 0.2;
+}
+
 html.dark .leaflet-tooltip.bus-label {
   color: #cbd5e1;
   text-shadow:
