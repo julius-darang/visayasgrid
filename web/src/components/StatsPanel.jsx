@@ -16,7 +16,7 @@ function formatDate(iso) {
 const WRAP =
   "absolute left-16 top-4 z-[1000] w-[min(14rem,calc(100vw-5rem))] rounded-lg border border-slate-200 bg-white/95 p-3 text-xs shadow-sm backdrop-blur animate-fade-in dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200 md:left-4 md:w-56";
 
-export default function StatsPanel({ buses, manifest }) {
+export default function StatsPanel({ buses, lines, manifest, onFocus }) {
   const features = buses.features;
   if (!features.length) {
     return (
@@ -49,6 +49,23 @@ export default function StatsPanel({ buses, manifest }) {
   }
 
   const snapshotDate = formatDate(manifest?.generated_at);
+
+  const overloaded = (lines?.features ?? [])
+    .filter((f) => Number(f.properties.loading_percent) > 100)
+    .sort(
+      (a, b) =>
+        Number(b.properties.loading_percent) -
+        Number(a.properties.loading_percent),
+    );
+  const violations = features
+    .filter((f) => {
+      const pu = f.properties.vm_pu;
+      return pu != null && (pu < 0.95 || pu > 1.05);
+    })
+    .sort(
+      (a, b) =>
+        Math.abs(b.properties.vm_pu - 1) - Math.abs(a.properties.vm_pu - 1),
+    );
 
   return (
     <div className={WRAP}>
@@ -90,6 +107,33 @@ export default function StatsPanel({ buses, manifest }) {
           </>
         )}
       </div>
+
+      {(overloaded.length > 0 || violations.length > 0) && (
+        <div className="mt-2 space-y-1 border-t border-slate-100 pt-2 dark:border-slate-800">
+          {overloaded.length > 0 && (
+            <button
+              onClick={() => onFocus(overloaded[0], "line")}
+              className="flex w-full items-center justify-between rounded px-1 py-0.5 text-left text-rose-700 transition hover:bg-rose-50 focus-visible:ring-2 focus-visible:ring-rose-500 dark:text-rose-400 dark:hover:bg-rose-950"
+            >
+              <span>Overloaded lines</span>
+              <span className="font-semibold tabular-nums">
+                {overloaded.length} ›
+              </span>
+            </button>
+          )}
+          {violations.length > 0 && (
+            <button
+              onClick={() => onFocus(violations[0], "bus")}
+              className="flex w-full items-center justify-between rounded px-1 py-0.5 text-left text-rose-700 transition hover:bg-rose-50 focus-visible:ring-2 focus-visible:ring-rose-500 dark:text-rose-400 dark:hover:bg-rose-950"
+            >
+              <span>Voltage violations</span>
+              <span className="font-semibold tabular-nums">
+                {violations.length} ›
+              </span>
+            </button>
+          )}
+        </div>
+      )}
 
       <details className="mt-2">
         <summary className="cursor-pointer select-none rounded text-[10px] uppercase tracking-wider text-slate-400 transition hover:text-slate-600 focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500 dark:hover:text-slate-300">

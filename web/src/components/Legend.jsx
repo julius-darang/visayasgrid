@@ -8,15 +8,22 @@ import {
   VM_PU_SCALE,
 } from "../lib/styles.js";
 
-function SubHeader({ children }) {
+function SubHeader({ children, active }) {
   return (
-    <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+    <div
+      className={`mb-1 text-[10px] font-semibold uppercase tracking-wider ${
+        active
+          ? "text-sky-600 dark:text-sky-400"
+          : "text-slate-400 dark:text-slate-500"
+      }`}
+    >
       {children}
+      {active && <span className="ml-1 normal-case">• shown</span>}
     </div>
   );
 }
 
-export default function Legend() {
+export default function Legend({ colorMode = "nominal" }) {
   // Expanded by default on desktop; collapsed on small screens so it does
   // not cover the map. Defaults to open during SSR-less first paint.
   const [open, setOpen] = useState(() =>
@@ -44,7 +51,7 @@ export default function Legend() {
         </summary>
         <div className="grid grid-cols-1 gap-3 px-3 pb-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 md:pt-3">
           <div>
-            <SubHeader>Bus voltage</SubHeader>
+            <SubHeader active={colorMode === "nominal"}>Bus voltage</SubHeader>
             <div className="space-y-0.5">
               {VOLTAGE_LEVELS.map((kv) => (
                 <div key={kv} className="flex items-center gap-2">
@@ -93,7 +100,7 @@ export default function Legend() {
           </div>
 
           <div>
-            <SubHeader>Voltage (pu)</SubHeader>
+            <SubHeader active={colorMode === "pu"}>Voltage (pu)</SubHeader>
             <div className="space-y-0.5">
               {VM_PU_SCALE.map((s) => (
                 <div key={s.label} className="flex items-center gap-2">
