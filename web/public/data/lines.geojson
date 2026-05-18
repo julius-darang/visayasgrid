@@ -1481,9 +1481,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 58.13,
+        "loading_percent": 58.12,
         "p_from_mw": -58.876,
-        "i_from_ka": 0.33566
+        "i_from_ka": 0.33561
       }
     },
     {
@@ -1549,7 +1549,7 @@
         "parallel": 1,
         "loading_percent": 25.5,
         "p_from_mw": 31.209,
-        "i_from_ka": 0.14243
+        "i_from_ka": 0.14242
       }
     },
     {
@@ -1581,8 +1581,8 @@
         "cable_type": "overhead",
         "parallel": 2,
         "loading_percent": 50.54,
-        "p_from_mw": 137.531,
-        "i_from_ka": 0.57835
+        "p_from_mw": 137.541,
+        "i_from_ka": 0.57837
       }
     },
     {
@@ -1613,9 +1613,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 28.24,
-        "p_from_mw": 75.044,
-        "i_from_ka": 0.32469
+        "loading_percent": 28.25,
+        "p_from_mw": 75.054,
+        "i_from_ka": 0.32471
       }
     },
     {
@@ -1647,7 +1647,7 @@
         "cable_type": "overhead",
         "parallel": 1,
         "loading_percent": 27.0,
-        "p_from_mw": 35.805,
+        "p_from_mw": 35.806,
         "i_from_ka": 0.15342
       }
     },
@@ -1680,7 +1680,7 @@
         "cable_type": "overhead",
         "parallel": 1,
         "loading_percent": 20.89,
-        "p_from_mw": -27.403,
+        "p_from_mw": -27.402,
         "i_from_ka": 0.12063
       }
     },
@@ -1892,8 +1892,8 @@
             11.39500758
           ],
           [
-            125.485,
-            11.168
+            125.5312,
+            11.1685
           ]
         ]
       },
@@ -1902,7 +1902,7 @@
         "from_bus": "Sta. Rita",
         "to_bus": "Quinapondan",
         "voltage_kv": 69,
-        "length_km": 58.401,
+        "length_km": 62.959,
         "r_ohm_per_km": 0.078021,
         "x_ohm_per_km": 0.479703,
         "c_nf_per_km": 0.0,
@@ -1910,9 +1910,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 17.23,
-        "p_from_mw": 11.2,
-        "i_from_ka": 0.09782
+        "loading_percent": 17.25,
+        "p_from_mw": 11.21,
+        "i_from_ka": 0.09785
       }
     },
     {
@@ -1921,12 +1921,12 @@
         "type": "LineString",
         "coordinates": [
           [
-            125.485,
-            11.168
+            125.5312,
+            11.1685
           ],
           [
-            125.432,
-            11.609
+            125.4216,
+            11.5878
           ]
         ]
       },
@@ -1935,7 +1935,7 @@
         "from_bus": "Quinapondan",
         "to_bus": "Borongan",
         "voltage_kv": 69,
-        "length_km": 49.376,
+        "length_km": 48.13,
         "r_ohm_per_km": 0.078021,
         "x_ohm_per_km": 0.479703,
         "c_nf_per_km": 0.0,
@@ -1944,8 +1944,8 @@
         "cable_type": "overhead",
         "parallel": 1,
         "loading_percent": 12.73,
-        "p_from_mw": 8.067,
-        "i_from_ka": 0.07213
+        "p_from_mw": 8.066,
+        "i_from_ka": 0.07222
       }
     },
     {
@@ -1954,12 +1954,12 @@
         "type": "LineString",
         "coordinates": [
           [
-            125.432,
-            11.609
+            125.4216,
+            11.5878
           ],
           [
-            125.421,
-            11.906
+            125.4196,
+            11.9128
           ]
         ]
       },
@@ -1968,7 +1968,7 @@
         "from_bus": "Borongan",
         "to_bus": "Taft",
         "voltage_kv": 69,
-        "length_km": 33.047,
+        "length_km": 36.139,
         "r_ohm_per_km": 0.078021,
         "x_ohm_per_km": 0.479703,
         "c_nf_per_km": 0.0,
@@ -1976,7 +1976,7 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 4.85,
+        "loading_percent": 4.86,
         "p_from_mw": 3.006,
         "i_from_ka": 0.02712
       }

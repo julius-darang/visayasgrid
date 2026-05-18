@@ -28,7 +28,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 0.9885,
-        "va_degree": -7.5827
+        "va_degree": -7.5833
       }
     },
     {
@@ -58,7 +58,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 0.9679,
-        "va_degree": -8.7188
+        "va_degree": -8.7194
       }
     },
     {
@@ -88,7 +88,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0085,
-        "va_degree": -6.515
+        "va_degree": -6.5153
       }
     },
     {
@@ -148,7 +148,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 0.9822,
-        "va_degree": -9.7678
+        "va_degree": -9.7681
       }
     },
     {
@@ -209,7 +209,7 @@
         "primary_carrier": "ROR",
         "connected": true,
         "vm_pu": 0.9756,
-        "va_degree": -8.3083
+        "va_degree": -8.3089
       }
     },
     {
@@ -239,7 +239,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 0.9849,
-        "va_degree": -7.7749
+        "va_degree": -7.7756
       }
     },
     {
@@ -299,7 +299,7 @@
         "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": -6.1824
+        "va_degree": -6.1826
       }
     },
     {
@@ -1199,7 +1199,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 0.9616,
-        "va_degree": -11.5041
+        "va_degree": -11.5044
       }
     },
     {
@@ -1229,7 +1229,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 0.9716,
-        "va_degree": -10.7962
+        "va_degree": -10.7965
       }
     },
     {
@@ -1259,7 +1259,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 0.9721,
-        "va_degree": -10.7799
+        "va_degree": -10.7802
       }
     },
     {
@@ -1567,14 +1567,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          125.485,
-          11.168
+          125.5312,
+          11.1685
         ]
       },
       "properties": {
         "name": "Quinapondan",
-        "x": 125.485,
-        "y": 11.168,
+        "x": 125.5312,
+        "y": 11.1685,
         "v_nom": 69,
         "voltages_kv": 69,
         "island": "Samar",
@@ -1588,8 +1588,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9557,
-        "va_degree": -12.1494
+        "vm_pu": 0.9537,
+        "va_degree": -12.4633
       }
     },
     {
@@ -1597,14 +1597,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          125.432,
-          11.609
+          125.4216,
+          11.5878
         ]
       },
       "properties": {
         "name": "Borongan",
-        "x": 125.432,
-        "y": 11.609,
+        "x": 125.4216,
+        "y": 11.5878,
         "v_nom": 69,
         "voltages_kv": 69,
         "island": "Samar",
@@ -1618,8 +1618,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9392,
-        "va_degree": -14.6078
+        "vm_pu": 0.9378,
+        "va_degree": -14.8695
       }
     },
     {
@@ -1627,14 +1627,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          125.421,
-          11.906
+          125.4196,
+          11.9128
         ]
       },
       "properties": {
         "name": "Taft",
-        "x": 125.421,
-        "y": 11.906,
+        "x": 125.4196,
+        "y": 11.9128,
         "v_nom": 69,
         "voltages_kv": 69,
         "island": "Samar",
@@ -1648,8 +1648,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.935,
-        "va_degree": -15.2358
+        "vm_pu": 0.9333,
+        "va_degree": -15.5593
       }
     }
   ]
