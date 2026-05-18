@@ -56,3 +56,6 @@ L_Maasin_Ubay_138,Maasin,Ubay,138,32.972,0.0754,0.121,200.0,0.645,True,submarine
 L_Ubay_Tapal_69,Ubay,Tapal,69,3.909,0.078021,0.479703,0.0,0.5774,False,overhead,1
 L_Ubay_Corella_138,Ubay,Corella,138,70.58,0.120614,0.171283,0.0,0.5774,False,overhead,1
 L_Ubay_Corella_69,Ubay,Corella,69,70.58,0.078021,0.479703,0.0,0.5774,False,overhead,1
+L_Sta_Rita_Quinapondan_69,Sta. Rita,Quinapondan,69,62.959,0.078021,0.479703,0.0,0.5774,False,overhead,1
+L_Quinapondan_Borongan_69,Quinapondan,Borongan,69,48.130,0.078021,0.479703,0.0,0.5774,False,overhead,1
+L_Borongan_Taft_69,Borongan,Taft,69,36.139,0.078021,0.479703,0.0,0.5774,False,overhead,1

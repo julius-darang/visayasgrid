@@ -27,8 +27,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9911,
-        "va_degree": -7.137
+        "vm_pu": 0.9885,
+        "va_degree": -7.5833
       }
     },
     {
@@ -57,8 +57,8 @@
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 0.9708,
-        "va_degree": -8.2536
+        "vm_pu": 0.9679,
+        "va_degree": -8.7194
       }
     },
     {
@@ -87,8 +87,8 @@
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 1.0087,
-        "va_degree": -6.172
+        "vm_pu": 1.0085,
+        "va_degree": -6.5153
       }
     },
     {
@@ -147,8 +147,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9825,
-        "va_degree": -9.429
+        "vm_pu": 0.9822,
+        "va_degree": -9.7681
       }
     },
     {
@@ -179,7 +179,7 @@
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 0.0,
-        "hvdc_import_mw": -34.5
+        "hvdc_import_mw": -22.6
       }
     },
     {
@@ -208,8 +208,8 @@
         "gen_carriers": "ROR",
         "primary_carrier": "ROR",
         "connected": true,
-        "vm_pu": 0.9784,
-        "va_degree": -7.8454
+        "vm_pu": 0.9756,
+        "va_degree": -8.3089
       }
     },
     {
@@ -238,8 +238,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.988,
-        "va_degree": -7.3017
+        "vm_pu": 0.9849,
+        "va_degree": -7.7756
       }
     },
     {
@@ -299,7 +299,7 @@
         "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": -5.8328
+        "va_degree": -6.1826
       }
     },
     {
@@ -1198,8 +1198,8 @@
         "gen_carriers": "Diesel,ROR",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 0.962,
-        "va_degree": -11.1643
+        "vm_pu": 0.9616,
+        "va_degree": -11.5044
       }
     },
     {
@@ -1228,8 +1228,8 @@
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 0.972,
-        "va_degree": -10.4569
+        "vm_pu": 0.9716,
+        "va_degree": -10.7965
       }
     },
     {
@@ -1258,8 +1258,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9724,
-        "va_degree": -10.4406
+        "vm_pu": 0.9721,
+        "va_degree": -10.7802
       }
     },
     {
@@ -1560,6 +1560,96 @@
         "connected": true,
         "vm_pu": 1.0072,
         "va_degree": 48.3905
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.5312,
+          11.1685
+        ]
+      },
+      "properties": {
+        "name": "Quinapondan",
+        "x": 125.5312,
+        "y": 11.1685,
+        "v_nom": 69,
+        "voltages_kv": 69,
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 3.0,
+        "q_mvar": 0.9,
+        "is_slack": false,
+        "load_count": 1,
+        "gen_capacity_mw": 0.0,
+        "gen_mw": 0.0,
+        "gen_carriers": null,
+        "primary_carrier": null,
+        "connected": true,
+        "vm_pu": 0.9537,
+        "va_degree": -12.4633
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.4216,
+          11.5878
+        ]
+      },
+      "properties": {
+        "name": "Borongan",
+        "x": 125.4216,
+        "y": 11.5878,
+        "v_nom": 69,
+        "voltages_kv": 69,
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 5.0,
+        "q_mvar": 1.5,
+        "is_slack": false,
+        "load_count": 1,
+        "gen_capacity_mw": 0.0,
+        "gen_mw": 0.0,
+        "gen_carriers": null,
+        "primary_carrier": null,
+        "connected": true,
+        "vm_pu": 0.9378,
+        "va_degree": -14.8695
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.4196,
+          11.9128
+        ]
+      },
+      "properties": {
+        "name": "Taft",
+        "x": 125.4196,
+        "y": 11.9128,
+        "v_nom": 69,
+        "voltages_kv": 69,
+        "island": "Samar",
+        "bus_type": "substation",
+        "p_mw": 3.0,
+        "q_mvar": 0.9,
+        "is_slack": false,
+        "load_count": 1,
+        "gen_capacity_mw": 0.0,
+        "gen_mw": 0.0,
+        "gen_carriers": null,
+        "primary_carrier": null,
+        "connected": true,
+        "vm_pu": 0.9333,
+        "va_degree": -15.5593
       }
     }
   ]
