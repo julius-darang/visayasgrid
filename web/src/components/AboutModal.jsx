@@ -180,6 +180,107 @@ export default function AboutModal({ onClose }) {
             </Prose>
           </Section>
 
+          <Section title="Power flow explained">
+            <Prose>
+              A <strong>power flow</strong> (or load flow) calculation finds the steady-state
+              operating point of the network: given the generation and demand at every substation,
+              it determines how many megawatts travel through each line and what voltage exists at
+              each bus. The governing equations are Kirchhoff's laws applied to an AC circuit —
+              nonlinear and solved iteratively by the Newton-Raphson algorithm.
+            </Prose>
+
+            {/* Key quantities */}
+            <div className="mt-3 overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-700">
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="border-b border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/60">
+                    <th className="px-3 py-2 text-left font-semibold text-slate-600 dark:text-slate-300">Quantity</th>
+                    <th className="px-3 py-2 text-left font-semibold text-slate-600 dark:text-slate-300">Unit</th>
+                    <th className="px-3 py-2 text-left font-semibold text-slate-600 dark:text-slate-300">What it means</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                  {[
+                    ["Real power", "MW", "Useful work — what heats homes, runs motors, powers devices. Flows from generators to loads."],
+                    ["Reactive power", "MVAR", "\"Circulating\" power that sustains voltage levels. Supplied by generators and capacitor banks; consumed by motors, transformers, and long lines."],
+                    ["Apparent power", "MVA", "√(MW² + MVAR²) — the total current demand on a conductor, regardless of power factor."],
+                    ["Voltage magnitude", "pu", "Bus voltage expressed as a fraction of nominal (1.00 pu = exactly rated kV). Grid codes require 0.95–1.05 pu."],
+                    ["Voltage angle", "°", "Phase angle relative to the slack bus (Ormoc = 0°). Larger negative angles indicate buses far downstream of generation."],
+                    ["Line loading", "%", "Actual current ÷ rated thermal limit × 100. Above 100% the conductor overheats and sags toward ground."],
+                  ].map(([qty, unit, desc]) => (
+                    <tr key={qty}>
+                      <td className="px-3 py-1.5 font-medium text-slate-800 dark:text-slate-200 whitespace-nowrap">{qty}</td>
+                      <td className="px-3 py-1.5 font-mono text-slate-500 dark:text-slate-400 whitespace-nowrap">{unit}</td>
+                      <td className="px-3 py-1.5 text-slate-600 dark:text-slate-400">{desc}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* AC vs DC */}
+            <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+              <strong>DC approximation vs AC Newton-Raphson.</strong> The "DC load flow" (named for
+              its mathematical similarity to DC circuit analysis, not actual direct current) assumes
+              all voltages are 1.00 pu and ignores reactive power entirely. It gives quick, useful
+              active-power flows but reports a flat voltage profile — every bus reads exactly 1.000 pu,
+              hiding any real voltage problems. The <strong>AC Newton-Raphson</strong> method used here
+              solves the full nonlinear equations simultaneously: it finds the voltage magnitude and
+              angle at every bus such that generated power equals consumed power plus I²R losses at every
+              node. This reveals the true voltage profile, reactive power flows, and transmission losses
+              that DC ignores.
+            </p>
+
+            {/* Slack bus */}
+            <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+              <strong>The slack bus.</strong> Every AC power flow needs one reference bus whose voltage
+              angle is fixed at 0° and whose real power injection floats freely to balance whatever
+              mismatch remains after all generators and loads are placed. In this model{" "}
+              <strong>Ormoc is the slack</strong> — physically the HVDC converter station, which can
+              inject or absorb real power from the Luzon grid. The MW shown in the StatsPanel as "HVDC
+              link" is exactly this slack injection: a negative value means the Visayas is exporting
+              surplus to Luzon; positive means Luzon is helping cover a Visayas shortfall.
+            </p>
+
+            {/* Reading the map */}
+            <p className="mt-3 mb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Reading the map
+            </p>
+            <ul className="space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
+              {[
+                { label: "Bus colour",     detail: "Indicates nominal voltage class — purple 350 kV, red 230 kV, amber 138 kV, teal 69 kV. The Ormoc bus also has a dashed violet outer ring marking it as the HVDC interchange point." },
+                { label: "Generator ring", detail: "Coloured outer ring around a bus shows its primary generation fuel type. Ring size grows logarithmically with installed capacity." },
+                { label: "Line colour",    detail: "Green = < 50% loaded, amber = 50–80%, red = 80–100%, dark red = overloaded (> 100%). Dashed lines are submarine cables." },
+                { label: "Flow arrows",    detail: "Triangular arrow at the midpoint of a line carrying ≥ 30 MW shows the direction of active power flow (from the sending end to the receiving end)." },
+                { label: "Voltage (pu) scale", detail: "Bus dot fill colour in the legend's fourth column. Green = nominal (0.97–1.03 pu), amber = caution (0.95–0.97 or 1.03–1.05 pu), red = violation (outside ±5% band)." },
+              ].map(({ label, detail }) => (
+                <li key={label} className="flex gap-2 leading-relaxed">
+                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400 dark:bg-slate-600" />
+                  <span><strong className="font-medium text-slate-800 dark:text-slate-200">{label}:</strong> {detail}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* InfoPanel guide */}
+            <p className="mt-3 mb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Reading the info panel (click any bus or line)
+            </p>
+            <ul className="space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
+              {[
+                { label: "Voltage (pu)",  detail: "vm_pu — bus voltage magnitude. 1.020 means 2% above nominal; 0.957 means 4.3% below. The ±5% band (0.95–1.05) is the standard operating limit." },
+                { label: "Angle (°)",     detail: "va_degree — phase angle relative to Ormoc (0°). Buses receiving power from distant sources have more negative angles." },
+                { label: "Loading %",     detail: "Actual line current as a percentage of the rated thermal limit. A line at 85% is under stress but within limits; 110% would require immediate redispatch in a real grid." },
+                { label: "Power (MW)",    detail: "Signed active power flow in the from→to direction shown in the panel header. A negative value means power is flowing in the opposite direction (to→from)." },
+                { label: "Current (kA)",  detail: "Physical current through the conductor. Multiply by √3 × V_nominal to get three-phase apparent power (MVA)." },
+              ].map(({ label, detail }) => (
+                <li key={label} className="flex gap-2 leading-relaxed">
+                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400 dark:bg-slate-600" />
+                  <span><strong className="font-medium text-slate-800 dark:text-slate-200">{label}:</strong> {detail}</span>
+                </li>
+              ))}
+            </ul>
+          </Section>
+
           <Section title="Known limitations">
             <ul className="space-y-1 text-sm text-slate-700 dark:text-slate-300">
               {[
