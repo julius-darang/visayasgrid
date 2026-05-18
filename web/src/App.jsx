@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar.jsx";
 import InfoPanel from "./components/InfoPanel.jsx";
 import Legend from "./components/Legend.jsx";
 import StatsPanel from "./components/StatsPanel.jsx";
+import AboutModal from "./components/AboutModal.jsx";
 import { useGridData, filterFeatures } from "./hooks/useGridData.js";
 import { useTheme } from "./hooks/useTheme.js";
 import { ISLANDS, VOLTAGE_LEVELS } from "./lib/styles.js";
@@ -19,6 +20,7 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [colorMode, setColorMode] = useState("nominal");
   const [focusTarget, setFocusTarget] = useState(null);
+  const [showAbout, setShowAbout] = useState(false);
   const [hintDismissed, setHintDismissed] = useState(
     () => !!localStorage.getItem(HINT_KEY),
   );
@@ -90,6 +92,7 @@ export default function App() {
         onToggleTheme={toggleTheme}
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
+        onShowAbout={() => setShowAbout(true)}
       />
       <main className="relative flex-1">
         <button
@@ -128,6 +131,7 @@ export default function App() {
           onClose={() => setSelected(null)}
           manifest={manifest}
         />
+        {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
 
         <div
           aria-live="polite"
@@ -141,7 +145,7 @@ export default function App() {
           )}
           {error && (
             <div className="pointer-events-auto flex items-center gap-3 rounded-lg bg-red-100 px-3 py-2 text-xs text-red-800 shadow dark:bg-red-900/50 dark:text-red-200">
-              <span>Couldn’t load grid data.</span>
+              <span>Couldn't load grid data.</span>
               <button
                 onClick={reload}
                 className="rounded border border-red-300 px-2 py-0.5 font-medium transition hover:bg-red-200 focus-visible:ring-2 focus-visible:ring-red-500 dark:border-red-700 dark:hover:bg-red-900"
