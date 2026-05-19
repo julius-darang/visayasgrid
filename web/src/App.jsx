@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MapView from "./components/MapView.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 import InfoPanel from "./components/InfoPanel.jsx";
@@ -6,19 +6,53 @@ import Legend from "./components/Legend.jsx";
 import StatsPanel from "./components/StatsPanel.jsx";
 import { useGridData, filterFeatures } from "./hooks/useGridData.js";
 import { useTheme } from "./hooks/useTheme.js";
-import { ISLANDS, VOLTAGE_LEVELS } from "./lib/styles.js";
+import { usePersistentState } from "./hooks/usePersistentState.js";
+import { ISLANDS, VOLTAGE_LEVELS, MAP } from "./lib/styles.js";
 
 const HINT_KEY = "vg-hint-seen";
 
+function parseHash() {
+  const h = typeof window !== "undefined" ? window.location.hash.slice(1) : "";
+  return new URLSearchParams(h);
+}
+
+function initIslands() {
+  const p = parseHash().get("islands");
+  if (!p) return ISLANDS;
+  const picked = ISLANDS.filter((i) => p.split(",").includes(i));
+  return picked.length ? picked : ISLANDS;
+}
+
+function initVoltages() {
+  const p = parseHash().get("kv");
+  if (!p) return VOLTAGE_LEVELS;
+  const picked = p
+    .split(",")
+    .map(Number)
+    .filter((n) => VOLTAGE_LEVELS.includes(n));
+  return picked.length ? picked : VOLTAGE_LEVELS;
+}
+
+function featureCenter(g) {
+  if (g.type === "Point") {
+    return { lng: g.coordinates[0], lat: g.coordinates[1] };
+  }
+  const cs = g.coordinates;
+  const m = cs[Math.floor(cs.length / 2)] ?? cs[0];
+  return { lng: m[0], lat: m[1] };
+}
+
 export default function App() {
-  const { buses, lines, manifest, loading, error, reload } = useGridData();
   const [theme, toggleTheme] = useTheme();
-  const [selectedIslands, setSelectedIslands] = useState(ISLANDS);
-  const [selectedVoltages, setSelectedVoltages] = useState(VOLTAGE_LEVELS);
+  const [selectedIslands, setSelectedIslands] = useState(initIslands);
+  const [selectedVoltages, setSelectedVoltages] = useState(initVoltages);
   const [selected, setSelected] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [colorMode, setColorMode] = useState("nominal");
-  const [display, setDisplay] = useState({
+  const [colorMode, setColorMode] = usePersistentState(
+    "vg-colormode",
+    "nominal",
+  );
+  const [display, setDisplay] = usePersistentState("vg-display", {
     labels: false,
     arrows: true,
     rings: false,
@@ -27,6 +61,37 @@ export default function App() {
   const [hintDismissed, setHintDismissed] = useState(
     () => !!localStorage.getItem(HINT_KEY),
   );
+
+  // The selected element is carried in the URL hash for sharing, but it
+  // can only be resolved once data has loaded — capture it before the
+  // URL-sync effect can overwrite it.
+  const pendingSel = useRef(parseHash().get("sel"));
+
+  const handleLoad = useCallback((b, l) => {
+    const sel = pendingSel.current;
+    pendingSel.current = null;
+    if (!sel) return;
+    let feature;
+    let kind;
+    if (sel.startsWith("bus:")) {
+      kind = "bus";
+      const name = sel.slice(4);
+      feature = b.features.find((f) => f.properties.name === name);
+    } else if (sel.startsWith("line:")) {
+      kind = "line";
+      const [from, to] = sel.slice(5).split("|");
+      feature = l.features.find(
+        (f) => f.properties.from_bus === from && f.properties.to_bus === to,
+      );
+    }
+    if (!feature) return;
+    setSelected({ kind, feature });
+    const c = featureCenter(feature.geometry);
+    setFocusTarget({ lat: c.lat, lng: c.lng, zoom: 10, _t: Date.now() });
+  }, []);
+
+  const { buses, lines, manifest, loading, error, reload } =
+    useGridData(handleLoad);
 
   const filters = useMemo(
     () => ({ islands: selectedIslands, voltages: selectedVoltages }),
@@ -40,6 +105,33 @@ export default function App() {
     () => filterFeatures(lines, filters),
     [lines, filters],
   );
+
+  // Keep the URL hash in sync with the shareable view state. This only
+  // writes history (a side effect), never React state.
+  useEffect(() => {
+    const p = new URLSearchParams();
+    if (selectedIslands.length !== ISLANDS.length) {
+      p.set("islands", selectedIslands.join(","));
+    }
+    if (selectedVoltages.length !== VOLTAGE_LEVELS.length) {
+      p.set("kv", selectedVoltages.join(","));
+    }
+    if (selected) {
+      const pr = selected.feature.properties;
+      p.set(
+        "sel",
+        selected.kind === "bus"
+          ? `bus:${pr.name}`
+          : `line:${pr.from_bus}|${pr.to_bus}`,
+      );
+    }
+    const qs = p.toString();
+    window.history.replaceState(
+      null,
+      "",
+      qs ? `#${qs}` : window.location.pathname + window.location.search,
+    );
+  }, [selectedIslands, selectedVoltages, selected]);
 
   const showHint = !hintDismissed && !loading && !error && !selected;
 
@@ -57,17 +149,21 @@ export default function App() {
   // plain map clicks intentionally do not recenter.
   const focusFeature = (feature, kind) => {
     select({ kind, feature });
-    const g = feature.geometry;
-    let lat;
-    let lng;
-    if (g.type === "Point") {
-      [lng, lat] = g.coordinates;
-    } else {
-      const cs = g.coordinates;
-      const mid = cs[Math.floor(cs.length / 2)] ?? cs[0];
-      [lng, lat] = mid;
-    }
-    setFocusTarget({ lat, lng, zoom: 10, _t: Date.now() });
+    const c = featureCenter(feature.geometry);
+    setFocusTarget({ lat: c.lat, lng: c.lng, zoom: 10, _t: Date.now() });
+  };
+
+  const resetView = () => {
+    setSelected(null);
+    setSelectedIslands(ISLANDS);
+    setSelectedVoltages(VOLTAGE_LEVELS);
+    setFocusTarget({
+      lat: MAP.center[0],
+      lng: MAP.center[1],
+      zoom: MAP.zoom,
+      _t: Date.now(),
+    });
+    setSidebarOpen(false);
   };
 
   return (
@@ -93,26 +189,29 @@ export default function App() {
           focusFeature(f, "bus");
           setSidebarOpen(false);
         }}
+        onReset={resetView}
         theme={theme}
         onToggleTheme={toggleTheme}
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
       />
       <main className="relative flex-1">
-        <button
-          onClick={() => setSidebarOpen(true)}
-          className="absolute left-4 top-4 z-[1100] rounded-md border border-slate-200 bg-white/95 p-2 text-slate-600 shadow-sm backdrop-blur transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-300 dark:hover:bg-slate-800 md:hidden"
-          aria-label="Open filters"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-            <path
-              d="M2 4h14M2 9h14M2 14h14"
-              stroke="currentColor"
-              strokeWidth="1.7"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
+        {!sidebarOpen && (
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className="absolute left-4 top-4 z-[1100] rounded-md border border-slate-200 bg-white/95 p-2 text-slate-600 shadow-sm backdrop-blur transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-300 dark:hover:bg-slate-800 md:hidden"
+            aria-label="Open filters"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+              <path
+                d="M2 4h14M2 9h14M2 14h14"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        )}
 
         <MapView
           buses={visibleBuses}

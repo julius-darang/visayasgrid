@@ -81,6 +81,7 @@ export default function Sidebar({
   setDisplay,
   buses,
   onPick,
+  onReset,
   theme,
   onToggleTheme,
   open,
@@ -98,7 +99,7 @@ export default function Sidebar({
   return (
     <nav
       aria-label="Grid filters"
-      className={`fixed inset-y-0 left-0 z-[1100] flex w-60 shrink-0 flex-col border-r border-slate-200 bg-white p-4 transition-transform duration-200 ease-out dark:border-slate-800 dark:bg-slate-900 md:static md:z-auto md:translate-x-0 ${
+      className={`fixed inset-y-0 left-0 z-[1100] flex w-60 shrink-0 flex-col overflow-y-auto border-r border-slate-200 bg-white p-4 transition-transform duration-200 ease-out dark:border-slate-800 dark:bg-slate-900 md:static md:z-auto md:translate-x-0 ${
         open ? "translate-x-0 shadow-xl md:shadow-none" : "-translate-x-full"
       }`}
     >
@@ -161,6 +162,58 @@ export default function Sidebar({
       </div>
 
       <Disclosure
+        title="Display"
+        summary={colorMode === "pu" ? "Voltage (pu)" : "Nominal kV"}
+      >
+        <div className="mb-3">
+          <div className="mb-1 text-[10px] text-slate-400 dark:text-slate-500">
+            Colour buses by
+          </div>
+          <div className="grid grid-cols-2 gap-1">
+            {[
+              ["nominal", "Nominal kV"],
+              ["pu", "Voltage (pu)"],
+            ].map(([mode, label]) => (
+              <button
+                key={mode}
+                onClick={() => setColorMode(mode)}
+                aria-pressed={colorMode === mode}
+                className={`rounded-md border px-2 py-1.5 text-xs transition focus-visible:ring-2 focus-visible:ring-sky-500 ${
+                  colorMode === mode
+                    ? "border-sky-500 bg-sky-50 text-sky-700 dark:border-sky-500 dark:bg-sky-950 dark:text-sky-300"
+                    : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <p className="mt-1 text-[10px] text-slate-400 dark:text-slate-500">
+            Voltage (pu) shows AC load-flow results only.
+          </p>
+        </div>
+        <div className="space-y-0.5">
+          {[
+            ["labels", "Bus labels"],
+            ["arrows", "Flow arrows"],
+            ["rings", "Generator rings"],
+          ].map(([key, label]) => (
+            <label key={key} className={rowClass}>
+              <input
+                type="checkbox"
+                className={checkboxClass}
+                checked={display[key]}
+                onChange={() =>
+                  setDisplay({ ...display, [key]: !display[key] })
+                }
+              />
+              <span>{label}</span>
+            </label>
+          ))}
+        </div>
+      </Disclosure>
+
+      <Disclosure
         title="Islands"
         summary={`${selectedIslands.length} / ${ISLANDS.length}`}
         defaultOpen
@@ -216,59 +269,30 @@ export default function Sidebar({
         </div>
       </Disclosure>
 
-      <Disclosure
-        title="Display"
-        summary={colorMode === "pu" ? "Voltage (pu)" : "Nominal kV"}
-      >
-        <div className="mb-3">
-          <div className="mb-1 text-[10px] text-slate-400 dark:text-slate-500">
-            Colour buses by
-          </div>
-          <div className="grid grid-cols-2 gap-1">
-            {[
-              ["nominal", "Nominal kV"],
-              ["pu", "Voltage (pu)"],
-            ].map(([mode, label]) => (
-              <button
-                key={mode}
-                onClick={() => setColorMode(mode)}
-                aria-pressed={colorMode === mode}
-                className={`rounded-md border px-2 py-1.5 text-xs transition focus-visible:ring-2 focus-visible:ring-sky-500 ${
-                  colorMode === mode
-                    ? "border-sky-500 bg-sky-50 text-sky-700 dark:border-sky-500 dark:bg-sky-950 dark:text-sky-300"
-                    : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
-                }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-          <p className="mt-1 text-[10px] text-slate-400 dark:text-slate-500">
-            Voltage (pu) shows AC load-flow results only.
-          </p>
-        </div>
-        <div className="space-y-0.5">
-          {[
-            ["labels", "Bus labels"],
-            ["arrows", "Flow arrows"],
-            ["rings", "Generator rings"],
-          ].map(([key, label]) => (
-            <label key={key} className={rowClass}>
-              <input
-                type="checkbox"
-                className={checkboxClass}
-                checked={display[key]}
-                onChange={() =>
-                  setDisplay({ ...display, [key]: !display[key] })
-                }
-              />
-              <span>{label}</span>
-            </label>
-          ))}
-        </div>
-      </Disclosure>
-
-      <div className="mt-auto pt-4">
+      <div className="mt-auto space-y-2 pt-4">
+        <button
+          onClick={onReset}
+          className="flex w-full items-center justify-center gap-1.5 rounded-md border border-slate-200 px-2.5 py-2 text-xs text-slate-600 transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 md:py-1.5"
+        >
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+            <path
+              d="M11.3 5A4.6 4.6 0 1 0 12 8"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M11.5 2v3h-3"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span>Reset view</span>
+        </button>
         <button
           onClick={onToggleTheme}
           className="flex w-full items-center justify-between rounded-md border border-slate-200 px-2.5 py-2 text-xs text-slate-600 transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 md:py-1.5"

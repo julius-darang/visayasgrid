@@ -1,14 +1,19 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const EMPTY = { type: "FeatureCollection", features: [] };
 
-export function useGridData() {
+export function useGridData(onLoad) {
   const [buses, setBuses] = useState(EMPTY);
   const [lines, setLines] = useState(EMPTY);
   const [manifest, setManifest] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [nonce, setNonce] = useState(0);
+
+  const onLoadRef = useRef(onLoad);
+  useEffect(() => {
+    onLoadRef.current = onLoad;
+  }, [onLoad]);
 
   const reload = useCallback(() => {
     setError(null);
@@ -29,6 +34,7 @@ export function useGridData() {
         setLines(l);
         setManifest(m);
         setLoading(false);
+        onLoadRef.current?.(b, l);
       })
       .catch((e) => {
         if (cancelled) return;
