@@ -105,6 +105,7 @@ export default function Sidebar({
   onToggleTheme,
   open,
   onClose,
+  onShowAbout,
 }) {
   const [query, setQuery] = useState("");
   const [info, setInfo] = useState({});
@@ -414,6 +415,13 @@ export default function Sidebar({
             />
           </svg>
           <span>Reset view</span>
+        </button>
+        <button
+          onClick={onShowAbout}
+          className="flex w-full items-center justify-between rounded-md border border-slate-200 px-2.5 py-2 text-xs text-slate-600 transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 md:py-1.5"
+        >
+          <span>About this grid</span>
+          <span aria-hidden="true">ℹ</span>
         </button>
         <button
           onClick={onToggleTheme}
