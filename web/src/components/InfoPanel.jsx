@@ -30,6 +30,35 @@ function Section({ title, children }) {
   );
 }
 
+// Secondary engineering figures — collapsed by default so the panel
+// leads with the headline numbers a casual reader wants.
+function Technical({ children }) {
+  return (
+    <details className="group mt-3 border-t border-slate-200 pt-2 dark:border-slate-700">
+      <summary className="flex cursor-pointer select-none items-center justify-between text-[10px] font-semibold uppercase tracking-wider text-slate-400 marker:hidden focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500">
+        <span>Technical details</span>
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 10 10"
+          aria-hidden="true"
+          className="transition-transform duration-150 group-open:rotate-180"
+        >
+          <path
+            d="M2 4l3 3 3-3"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </summary>
+      <dl className="mt-1">{children}</dl>
+    </details>
+  );
+}
+
 function CarrierChips({ carriers }) {
   if (!carriers) return <span>—</span>;
   const items = String(carriers).split(",").filter(Boolean);
@@ -99,11 +128,11 @@ function BusPanel({ p, manifest }) {
       )}
 
       {hasResults && (
-        <Section title="Flow">
+        <Technical>
           <Row label="Voltage">{formatNumber(p.vm_pu, 3)} pu</Row>
           <Row label="Angle">{formatNumber(p.va_degree, 2)}°</Row>
           {p.is_slack && <Row label="Role">slack bus</Row>}
-        </Section>
+        </Technical>
       )}
     </>
   );
@@ -123,21 +152,23 @@ function LinePanel({ p }) {
         {p.parallel > 1 ? ` · ${p.parallel}× parallel` : ""}
       </div>
 
-      <Section title="Path">
+      {p.loading_percent != null && (
+        <Section title="Flow">
+          <Row label="Loading">{formatNumber(p.loading_percent, 1)}%</Row>
+          <Row label="Power">{formatNumber(p.p_from_mw, 1)} MW</Row>
+        </Section>
+      )}
+
+      <Technical>
         <Row label="Length">{formatNumber(p.length_km, 1)} km</Row>
         <Row label="Submarine">{p.is_submarine ? "yes" : "no"}</Row>
         <Row label="r">{formatNumber(p.r_ohm_per_km, 4)} Ω/km</Row>
         <Row label="x">{formatNumber(p.x_ohm_per_km, 4)} Ω/km</Row>
         <Row label="Imax">{formatNumber(p.max_i_ka, 3)} kA</Row>
-      </Section>
-
-      {p.loading_percent != null && (
-        <Section title="Flow">
-          <Row label="Loading">{formatNumber(p.loading_percent, 1)}%</Row>
-          <Row label="Power">{formatNumber(p.p_from_mw, 1)} MW</Row>
+        {p.loading_percent != null && (
           <Row label="Current">{formatNumber(p.i_from_ka, 3)} kA</Row>
-        </Section>
-      )}
+        )}
+      </Technical>
     </>
   );
 }

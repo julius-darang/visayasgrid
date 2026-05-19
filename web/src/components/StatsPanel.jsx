@@ -72,15 +72,13 @@ export default function StatsPanel({ buses, lines, manifest, onFocus }) {
       <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
         Visayas snapshot
       </div>
-      {/* Net/HVDC use emerald/rose (balance scale) — deliberately distinct
-          from the line-loading colour scale, which is a separate metric. */}
+      {/* Headline only — Demand + Net. Secondary figures live under
+          "More detail" so the panel stays scannable at a glance.
+          Net uses emerald/rose (balance scale), deliberately distinct
+          from the line-loading colour scale. */}
       <div className="grid grid-cols-2 gap-x-3 gap-y-1">
         <span className="text-slate-500 dark:text-slate-400">Demand</span>
         <span className="text-right font-semibold tabular-nums">{totalLoad.toFixed(0)} MW</span>
-        <span className="text-slate-500 dark:text-slate-400">Dispatched</span>
-        <span className="text-right font-semibold tabular-nums">{totalGen.toFixed(0)} MW</span>
-        <span className="text-slate-500 dark:text-slate-400">Capacity</span>
-        <span className="text-right tabular-nums text-slate-600 dark:text-slate-300">{totalCap.toFixed(0)} MW</span>
         <span className="text-slate-500 dark:text-slate-400">Net</span>
         <span
           className={`text-right font-semibold tabular-nums ${
@@ -91,21 +89,6 @@ export default function StatsPanel({ buses, lines, manifest, onFocus }) {
         >
           {net >= 0 ? "+" : ""}{net.toFixed(0)} MW
         </span>
-        {hvdcMw !== null && (
-          <>
-            <span className="text-slate-500 dark:text-slate-400">HVDC link</span>
-            <span
-              className={`text-right font-semibold tabular-nums ${
-                hvdcMw >= 0
-                  ? "text-violet-700 dark:text-violet-400"
-                  : "text-amber-700 dark:text-amber-400"
-              }`}
-              title={hvdcMw >= 0 ? "Importing from Luzon" : "Exporting to Luzon"}
-            >
-              {hvdcMw >= 0 ? "+" : ""}{hvdcMw.toFixed(0)} MW
-            </span>
-          </>
-        )}
       </div>
 
       {(overloaded.length > 0 || violations.length > 0) && (
@@ -135,11 +118,50 @@ export default function StatsPanel({ buses, lines, manifest, onFocus }) {
         </div>
       )}
 
-      <details className="mt-2">
-        <summary className="cursor-pointer select-none rounded text-[10px] uppercase tracking-wider text-slate-400 transition hover:text-slate-600 focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500 dark:hover:text-slate-300">
-          By island
+      <details className="group mt-2 border-t border-slate-100 pt-2 dark:border-slate-800">
+        <summary className="flex cursor-pointer select-none items-center justify-between rounded text-[10px] uppercase tracking-wider text-slate-400 transition marker:hidden hover:text-slate-600 focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500 dark:hover:text-slate-300">
+          <span>More detail</span>
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 10 10"
+            aria-hidden="true"
+            className="transition-transform duration-150 group-open:rotate-180"
+          >
+            <path
+              d="M2 4l3 3 3-3"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </summary>
-        <table className="mt-1.5 w-full text-[11px]">
+
+        <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1">
+          <span className="text-slate-500 dark:text-slate-400">Dispatched</span>
+          <span className="text-right font-semibold tabular-nums">{totalGen.toFixed(0)} MW</span>
+          <span className="text-slate-500 dark:text-slate-400">Capacity</span>
+          <span className="text-right tabular-nums text-slate-600 dark:text-slate-300">{totalCap.toFixed(0)} MW</span>
+          {hvdcMw !== null && (
+            <>
+              <span className="text-slate-500 dark:text-slate-400">HVDC link</span>
+              <span
+                className={`text-right font-semibold tabular-nums ${
+                  hvdcMw >= 0
+                    ? "text-violet-700 dark:text-violet-400"
+                    : "text-amber-700 dark:text-amber-400"
+                }`}
+                title={hvdcMw >= 0 ? "Importing from Luzon" : "Exporting to Luzon"}
+              >
+                {hvdcMw >= 0 ? "+" : ""}{hvdcMw.toFixed(0)} MW
+              </span>
+            </>
+          )}
+        </div>
+
+        <table className="mt-2 w-full text-[11px]">
           <thead>
             <tr className="text-slate-400 dark:text-slate-500">
               <th className="text-left font-normal">Island</th>

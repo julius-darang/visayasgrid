@@ -8,28 +8,59 @@ function toggle(set, value) {
   return [...next];
 }
 
-function SectionHeader({ children, onAll, onNone }) {
+function Chevron() {
   return (
-    <div className="mb-2 flex items-center justify-between">
-      <h2 className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-        {children}
-      </h2>
-      {onAll && (
-        <div className="flex gap-2 text-[10px] text-sky-600 dark:text-sky-400">
-          <button
-            onClick={onAll}
-            className="rounded hover:underline focus-visible:ring-2 focus-visible:ring-sky-500"
-          >
-            All
-          </button>
-          <button
-            onClick={onNone}
-            className="rounded hover:underline focus-visible:ring-2 focus-visible:ring-sky-500"
-          >
-            None
-          </button>
-        </div>
-      )}
+    <svg
+      width="10"
+      height="10"
+      viewBox="0 0 10 10"
+      aria-hidden="true"
+      className="transition-transform duration-150 group-open:rotate-180"
+    >
+      <path
+        d="M2 4l3 3 3-3"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+// Collapsible section: keeps the sidebar uncluttered while the summary
+// (e.g. "6 / 8") still shows state at a glance.
+function Disclosure({ title, summary, defaultOpen = false, children }) {
+  return (
+    <details className="group mb-4" {...(defaultOpen ? { open: true } : {})}>
+      <summary className="flex cursor-pointer select-none items-center justify-between rounded py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400 marker:hidden focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500">
+        <span>{title}</span>
+        <span className="flex items-center gap-1.5 normal-case tracking-normal">
+          {summary != null && <span>{summary}</span>}
+          <Chevron />
+        </span>
+      </summary>
+      <div className="mt-2">{children}</div>
+    </details>
+  );
+}
+
+function AllNone({ onAll, onNone }) {
+  return (
+    <div className="mb-1 flex gap-3 text-[10px] text-sky-600 dark:text-sky-400">
+      <button
+        onClick={onAll}
+        className="rounded hover:underline focus-visible:ring-2 focus-visible:ring-sky-500"
+      >
+        All
+      </button>
+      <button
+        onClick={onNone}
+        className="rounded hover:underline focus-visible:ring-2 focus-visible:ring-sky-500"
+      >
+        None
+      </button>
     </div>
   );
 }
@@ -46,6 +77,8 @@ export default function Sidebar({
   setSelectedVoltages,
   colorMode,
   setColorMode,
+  display,
+  setDisplay,
   buses,
   onPick,
   theme,
@@ -127,39 +160,66 @@ export default function Sidebar({
         </label>
       </div>
 
-      <div className="mb-5">
-        <SectionHeader>Colour buses by</SectionHeader>
-        <div className="grid grid-cols-2 gap-1">
+      <Disclosure
+        title="Display"
+        summary={colorMode === "pu" ? "Voltage (pu)" : "Nominal kV"}
+      >
+        <div className="mb-3">
+          <div className="mb-1 text-[10px] text-slate-400 dark:text-slate-500">
+            Colour buses by
+          </div>
+          <div className="grid grid-cols-2 gap-1">
+            {[
+              ["nominal", "Nominal kV"],
+              ["pu", "Voltage (pu)"],
+            ].map(([mode, label]) => (
+              <button
+                key={mode}
+                onClick={() => setColorMode(mode)}
+                aria-pressed={colorMode === mode}
+                className={`rounded-md border px-2 py-1.5 text-xs transition focus-visible:ring-2 focus-visible:ring-sky-500 ${
+                  colorMode === mode
+                    ? "border-sky-500 bg-sky-50 text-sky-700 dark:border-sky-500 dark:bg-sky-950 dark:text-sky-300"
+                    : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <p className="mt-1 text-[10px] text-slate-400 dark:text-slate-500">
+            Voltage (pu) shows AC load-flow results only.
+          </p>
+        </div>
+        <div className="space-y-0.5">
           {[
-            ["nominal", "Nominal kV"],
-            ["pu", "Voltage (pu)"],
-          ].map(([mode, label]) => (
-            <button
-              key={mode}
-              onClick={() => setColorMode(mode)}
-              aria-pressed={colorMode === mode}
-              className={`rounded-md border px-2 py-1.5 text-xs transition focus-visible:ring-2 focus-visible:ring-sky-500 ${
-                colorMode === mode
-                  ? "border-sky-500 bg-sky-50 text-sky-700 dark:border-sky-500 dark:bg-sky-950 dark:text-sky-300"
-                  : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
-              }`}
-            >
-              {label}
-            </button>
+            ["labels", "Bus labels"],
+            ["arrows", "Flow arrows"],
+            ["rings", "Generator rings"],
+          ].map(([key, label]) => (
+            <label key={key} className={rowClass}>
+              <input
+                type="checkbox"
+                className={checkboxClass}
+                checked={display[key]}
+                onChange={() =>
+                  setDisplay({ ...display, [key]: !display[key] })
+                }
+              />
+              <span>{label}</span>
+            </label>
           ))}
         </div>
-        <p className="mt-1 text-[10px] text-slate-400 dark:text-slate-500">
-          Voltage (pu) shows AC load-flow results only.
-        </p>
-      </div>
+      </Disclosure>
 
-      <div className="mb-5">
-        <SectionHeader
+      <Disclosure
+        title="Islands"
+        summary={`${selectedIslands.length} / ${ISLANDS.length}`}
+      >
+        <AllNone
           onAll={() => setSelectedIslands(ISLANDS)}
           onNone={() => setSelectedIslands([])}
-        >
-          Islands
-        </SectionHeader>
+        />
         <div className="space-y-0.5">
           {ISLANDS.map((island) => (
             <label key={island} className={rowClass}>
@@ -175,15 +235,16 @@ export default function Sidebar({
             </label>
           ))}
         </div>
-      </div>
+      </Disclosure>
 
-      <div className="mb-5">
-        <SectionHeader
+      <Disclosure
+        title="Voltage"
+        summary={`${selectedVoltages.length} / ${VOLTAGE_LEVELS.length}`}
+      >
+        <AllNone
           onAll={() => setSelectedVoltages(VOLTAGE_LEVELS)}
           onNone={() => setSelectedVoltages([])}
-        >
-          Voltage
-        </SectionHeader>
+        />
         <div className="space-y-0.5">
           {VOLTAGE_LEVELS.map((kv) => (
             <label key={kv} className={rowClass}>
@@ -203,7 +264,7 @@ export default function Sidebar({
             </label>
           ))}
         </div>
-      </div>
+      </Disclosure>
 
       <div className="mt-auto pt-4">
         <button

@@ -18,6 +18,11 @@ export default function App() {
   const [selected, setSelected] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [colorMode, setColorMode] = useState("nominal");
+  const [display, setDisplay] = useState({
+    labels: true,
+    arrows: true,
+    rings: true,
+  });
   const [focusTarget, setFocusTarget] = useState(null);
   const [hintDismissed, setHintDismissed] = useState(
     () => !!localStorage.getItem(HINT_KEY),
@@ -81,6 +86,8 @@ export default function App() {
         setSelectedVoltages={setSelectedVoltages}
         colorMode={colorMode}
         setColorMode={setColorMode}
+        display={display}
+        setDisplay={setDisplay}
         buses={buses}
         onPick={(f) => {
           focusFeature(f, "bus");
@@ -113,6 +120,7 @@ export default function App() {
           onSelect={select}
           theme={theme}
           colorMode={colorMode}
+          display={display}
           selected={selected}
           focusTarget={focusTarget}
         />

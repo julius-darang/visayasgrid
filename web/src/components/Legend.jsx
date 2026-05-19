@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   VOLTAGE_LEVELS,
   VOLTAGE_COLORS,
@@ -24,32 +23,31 @@ function SubHeader({ children, active }) {
 }
 
 export default function Legend({ colorMode = "nominal" }) {
-  // Expanded by default on desktop; collapsed on small screens so it does
-  // not cover the map. Defaults to open during SSR-less first paint.
-  const [open, setOpen] = useState(() =>
-    typeof window === "undefined"
-      ? true
-      : window.matchMedia("(min-width: 768px)").matches,
-  );
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const onChange = (e) => setOpen(e.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-
+  // Collapsed by default so the map stays the focus; the summary chip is
+  // always available to expand the colour reference on demand.
   return (
     <div className="absolute bottom-4 left-4 z-[1000] max-w-[calc(100vw-2rem)] rounded-lg border border-slate-200 bg-white/95 text-[11px] shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200">
-      <details
-        open={open}
-        onToggle={(e) => setOpen(e.currentTarget.open)}
-        className="group"
-      >
-        <summary className="cursor-pointer select-none rounded-lg px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-slate-400 marker:hidden focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500 md:hidden">
-          Legend
+      <details className="group">
+        <summary className="flex cursor-pointer select-none items-center gap-2 rounded-lg px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-slate-400 marker:hidden focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500">
+          <span>Legend</span>
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 10 10"
+            aria-hidden="true"
+            className="transition-transform duration-150 group-open:rotate-180"
+          >
+            <path
+              d="M2 4l3 3 3-3"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </summary>
-        <div className="grid grid-cols-1 gap-3 px-3 pb-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 md:pt-3">
+        <div className="grid grid-cols-1 gap-3 px-3 pb-3 pt-1 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           <div>
             <SubHeader active={colorMode === "nominal"}>Bus voltage</SubHeader>
             <div className="space-y-0.5">

@@ -88,6 +88,7 @@ export default function MapView({
   onSelect,
   theme,
   colorMode,
+  display,
   selected,
   focusTarget,
 }) {
@@ -117,7 +118,10 @@ export default function MapView({
         const dim = active && !active.lineKeys.has(`${lp.from_bus}|${lp.to_bus}`);
         const pmw = f.properties.p_from_mw;
         const showArrow =
-          !dim && pmw != null && Math.abs(pmw) >= FLOW_ARROW_MIN_MW;
+          display.arrows &&
+          !dim &&
+          pmw != null &&
+          Math.abs(pmw) >= FLOW_ARROW_MIN_MW;
         let arrow = null;
         if (showArrow) {
           const [a, b] = coords;
@@ -153,6 +157,8 @@ export default function MapView({
         const hasGen = (f.properties.gen_capacity_mw || 0) > 0;
         const isHvdc = f.properties.bus_type === "hvdc";
         const dim = active && !active.busNames.has(f.properties.name);
+        const showLabel =
+          display.labels || (active && active.busNames.has(f.properties.name));
         const fill =
           colorMode === "pu"
             ? colorForVoltagePu(f.properties.vm_pu)
@@ -160,7 +166,7 @@ export default function MapView({
 
         return (
           <Fragment key={`bus-${i}`}>
-            {hasGen && (
+            {hasGen && display.rings && (
               <CircleMarker
                 center={[y, x]}
                 radius={radius + 3}
@@ -204,14 +210,16 @@ export default function MapView({
                 click: () => onSelect({ kind: "bus", feature: f }),
               }}
             >
-              <Tooltip
-                permanent
-                direction="right"
-                offset={[radius + 2, 0]}
-                className={dim ? "bus-label bus-label-dim" : "bus-label"}
-              >
-                {f.properties.name}
-              </Tooltip>
+              {showLabel && (
+                <Tooltip
+                  permanent
+                  direction="right"
+                  offset={[radius + 2, 0]}
+                  className={dim ? "bus-label bus-label-dim" : "bus-label"}
+                >
+                  {f.properties.name}
+                </Tooltip>
+              )}
             </CircleMarker>
           </Fragment>
         );
