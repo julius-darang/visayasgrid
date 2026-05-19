@@ -174,10 +174,10 @@ export default function MapView({
             {hasGen && display.rings && (
               <CircleMarker
                 center={[y, x]}
-                radius={radius + 3}
+                radius={radius + 2.5}
                 pathOptions={{
                   color: colorForCarrier(f.properties.primary_carrier),
-                  weight: 2,
+                  weight: 1.25,
                   fillColor: "transparent",
                   fillOpacity: 0,
                   opacity: dim ? 0.15 : 1,
@@ -189,15 +189,15 @@ export default function MapView({
             {isHvdc && (
               <CircleMarker
                 center={[y, x]}
-                radius={radius + 5}
+                radius={radius + 4}
                 pathOptions={{
                   color: "#7c3aed",
-                  weight: 2,
+                  weight: 1.25,
                   fillColor: "transparent",
                   fillOpacity: 0,
                   opacity: dim ? 0.15 : 1,
                   interactive: false,
-                  dashArray: "4 3",
+                  dashArray: "3 3",
                 }}
               />
             )}
@@ -206,7 +206,7 @@ export default function MapView({
               radius={radius}
               pathOptions={{
                 color: busStroke,
-                weight: 1,
+                weight: 0.75,
                 opacity: dim ? 0.2 : 1,
                 fillColor: fill,
                 fillOpacity: dim ? 0.2 : 0.92,
