@@ -54,7 +54,11 @@ function Cat({ id, title, active, info, open, onToggle, children }) {
   );
 }
 
-export default function Legend({ colorMode = "nominal" }) {
+export default function Legend({
+  colorMode = "nominal",
+  selectedVoltages = [],
+  onToggleVoltage,
+}) {
   // Collapsed by default so the map stays the focus; the summary chip is
   // always available to expand the colour reference on demand.
   const [info, setInfo] = useState({});
@@ -92,15 +96,31 @@ export default function Legend({ colorMode = "nominal" }) {
             onToggle={() => toggle("voltage")}
           >
             <div className="space-y-0.5">
-              {VOLTAGE_LEVELS.map((kv) => (
-                <div key={kv} className="flex items-center gap-2">
-                  <span
-                    className="inline-block h-2.5 w-2.5 rounded-full"
-                    style={{ backgroundColor: VOLTAGE_COLORS[kv] }}
-                  />
-                  <span>{kv} kV</span>
-                </div>
-              ))}
+              {VOLTAGE_LEVELS.map((kv) => {
+                const on = selectedVoltages.includes(kv);
+                return (
+                  <button
+                    key={kv}
+                    type="button"
+                    onClick={() => onToggleVoltage?.(kv)}
+                    aria-pressed={on}
+                    title={
+                      on
+                        ? `Hide ${kv} kV buses`
+                        : `Show ${kv} kV buses`
+                    }
+                    className={`flex w-full items-center gap-2 rounded px-1 text-left transition hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:bg-slate-800 ${
+                      on ? "" : "opacity-40"
+                    }`}
+                  >
+                    <span
+                      className="inline-block h-2.5 w-2.5 rounded-full"
+                      style={{ backgroundColor: VOLTAGE_COLORS[kv] }}
+                    />
+                    <span className={on ? "" : "line-through"}>{kv} kV</span>
+                  </button>
+                );
+              })}
             </div>
           </Cat>
 

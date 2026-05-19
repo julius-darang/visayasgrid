@@ -94,9 +94,13 @@ export default function Sidebar({
   setColorMode,
   display,
   setDisplay,
+  scenario,
+  setScenario,
+  scenarios = [],
   buses,
   onPick,
   onReset,
+  onOpenTable,
   theme,
   onToggleTheme,
   open,
@@ -104,6 +108,7 @@ export default function Sidebar({
 }) {
   const [query, setQuery] = useState("");
   const [info, setInfo] = useState({});
+  const [active, setActive] = useState(-1);
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
@@ -111,6 +116,29 @@ export default function Sidebar({
       .filter((f) => String(f.properties.name).toLowerCase().includes(q))
       .slice(0, 8);
   }, [query, buses]);
+
+  const choose = (f) => {
+    onPick(f, "bus");
+    setQuery("");
+    setActive(-1);
+  };
+
+  const onSearchKeyDown = (e) => {
+    if (!results.length) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setActive((i) => (i + 1) % results.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setActive((i) => (i <= 0 ? results.length - 1 : i - 1));
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      choose(results[active >= 0 ? active : 0]);
+    } else if (e.key === "Escape") {
+      setQuery("");
+      setActive(-1);
+    }
+  };
 
   return (
     <nav
@@ -150,20 +178,40 @@ export default function Sidebar({
           <input
             type="search"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setActive(-1);
+            }}
+            onKeyDown={onSearchKeyDown}
             placeholder="Find a bus…"
+            role="combobox"
+            aria-expanded={results.length > 0}
+            aria-controls="bus-search-results"
+            aria-activedescendant={
+              active >= 0 ? `bus-search-opt-${active}` : undefined
+            }
+            autoComplete="off"
             className="w-full rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-xs text-slate-700 placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
           />
           {results.length > 0 && (
-            <ul className="absolute z-10 mt-1 w-full overflow-hidden rounded-md border border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-800">
-              {results.map((f) => (
-                <li key={f.properties.name}>
+            <ul
+              id="bus-search-results"
+              role="listbox"
+              className="absolute z-10 mt-1 w-full overflow-hidden rounded-md border border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-800"
+            >
+              {results.map((f, idx) => (
+                <li key={f.properties.name} role="presentation">
                   <button
-                    onClick={() => {
-                      onPick(f, "bus");
-                      setQuery("");
-                    }}
-                    className="block w-full px-2.5 py-1.5 text-left text-xs text-slate-700 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-200 dark:hover:bg-slate-700"
+                    id={`bus-search-opt-${idx}`}
+                    role="option"
+                    aria-selected={idx === active}
+                    onMouseEnter={() => setActive(idx)}
+                    onClick={() => choose(f)}
+                    className={`block w-full px-2.5 py-1.5 text-left text-xs focus-visible:ring-2 focus-visible:ring-sky-500 ${
+                      idx === active
+                        ? "bg-sky-100 text-slate-900 dark:bg-sky-900 dark:text-slate-100"
+                        : "text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-700"
+                    }`}
                   >
                     {f.properties.name}
                     <span className="ml-1 text-slate-400">
@@ -303,6 +351,47 @@ export default function Sidebar({
       </Disclosure>
 
       <div className="mt-auto space-y-2 pt-4">
+        {scenarios.length > 1 && (
+          <label className="block">
+            <span className="mb-1 block text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Scenario
+            </span>
+            <select
+              value={scenario}
+              onChange={(e) => setScenario(e.target.value)}
+              className="w-full rounded-md border border-slate-200 bg-white px-2 py-1.5 text-xs text-slate-700 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+            >
+              {scenarios.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.label}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        <button
+          onClick={onOpenTable}
+          className="flex w-full items-center justify-center gap-1.5 rounded-md border border-slate-200 px-2.5 py-2 text-xs text-slate-600 transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 md:py-1.5"
+        >
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+            <rect
+              x="1.5"
+              y="2.5"
+              width="11"
+              height="9"
+              rx="1"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.3"
+            />
+            <path
+              d="M1.5 5.5h11M5.5 5.5v6"
+              stroke="currentColor"
+              strokeWidth="1.3"
+            />
+          </svg>
+          <span>Data table</span>
+        </button>
         <button
           onClick={onReset}
           className="flex w-full items-center justify-center gap-1.5 rounded-md border border-slate-200 px-2.5 py-2 text-xs text-slate-600 transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 md:py-1.5"

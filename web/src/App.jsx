@@ -4,50 +4,34 @@ import Sidebar from "./components/Sidebar.jsx";
 import InfoPanel from "./components/InfoPanel.jsx";
 import Legend from "./components/Legend.jsx";
 import StatsPanel from "./components/StatsPanel.jsx";
+import DataTable from "./components/DataTable.jsx";
 import { useGridData, filterFeatures } from "./hooks/useGridData.js";
 import { useTheme } from "./hooks/useTheme.js";
 import { usePersistentState } from "./hooks/usePersistentState.js";
 import { ISLANDS, VOLTAGE_LEVELS, MAP } from "./lib/styles.js";
+import {
+  parseViewState,
+  encodeViewState,
+  parseSel,
+} from "./lib/viewState.js";
+import { featureCenter } from "./lib/grid.js";
 
 const HINT_KEY = "vg-hint-seen";
+const initial = parseViewState(
+  typeof window !== "undefined" ? window.location.hash : "",
+);
 
-function parseHash() {
-  const h = typeof window !== "undefined" ? window.location.hash.slice(1) : "";
-  return new URLSearchParams(h);
-}
-
-function initIslands() {
-  const p = parseHash().get("islands");
-  if (!p) return ISLANDS;
-  const picked = ISLANDS.filter((i) => p.split(",").includes(i));
-  return picked.length ? picked : ISLANDS;
-}
-
-function initVoltages() {
-  const p = parseHash().get("kv");
-  if (!p) return VOLTAGE_LEVELS;
-  const picked = p
-    .split(",")
-    .map(Number)
-    .filter((n) => VOLTAGE_LEVELS.includes(n));
-  return picked.length ? picked : VOLTAGE_LEVELS;
-}
-
-function featureCenter(g) {
-  if (g.type === "Point") {
-    return { lng: g.coordinates[0], lat: g.coordinates[1] };
-  }
-  const cs = g.coordinates;
-  const m = cs[Math.floor(cs.length / 2)] ?? cs[0];
-  return { lng: m[0], lat: m[1] };
-}
+const SCENARIOS = [{ id: "ac", label: "AC — Newton-Raphson" }];
 
 export default function App() {
   const [theme, toggleTheme] = useTheme();
-  const [selectedIslands, setSelectedIslands] = useState(initIslands);
-  const [selectedVoltages, setSelectedVoltages] = useState(initVoltages);
+  const [selectedIslands, setSelectedIslands] = useState(initial.islands);
+  const [selectedVoltages, setSelectedVoltages] = useState(initial.voltages);
   const [selected, setSelected] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [tableOpen, setTableOpen] = useState(false);
+  const [scenario, setScenario] = useState("ac");
+  const [dcAvailable, setDcAvailable] = useState(false);
   const [colorMode, setColorMode] = usePersistentState(
     "vg-colormode",
     "nominal",
@@ -62,36 +46,53 @@ export default function App() {
     () => !!localStorage.getItem(HINT_KEY),
   );
 
-  // The selected element is carried in the URL hash for sharing, but it
-  // can only be resolved once data has loaded — capture it before the
-  // URL-sync effect can overwrite it.
-  const pendingSel = useRef(parseHash().get("sel"));
+  // Selection is resolved once data loads — capture it before the
+  // URL-sync effect can clear the hash.
+  const pendingSel = useRef(initial.sel);
 
   const handleLoad = useCallback((b, l) => {
-    const sel = pendingSel.current;
+    const want = parseSel(pendingSel.current);
     pendingSel.current = null;
-    if (!sel) return;
-    let feature;
-    let kind;
-    if (sel.startsWith("bus:")) {
-      kind = "bus";
-      const name = sel.slice(4);
-      feature = b.features.find((f) => f.properties.name === name);
-    } else if (sel.startsWith("line:")) {
-      kind = "line";
-      const [from, to] = sel.slice(5).split("|");
-      feature = l.features.find(
-        (f) => f.properties.from_bus === from && f.properties.to_bus === to,
-      );
-    }
+    if (!want) return;
+    const feature =
+      want.kind === "bus"
+        ? b.features.find((f) => f.properties.name === want.name)
+        : l.features.find(
+            (f) =>
+              f.properties.from_bus === want.from &&
+              f.properties.to_bus === want.to,
+          );
     if (!feature) return;
-    setSelected({ kind, feature });
+    setSelected({ kind: want.kind, feature });
     const c = featureCenter(feature.geometry);
     setFocusTarget({ lat: c.lat, lng: c.lng, zoom: 10, _t: Date.now() });
   }, []);
 
-  const { buses, lines, manifest, loading, error, reload } =
-    useGridData(handleLoad);
+  const { buses, lines, manifest, loading, error, reload } = useGridData(
+    scenario,
+    handleLoad,
+  );
+
+  // Probe for an optional pre-generated DC dataset.
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/data/dc/manifest.json", { method: "HEAD" })
+      .then((r) => {
+        if (!cancelled) setDcAvailable(r.ok);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const scenarios = useMemo(
+    () =>
+      dcAvailable
+        ? [...SCENARIOS, { id: "dc", label: "DC — linear" }]
+        : SCENARIOS,
+    [dcAvailable],
+  );
 
   const filters = useMemo(
     () => ({ islands: selectedIslands, voltages: selectedVoltages }),
@@ -106,26 +107,14 @@ export default function App() {
     [lines, filters],
   );
 
-  // Keep the URL hash in sync with the shareable view state. This only
-  // writes history (a side effect), never React state.
+  // Keep the URL hash in sync with the shareable view state (history
+  // only — never React state).
   useEffect(() => {
-    const p = new URLSearchParams();
-    if (selectedIslands.length !== ISLANDS.length) {
-      p.set("islands", selectedIslands.join(","));
-    }
-    if (selectedVoltages.length !== VOLTAGE_LEVELS.length) {
-      p.set("kv", selectedVoltages.join(","));
-    }
-    if (selected) {
-      const pr = selected.feature.properties;
-      p.set(
-        "sel",
-        selected.kind === "bus"
-          ? `bus:${pr.name}`
-          : `line:${pr.from_bus}|${pr.to_bus}`,
-      );
-    }
-    const qs = p.toString();
+    const qs = encodeViewState({
+      islands: selectedIslands,
+      voltages: selectedVoltages,
+      selected,
+    });
     window.history.replaceState(
       null,
       "",
@@ -145,13 +134,18 @@ export default function App() {
     if (!hintDismissed) dismissHint();
   };
 
-  // Select + recenter the map. Used by search and StatsPanel alerts;
-  // plain map clicks intentionally do not recenter.
+  // Select + recenter the map. Used by search, the data table and
+  // StatsPanel alerts; plain map clicks intentionally do not recenter.
   const focusFeature = (feature, kind) => {
     select({ kind, feature });
     const c = featureCenter(feature.geometry);
     setFocusTarget({ lat: c.lat, lng: c.lng, zoom: 10, _t: Date.now() });
   };
+
+  const toggleVoltage = (kv) =>
+    setSelectedVoltages((cur) =>
+      cur.includes(kv) ? cur.filter((v) => v !== kv) : [...cur, kv],
+    );
 
   const resetView = () => {
     setSelected(null);
@@ -184,12 +178,19 @@ export default function App() {
         setColorMode={setColorMode}
         display={display}
         setDisplay={setDisplay}
+        scenario={scenario}
+        setScenario={setScenario}
+        scenarios={scenarios}
         buses={buses}
         onPick={(f) => {
           focusFeature(f, "bus");
           setSidebarOpen(false);
         }}
         onReset={resetView}
+        onOpenTable={() => {
+          setTableOpen(true);
+          setSidebarOpen(false);
+        }}
         theme={theme}
         onToggleTheme={toggleTheme}
         open={sidebarOpen}
@@ -229,12 +230,27 @@ export default function App() {
           manifest={manifest}
           onFocus={focusFeature}
         />
-        <Legend colorMode={colorMode} />
+        <Legend
+          colorMode={colorMode}
+          selectedVoltages={selectedVoltages}
+          onToggleVoltage={toggleVoltage}
+        />
         <InfoPanel
           selected={selected}
           onClose={() => setSelected(null)}
           manifest={manifest}
         />
+        {tableOpen && (
+          <DataTable
+            buses={visibleBuses}
+            lines={visibleLines}
+            onClose={() => setTableOpen(false)}
+            onFocus={(f, k) => {
+              focusFeature(f, k);
+              setTableOpen(false);
+            }}
+          />
+        )}
 
         <div
           aria-live="polite"

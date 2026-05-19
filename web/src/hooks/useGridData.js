@@ -2,7 +2,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const EMPTY = { type: "FeatureCollection", features: [] };
 
-export function useGridData(onLoad) {
+// Each scenario is a sub-folder of /data; "ac" is the deployed default
+// at the root for backward compatibility.
+function baseFor(scenario) {
+  return !scenario || scenario === "ac" ? "/data" : `/data/${scenario}`;
+}
+
+export function useGridData(scenario = "ac", onLoad) {
   const [buses, setBuses] = useState(EMPTY);
   const [lines, setLines] = useState(EMPTY);
   const [manifest, setManifest] = useState(null);
@@ -23,10 +29,11 @@ export function useGridData(onLoad) {
 
   useEffect(() => {
     let cancelled = false;
+    const base = baseFor(scenario);
     Promise.all([
-      fetch("/data/buses.geojson").then((r) => (r.ok ? r.json() : EMPTY)),
-      fetch("/data/lines.geojson").then((r) => (r.ok ? r.json() : EMPTY)),
-      fetch("/data/manifest.json").then((r) => (r.ok ? r.json() : null)),
+      fetch(`${base}/buses.geojson`).then((r) => (r.ok ? r.json() : EMPTY)),
+      fetch(`${base}/lines.geojson`).then((r) => (r.ok ? r.json() : EMPTY)),
+      fetch(`${base}/manifest.json`).then((r) => (r.ok ? r.json() : null)),
     ])
       .then(([b, l, m]) => {
         if (cancelled) return;
@@ -44,7 +51,7 @@ export function useGridData(onLoad) {
     return () => {
       cancelled = true;
     };
-  }, [nonce]);
+  }, [nonce, scenario]);
 
   return { buses, lines, manifest, loading, error, reload };
 }

@@ -1,3 +1,5 @@
+import { overloadedLines, voltageViolations } from "../lib/grid.js";
+
 function sum(features, field) {
   return features.reduce((s, f) => s + Number(f.properties[field] || 0), 0);
 }
@@ -71,22 +73,8 @@ export default function StatsPanel({ buses, lines, manifest, onFocus }) {
 
   const snapshotDate = formatDate(manifest?.generated_at);
 
-  const overloaded = (lines?.features ?? [])
-    .filter((f) => Number(f.properties.loading_percent) > 100)
-    .sort(
-      (a, b) =>
-        Number(b.properties.loading_percent) -
-        Number(a.properties.loading_percent),
-    );
-  const violations = features
-    .filter((f) => {
-      const pu = f.properties.vm_pu;
-      return pu != null && (pu < 0.95 || pu > 1.05);
-    })
-    .sort(
-      (a, b) =>
-        Math.abs(b.properties.vm_pu - 1) - Math.abs(a.properties.vm_pu - 1),
-    );
+  const overloaded = overloadedLines(lines);
+  const violations = voltageViolations(buses);
   const alertCount = overloaded.length + violations.length;
 
   return (
