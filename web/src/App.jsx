@@ -1,28 +1,99 @@
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MapView from "./components/MapView.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 import InfoPanel from "./components/InfoPanel.jsx";
 import Legend from "./components/Legend.jsx";
 import StatsPanel from "./components/StatsPanel.jsx";
+import DataTable from "./components/DataTable.jsx";
 import AboutModal from "./components/AboutModal.jsx";
 import { useGridData, filterFeatures } from "./hooks/useGridData.js";
 import { useTheme } from "./hooks/useTheme.js";
-import { ISLANDS, VOLTAGE_LEVELS } from "./lib/styles.js";
+import { usePersistentState } from "./hooks/usePersistentState.js";
+import { ISLANDS, VOLTAGE_LEVELS, MAP } from "./lib/styles.js";
+import {
+  parseViewState,
+  encodeViewState,
+  parseSel,
+} from "./lib/viewState.js";
+import { featureCenter } from "./lib/grid.js";
 
 const HINT_KEY = "vg-hint-seen";
+const initial = parseViewState(
+  typeof window !== "undefined" ? window.location.hash : "",
+);
+
+const SCENARIOS = [{ id: "ac", label: "AC — Newton-Raphson" }];
 
 export default function App() {
-  const { buses, lines, manifest, loading, error, reload } = useGridData();
   const [theme, toggleTheme] = useTheme();
-  const [selectedIslands, setSelectedIslands] = useState(ISLANDS);
-  const [selectedVoltages, setSelectedVoltages] = useState(VOLTAGE_LEVELS);
+  const [selectedIslands, setSelectedIslands] = useState(initial.islands);
+  const [selectedVoltages, setSelectedVoltages] = useState(initial.voltages);
   const [selected, setSelected] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [colorMode, setColorMode] = useState("nominal");
+  const [tableOpen, setTableOpen] = useState(false);
+  const [scenario, setScenario] = useState("ac");
+  const [dcAvailable, setDcAvailable] = useState(false);
+  const [colorMode, setColorMode] = usePersistentState(
+    "vg-colormode",
+    "nominal",
+  );
+  const [display, setDisplay] = usePersistentState("vg-display", {
+    labels: false,
+    arrows: true,
+    rings: false,
+  });
   const [focusTarget, setFocusTarget] = useState(null);
   const [showAbout, setShowAbout] = useState(false);
   const [hintDismissed, setHintDismissed] = useState(
     () => !!localStorage.getItem(HINT_KEY),
+  );
+
+  // Selection is resolved once data loads — capture it before the
+  // URL-sync effect can clear the hash.
+  const pendingSel = useRef(initial.sel);
+
+  const handleLoad = useCallback((b, l) => {
+    const want = parseSel(pendingSel.current);
+    pendingSel.current = null;
+    if (!want) return;
+    const feature =
+      want.kind === "bus"
+        ? b.features.find((f) => f.properties.name === want.name)
+        : l.features.find(
+            (f) =>
+              f.properties.from_bus === want.from &&
+              f.properties.to_bus === want.to,
+          );
+    if (!feature) return;
+    setSelected({ kind: want.kind, feature });
+    const c = featureCenter(feature.geometry);
+    setFocusTarget({ lat: c.lat, lng: c.lng, zoom: 10, _t: Date.now() });
+  }, []);
+
+  const { buses, lines, manifest, loading, error, reload } = useGridData(
+    scenario,
+    handleLoad,
+  );
+
+  // Probe for an optional pre-generated DC dataset.
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/data/dc/manifest.json", { method: "HEAD" })
+      .then((r) => {
+        if (!cancelled) setDcAvailable(r.ok);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const scenarios = useMemo(
+    () =>
+      dcAvailable
+        ? [...SCENARIOS, { id: "dc", label: "DC — linear" }]
+        : SCENARIOS,
+    [dcAvailable],
   );
 
   const filters = useMemo(
@@ -38,6 +109,21 @@ export default function App() {
     [lines, filters],
   );
 
+  // Keep the URL hash in sync with the shareable view state (history
+  // only — never React state).
+  useEffect(() => {
+    const qs = encodeViewState({
+      islands: selectedIslands,
+      voltages: selectedVoltages,
+      selected,
+    });
+    window.history.replaceState(
+      null,
+      "",
+      qs ? `#${qs}` : window.location.pathname + window.location.search,
+    );
+  }, [selectedIslands, selectedVoltages, selected]);
+
   const showHint = !hintDismissed && !loading && !error && !selected;
 
   const dismissHint = () => {
@@ -50,21 +136,30 @@ export default function App() {
     if (!hintDismissed) dismissHint();
   };
 
-  // Select + recenter the map. Used by search and StatsPanel alerts;
-  // plain map clicks intentionally do not recenter.
+  // Select + recenter the map. Used by search, the data table and
+  // StatsPanel alerts; plain map clicks intentionally do not recenter.
   const focusFeature = (feature, kind) => {
     select({ kind, feature });
-    const g = feature.geometry;
-    let lat;
-    let lng;
-    if (g.type === "Point") {
-      [lng, lat] = g.coordinates;
-    } else {
-      const cs = g.coordinates;
-      const mid = cs[Math.floor(cs.length / 2)] ?? cs[0];
-      [lng, lat] = mid;
-    }
-    setFocusTarget({ lat, lng, zoom: 10, _t: Date.now() });
+    const c = featureCenter(feature.geometry);
+    setFocusTarget({ lat: c.lat, lng: c.lng, zoom: 10, _t: Date.now() });
+  };
+
+  const toggleVoltage = (kv) =>
+    setSelectedVoltages((cur) =>
+      cur.includes(kv) ? cur.filter((v) => v !== kv) : [...cur, kv],
+    );
+
+  const resetView = () => {
+    setSelected(null);
+    setSelectedIslands(ISLANDS);
+    setSelectedVoltages(VOLTAGE_LEVELS);
+    setFocusTarget({
+      lat: MAP.center[0],
+      lng: MAP.center[1],
+      zoom: MAP.zoom,
+      _t: Date.now(),
+    });
+    setSidebarOpen(false);
   };
 
   return (
@@ -83,9 +178,19 @@ export default function App() {
         setSelectedVoltages={setSelectedVoltages}
         colorMode={colorMode}
         setColorMode={setColorMode}
+        display={display}
+        setDisplay={setDisplay}
+        scenario={scenario}
+        setScenario={setScenario}
+        scenarios={scenarios}
         buses={buses}
         onPick={(f) => {
           focusFeature(f, "bus");
+          setSidebarOpen(false);
+        }}
+        onReset={resetView}
+        onOpenTable={() => {
+          setTableOpen(true);
           setSidebarOpen(false);
         }}
         theme={theme}
@@ -95,20 +200,22 @@ export default function App() {
         onShowAbout={() => setShowAbout(true)}
       />
       <main className="relative flex-1">
-        <button
-          onClick={() => setSidebarOpen(true)}
-          className="absolute left-4 top-4 z-[1000] rounded-md border border-slate-200 bg-white/95 p-2 text-slate-600 shadow-sm backdrop-blur transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-300 dark:hover:bg-slate-800 md:hidden"
-          aria-label="Open filters"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-            <path
-              d="M2 4h14M2 9h14M2 14h14"
-              stroke="currentColor"
-              strokeWidth="1.7"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
+        {!sidebarOpen && (
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className="absolute left-4 top-4 z-[1100] rounded-md border border-slate-200 bg-white/95 p-2 text-slate-600 shadow-sm backdrop-blur transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-300 dark:hover:bg-slate-800 md:hidden"
+            aria-label="Open filters"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+              <path
+                d="M2 4h14M2 9h14M2 14h14"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        )}
 
         <MapView
           buses={visibleBuses}
@@ -116,6 +223,7 @@ export default function App() {
           onSelect={select}
           theme={theme}
           colorMode={colorMode}
+          display={display}
           selected={selected}
           focusTarget={focusTarget}
         />
@@ -125,12 +233,27 @@ export default function App() {
           manifest={manifest}
           onFocus={focusFeature}
         />
-        <Legend colorMode={colorMode} />
+        <Legend
+          colorMode={colorMode}
+          selectedVoltages={selectedVoltages}
+          onToggleVoltage={toggleVoltage}
+        />
         <InfoPanel
           selected={selected}
           onClose={() => setSelected(null)}
           manifest={manifest}
         />
+        {tableOpen && (
+          <DataTable
+            buses={visibleBuses}
+            lines={visibleLines}
+            onClose={() => setTableOpen(false)}
+            onFocus={(f, k) => {
+              focusFeature(f, k);
+              setTableOpen(false);
+            }}
+          />
+        )}
         {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
 
         <div

@@ -34,6 +34,7 @@ Behavior:
 from __future__ import annotations
 
 import copy
+import argparse
 import json
 import sys
 from datetime import datetime, timezone
@@ -360,8 +361,24 @@ def emit_geojson(
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Build grid GeoJSON.")
+    parser.add_argument(
+        "--mode",
+        choices=["ac", "dc"],
+        default="ac",
+        help="ac: AC Newton-Raphson with transformer models (default, "
+        "written to web/public/data). dc: linear DC power flow with the "
+        "simplified build, written to web/public/data/dc.",
+    )
+    args = parser.parse_args()
+    use_ac = args.mode == "ac"
+
+    if args.mode == "dc":
+        global OUTPUT_DIR
+        OUTPUT_DIR = OUTPUT_DIR / "dc"
+
     buses_df, lines_df = load_inputs()
-    net, _ = build_network(buses_df, lines_df, use_ac=True)
+    net, _ = build_network(buses_df, lines_df, use_ac=use_ac)
     print(
         f"Network: {len(net.bus)} buses (incl. {len(net.trafo)} transformer intermediates), "
         f"{len(net.line)} lines, {len(net.trafo)} transformers."
@@ -396,7 +413,15 @@ def main() -> None:
         if unsup:
             pp.drop_buses(net_run, unsup)
 
-        has_results, power_flow_mode = _run_flow(net_run)
+        if use_ac:
+            has_results, power_flow_mode = _run_flow(net_run)
+        else:
+            try:
+                pp.rundcpp(net_run)
+                has_results, power_flow_mode = True, "DC"
+            except Exception as dc_err:  # noqa: BLE001
+                print(f"DC load flow failed: {dc_err}.")
+                has_results, power_flow_mode = False, "none"
 
         if has_results:
             print(f"{power_flow_mode} load flow converged on {len(net_run.bus)} buses.")

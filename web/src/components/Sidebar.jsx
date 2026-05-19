@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { ISLANDS, VOLTAGE_LEVELS, VOLTAGE_COLORS } from "../lib/styles.js";
+import InfoButton from "./InfoButton.jsx";
 
 function toggle(set, value) {
   const next = new Set(set);
@@ -8,28 +9,59 @@ function toggle(set, value) {
   return [...next];
 }
 
-function SectionHeader({ children, onAll, onNone }) {
+function Chevron() {
   return (
-    <div className="mb-2 flex items-center justify-between">
-      <h2 className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-        {children}
-      </h2>
-      {onAll && (
-        <div className="flex gap-2 text-[10px] text-sky-600 dark:text-sky-400">
-          <button
-            onClick={onAll}
-            className="rounded hover:underline focus-visible:ring-2 focus-visible:ring-sky-500"
-          >
-            All
-          </button>
-          <button
-            onClick={onNone}
-            className="rounded hover:underline focus-visible:ring-2 focus-visible:ring-sky-500"
-          >
-            None
-          </button>
-        </div>
-      )}
+    <svg
+      width="10"
+      height="10"
+      viewBox="0 0 10 10"
+      aria-hidden="true"
+      className="transition-transform duration-150 group-open:rotate-180"
+    >
+      <path
+        d="M2 4l3 3 3-3"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+// Collapsible section: keeps the sidebar uncluttered while the summary
+// (e.g. "6 / 8") still shows state at a glance.
+function Disclosure({ title, summary, defaultOpen = false, children }) {
+  return (
+    <details className="group mb-4" {...(defaultOpen ? { open: true } : {})}>
+      <summary className="flex cursor-pointer select-none items-center justify-between rounded py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400 marker:hidden focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500">
+        <span>{title}</span>
+        <span className="flex items-center gap-1.5 normal-case tracking-normal">
+          {summary != null && <span>{summary}</span>}
+          <Chevron />
+        </span>
+      </summary>
+      <div className="mt-2">{children}</div>
+    </details>
+  );
+}
+
+function AllNone({ onAll, onNone }) {
+  return (
+    <div className="mb-1 flex gap-3 text-[10px] text-sky-600 dark:text-sky-400">
+      <button
+        onClick={onAll}
+        className="rounded hover:underline focus-visible:ring-2 focus-visible:ring-sky-500"
+      >
+        All
+      </button>
+      <button
+        onClick={onNone}
+        className="rounded hover:underline focus-visible:ring-2 focus-visible:ring-sky-500"
+      >
+        None
+      </button>
     </div>
   );
 }
@@ -39,6 +71,20 @@ const checkboxClass =
 const rowClass =
   "flex cursor-pointer items-center gap-2 rounded px-1 py-1.5 text-xs text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800 md:py-0.5";
 
+const DISPLAY_TOGGLES = [
+  ["labels", "Bus labels"],
+  ["arrows", "Flow arrows"],
+  ["rings", "Generator rings"],
+];
+const DISPLAY_INFO = {
+  labels:
+    "Names every bus/substation on the map. Turn off to declutter — the selected bus still keeps its label.",
+  arrows:
+    "Arrowheads on lines show the direction power flows, drawn only on lines carrying about 30 MW or more.",
+  rings:
+    "A coloured ring around buses that have generation; the ring colour is the fuel type (see the Legend).",
+};
+
 export default function Sidebar({
   selectedIslands,
   setSelectedIslands,
@@ -46,8 +92,15 @@ export default function Sidebar({
   setSelectedVoltages,
   colorMode,
   setColorMode,
+  display,
+  setDisplay,
+  scenario,
+  setScenario,
+  scenarios = [],
   buses,
   onPick,
+  onReset,
+  onOpenTable,
   theme,
   onToggleTheme,
   open,
@@ -55,6 +108,8 @@ export default function Sidebar({
   onShowAbout,
 }) {
   const [query, setQuery] = useState("");
+  const [info, setInfo] = useState({});
+  const [active, setActive] = useState(-1);
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
@@ -63,10 +118,33 @@ export default function Sidebar({
       .slice(0, 8);
   }, [query, buses]);
 
+  const choose = (f) => {
+    onPick(f, "bus");
+    setQuery("");
+    setActive(-1);
+  };
+
+  const onSearchKeyDown = (e) => {
+    if (!results.length) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setActive((i) => (i + 1) % results.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setActive((i) => (i <= 0 ? results.length - 1 : i - 1));
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      choose(results[active >= 0 ? active : 0]);
+    } else if (e.key === "Escape") {
+      setQuery("");
+      setActive(-1);
+    }
+  };
+
   return (
     <nav
       aria-label="Grid filters"
-      className={`fixed inset-y-0 left-0 z-[1100] flex w-60 shrink-0 flex-col border-r border-slate-200 bg-white p-4 transition-transform duration-200 ease-out dark:border-slate-800 dark:bg-slate-900 md:static md:z-auto md:translate-x-0 ${
+      className={`fixed inset-y-0 left-0 z-[1100] flex w-60 shrink-0 flex-col overflow-y-auto border-r border-slate-200 bg-white p-4 transition-transform duration-200 ease-out dark:border-slate-800 dark:bg-slate-900 md:static md:z-auto md:translate-x-0 ${
         open ? "translate-x-0 shadow-xl md:shadow-none" : "-translate-x-full"
       }`}
     >
@@ -101,20 +179,40 @@ export default function Sidebar({
           <input
             type="search"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setActive(-1);
+            }}
+            onKeyDown={onSearchKeyDown}
             placeholder="Find a bus…"
+            role="combobox"
+            aria-expanded={results.length > 0}
+            aria-controls="bus-search-results"
+            aria-activedescendant={
+              active >= 0 ? `bus-search-opt-${active}` : undefined
+            }
+            autoComplete="off"
             className="w-full rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-xs text-slate-700 placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
           />
           {results.length > 0 && (
-            <ul className="absolute z-10 mt-1 w-full overflow-hidden rounded-md border border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-800">
-              {results.map((f) => (
-                <li key={f.properties.name}>
+            <ul
+              id="bus-search-results"
+              role="listbox"
+              className="absolute z-10 mt-1 w-full overflow-hidden rounded-md border border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-800"
+            >
+              {results.map((f, idx) => (
+                <li key={f.properties.name} role="presentation">
                   <button
-                    onClick={() => {
-                      onPick(f, "bus");
-                      setQuery("");
-                    }}
-                    className="block w-full px-2.5 py-1.5 text-left text-xs text-slate-700 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-200 dark:hover:bg-slate-700"
+                    id={`bus-search-opt-${idx}`}
+                    role="option"
+                    aria-selected={idx === active}
+                    onMouseEnter={() => setActive(idx)}
+                    onClick={() => choose(f)}
+                    className={`block w-full px-2.5 py-1.5 text-left text-xs focus-visible:ring-2 focus-visible:ring-sky-500 ${
+                      idx === active
+                        ? "bg-sky-100 text-slate-900 dark:bg-sky-900 dark:text-slate-100"
+                        : "text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-700"
+                    }`}
                   >
                     {f.properties.name}
                     <span className="ml-1 text-slate-400">
@@ -128,39 +226,84 @@ export default function Sidebar({
         </label>
       </div>
 
-      <div className="mb-5">
-        <SectionHeader>Colour buses by</SectionHeader>
-        <div className="grid grid-cols-2 gap-1">
-          {[
-            ["nominal", "Nominal kV"],
-            ["pu", "Voltage (pu)"],
-          ].map(([mode, label]) => (
-            <button
-              key={mode}
-              onClick={() => setColorMode(mode)}
-              aria-pressed={colorMode === mode}
-              className={`rounded-md border px-2 py-1.5 text-xs transition focus-visible:ring-2 focus-visible:ring-sky-500 ${
-                colorMode === mode
-                  ? "border-sky-500 bg-sky-50 text-sky-700 dark:border-sky-500 dark:bg-sky-950 dark:text-sky-300"
-                  : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
-              }`}
-            >
-              {label}
-            </button>
+      <Disclosure
+        title="Display"
+        summary={colorMode === "pu" ? "Voltage (pu)" : "Nominal kV"}
+      >
+        <div className="mb-3">
+          <div className="mb-1 text-[10px] text-slate-400 dark:text-slate-500">
+            Colour buses by
+          </div>
+          <div className="grid grid-cols-2 gap-1">
+            {[
+              ["nominal", "Nominal kV"],
+              ["pu", "Voltage (pu)"],
+            ].map(([mode, label]) => (
+              <button
+                key={mode}
+                onClick={() => setColorMode(mode)}
+                aria-pressed={colorMode === mode}
+                className={`rounded-md border px-2 py-1.5 text-xs transition focus-visible:ring-2 focus-visible:ring-sky-500 ${
+                  colorMode === mode
+                    ? "border-sky-500 bg-sky-50 text-sky-700 dark:border-sky-500 dark:bg-sky-950 dark:text-sky-300"
+                    : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <p className="mt-1 text-[10px] text-slate-400 dark:text-slate-500">
+            Voltage (pu) shows AC load-flow results only.
+          </p>
+        </div>
+        <div className="space-y-1">
+          {DISPLAY_TOGGLES.map(([key, label]) => (
+            <div key={key}>
+              <div className="flex items-center">
+                <label className={`${rowClass} flex-1`}>
+                  <input
+                    type="checkbox"
+                    className={checkboxClass}
+                    checked={display[key]}
+                    onChange={() =>
+                      setDisplay({ ...display, [key]: !display[key] })
+                    }
+                  />
+                  <span>{label}</span>
+                </label>
+                <InfoButton
+                  className="ml-1"
+                  controls={`disp-info-${key}`}
+                  label={label}
+                  open={!!info[key]}
+                  onToggle={() =>
+                    setInfo((s) => ({ ...s, [key]: !s[key] }))
+                  }
+                />
+              </div>
+              {info[key] && (
+                <p
+                  id={`disp-info-${key}`}
+                  className="ml-1 mt-0.5 border-l-2 border-slate-200 pl-2 text-[10px] leading-snug text-slate-500 dark:border-slate-700 dark:text-slate-400"
+                >
+                  {DISPLAY_INFO[key]}
+                </p>
+              )}
+            </div>
           ))}
         </div>
-        <p className="mt-1 text-[10px] text-slate-400 dark:text-slate-500">
-          Voltage (pu) shows AC load-flow results only.
-        </p>
-      </div>
+      </Disclosure>
 
-      <div className="mb-5">
-        <SectionHeader
+      <Disclosure
+        title="Islands"
+        summary={`${selectedIslands.length} / ${ISLANDS.length}`}
+        defaultOpen
+      >
+        <AllNone
           onAll={() => setSelectedIslands(ISLANDS)}
           onNone={() => setSelectedIslands([])}
-        >
-          Islands
-        </SectionHeader>
+        />
         <div className="space-y-0.5">
           {ISLANDS.map((island) => (
             <label key={island} className={rowClass}>
@@ -176,15 +319,17 @@ export default function Sidebar({
             </label>
           ))}
         </div>
-      </div>
+      </Disclosure>
 
-      <div className="mb-5">
-        <SectionHeader
+      <Disclosure
+        title="Voltage"
+        summary={`${selectedVoltages.length} / ${VOLTAGE_LEVELS.length}`}
+        defaultOpen
+      >
+        <AllNone
           onAll={() => setSelectedVoltages(VOLTAGE_LEVELS)}
           onNone={() => setSelectedVoltages([])}
-        >
-          Voltage
-        </SectionHeader>
+        />
         <div className="space-y-0.5">
           {VOLTAGE_LEVELS.map((kv) => (
             <label key={kv} className={rowClass}>
@@ -204,9 +349,73 @@ export default function Sidebar({
             </label>
           ))}
         </div>
-      </div>
+      </Disclosure>
 
       <div className="mt-auto space-y-2 pt-4">
+        {scenarios.length > 1 && (
+          <label className="block">
+            <span className="mb-1 block text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Scenario
+            </span>
+            <select
+              value={scenario}
+              onChange={(e) => setScenario(e.target.value)}
+              className="w-full rounded-md border border-slate-200 bg-white px-2 py-1.5 text-xs text-slate-700 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+            >
+              {scenarios.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.label}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        <button
+          onClick={onOpenTable}
+          className="flex w-full items-center justify-center gap-1.5 rounded-md border border-slate-200 px-2.5 py-2 text-xs text-slate-600 transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 md:py-1.5"
+        >
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+            <rect
+              x="1.5"
+              y="2.5"
+              width="11"
+              height="9"
+              rx="1"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.3"
+            />
+            <path
+              d="M1.5 5.5h11M5.5 5.5v6"
+              stroke="currentColor"
+              strokeWidth="1.3"
+            />
+          </svg>
+          <span>Data table</span>
+        </button>
+        <button
+          onClick={onReset}
+          className="flex w-full items-center justify-center gap-1.5 rounded-md border border-slate-200 px-2.5 py-2 text-xs text-slate-600 transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 md:py-1.5"
+        >
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+            <path
+              d="M11.3 5A4.6 4.6 0 1 0 12 8"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M11.5 2v3h-3"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span>Reset view</span>
+        </button>
         <button
           onClick={onShowAbout}
           className="flex w-full items-center justify-between rounded-md border border-slate-200 px-2.5 py-2 text-xs text-slate-600 transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 md:py-1.5"
