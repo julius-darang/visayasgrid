@@ -161,6 +161,62 @@ export default function Sidebar({
       </div>
 
       <Disclosure
+        title="Islands"
+        summary={`${selectedIslands.length} / ${ISLANDS.length}`}
+        defaultOpen
+      >
+        <AllNone
+          onAll={() => setSelectedIslands(ISLANDS)}
+          onNone={() => setSelectedIslands([])}
+        />
+        <div className="space-y-0.5">
+          {ISLANDS.map((island) => (
+            <label key={island} className={rowClass}>
+              <input
+                type="checkbox"
+                className={checkboxClass}
+                checked={selectedIslands.includes(island)}
+                onChange={() =>
+                  setSelectedIslands(toggle(selectedIslands, island))
+                }
+              />
+              <span>{island}</span>
+            </label>
+          ))}
+        </div>
+      </Disclosure>
+
+      <Disclosure
+        title="Voltage"
+        summary={`${selectedVoltages.length} / ${VOLTAGE_LEVELS.length}`}
+        defaultOpen
+      >
+        <AllNone
+          onAll={() => setSelectedVoltages(VOLTAGE_LEVELS)}
+          onNone={() => setSelectedVoltages([])}
+        />
+        <div className="space-y-0.5">
+          {VOLTAGE_LEVELS.map((kv) => (
+            <label key={kv} className={rowClass}>
+              <input
+                type="checkbox"
+                className={checkboxClass}
+                checked={selectedVoltages.includes(kv)}
+                onChange={() =>
+                  setSelectedVoltages(toggle(selectedVoltages, kv))
+                }
+              />
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: VOLTAGE_COLORS[kv] }}
+              />
+              <span>{kv} kV</span>
+            </label>
+          ))}
+        </div>
+      </Disclosure>
+
+      <Disclosure
         title="Display"
         summary={colorMode === "pu" ? "Voltage (pu)" : "Nominal kV"}
       >
@@ -207,60 +263,6 @@ export default function Sidebar({
                 }
               />
               <span>{label}</span>
-            </label>
-          ))}
-        </div>
-      </Disclosure>
-
-      <Disclosure
-        title="Islands"
-        summary={`${selectedIslands.length} / ${ISLANDS.length}`}
-      >
-        <AllNone
-          onAll={() => setSelectedIslands(ISLANDS)}
-          onNone={() => setSelectedIslands([])}
-        />
-        <div className="space-y-0.5">
-          {ISLANDS.map((island) => (
-            <label key={island} className={rowClass}>
-              <input
-                type="checkbox"
-                className={checkboxClass}
-                checked={selectedIslands.includes(island)}
-                onChange={() =>
-                  setSelectedIslands(toggle(selectedIslands, island))
-                }
-              />
-              <span>{island}</span>
-            </label>
-          ))}
-        </div>
-      </Disclosure>
-
-      <Disclosure
-        title="Voltage"
-        summary={`${selectedVoltages.length} / ${VOLTAGE_LEVELS.length}`}
-      >
-        <AllNone
-          onAll={() => setSelectedVoltages(VOLTAGE_LEVELS)}
-          onNone={() => setSelectedVoltages([])}
-        />
-        <div className="space-y-0.5">
-          {VOLTAGE_LEVELS.map((kv) => (
-            <label key={kv} className={rowClass}>
-              <input
-                type="checkbox"
-                className={checkboxClass}
-                checked={selectedVoltages.includes(kv)}
-                onChange={() =>
-                  setSelectedVoltages(toggle(selectedVoltages, kv))
-                }
-              />
-              <span
-                className="inline-block h-2.5 w-2.5 rounded-full"
-                style={{ backgroundColor: VOLTAGE_COLORS[kv] }}
-              />
-              <span>{kv} kV</span>
             </label>
           ))}
         </div>

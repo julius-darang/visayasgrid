@@ -19,9 +19,9 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [colorMode, setColorMode] = useState("nominal");
   const [display, setDisplay] = useState({
-    labels: true,
+    labels: false,
     arrows: true,
-    rings: true,
+    rings: false,
   });
   const [focusTarget, setFocusTarget] = useState(null);
   const [hintDismissed, setHintDismissed] = useState(
