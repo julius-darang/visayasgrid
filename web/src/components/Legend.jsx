@@ -8,6 +8,7 @@ import {
   VM_PU_SCALE,
 } from "../lib/styles.js";
 import InfoButton from "./InfoButton.jsx";
+import { Chevron } from "./icons.jsx";
 
 const LEGEND_INFO = {
   voltage:
@@ -69,22 +70,7 @@ export default function Legend({
       <details className="group">
         <summary className="flex cursor-pointer select-none items-center gap-2 rounded-lg px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-slate-400 marker:hidden focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500">
           <span>Legend</span>
-          <svg
-            width="10"
-            height="10"
-            viewBox="0 0 10 10"
-            aria-hidden="true"
-            className="transition-transform duration-150 group-open:rotate-180"
-          >
-            <path
-              d="M2 4l3 3 3-3"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <Chevron />
         </summary>
         <div className="grid grid-cols-1 gap-3 px-3 pb-3 pt-1 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           <Cat

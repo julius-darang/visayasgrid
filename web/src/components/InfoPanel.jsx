@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { colorForCarrier, HVDC_LINK } from "../lib/styles.js";
 import InfoButton from "./InfoButton.jsx";
+import { Chevron, CloseButton } from "./icons.jsx";
 
 function formatNumber(v, digits = 2) {
   if (v == null || v === "") return "—";
@@ -58,22 +59,7 @@ function Technical({ children }) {
     <details className="group mt-3 border-t border-slate-200 pt-2 dark:border-slate-700">
       <summary className="flex cursor-pointer select-none items-center justify-between text-[10px] font-semibold uppercase tracking-wider text-slate-400 marker:hidden focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500">
         <span>Technical details</span>
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 10 10"
-          aria-hidden="true"
-          className="transition-transform duration-150 group-open:rotate-180"
-        >
-          <path
-            d="M2 4l3 3 3-3"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <Chevron />
       </summary>
       <dl className="mt-1">{children}</dl>
     </details>
@@ -233,21 +219,12 @@ export default function InfoPanel({ selected, onClose, manifest }) {
         <div className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
           {kind}
         </div>
-        <button
+        <CloseButton
           ref={closeRef}
           onClick={onClose}
-          className="-mr-1 -mt-1 rounded p-1.5 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:bg-slate-800 dark:hover:text-slate-200"
-          aria-label="Close details"
-        >
-          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-            <path
-              d="M3 3l10 10M13 3L3 13"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
+          label="Close details"
+          className="-mr-1 -mt-1"
+        />
       </div>
       {kind === "bus" ? (
         <BusPanel p={p} manifest={manifest} />

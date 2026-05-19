@@ -1,33 +1,13 @@
 import { useMemo, useState } from "react";
 import { ISLANDS, VOLTAGE_LEVELS, VOLTAGE_COLORS } from "../lib/styles.js";
 import InfoButton from "./InfoButton.jsx";
+import { Chevron, CloseButton } from "./icons.jsx";
 
 function toggle(set, value) {
   const next = new Set(set);
   if (next.has(value)) next.delete(value);
   else next.add(value);
   return [...next];
-}
-
-function Chevron() {
-  return (
-    <svg
-      width="10"
-      height="10"
-      viewBox="0 0 10 10"
-      aria-hidden="true"
-      className="transition-transform duration-150 group-open:rotate-180"
-    >
-      <path
-        d="M2 4l3 3 3-3"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
 }
 
 // Collapsible section: keeps the sidebar uncluttered while the summary
@@ -157,20 +137,11 @@ export default function Sidebar({
             Transmission prototype
           </p>
         </div>
-        <button
+        <CloseButton
           onClick={onClose}
-          className="-mr-1 -mt-1 rounded p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:bg-slate-800 dark:hover:text-slate-200 md:hidden"
-          aria-label="Close filters"
-        >
-          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-            <path
-              d="M3 3l10 10M13 3L3 13"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
+          label="Close filters"
+          className="-mr-1 -mt-1 md:hidden"
+        />
       </div>
 
       <div className="mb-5">

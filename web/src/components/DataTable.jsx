@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { CloseButton } from "./icons.jsx";
 
 const COLUMNS = {
   bus: [
@@ -114,21 +115,11 @@ export default function DataTable({ buses, lines, onClose, onFocus }) {
               </button>
             ))}
           </div>
-          <button
+          <CloseButton
             ref={closeRef}
             onClick={onClose}
-            className="rounded p-1.5 text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:bg-slate-800 dark:hover:text-slate-200"
-            aria-label="Close data table"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-              <path
-                d="M3 3l10 10M13 3L3 13"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
+            label="Close data table"
+          />
         </div>
 
         <div className="min-h-0 flex-1 overflow-auto rounded-lg border border-slate-200 dark:border-slate-700">

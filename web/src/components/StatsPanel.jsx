@@ -1,4 +1,5 @@
 import { overloadedLines, voltageViolations } from "../lib/grid.js";
+import { Chevron } from "./icons.jsx";
 
 function sum(features, field) {
   return features.reduce((s, f) => s + Number(f.properties[field] || 0), 0);
@@ -17,27 +18,6 @@ function formatDate(iso) {
 
 const WRAP =
   "absolute left-16 top-4 z-[1000] w-[min(14rem,calc(100vw-5rem))] rounded-lg border border-slate-200 bg-white/95 text-xs shadow-sm backdrop-blur animate-fade-in dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200 md:left-4 md:w-56";
-
-function Chevron() {
-  return (
-    <svg
-      width="10"
-      height="10"
-      viewBox="0 0 10 10"
-      aria-hidden="true"
-      className="transition-transform duration-150 group-open:rotate-180"
-    >
-      <path
-        d="M2 4l3 3 3-3"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 export default function StatsPanel({ buses, lines, manifest, onFocus }) {
   const features = buses.features;
@@ -145,22 +125,7 @@ export default function StatsPanel({ buses, lines, manifest, onFocus }) {
           <details className="group/more mt-2 border-t border-slate-100 pt-2 dark:border-slate-800">
             <summary className="flex cursor-pointer select-none items-center justify-between rounded text-[10px] uppercase tracking-wider text-slate-400 transition marker:hidden hover:text-slate-600 focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500 dark:hover:text-slate-300">
               <span>More detail</span>
-              <svg
-                width="10"
-                height="10"
-                viewBox="0 0 10 10"
-                aria-hidden="true"
-                className="transition-transform duration-150 group-open/more:rotate-180"
-              >
-                <path
-                  d="M2 4l3 3 3-3"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <Chevron className="transition-transform duration-150 group-open/more:rotate-180" />
             </summary>
 
             <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1">
