@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { colorForCarrier, HVDC_LINK } from "../lib/styles.js";
+import InfoButton from "./InfoButton.jsx";
 
 function formatNumber(v, digits = 2) {
   if (v == null || v === "") return "—";
@@ -19,12 +20,32 @@ function Row({ label, children }) {
   );
 }
 
-function Section({ title, children }) {
+function Section({ title, info, children }) {
+  const [open, setOpen] = useState(false);
+  const id = useId();
   return (
     <section className="mt-3 border-t border-slate-200 pt-2 dark:border-slate-700">
-      <h3 className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-        {title}
-      </h3>
+      <div className="mb-1 flex items-center gap-1">
+        <h3 className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+          {title}
+        </h3>
+        {info && (
+          <InfoButton
+            controls={id}
+            label={title}
+            open={open}
+            onToggle={() => setOpen((o) => !o)}
+          />
+        )}
+      </div>
+      {info && open && (
+        <p
+          id={id}
+          className="mb-1 border-l-2 border-slate-200 pl-2 text-[10px] leading-snug text-slate-500 dark:border-slate-700 dark:text-slate-400"
+        >
+          {info}
+        </p>
+      )}
       <dl>{children}</dl>
     </section>
   );
@@ -98,7 +119,10 @@ function BusPanel({ p, manifest }) {
       </div>
 
       {hasLoad && (
-        <Section title="Load">
+        <Section
+          title="Load"
+          info="Electricity demand connected at this bus: real power (MW) and reactive power (MVAR), plus how many feeders supply it."
+        >
           <Row label="Demand">{formatNumber(p.p_mw, 1)} MW</Row>
           <Row label="Reactive">{formatNumber(p.q_mvar, 1)} MVAR</Row>
           <Row label="Feeders">{p.load_count ?? 0}</Row>
@@ -106,7 +130,10 @@ function BusPanel({ p, manifest }) {
       )}
 
       {hasGen && (
-        <Section title="Generation">
+        <Section
+          title="Generation"
+          info="Power currently dispatched here versus total installed capacity, and the fuel/carrier types present at this bus."
+        >
           <Row label="Dispatched">{formatNumber(p.gen_mw, 1)} MW</Row>
           <Row label="Capacity">{formatNumber(p.gen_capacity_mw, 1)} MW</Row>
           <Row label="Carriers">
@@ -116,7 +143,10 @@ function BusPanel({ p, manifest }) {
       )}
 
       {p.bus_type === "hvdc" && p.hvdc_import_mw != null && (
-        <Section title="HVDC link">
+        <Section
+          title="HVDC link"
+          info="The Leyte–Luzon high-voltage DC interconnection. Positive means power imported from Luzon, negative means exported to it."
+        >
           <Row label="Luzon interchange">
             {p.hvdc_import_mw >= 0
               ? `+${p.hvdc_import_mw.toFixed(0)} MW import`
@@ -153,7 +183,10 @@ function LinePanel({ p }) {
       </div>
 
       {p.loading_percent != null && (
-        <Section title="Flow">
+        <Section
+          title="Flow"
+          info="AC load-flow result for this line: loading is the power flow as a percentage of the line’s thermal rating (over 100% is overloaded)."
+        >
           <Row label="Loading">{formatNumber(p.loading_percent, 1)}%</Row>
           <Row label="Power">{formatNumber(p.p_from_mw, 1)} MW</Row>
         </Section>

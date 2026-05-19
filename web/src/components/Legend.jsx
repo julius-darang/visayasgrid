@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   VOLTAGE_LEVELS,
   VOLTAGE_COLORS,
@@ -6,18 +7,49 @@ import {
   LOADING_SCALE,
   VM_PU_SCALE,
 } from "../lib/styles.js";
+import InfoButton from "./InfoButton.jsx";
 
-function SubHeader({ children, active }) {
+const LEGEND_INFO = {
+  voltage:
+    "Fill colour of each bus by its nominal voltage level (kV). Active when “Colour buses by → Nominal kV”.",
+  loading:
+    "Line colour by loading: power flow as a percentage of the line’s thermal rating. Over 100% means overloaded.",
+  carrier:
+    "Ring around buses that have generation; the ring colour is the primary fuel type at that bus.",
+  vmpu:
+    "Fill colour by per-unit voltage from the AC load flow. Outside 0.95–1.05 pu is a violation. Active when “Colour buses by → Voltage (pu)”.",
+};
+
+function Cat({ id, title, active, info, open, onToggle, children }) {
   return (
-    <div
-      className={`mb-1 text-[10px] font-semibold uppercase tracking-wider ${
-        active
-          ? "text-sky-600 dark:text-sky-400"
-          : "text-slate-400 dark:text-slate-500"
-      }`}
-    >
+    <div>
+      <div className="mb-1 flex items-center gap-1">
+        <span
+          className={`text-[10px] font-semibold uppercase tracking-wider ${
+            active
+              ? "text-sky-600 dark:text-sky-400"
+              : "text-slate-400 dark:text-slate-500"
+          }`}
+        >
+          {title}
+          {active && <span className="ml-1 normal-case">• shown</span>}
+        </span>
+        <InfoButton
+          controls={id}
+          label={title}
+          open={open}
+          onToggle={onToggle}
+        />
+      </div>
+      {open && (
+        <p
+          id={id}
+          className="mb-1 border-l-2 border-slate-200 pl-2 text-[10px] leading-snug text-slate-500 dark:border-slate-700 dark:text-slate-400"
+        >
+          {info}
+        </p>
+      )}
       {children}
-      {active && <span className="ml-1 normal-case">• shown</span>}
     </div>
   );
 }
@@ -25,6 +57,9 @@ function SubHeader({ children, active }) {
 export default function Legend({ colorMode = "nominal" }) {
   // Collapsed by default so the map stays the focus; the summary chip is
   // always available to expand the colour reference on demand.
+  const [info, setInfo] = useState({});
+  const toggle = (k) => setInfo((s) => ({ ...s, [k]: !s[k] }));
+
   return (
     <div className="absolute bottom-4 left-4 z-[1000] max-w-[calc(100vw-2rem)] rounded-lg border border-slate-200 bg-white/95 text-[11px] shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200">
       <details className="group">
@@ -48,8 +83,14 @@ export default function Legend({ colorMode = "nominal" }) {
           </svg>
         </summary>
         <div className="grid grid-cols-1 gap-3 px-3 pb-3 pt-1 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
-          <div>
-            <SubHeader active={colorMode === "nominal"}>Bus voltage</SubHeader>
+          <Cat
+            id="legend-voltage"
+            title="Bus voltage"
+            active={colorMode === "nominal"}
+            info={LEGEND_INFO.voltage}
+            open={!!info.voltage}
+            onToggle={() => toggle("voltage")}
+          >
             <div className="space-y-0.5">
               {VOLTAGE_LEVELS.map((kv) => (
                 <div key={kv} className="flex items-center gap-2">
@@ -61,10 +102,15 @@ export default function Legend({ colorMode = "nominal" }) {
                 </div>
               ))}
             </div>
-          </div>
+          </Cat>
 
-          <div>
-            <SubHeader>Line loading</SubHeader>
+          <Cat
+            id="legend-loading"
+            title="Line loading"
+            info={LEGEND_INFO.loading}
+            open={!!info.loading}
+            onToggle={() => toggle("loading")}
+          >
             <div className="space-y-0.5">
               {LOADING_SCALE.map((s) => (
                 <div key={s.label} className="flex items-center gap-2">
@@ -80,10 +126,15 @@ export default function Legend({ colorMode = "nominal" }) {
               <span className="inline-block h-0 w-5 border-t-2 border-dashed border-current" />
               <span>Submarine</span>
             </div>
-          </div>
+          </Cat>
 
-          <div>
-            <SubHeader>Generator ring</SubHeader>
+          <Cat
+            id="legend-carrier"
+            title="Generator ring"
+            info={LEGEND_INFO.carrier}
+            open={!!info.carrier}
+            onToggle={() => toggle("carrier")}
+          >
             <div className="space-y-0.5">
               {CARRIER_LIST.map((c) => (
                 <div key={c} className="flex items-center gap-2">
@@ -95,10 +146,16 @@ export default function Legend({ colorMode = "nominal" }) {
                 </div>
               ))}
             </div>
-          </div>
+          </Cat>
 
-          <div>
-            <SubHeader active={colorMode === "pu"}>Voltage (pu)</SubHeader>
+          <Cat
+            id="legend-vmpu"
+            title="Voltage (pu)"
+            active={colorMode === "pu"}
+            info={LEGEND_INFO.vmpu}
+            open={!!info.vmpu}
+            onToggle={() => toggle("vmpu")}
+          >
             <div className="space-y-0.5">
               {VM_PU_SCALE.map((s) => (
                 <div key={s.label} className="flex items-center gap-2">
@@ -113,7 +170,7 @@ export default function Legend({ colorMode = "nominal" }) {
             <div className="mt-1 text-slate-400 dark:text-slate-500">
               AC flow only
             </div>
-          </div>
+          </Cat>
         </div>
       </details>
     </div>

@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { ISLANDS, VOLTAGE_LEVELS, VOLTAGE_COLORS } from "../lib/styles.js";
+import InfoButton from "./InfoButton.jsx";
 
 function toggle(set, value) {
   const next = new Set(set);
@@ -222,18 +223,15 @@ export default function Sidebar({
                   />
                   <span>{label}</span>
                 </label>
-                <button
-                  type="button"
-                  onClick={() =>
+                <InfoButton
+                  className="ml-1"
+                  controls={`disp-info-${key}`}
+                  label={label}
+                  open={!!info[key]}
+                  onToggle={() =>
                     setInfo((s) => ({ ...s, [key]: !s[key] }))
                   }
-                  aria-expanded={!!info[key]}
-                  aria-controls={`disp-info-${key}`}
-                  aria-label={`About ${label}`}
-                  className="ml-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-slate-300 text-[10px] font-semibold italic text-slate-400 transition hover:bg-slate-100 hover:text-slate-600 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-600 dark:hover:bg-slate-800 dark:hover:text-slate-300"
-                >
-                  i
-                </button>
+                />
               </div>
               {info[key] && (
                 <p
