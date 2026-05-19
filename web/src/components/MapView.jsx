@@ -7,6 +7,7 @@ import {
   Polyline,
   Marker,
   Tooltip,
+  ZoomControl,
   useMap,
 } from "react-leaflet";
 import {
@@ -102,8 +103,12 @@ export default function MapView({
       zoom={MAP.zoom}
       className="h-full w-full"
       preferCanvas
+      zoomControl={false}
       aria-label="Interactive map of the Visayas transmission grid. Pan with arrow keys; click a bus or line for details."
     >
+      {/* Bottom-right so the +/- buttons don't sit under the mobile
+          hamburger / snapshot panel in the top-left corner. */}
+      <ZoomControl position="bottomright" />
       <MapController target={focusTarget} />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'

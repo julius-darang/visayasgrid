@@ -101,7 +101,7 @@ export default function App() {
       <main className="relative flex-1">
         <button
           onClick={() => setSidebarOpen(true)}
-          className="absolute left-4 top-4 z-[1000] rounded-md border border-slate-200 bg-white/95 p-2 text-slate-600 shadow-sm backdrop-blur transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-300 dark:hover:bg-slate-800 md:hidden"
+          className="absolute left-4 top-4 z-[1100] rounded-md border border-slate-200 bg-white/95 p-2 text-slate-600 shadow-sm backdrop-blur transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-300 dark:hover:bg-slate-800 md:hidden"
           aria-label="Open filters"
         >
           <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
