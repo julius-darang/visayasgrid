@@ -70,6 +70,20 @@ const checkboxClass =
 const rowClass =
   "flex cursor-pointer items-center gap-2 rounded px-1 py-1.5 text-xs text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800 md:py-0.5";
 
+const DISPLAY_TOGGLES = [
+  ["labels", "Bus labels"],
+  ["arrows", "Flow arrows"],
+  ["rings", "Generator rings"],
+];
+const DISPLAY_INFO = {
+  labels:
+    "Names every bus/substation on the map. Turn off to declutter — the selected bus still keeps its label.",
+  arrows:
+    "Arrowheads on lines show the direction power flows, drawn only on lines carrying about 30 MW or more.",
+  rings:
+    "A coloured ring around buses that have generation; the ring colour is the fuel type (see the Legend).",
+};
+
 export default function Sidebar({
   selectedIslands,
   setSelectedIslands,
@@ -88,6 +102,7 @@ export default function Sidebar({
   onClose,
 }) {
   const [query, setQuery] = useState("");
+  const [info, setInfo] = useState({});
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
@@ -192,23 +207,43 @@ export default function Sidebar({
             Voltage (pu) shows AC load-flow results only.
           </p>
         </div>
-        <div className="space-y-0.5">
-          {[
-            ["labels", "Bus labels"],
-            ["arrows", "Flow arrows"],
-            ["rings", "Generator rings"],
-          ].map(([key, label]) => (
-            <label key={key} className={rowClass}>
-              <input
-                type="checkbox"
-                className={checkboxClass}
-                checked={display[key]}
-                onChange={() =>
-                  setDisplay({ ...display, [key]: !display[key] })
-                }
-              />
-              <span>{label}</span>
-            </label>
+        <div className="space-y-1">
+          {DISPLAY_TOGGLES.map(([key, label]) => (
+            <div key={key}>
+              <div className="flex items-center">
+                <label className={`${rowClass} flex-1`}>
+                  <input
+                    type="checkbox"
+                    className={checkboxClass}
+                    checked={display[key]}
+                    onChange={() =>
+                      setDisplay({ ...display, [key]: !display[key] })
+                    }
+                  />
+                  <span>{label}</span>
+                </label>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setInfo((s) => ({ ...s, [key]: !s[key] }))
+                  }
+                  aria-expanded={!!info[key]}
+                  aria-controls={`disp-info-${key}`}
+                  aria-label={`About ${label}`}
+                  className="ml-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-slate-300 text-[10px] font-semibold italic text-slate-400 transition hover:bg-slate-100 hover:text-slate-600 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-600 dark:hover:bg-slate-800 dark:hover:text-slate-300"
+                >
+                  i
+                </button>
+              </div>
+              {info[key] && (
+                <p
+                  id={`disp-info-${key}`}
+                  className="ml-1 mt-0.5 border-l-2 border-slate-200 pl-2 text-[10px] leading-snug text-slate-500 dark:border-slate-700 dark:text-slate-400"
+                >
+                  {DISPLAY_INFO[key]}
+                </p>
+              )}
+            </div>
           ))}
         </div>
       </Disclosure>
