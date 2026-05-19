@@ -1,0 +1,58 @@
+name: Build DC dataset
+
+# Regenerates the DC load-flow dataset (web/public/data/dc) whenever the
+# grid inputs or the build script change, and commits it back so the
+# frontend's Scenario selector can offer "DC — linear" alongside AC.
+#
+# The AC dataset under web/public/data is produced/committed separately;
+# this workflow only owns the dc/ sub-folder, so its own commits (which
+# touch web/**) do not re-trigger it.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "scripts/**"
+      - ".github/workflows/build-dc-dataset.yml"
+
+concurrency:
+  group: build-dc-dataset
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build-dc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Generate DC dataset
+        # constants.py is imported as a top-level module, so run from
+        # scripts/; input/output paths resolve from the script location.
+        working-directory: scripts
+        run: python build_data.py --mode dc
+
+      - name: Commit DC dataset if it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add web/public/data/dc
+          if git diff --cached --quiet; then
+            echo "DC dataset unchanged — nothing to commit."
+            exit 0
+          fi
+          git commit -m "chore(data): regenerate DC dataset [skip ci]"
+          git push
