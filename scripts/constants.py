@@ -55,6 +55,16 @@ OVERHEAD_DEFAULTS: dict[int, dict[str, float]] = {
     69:  {"r_ohm_per_km": 0.200, "x_ohm_per_km": 0.450, "c_nf_per_km": 8.7},
 }
 
+# Per-line impedance overrides: applied when inherited total-impedance ÷
+# haversine distance produces physically implausible values (e.g. after a
+# coordinate correction changes the apparent length significantly).
+# Maps frozenset({bus0_code, bus1_code}) → parameter dict matching OVERHEAD_DEFAULTS.
+LINE_IMPEDANCE_OVERRIDES: dict[frozenset, dict] = {
+    # ~5 km spur to CEDC Toledo City coal plant. Coord fix (2026-05-24) revealed
+    # inherited r_total was calibrated to wrong ~94.5 km; use 138 kV ACSR standard.
+    frozenset({"05MAGDUGO", "05DAANLUNSOD"}): OVERHEAD_DEFAULTS[138],
+}
+
 # ─── Load modeling ────────────────────────────────────────────────────────────
 
 # MW assigned to each distribution feeder attachment in data/temp/loads.csv.
@@ -98,7 +108,7 @@ SUBMARINE_PAIRS: set[frozenset[str]] = {
     frozenset({"05DAANBNTAY", "04TABANGO"}),   # Cebu–Leyte 230 kV (Daanbantayan–Tabango)
     frozenset({"05DUMANJUG", "07CORELLA"}),    # Cebu–Bohol (Dumanjug–Corella)
     frozenset({"04MAASIN", "07UBAY"}),         # Leyte–Bohol (Maasin–Ubay)
-    frozenset({"06GAHIT", "08STBARBRA"}),      # Negros–Panay (E.B. Magalona–Sta. Barbara)
+    frozenset({"06GAHIT", "08BAROTAC"}),       # Negros–Panay (E.B. Magalona–Barotac Viejo, Guimaras Strait)
     frozenset({"08BANTAP", "08BVISTA"}),       # Panay–Guimaras (Bantap–Buenavista)
 }
 

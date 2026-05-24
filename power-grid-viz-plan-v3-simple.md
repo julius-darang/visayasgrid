@@ -191,14 +191,34 @@ Submarine cables: dashed stroke (`dashArray: "6 4"`), regardless of loading colo
 - `Sidebar.jsx`: island filter (Cebu / Leyte / Samar / Negros / Panay / Bohol / Guimaras as checkboxes), voltage filter
 - `Legend.jsx`: absolutely-positioned bottom-left card with voltage colors + loading scale
 
-### Phase 4 — Deploy (Days 11–12)
-- Push to GitHub
-- Create Vercel project → import repo
-- Root directory: `web`; build command: `npm run build`; output: `dist`
-- Verify production URL works on desktop + mobile
+### Phase 4 — Deploy (Days 11–12) — DONE (2026-05-24)
+- Push to GitHub — done (`julius-darang/visayasgrid`)
+- Create Vercel project → import repo — done
+- Root directory: `web`; build command: `npm run build`; output: `dist` — done
+- Verify production URL works on desktop + mobile — done
+- **Shipped:** live on Vercel as of 2026-05-24. Production URL: _TODO — paste the public Vercel URL here._
 
 ### Phase 5 — Buffer (Days 13–14)
 - Polish, bug fixes, write `README.md` with screenshots
+
+## Phase 6 — Data: synthetic-derived → source-verified (CURRENT FOCUS, week of May 25 2026)
+
+The prototype shipped (Phase 4 live on Vercel, 2026-05-24). The remaining weakness is **data provenance**, so this is the active focus.
+
+**Audit finding.** The `data/temp/` set is not bespoke — it is a Visayas slice of **PyPSA-PH v1.0** (Arizeo C. Salac, DESTEC, University of Pisa): 192 buses / 236 lines / 425 generators, NGCP code scheme (`04ORMOC`, `05CEBU`, `06BACOLOD`, `08ILOILO1`…), demand benchmarked to 2023. Good academic provenance, but it is a **secondary** source, and the per-bus loads are hand-tuned (`LOAD_MW_PER_FEEDER`, default 12 MW/feeder).
+
+**Goal.** Replace/validate the Visayas subset against **primary sources** and document where every value comes from.
+
+**Sources (cite, never fabricate a URL):**
+- NGCP Transmission Development Plan 2023–2040 — Visayas chapters (substation list, voltage levels, the Cebu–Negros–Panay 230 kV backbone, the four submarine interconnections: Leyte–Cebu, Cebu–Negros, Negros–Panay, Cebu–Bohol). TDP 2023–2040 Consultation Report: https://ngcp.ph/Attachment-Uploads/TDP%202023-2040%20Consultation%20Report-2023-06-15-07-54-06.pdf — TDP 2022–2040 Report: https://ngcp.ph/Attachment-Uploads/Transmission%20Development%20Plan%202022-2040%20Report-2023-01-04-10-49-08.pdf
+- PyPSA-PH v1.0 (the current base, for traceability) — https://github.com/arizeosalac/PyPSA-PH — archived: https://zenodo.org/records/15586573
+- OpenStreetMap / OpenInfraMap (coordinates, line routing, substation footprints) — https://wiki.openstreetmap.org/wiki/Power_networks/Philippines — https://openinframap.org/
+
+**Sourceable vs. estimated — be honest in the data:**
+- *Sourceable from primary refs:* substation existence + names, voltage levels, bus coordinates, line connectivity/topology, line lengths, submarine vs. overhead, published circuit capacity / ratings, generator plants + capacities.
+- *Remains an engineering estimate (must be flagged):* per-line `r_ohm_per_km` / `x_ohm_per_km` — NGCP does not publish per-line impedances, so keep standard ACSR / 630 mm² XLPE conductor-table values per voltage level, marked as estimates; per-bus loads from the hand-tuned overlay until real demand splits are sourced.
+
+**Deliverable (this week's one shippable goal):** updated `data/buses.csv` + `data/lines.csv` reconciled against the above, plus a new **`data/SOURCES.md`** recording provenance per field (`sourced` | `pypsa-ph` | `standard-table estimate`) with a real citation for each sourced value. Then re-run `process_temp.py && build_data.py`, confirm the topology gate passes, and redeploy.
 
 ## Critical Files To Create
 
@@ -207,6 +227,7 @@ Submarine cables: dashed stroke (`dashArray: "6 4"`), regardless of loading colo
 | `archive/power-grid-viz-plan-v2.md` | Move of existing root plan |
 | `data/lines.csv` | User-authored transmission line data |
 | `data/README.md` | CSV schema documentation |
+| `data/SOURCES.md` | Per-field provenance + citations (Phase 6) |
 | `scripts/build_data.py` | pandapower → GeoJSON pipeline |
 | `scripts/requirements.txt` | `pandapower`, `pandas` |
 | `web/src/App.jsx` | Top-level layout |
@@ -239,7 +260,8 @@ After Phase 4 the following must all pass:
 - **One load flow snapshot.** Adding a second scenario later = one extra JSON file + a `<select>` element.
 - **Reuse `visayasgrid` folder, archive v2 plan.** Confirmed.
 - **Vercel only.** No second platform.
-- **No git repo exists today** — Phase 0 creates it.
+- **No git repo exists today** — Phase 0 creates it. _(Done — repo `julius-darang/visayasgrid` live, deployed to Vercel 2026-05-24.)_
+- **Data base is PyPSA-PH v1.0 (Salac), filtered to Visayas.** Upgrading to source-verified per Phase 6; keep PyPSA-PH attribution in `SOURCES.md`.
 
 ## Upgrade Path (out of scope now, easy later)
 

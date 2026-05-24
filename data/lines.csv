@@ -8,7 +8,7 @@ L_Sta_Barbara_Bantap_69,Sta. Barbara,Bantap,69,12.083,0.078021,0.479703,0.0,0.57
 L_Bantap_Buenavista_Guimaras_69,Bantap,Buenavista (Guimaras),69,8.437,0.0754,0.121,200.0,0.645,True,submarine_xlpe,1
 L_Dingle_Barotac_Viejo_138,Dingle,Barotac Viejo,138,26.148,0.120614,0.171283,0.0,0.5774,False,overhead,1
 L_Barotac_Viejo_Concepcion_138,Barotac Viejo,Concepcion,138,32.446,0.219285,0.311405,0.0,0.5774,False,overhead,2
-L_Barotac_Viejo_EB_Magalona_230,Barotac Viejo,E.B. Magalona,230,19.579,0.166272,0.080186,0.0,0.5774,False,overhead,1
+L_Barotac_Viejo_EB_Magalona_230,Barotac Viejo,E.B. Magalona,230,19.579,0.0754,0.121,200.0,0.645,True,submarine_xlpe,1
 L_EB_Magalona_Bacolod_230,E.B. Magalona,Bacolod,230,28.219,0.166272,0.080186,0.0,0.5774,False,overhead,2
 L_EB_Magalona_Cadiz_230,E.B. Magalona,Cadiz,230,35.484,0.166272,0.080186,0.0,0.5774,False,overhead,2
 L_Cadiz_Helios_Solar_138,Cadiz,Helios Solar,138,1.633,0.120614,0.171283,0.0,0.5774,False,overhead,1
@@ -25,7 +25,7 @@ L_Samboan_Dumanjug_138,Samboan,Dumanjug,138,55.616,0.120614,0.171283,0.0,0.5774,
 L_Dumanjug_Magdugo_230,Dumanjug,Magdugo,230,42.333,0.166272,0.080186,0.0,0.5774,False,overhead,2
 L_Magdugo_Calatrava_230,Magdugo,Calatrava,230,32.195,0.0754,0.121,200.0,0.645,True,submarine_xlpe,1
 L_Magdugo_Therma_Visayas_230,Magdugo,Therma Visayas,230,3.635,0.166272,0.080186,0.0,0.5774,False,overhead,1
-L_Magdugo_Daan_Lungsod_138,Magdugo,Daan Lungsod,138,94.542,0.120614,0.171283,0.0,0.5774,False,overhead,1
+L_Magdugo_Daan_Lungsod_138,Magdugo,Daan Lungsod,138,5.338,0.1,0.42,10.0,0.5774,False,overhead,1
 L_Magdugo_Calong-calong_138,Magdugo,Calong-calong,138,7.784,0.120614,0.171283,0.0,0.5774,False,overhead,2
 L_Magdugo_Colon_138,Magdugo,Colon,138,17.129,0.120614,0.171283,0.0,0.5774,False,overhead,3
 L_Dumanjug_Colon_138,Dumanjug,Colon,138,40.644,0.120614,0.171283,0.0,0.5774,False,overhead,2

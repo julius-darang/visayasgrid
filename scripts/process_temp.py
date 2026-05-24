@@ -21,6 +21,7 @@ from constants import (
     DISPATCH_FACTOR,
     DROP_CODES,
     HVDC_CAPACITY_MW,  # noqa: F401 — re-exported for pipeline consistency
+    LINE_IMPEDANCE_OVERRIDES,
     LOAD_MW_PER_FEEDER,
     LOAD_PF_QP_RATIO,
     MERGE_CODES,
@@ -233,11 +234,18 @@ def main() -> None:
         # Submarine spans: use calibrated XLPE 630 mm² parameters (IEC 60840)
         # instead of NGCP total impedance ÷ haversine distance, which is
         # unreliable — cable routing ≠ straight-line path.
+        pair = frozenset({bus0, bus1})
         if is_submarine:
             r_per_km = SUBMARINE_XLPE["r_ohm_per_km"]
             x_per_km = SUBMARINE_XLPE["x_ohm_per_km"]
             c_per_km = SUBMARINE_XLPE["c_nf_per_km"]
             max_i_ka = SUBMARINE_XLPE["max_i_ka"]
+        elif pair in LINE_IMPEDANCE_OVERRIDES:
+            ov = LINE_IMPEDANCE_OVERRIDES[pair]
+            r_per_km = ov["r_ohm_per_km"]
+            x_per_km = ov["x_ohm_per_km"]
+            c_per_km = ov.get("c_nf_per_km", 0.0)
+            max_i_ka = round(s_nom_mva / (math.sqrt(3) * v_line), 4)
         else:
             r_per_km = round(r_total / length_km, 6)
             x_per_km = round(x_total / length_km, 6)
