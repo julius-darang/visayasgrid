@@ -539,7 +539,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.4706
+        "va_degree": 8.4707
       }
     },
     {
@@ -599,7 +599,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 6.5164
+        "va_degree": 6.5165
       }
     },
     {
@@ -637,14 +637,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.9639232,
-          10.33472932
+          123.963596,
+          10.32946
         ]
       },
       "properties": {
         "name": "Mandaue",
-        "x": 123.9639232,
-        "y": 10.33472932,
+        "x": 123.963596,
+        "y": 10.32946,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Cebu",
@@ -779,7 +779,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.7984
+        "va_degree": 8.7985
       }
     },
     {
@@ -787,14 +787,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.6656658,
-          10.34594264
+          123.706851,
+          10.341147
         ]
       },
       "properties": {
         "name": "Toledo BESS",
-        "x": 123.6656658,
-        "y": 10.34594264,
+        "x": 123.706851,
+        "y": 10.341147,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Cebu",
@@ -817,14 +817,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.6656658,
-          10.34594264
+          123.706851,
+          10.341147
         ]
       },
       "properties": {
         "name": "Toledo",
-        "x": 123.6656658,
-        "y": 10.34594264,
+        "x": 123.706851,
+        "y": 10.341147,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Cebu",
@@ -839,7 +839,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.7247
+        "va_degree": 8.7248
       }
     },
     {
@@ -877,14 +877,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.1145906,
-          10.67627032
+          122.989272,
+          10.62946
         ]
       },
       "properties": {
         "name": "Bacolod",
-        "x": 123.1145906,
-        "y": 10.67627032,
+        "x": 122.989272,
+        "y": 10.62946,
         "v_nom": 230,
         "voltages_kv": 230,
         "island": "Negros",
@@ -1229,7 +1229,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 6.9333
+        "va_degree": 6.9334
       }
     },
     {
@@ -1477,14 +1477,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          122.5924279,
-          10.71585001
+          122.59255,
+          10.72631
         ]
       },
       "properties": {
         "name": "Iloilo (PEDC)",
-        "x": 122.5924279,
-        "y": 10.71585001,
+        "x": 122.59255,
+        "y": 10.72631,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Panay",
@@ -1499,7 +1499,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 9.014
+        "va_degree": 9.0141
       }
     },
     {
@@ -1529,7 +1529,7 @@
         "primary_carrier": "Wind",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 6.5217
+        "va_degree": 6.5218
       }
     },
     {
@@ -1589,7 +1589,7 @@
         "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.017
+        "va_degree": 8.0171
       }
     },
     {

@@ -143,8 +143,8 @@
             10.83480342
           ],
           [
-            122.5924279,
-            10.71585001
+            122.59255,
+            10.72631
           ]
         ]
       },
@@ -153,9 +153,9 @@
         "from_bus": "Sta. Barbara",
         "to_bus": "Iloilo (PEDC)",
         "voltage_kv": 138,
-        "length_km": 13.727,
-        "r_ohm_per_km": 0.117894,
-        "x_ohm_per_km": 0.167421,
+        "length_km": 12.614,
+        "r_ohm_per_km": 0.128296,
+        "x_ohm_per_km": 0.182193,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -341,8 +341,8 @@
             10.88474544
           ],
           [
-            123.1145906,
-            10.67627032
+            122.989272,
+            10.62946
           ]
         ]
       },
@@ -351,9 +351,9 @@
         "from_bus": "E.B. Magalona",
         "to_bus": "Bacolod",
         "voltage_kv": 230,
-        "length_km": 28.219,
-        "r_ohm_per_km": 0.166272,
-        "x_ohm_per_km": 0.080186,
+        "length_km": 28.488,
+        "r_ohm_per_km": 0.164701,
+        "x_ohm_per_km": 0.079428,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -502,8 +502,8 @@
         "type": "LineString",
         "coordinates": [
           [
-            123.1145906,
-            10.67627032
+            122.989272,
+            10.62946
           ],
           [
             122.848185,
@@ -516,9 +516,9 @@
         "from_bus": "Bacolod",
         "to_bus": "Kabankalan",
         "voltage_kv": 138,
-        "length_km": 78.656,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 69.586,
+        "r_ohm_per_km": 0.136333,
+        "x_ohm_per_km": 0.193606,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -921,7 +921,7 @@
         "cable_type": "overhead",
         "parallel": 2,
         "loading_percent": 10.66,
-        "p_from_mw": 29.42,
+        "p_from_mw": 29.419,
         "i_from_ka": 0.07385
       }
     },
@@ -1001,8 +1001,8 @@
             10.41572975
           ],
           [
-            123.6656658,
-            10.34594264
+            123.706851,
+            10.341147
           ]
         ]
       },
@@ -1011,9 +1011,9 @@
         "from_bus": "Calong-calong",
         "to_bus": "Toledo BESS",
         "voltage_kv": 138,
-        "length_km": 7.762,
-        "r_ohm_per_km": 0.028375,
-        "x_ohm_per_km": 5.241728,
+        "length_km": 9.363,
+        "r_ohm_per_km": 0.023521,
+        "x_ohm_per_km": 4.344996,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.0577,
         "is_submarine": false,
@@ -1067,8 +1067,8 @@
             10.22268355
           ],
           [
-            123.6656658,
-            10.34594264
+            123.706851,
+            10.341147
           ]
         ]
       },
@@ -1077,16 +1077,16 @@
         "from_bus": "Colon",
         "to_bus": "Toledo",
         "voltage_kv": 138,
-        "length_km": 17.149,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 14.394,
+        "r_ohm_per_km": 0.143705,
+        "x_ohm_per_km": 0.204075,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
         "loading_percent": 17.79,
-        "p_from_mw": -24.55,
+        "p_from_mw": -24.549,
         "i_from_ka": 0.10271
       }
     },
@@ -1100,8 +1100,8 @@
             10.41572975
           ],
           [
-            123.6656658,
-            10.34594264
+            123.706851,
+            10.341147
           ]
         ]
       },
@@ -1110,16 +1110,16 @@
         "from_bus": "Calong-calong",
         "to_bus": "Toledo",
         "voltage_kv": 138,
-        "length_km": 7.762,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 9.363,
+        "r_ohm_per_km": 0.09998,
+        "x_ohm_per_km": 0.14198,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
         "loading_percent": 4.59,
-        "p_from_mw": -6.33,
+        "p_from_mw": -6.331,
         "i_from_ka": 0.02648
       }
     },
@@ -1186,7 +1186,7 @@
         "parallel": 2,
         "loading_percent": 96.32,
         "p_from_mw": 265.876,
-        "i_from_ka": 1.11235
+        "i_from_ka": 1.11234
       }
     },
     {
@@ -1232,8 +1232,8 @@
             10.36522781
           ],
           [
-            123.9639232,
-            10.33472932
+            123.963596,
+            10.32946
           ]
         ]
       },
@@ -1242,9 +1242,9 @@
         "from_bus": "Cebu",
         "to_bus": "Mandaue",
         "voltage_kv": 138,
-        "length_km": 4.227,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 4.691,
+        "r_ohm_per_km": 0.108683,
+        "x_ohm_per_km": 0.15434,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -1261,8 +1261,8 @@
         "type": "LineString",
         "coordinates": [
           [
-            123.9639232,
-            10.33472932
+            123.963596,
+            10.32946
           ],
           [
             123.9683067,
@@ -1275,9 +1275,9 @@
         "from_bus": "Mandaue",
         "to_bus": "Lapu-Lapu (Pusok)",
         "voltage_kv": 138,
-        "length_km": 1.303,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 0.811,
+        "r_ohm_per_km": 0.193895,
+        "x_ohm_per_km": 0.275349,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -1294,8 +1294,8 @@
         "type": "LineString",
         "coordinates": [
           [
-            123.9639232,
-            10.33472932
+            123.963596,
+            10.32946
           ],
           [
             124.0065977,
@@ -1308,9 +1308,9 @@
         "from_bus": "Mandaue",
         "to_bus": "Compostela",
         "voltage_kv": 138,
-        "length_km": 15.377,
-        "r_ohm_per_km": 0.812279,
-        "x_ohm_per_km": 1.153512,
+        "length_km": 15.947,
+        "r_ohm_per_km": 0.783255,
+        "x_ohm_per_km": 1.112296,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -1912,7 +1912,7 @@
         "parallel": 1,
         "loading_percent": 82.25,
         "p_from_mw": 211.334,
-        "i_from_ka": 0.53049
+        "i_from_ka": 0.5305
       }
     },
     {
@@ -1945,7 +1945,7 @@
         "parallel": 1,
         "loading_percent": 52.83,
         "p_from_mw": -211.334,
-        "i_from_ka": 0.53049
+        "i_from_ka": 0.5305
       }
     },
     {
@@ -1978,7 +1978,7 @@
         "parallel": 1,
         "loading_percent": 153.13,
         "p_from_mw": 211.334,
-        "i_from_ka": 0.53049
+        "i_from_ka": 0.5305
       }
     }
   ]
