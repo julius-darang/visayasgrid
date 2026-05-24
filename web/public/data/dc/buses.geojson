@@ -457,14 +457,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.956809,
-          11.14643391
+          123.641023,
+          10.387158
         ]
       },
       "properties": {
         "name": "Daan Lungsod",
-        "x": 123.956809,
-        "y": 11.14643391,
+        "x": 123.641023,
+        "y": 10.387158,
         "v_nom": 230,
         "voltages_kv": 230,
         "island": "Cebu",
@@ -479,7 +479,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 29.8062
+        "va_degree": 26.969
       }
     },
     {
@@ -1289,7 +1289,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 25.5826
+        "va_degree": 25.6132
       }
     },
     {
@@ -1319,7 +1319,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 26.3218
+        "va_degree": 26.3524
       }
     },
     {
@@ -1349,7 +1349,7 @@
         "primary_carrier": "Wind",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 25.3393
+        "va_degree": 25.3699
       }
     },
     {
@@ -1379,7 +1379,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 27.5985
+        "va_degree": 27.6291
       }
     },
     {
@@ -1409,7 +1409,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 25.6847
+        "va_degree": 25.7153
       }
     },
     {
@@ -1439,7 +1439,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 26.8075
+        "va_degree": 26.8381
       }
     },
     {
@@ -1469,7 +1469,7 @@
         "primary_carrier": "Wind",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 24.3153
+        "va_degree": 24.3458
       }
     },
     {
@@ -1499,7 +1499,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 24.8332
+        "va_degree": 24.8638
       }
     },
     {
@@ -1529,7 +1529,7 @@
         "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 25.8105
+        "va_degree": 25.8411
       }
     },
     {
@@ -1559,7 +1559,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 26.1371
+        "va_degree": 26.1677
       }
     }
   ]

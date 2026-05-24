@@ -319,14 +319,14 @@
         "to_bus": "E.B. Magalona",
         "voltage_kv": 230,
         "length_km": 19.579,
-        "r_ohm_per_km": 0.166272,
-        "x_ohm_per_km": 0.080186,
-        "c_nf_per_km": 0.0,
-        "max_i_ka": 0.5774,
-        "is_submarine": false,
-        "cable_type": "overhead",
+        "r_ohm_per_km": 0.0754,
+        "x_ohm_per_km": 0.121,
+        "c_nf_per_km": 200.0,
+        "max_i_ka": 0.645,
+        "is_submarine": true,
+        "cable_type": "submarine_xlpe",
         "parallel": 1,
-        "loading_percent": 9.22,
+        "loading_percent": 8.25,
         "p_from_mw": 12.72,
         "i_from_ka": 0.05322
       }
@@ -869,8 +869,8 @@
             10.3457421
           ],
           [
-            123.956809,
-            11.14643391
+            123.641023,
+            10.387158
           ]
         ]
       },
@@ -879,10 +879,10 @@
         "from_bus": "Magdugo",
         "to_bus": "Daan Lungsod",
         "voltage_kv": 138,
-        "length_km": 94.542,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
-        "c_nf_per_km": 0.0,
+        "length_km": 5.338,
+        "r_ohm_per_km": 0.1,
+        "x_ohm_per_km": 0.42,
+        "c_nf_per_km": 10.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
         "cable_type": "overhead",
