@@ -56,3 +56,6 @@ L_Maasin_Ubay_138,Maasin,Ubay,138,32.972,0.0754,0.121,200.0,0.645,True,submarine
 L_Ubay_Tapal_69,Ubay,Tapal,69,3.909,0.078021,0.479703,0.0,0.5774,False,overhead,1
 L_Ubay_Corella_138,Ubay,Corella,138,70.58,0.120614,0.171283,0.0,0.5774,False,overhead,1
 L_Ubay_Corella_69,Ubay,Corella,69,70.58,0.078021,0.479703,0.0,0.5774,False,overhead,1
+L_Argao_Maribojoc_230,Argao,Maribojoc,230,28.729,0.0754,0.121,200.0,0.645,True,submarine_xlpe,1
+L_Argao_Dumanjug_230,Argao,Dumanjug,230,25.492,0.392274,0.058841,0.0,1.0041,False,overhead,1
+L_Maribojoc_Corella_138,Maribojoc,Corella,138,14.551,0.169742,0.119576,0.0,0.5774,False,overhead,1

@@ -116,6 +116,7 @@ SUBMARINE_PAIRS: set[frozenset[str]] = {
     frozenset({"05DAANBNTAY", "04TABANGO"}),   # Cebu–Leyte 230 kV (Daanbantayan–Tabango)
     frozenset({"05DUMANJUG", "07CORELLA"}),    # Cebu–Bohol (Dumanjug–Corella)
     frozenset({"04MAASIN", "07UBAY"}),         # Leyte–Bohol (Maasin–Ubay)
+    frozenset({"05ARGAO", "07MARBOJOC"}),      # CBIP — Cebu–Bohol 230 kV (Argao–Maribojoc, energized 2024-11-27) [S7]
     frozenset({"06GAHIT", "08BAROTAC"}),       # Negros–Panay (E.B. Magalona–Barotac Viejo, Guimaras Strait)
     frozenset({"08BANTAP", "08BVISTA"}),       # Panay–Guimaras (Bantap–Buenavista)
 }
@@ -150,6 +151,7 @@ CODE_INFO: dict[str, tuple[str, str, str]] = {
     "05QUIOT":      ("Quiot",                 "Cebu",     "substation"),
     "05SAMBOAN":    ("Samboan",               "Cebu",     "substation"),
     "05DUMANJUG":   ("Dumanjug",              "Cebu",     "substation"),
+    "05ARGAO":      ("Argao",                 "Cebu",     "substation"),
     "05KSPC":       ("KSPC",                  "Cebu",     "generator"),
     "05THERMA":     ("Therma Visayas",        "Cebu",     "generator"),
     "06BACOLOD":    ("Bacolod",               "Negros",   "substation"),
@@ -167,6 +169,7 @@ CODE_INFO: dict[str, tuple[str, str, str]] = {
     "07CORELLA":    ("Corella",               "Bohol",    "substation"),
     "07UBAY":       ("Ubay",                  "Bohol",    "substation"),
     "07TAPAL":      ("Tapal",                 "Bohol",    "substation"),
+    "07MARBOJOC":   ("Maribojoc",            "Bohol",    "substation"),
     "08BAROTAC":    ("Barotac Viejo",         "Panay",    "substation"),
     "08PANITAN":    ("Panitan",               "Panay",    "substation"),
     "08DINGLE":     ("Dingle",                "Panay",    "substation"),

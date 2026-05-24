@@ -9,6 +9,7 @@ Paranas (Wright),125.0413517,11.76675071,138,138,Samar,substation,36.0,10.8,Fals
 Sta. Rita,125.0020505,11.39500758,138,138,Samar,substation,36.0,10.8,False,3,0.0,0.0,,
 Tabango,124.3434864,11.32347232,230,230,Leyte,substation,24.0,7.2,False,2,0.0,0.0,,
 Tongonan,124.6375583,11.16131421,138,138,Leyte,generator,12.0,3.6,False,1,120.5,102.42,Geothermal,Geothermal
+Argao,123.61,9.879,230,230,Cebu,substation,0.0,0.0,False,0,0.0,0.0,,
 Calong-calong,123.6671074,10.41572975,138,138,Cebu,substation,48.0,14.4,False,4,49.0,12.25,Solar,Solar
 Cebu,123.9408559,10.36522781,138,138,Cebu,substation,36.0,10.8,False,3,0.0,0.0,,
 Colon,123.7598772,10.22268355,138,138,Cebu,substation,60.0,18.0,False,5,0.0,0.0,,
@@ -41,6 +42,7 @@ San Carlos,123.4335661,10.51580461,138,138,Negros,substation,12.0,3.6,False,1,10
 Corella,123.9593251,9.699520408,138,138,Bohol,substation,36.0,10.8,False,3,26.1,8.82,"Diesel,ROR",Diesel
 Tapal,124.5195759,10.06090051,138,138,Bohol,substation,12.0,3.6,False,1,29.0,8.7,Diesel,Diesel
 Ubay,124.5114284,10.02667044,138,138,Bohol,substation,48.0,14.4,False,4,0.0,0.0,,
+Maribojoc,123.836,9.748,230,230,Bohol,substation,0.0,0.0,False,0,0.0,0.0,,
 Bantap,122.5828264,10.72873409,69,69,Panay,substation,12.0,3.6,False,1,0.0,0.0,,
 Barotac Viejo,122.870264,11.03283455,138,138,Panay,substation,24.0,7.2,False,2,0.0,0.0,,
 Buenavista (Guimaras),122.6592157,10.71758251,138,138,Guimaras,substation,36.0,10.8,False,3,54.0,16.2,Wind,Wind

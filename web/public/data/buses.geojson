@@ -27,8 +27,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9911,
-        "va_degree": -7.137
+        "vm_pu": 0.9887,
+        "va_degree": -2.7148
       }
     },
     {
@@ -57,8 +57,8 @@
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 0.9708,
-        "va_degree": -8.2536
+        "vm_pu": 0.9684,
+        "va_degree": -3.8363
       }
     },
     {
@@ -87,8 +87,8 @@
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 1.0087,
-        "va_degree": -6.172
+        "vm_pu": 1.0074,
+        "va_degree": -1.7877
       }
     },
     {
@@ -118,7 +118,7 @@
         "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": 1.568
+        "va_degree": 1.2079
       }
     },
     {
@@ -147,8 +147,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9825,
-        "va_degree": -9.429
+        "vm_pu": 1.0025,
+        "va_degree": 0.2557
       }
     },
     {
@@ -179,7 +179,7 @@
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 0.0,
-        "hvdc_import_mw": -371.9
+        "hvdc_import_mw": -404.5
       }
     },
     {
@@ -208,8 +208,8 @@
         "gen_carriers": "ROR",
         "primary_carrier": "ROR",
         "connected": true,
-        "vm_pu": 0.9784,
-        "va_degree": -7.8454
+        "vm_pu": 0.976,
+        "va_degree": -3.4262
       }
     },
     {
@@ -238,8 +238,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.988,
-        "va_degree": -7.3017
+        "vm_pu": 0.9856,
+        "va_degree": -2.8803
       }
     },
     {
@@ -268,8 +268,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0389,
-        "va_degree": 2.5943
+        "vm_pu": 1.0492,
+        "va_degree": 1.398
       }
     },
     {
@@ -299,7 +299,37 @@
         "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": -5.8328
+        "va_degree": -1.4979
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.61,
+          9.879
+        ]
+      },
+      "properties": {
+        "name": "Argao",
+        "x": 123.61,
+        "y": 9.879,
+        "v_nom": 230,
+        "voltages_kv": 230,
+        "island": "Cebu",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "load_count": 0,
+        "gen_capacity_mw": 0.0,
+        "gen_mw": 0.0,
+        "gen_carriers": null,
+        "primary_carrier": null,
+        "connected": true,
+        "vm_pu": 0.9949,
+        "va_degree": 12.9143
       }
     },
     {
@@ -328,8 +358,8 @@
         "gen_carriers": "Solar",
         "primary_carrier": "Solar",
         "connected": true,
-        "vm_pu": 1.0106,
-        "va_degree": 29.5614
+        "vm_pu": 1.0116,
+        "va_degree": 16.2207
       }
     },
     {
@@ -358,8 +388,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9771,
-        "va_degree": 25.5398
+        "vm_pu": 0.9941,
+        "va_degree": 13.5458
       }
     },
     {
@@ -388,8 +418,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0048,
-        "va_degree": 28.916
+        "vm_pu": 1.0089,
+        "va_degree": 15.7265
       }
     },
     {
@@ -418,8 +448,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0474,
-        "va_degree": 3.8829
+        "vm_pu": 1.0572,
+        "va_degree": 1.8634
       }
     },
     {
@@ -448,8 +478,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0438,
-        "va_degree": 3.2982
+        "vm_pu": 1.0557,
+        "va_degree": 1.5488
       }
     },
     {
@@ -479,7 +509,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": 31.8306
+        "va_degree": 16.1022
       }
     },
     {
@@ -508,8 +538,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0192,
-        "va_degree": 31.2797
+        "vm_pu": 1.0221,
+        "va_degree": 14.8139
       }
     },
     {
@@ -539,7 +569,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": 32.8281
+        "va_degree": 19.6352
       }
     },
     {
@@ -568,8 +598,8 @@
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 0.9695,
-        "va_degree": 24.6888
+        "vm_pu": 0.9884,
+        "va_degree": 12.9162
       }
     },
     {
@@ -598,8 +628,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0216,
-        "va_degree": 31.3468
+        "vm_pu": 1.0263,
+        "va_degree": 15.5583
       }
     },
     {
@@ -628,8 +658,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9735,
-        "va_degree": 24.9936
+        "vm_pu": 0.9924,
+        "va_degree": 13.2094
       }
     },
     {
@@ -658,8 +688,8 @@
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 1.0001,
-        "va_degree": 28.211
+        "vm_pu": 1.0042,
+        "va_degree": 15.0273
       }
     },
     {
@@ -688,8 +718,8 @@
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 1.0044,
-        "va_degree": 29.048
+        "vm_pu": 1.0085,
+        "va_degree": 15.8575
       }
     },
     {
@@ -718,8 +748,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.019,
-        "va_degree": 31.6758
+        "vm_pu": 1.0184,
+        "va_degree": 17.1257
       }
     },
     {
@@ -749,7 +779,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": 29.8978
+        "va_degree": 16.5978
       }
     },
     {
@@ -778,8 +808,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0112,
-        "va_degree": 29.5612
+        "vm_pu": 1.0122,
+        "va_degree": 16.2205
       }
     },
     {
@@ -808,8 +838,8 @@
         "gen_carriers": "Coal,Diesel",
         "primary_carrier": "Coal",
         "connected": true,
-        "vm_pu": 1.0091,
-        "va_degree": 29.4703
+        "vm_pu": 1.0111,
+        "va_degree": 16.1758
       }
     },
     {
@@ -838,8 +868,8 @@
         "gen_carriers": "Biomass,ROR,Solar",
         "primary_carrier": "Solar",
         "connected": true,
-        "vm_pu": 1.0195,
-        "va_degree": 32.0116
+        "vm_pu": 1.0191,
+        "va_degree": 17.4167
       }
     },
     {
@@ -868,8 +898,8 @@
         "gen_carriers": "Biomass,Diesel,Solar",
         "primary_carrier": "Biomass",
         "connected": true,
-        "vm_pu": 1.011,
-        "va_degree": 31.0546
+        "vm_pu": 1.0158,
+        "va_degree": 15.5167
       }
     },
     {
@@ -898,8 +928,8 @@
         "gen_carriers": "Biomass,Solar",
         "primary_carrier": "Biomass",
         "connected": true,
-        "vm_pu": 1.0165,
-        "va_degree": 31.0365
+        "vm_pu": 1.0209,
+        "va_degree": 15.4042
       }
     },
     {
@@ -928,8 +958,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0216,
-        "va_degree": 31.025
+        "vm_pu": 1.0257,
+        "va_degree": 15.3148
       }
     },
     {
@@ -958,8 +988,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.013,
-        "va_degree": 31.0337
+        "vm_pu": 1.0176,
+        "va_degree": 15.4619
       }
     },
     {
@@ -988,8 +1018,8 @@
         "gen_carriers": "Solar",
         "primary_carrier": "Solar",
         "connected": true,
-        "vm_pu": 1.0165,
-        "va_degree": 31.0414
+        "vm_pu": 1.0209,
+        "va_degree": 15.409
       }
     },
     {
@@ -1018,8 +1048,8 @@
         "gen_carriers": "Biomass",
         "primary_carrier": "Biomass",
         "connected": true,
-        "vm_pu": 1.0085,
-        "va_degree": 31.235
+        "vm_pu": 1.0086,
+        "va_degree": 16.3184
       }
     },
     {
@@ -1048,8 +1078,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0085,
-        "va_degree": 31.2331
+        "vm_pu": 1.0086,
+        "va_degree": 16.3165
       }
     },
     {
@@ -1078,8 +1108,8 @@
         "gen_carriers": "Biomass",
         "primary_carrier": "Biomass",
         "connected": true,
-        "vm_pu": 1.0114,
-        "va_degree": 31.4806
+        "vm_pu": 1.0113,
+        "va_degree": 16.7022
       }
     },
     {
@@ -1108,8 +1138,8 @@
         "gen_carriers": "Geothermal",
         "primary_carrier": "Geothermal",
         "connected": true,
-        "vm_pu": 1.024,
-        "va_degree": 32.3953
+        "vm_pu": 1.0236,
+        "va_degree": 17.8007
       }
     },
     {
@@ -1139,7 +1169,7 @@
         "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": 32.7355
+        "va_degree": 18.1266
       }
     },
     {
@@ -1168,8 +1198,8 @@
         "gen_carriers": "Biomass,Solar",
         "primary_carrier": "Solar",
         "connected": true,
-        "vm_pu": 1.0207,
-        "va_degree": 31.749
+        "vm_pu": 1.0249,
+        "va_degree": 16.0329
       }
     },
     {
@@ -1198,8 +1228,8 @@
         "gen_carriers": "Diesel,ROR",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 0.962,
-        "va_degree": -11.1643
+        "vm_pu": 0.9987,
+        "va_degree": 6.1873
       }
     },
     {
@@ -1228,8 +1258,8 @@
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 0.972,
-        "va_degree": -10.4569
+        "vm_pu": 0.9987,
+        "va_degree": 1.5792
       }
     },
     {
@@ -1258,8 +1288,38 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9724,
-        "va_degree": -10.4406
+        "vm_pu": 0.9991,
+        "va_degree": 1.5947
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.836,
+          9.748
+        ]
+      },
+      "properties": {
+        "name": "Maribojoc",
+        "x": 123.836,
+        "y": 9.748,
+        "v_nom": 230,
+        "voltages_kv": 230,
+        "island": "Bohol",
+        "bus_type": "substation",
+        "p_mw": 0.0,
+        "q_mvar": 0.0,
+        "is_slack": false,
+        "load_count": 0,
+        "gen_capacity_mw": 0.0,
+        "gen_mw": 0.0,
+        "gen_carriers": null,
+        "primary_carrier": null,
+        "connected": true,
+        "vm_pu": 0.9945,
+        "va_degree": 12.0682
       }
     },
     {
@@ -1288,8 +1348,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.973,
-        "va_degree": 27.4965
+        "vm_pu": 0.9731,
+        "va_degree": 11.9904
       }
     },
     {
@@ -1318,8 +1378,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0099,
-        "va_degree": 31.3719
+        "vm_pu": 1.0108,
+        "va_degree": 15.8316
       }
     },
     {
@@ -1348,8 +1408,8 @@
         "gen_carriers": "Wind",
         "primary_carrier": "Wind",
         "connected": true,
-        "vm_pu": 0.9579,
-        "va_degree": 26.3742
+        "vm_pu": 0.958,
+        "va_degree": 10.8684
       }
     },
     {
@@ -1379,7 +1439,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": 32.8086
+        "va_degree": 17.3037
       }
     },
     {
@@ -1408,8 +1468,8 @@
         "gen_carriers": "Biomass,Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 0.9998,
-        "va_degree": 30.7562
+        "vm_pu": 1.0002,
+        "va_degree": 15.2393
       }
     },
     {
@@ -1439,7 +1499,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": 31.5705
+        "va_degree": 16.069
       }
     },
     {
@@ -1468,8 +1528,8 @@
         "gen_carriers": "Diesel,ROR,Wind",
         "primary_carrier": "Wind",
         "connected": true,
-        "vm_pu": 0.9767,
-        "va_degree": 29.5909
+        "vm_pu": 0.9771,
+        "va_degree": 14.0747
       }
     },
     {
@@ -1498,8 +1558,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9866,
-        "va_degree": 29.9917
+        "vm_pu": 0.987,
+        "va_degree": 14.4753
       }
     },
     {
@@ -1528,8 +1588,8 @@
         "gen_carriers": "Solar",
         "primary_carrier": "Solar",
         "connected": true,
-        "vm_pu": 1.0022,
-        "va_degree": 30.8253
+        "vm_pu": 1.0023,
+        "va_degree": 15.3182
       }
     },
     {
@@ -1558,8 +1618,8 @@
         "gen_carriers": "Diesel,ROR",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 1.0079,
-        "va_degree": 31.0819
+        "vm_pu": 1.008,
+        "va_degree": 15.5747
       }
     }
   ]
