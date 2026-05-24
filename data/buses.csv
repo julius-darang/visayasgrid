@@ -20,15 +20,15 @@ Dumanjug,123.4405471,10.03617433,230,230,Cebu,substation,0.0,0.0,False,0,0.0,0.0
 KSPC,123.7626806,10.21827094,230,230,Cebu,generator,24.0,7.2,False,2,206.0,164.8,Coal,Coal
 Lapu-Lapu (Pusok),123.9683067,10.32383347,230,230,Cebu,substation,24.0,7.2,False,2,45.5,13.65,Diesel,Diesel
 Magdugo,123.665698,10.3457421,230,230,Cebu,substation,30.0,9.0,False,0,0.0,0.0,,
-Mandaue,123.9639232,10.33472932,138,138,Cebu,substation,60.0,18.0,False,5,0.0,0.0,,
+Mandaue,123.963596,10.32946,138,138,Cebu,substation,60.0,18.0,False,5,0.0,0.0,,
 Naga (Visayas),123.7570366,10.2544303,138,138,Cebu,substation,48.0,14.4,False,4,33.0,9.9,Diesel,Diesel
 Quiot,123.8561088,10.28792262,138,138,Cebu,substation,12.0,3.6,False,1,65.0,19.5,Diesel,Diesel
 Samboan,123.3117005,9.552394872,138,138,Cebu,substation,24.0,7.2,False,2,0.0,0.0,,
 Therma Visayas,123.6351288,10.35856192,138,138,Cebu,generator,24.0,7.2,False,2,338.0,270.4,Coal,Coal
-Toledo BESS,123.6656658,10.34594264,138,138,Cebu,bess,0.0,0.0,False,0,0.0,0.0,,
-Toledo,123.6656658,10.34594264,138,138,Cebu,substation,48.0,14.4,False,4,123.6,78.88,"Coal,Diesel",Coal
+Toledo BESS,123.706851,10.341147,138,138,Cebu,bess,0.0,0.0,False,0,0.0,0.0,,
+Toledo,123.706851,10.341147,138,138,Cebu,substation,48.0,14.4,False,4,123.6,78.88,"Coal,Diesel",Coal
 Amlan,123.2248121,9.457756504,138,138,Negros,substation,36.0,10.8,False,3,27.4,12.38,"Biomass,ROR,Solar",Solar
-Bacolod,123.1145906,10.67627032,230,230,Negros,substation,96.0,28.8,False,8,132.1,60.47,"Biomass,Diesel,Solar",Biomass
+Bacolod,122.989272,10.62946,230,230,Negros,substation,96.0,28.8,False,8,132.1,60.47,"Biomass,Diesel,Solar",Biomass
 Cadiz,123.2882465,10.93482221,230,230,Negros,substation,60.0,18.0,False,5,84.4,40.86,"Biomass,Solar",Biomass
 Calatrava,123.4606946,10.55356153,230,230,Negros,substation,24.0,7.2,False,2,0.0,0.0,,
 E.B. Magalona,122.9672809,10.88474544,230,230,Negros,substation,25.0,7.5,False,0,0.0,0.0,,
@@ -48,7 +48,7 @@ Barotac Viejo,122.870264,11.03283455,138,138,Panay,substation,24.0,7.2,False,2,0
 Buenavista (Guimaras),122.6592157,10.71758251,138,138,Guimaras,substation,36.0,10.8,False,3,54.0,16.2,Wind,Wind
 Concepcion,123.121373,11.18913152,138,138,Panay,substation,24.0,7.2,False,2,135.0,108.0,Coal,Coal
 Dingle,122.6308302,11.02453374,138,138,Panay,substation,96.0,28.8,False,8,81.0,30.7,"Biomass,Diesel",Diesel
-Iloilo (PEDC),122.5924279,10.71585001,138,138,Panay,substation,60.0,18.0,False,5,317.4,253.92,Coal,Coal
+Iloilo (PEDC),122.59255,10.72631,138,138,Panay,substation,60.0,18.0,False,5,317.4,253.92,Coal,Coal
 Nabas,122.0954808,11.81440808,138,138,Panay,substation,48.0,14.4,False,4,74.1,24.03,"Diesel,ROR,Wind",Wind
 Panitan,122.7926197,11.49401092,138,138,Panay,substation,36.0,10.8,False,3,0.0,0.0,,
 San Jose,122.5362605,10.99817987,138,138,Panay,substation,36.0,10.8,False,3,5.7,1.43,Solar,Solar

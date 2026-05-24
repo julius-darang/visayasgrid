@@ -92,7 +92,7 @@ trace to PyPSA-PH unless noted).
 |---|------|--------|------:|--------:|--------:|----------|--------|-------|
 | 1 | Babatngon | Leyte | 138 | 124.896699 | 11.395501 | substation | pypsa-ph | verify vs OSM |
 | 2 | Calbayog | Samar | 138 | 124.637913 | 12.055139 | substation | pypsa-ph | verify vs OSM |
-| 3 | Isabel | Leyte | 138 | 124.448930 | 10.919333 | substation | pypsa-ph | Isabel/LIDE industrial area |
+| 3 | Isabel | Leyte | 138 | 124.448930 | 10.919333 | substation | sourced [S5] | Isabel/LIDE industrial area; confirmed 2026-05-24 |
 | 4 | Kananga | Leyte | 230 | 124.551309 | 11.164993 | substation | pypsa-ph | Tongonan geothermal hub; check 230 kV r/x |
 | 5 | Maasin | Leyte | 138 | 124.779131 | 10.162555 | substation | pypsa-ph | Leyte–Bohol cable landing |
 | 6 | Ormoc | Leyte | 350 | 124.644678 | 11.087485 | hvdc | sourced (role) | Leyte–Luzon HVDC terminal, slack [S8] |
@@ -102,7 +102,7 @@ trace to PyPSA-PH unless noted).
 | 10 | Tongonan | Leyte | 138 | 124.637558 | 11.161314 | generator | pypsa-ph | geothermal |
 | 11 | Calong-calong | Cebu | 138 | 123.667107 | 10.415730 | substation | pypsa-ph | verify vs OSM |
 | 12 | Cebu | Cebu | 138 | 123.940856 | 10.365228 | substation | pypsa-ph | verify vs OSM |
-| 13 | Colon | Cebu | 138 | 123.759877 | 10.222684 | substation | pypsa-ph | verify vs OSM |
+| 13 | Colon | Cebu | 138 | 123.759877 | 10.222684 | substation | sourced [S5] | confirmed 2026-05-24 |
 | 14 | Compostela | Cebu | 230 | 124.006598 | 10.466498 | substation | pypsa-ph | verify vs OSM |
 | 15 | Daanbantayan | Cebu | 230 | 123.956809 | 11.146434 | substation | pypsa-ph | north Cebu; verify vs OSM |
 | 16 | Daan Lungsod | Cebu | 230 | 123.641023 | 10.387158 | substation | sourced [S9] | CEDC coal, Toledo City; fixed 2026-05-24 |
@@ -110,16 +110,16 @@ trace to PyPSA-PH unless noted).
 | 18 | KSPC | Cebu | 230 | 123.762681 | 10.218271 | generator | pypsa-ph | KEPCO SPC Naga coal |
 | 19 | Lapu-Lapu (Pusok) | Cebu | 230 | 123.968307 | 10.323833 | substation | pypsa-ph | Mactan |
 | 20 | Magdugo | Cebu | 230 | 123.665698 | 10.345742 | substation | pypsa-ph | Cebu 230 kV hub |
-| 21 | Mandaue | Cebu | 138 | 123.963923 | 10.334729 | substation | pypsa-ph | verify vs OSM |
+| 21 | Mandaue | Cebu | 138 | 123.963596 | 10.329460 | substation | sourced [S5] | corrected ~0.6 km; OSM way/616007569; fixed 2026-05-24 |
 | 22 | Naga (Visayas) | Cebu | 138 | 123.757037 | 10.254430 | substation | pypsa-ph | Naga, Cebu (not Luzon Naga) |
 | 23 | Quiot | Cebu | 138 | 123.856109 | 10.287923 | substation | pypsa-ph | check r/x of feeder line |
 | 24 | Samboan | Cebu | 138 | 123.311701 | 9.552395 | substation | pypsa-ph | Cebu–Negros cable landing [S6] |
 | 25 | Therma Visayas | Cebu | 138 | 123.635129 | 10.358562 | generator | pypsa-ph | TVI coal |
-| 26 | Toledo BESS | Cebu | 138 | 123.665666 | 10.345943 | bess | pypsa-ph | verify vs OSM |
-| 27 | Toledo | Cebu | 138 | 123.665666 | 10.345943 | substation | pypsa-ph | shares coord with #26 (co-located BESS) |
+| 26 | Toledo BESS | Cebu | 138 | 123.706851 | 10.341147 | bess | sourced [S5] | was Magdugo duplicate; corrected ~4 km; OSM way/616838559; fixed 2026-05-24 |
+| 27 | Toledo | Cebu | 138 | 123.706851 | 10.341147 | substation | sourced [S5] | was Magdugo duplicate; corrected ~4 km; OSM way/616838559; fixed 2026-05-24 |
 | 28 | Amlan | Negros | 138 | 123.224812 | 9.457757 | substation | pypsa-ph | Cebu–Negros cable landing [S6] |
-| 29 | Bacolod | Negros | 230 | 123.114591 | 10.676270 | substation | pypsa-ph | major load centre |
-| 30 | Cadiz | Negros | 230 | 123.288247 | 10.934822 | substation | pypsa-ph | verify vs OSM |
+| 29 | Bacolod | Negros | 230 | 122.989272 | 10.629460 | substation | sourced [S5] | corrected ~13 km; 230 kV OSM way/1175248269, 138 kV OSM rel/15283858 co-located; fixed 2026-05-24 |
+| 30 | Cadiz | Negros | 230 | 123.288247 | 10.934822 | substation | sourced [S5] | confirmed 2026-05-24 |
 | 31 | Calatrava | Negros | 230 | 123.460695 | 10.553562 | substation | pypsa-ph | Cebu–Negros 230 kV landing — verify |
 | 32 | E.B. Magalona | Negros | 230 | 122.967281 | 10.884745 | substation | pypsa-ph | Negros–Panay landing (see fix #1) |
 | 33 | Helios Solar | Negros | 230 | 123.298579 | 10.924203 | generator | pypsa-ph | solar |
@@ -131,17 +131,17 @@ trace to PyPSA-PH unless noted).
 | 39 | San Carlos | Negros | 138 | 123.433566 | 10.515805 | substation | pypsa-ph | verify vs OSM |
 | 40 | Corella | Bohol | 138 | 123.959325 | 9.699520 | substation | pypsa-ph | Bohol load centre |
 | 41 | Tapal | Bohol | 138 | 124.519576 | 10.060901 | substation | pypsa-ph | verify vs OSM |
-| 42 | Ubay | Bohol | 138 | 124.511428 | 10.026670 | substation | pypsa-ph | Leyte–Bohol cable landing |
+| 42 | Ubay | Bohol | 138 | 124.511428 | 10.026670 | substation | sourced [S5] | Leyte–Bohol cable landing; confirmed 2026-05-24 |
 | 43 | Bantap | Panay | 69 | 122.582826 | 10.728734 | substation | pypsa-ph | Panay–Guimaras 69 kV landing |
 | 44 | Barotac Viejo | Panay | 138 | 122.870264 | 11.032835 | substation | pypsa-ph | Negros–Panay landing (see fix #1) |
 | 45 | Buenavista (Guimaras) | Guimaras | 138 | 122.659216 | 10.717583 | substation | pypsa-ph | check v_nom vs 69 kV cable |
 | 46 | Concepcion | Panay | 138 | 123.121373 | 11.189132 | substation | pypsa-ph | coal |
-| 47 | Dingle | Panay | 138 | 122.630830 | 11.024534 | substation | pypsa-ph | Panay hub |
-| 48 | Iloilo (PEDC) | Panay | 138 | 122.592428 | 10.715850 | substation | pypsa-ph | PEDC coal; major load |
+| 47 | Dingle | Panay | 138 | 122.630830 | 11.024534 | substation | sourced [S5] | Panay hub; OSM labeled "Panay Diesel Power Plant 3"; confirmed 2026-05-24 |
+| 48 | Iloilo (PEDC) | Panay | 138 | 122.59255 | 10.72631 | substation | sourced [S5] | corrected ~1.2 km; OSM way/937496043; fixed 2026-05-24 |
 | 49 | Nabas | Panay | 138 | 122.095481 | 11.814408 | substation | pypsa-ph | NW Panay wind |
 | 50 | Panitan | Panay | 138 | 122.792620 | 11.494011 | substation | pypsa-ph | verify vs OSM |
 | 51 | San Jose | Panay | 138 | 122.536261 | 10.998180 | substation | pypsa-ph | Antique/Iloilo — verify |
-| 52 | Sta. Barbara | Panay | 138 | 122.558810 | 10.834803 | substation | pypsa-ph | Iloilo hub |
+| 52 | Sta. Barbara | Panay | 138 | 122.558810 | 10.834803 | substation | sourced [S5] | Iloilo hub; confirmed 2026-05-24 |
 
 ## Line provenance policy
 
@@ -166,11 +166,24 @@ trace to PyPSA-PH unless noted).
   fix #4). `generators.csv` unchanged. `build_data.py` / geojson not yet
   regenerated — pending redeploy.
 
+- **2026-05-24 (fix #5)** — Human-led coordinate spot-check of 10 highest-load
+  substations vs OpenInfraMap [S5]. 6 confirmed, 4 corrected:
+  - Bacolod (06BACOLOD): 123.1146,10.6763 → 122.9893,10.6295 (~13 km WSW);
+    230 kV OSM way/1175248269; was in sugar-cane land NE of city.
+  - Mandaue (05MANDAUE): 123.9639,10.3347 → 123.9636,10.3295 (~0.6 km S);
+    OSM way/616007569.
+  - Iloilo/PEDC (08ILOILO1): 122.5924,10.7159 → 122.5926,10.7263 (~1.2 km N);
+    OSM way/937496043.
+  - Toledo + Toledo BESS (05TOLEDO, 05TOLBESS): 123.6657,10.3459 →
+    123.7069,10.3411 (~4 km E); was a duplicate of Magdugo's coordinate;
+    OSM way/616838559.
+  Confirmed (no coord change): Isabel, Sta. Barbara, Colon, Cadiz, Ubay, Dingle
+  (Dingle OSM label = "Panay Diesel Power Plant 3").
+
 ## Next actions (subsequent blocks this week)
 
 1. Re-run `build_data.py`, confirm the topology gate passes, regenerate the
    geojson, and redeploy (carry tonight's CSV fixes through to the live map).
 2. Add the Cebu–Bohol (CBIP) 230 kV interconnection (fix #2).
-3. Recompute anomalous impedances from conductor tables (fix #4 — now includes
-   `L_Magdugo_Daan_Lungsod_138`).
-4. Spot-verify ~10 highest-load substation coordinates against OpenInfraMap [S5].
+3. Recompute anomalous impedances from conductor tables (fix #4).
+4. ~~Spot-verify ~10 highest-load substation coordinates against OpenInfraMap [S5].~~ **DONE 2026-05-24** (fix #5).

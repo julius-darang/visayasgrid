@@ -3,18 +3,18 @@ L_Nabas_Panitan_138,Nabas,Panitan,138,83.864,0.120614,0.171283,0.0,0.5774,False,
 L_Panitan_Dingle_138,Panitan,Dingle,138,55.105,0.120614,0.171283,0.0,0.5774,False,overhead,2
 L_Dingle_Sta_Barbara_138,Dingle,Sta. Barbara,138,22.515,0.120614,0.171283,0.0,0.5774,False,overhead,2
 L_Sta_Barbara_San_Jose_138,Sta. Barbara,San Jose,138,18.333,0.120614,0.171283,0.0,0.5774,False,overhead,1
-L_Sta_Barbara_Iloilo_PEDC_138,Sta. Barbara,Iloilo (PEDC),138,13.727,0.117894,0.167421,0.0,0.5774,False,overhead,2
+L_Sta_Barbara_Iloilo_PEDC_138,Sta. Barbara,Iloilo (PEDC),138,12.614,0.128296,0.182193,0.0,0.5774,False,overhead,2
 L_Sta_Barbara_Bantap_69,Sta. Barbara,Bantap,69,12.083,0.078021,0.479703,0.0,0.5774,False,overhead,1
 L_Bantap_Buenavista_Guimaras_69,Bantap,Buenavista (Guimaras),69,8.437,0.0754,0.121,200.0,0.645,True,submarine_xlpe,1
 L_Dingle_Barotac_Viejo_138,Dingle,Barotac Viejo,138,26.148,0.120614,0.171283,0.0,0.5774,False,overhead,1
 L_Barotac_Viejo_Concepcion_138,Barotac Viejo,Concepcion,138,32.446,0.219285,0.311405,0.0,0.5774,False,overhead,2
 L_Barotac_Viejo_EB_Magalona_230,Barotac Viejo,E.B. Magalona,230,19.579,0.0754,0.121,200.0,0.645,True,submarine_xlpe,1
-L_EB_Magalona_Bacolod_230,E.B. Magalona,Bacolod,230,28.219,0.166272,0.080186,0.0,0.5774,False,overhead,2
+L_EB_Magalona_Bacolod_230,E.B. Magalona,Bacolod,230,28.488,0.164701,0.079428,0.0,0.5774,False,overhead,2
 L_EB_Magalona_Cadiz_230,E.B. Magalona,Cadiz,230,35.484,0.166272,0.080186,0.0,0.5774,False,overhead,2
 L_Cadiz_Helios_Solar_138,Cadiz,Helios Solar,138,1.633,0.120614,0.171283,0.0,0.5774,False,overhead,1
 L_Cadiz_Calatrava_230,Cadiz,Calatrava,230,46.392,0.166272,0.080186,0.0,0.5774,False,overhead,2
 L_Calatrava_San_Carlos_69,Calatrava,San Carlos,69,5.14,0.078021,0.479703,0.0,0.5774,False,overhead,2
-L_Bacolod_Kabankalan_138,Bacolod,Kabankalan,138,78.656,0.120614,0.171283,0.0,0.5774,False,overhead,2
+L_Bacolod_Kabankalan_138,Bacolod,Kabankalan,138,69.586,0.136333,0.193606,0.0,0.5774,False,overhead,2
 L_Kabankalan_Mabinay_138,Kabankalan,Mabinay,138,33.3,0.120614,0.171283,0.0,0.5774,False,overhead,2
 L_Kabankalan_Kabankalan_BESS_138,Kabankalan,Kabankalan BESS,138,0.5,0.09473,0.134526,0.0,0.5774,False,overhead,1
 L_Mabinay_Amlan_138,Mabinay,Amlan,138,44.616,0.120614,0.171283,0.0,0.5774,False,overhead,2
@@ -29,16 +29,16 @@ L_Magdugo_Daan_Lungsod_138,Magdugo,Daan Lungsod,138,5.338,0.1,0.42,10.0,0.5774,F
 L_Magdugo_Calong-calong_138,Magdugo,Calong-calong,138,7.784,0.120614,0.171283,0.0,0.5774,False,overhead,2
 L_Magdugo_Colon_138,Magdugo,Colon,138,17.129,0.120614,0.171283,0.0,0.5774,False,overhead,3
 L_Dumanjug_Colon_138,Dumanjug,Colon,138,40.644,0.120614,0.171283,0.0,0.5774,False,overhead,2
-L_Calong-calong_Toledo_BESS_138,Calong-calong,Toledo BESS,138,7.762,0.028375,5.241728,0.0,0.0577,False,overhead,1
+L_Calong-calong_Toledo_BESS_138,Calong-calong,Toledo BESS,138,9.363,0.023521,4.344996,0.0,0.0577,False,overhead,1
 L_Colon_Naga_Visayas_138,Colon,Naga (Visayas),138,3.544,0.028375,5.241728,0.0,0.0577,False,overhead,3
-L_Colon_Toledo_138,Colon,Toledo,138,17.149,0.120614,0.171283,0.0,0.5774,False,overhead,1
-L_Calong-calong_Toledo_138,Calong-calong,Toledo,138,7.762,0.120614,0.171283,0.0,0.5774,False,overhead,1
+L_Colon_Toledo_138,Colon,Toledo,138,14.394,0.143705,0.204075,0.0,0.5774,False,overhead,1
+L_Calong-calong_Toledo_138,Calong-calong,Toledo,138,9.363,0.09998,0.14198,0.0,0.5774,False,overhead,1
 L_Colon_KSPC_138,Colon,KSPC,138,0.579,0.120613,0.171282,0.0,0.5774,False,overhead,2
 L_Colon_Cebu_138,Colon,Cebu,138,25.363,0.120614,0.171283,0.0,0.5774,False,overhead,2
 L_Colon_Quiot_138,Colon,Quiot,138,12.787,0.1,0.42,10.0,0.5774,False,overhead,1
-L_Cebu_Mandaue_138,Cebu,Mandaue,138,4.227,0.120614,0.171283,0.0,0.5774,False,overhead,2
-L_Mandaue_Lapu-Lapu_Pusok_138,Mandaue,Lapu-Lapu (Pusok),138,1.303,0.120614,0.171283,0.0,0.5774,False,overhead,2
-L_Mandaue_Compostela_138,Mandaue,Compostela,138,15.377,0.812279,1.153512,0.0,0.5774,False,overhead,2
+L_Cebu_Mandaue_138,Cebu,Mandaue,138,4.691,0.108683,0.15434,0.0,0.5774,False,overhead,2
+L_Mandaue_Lapu-Lapu_Pusok_138,Mandaue,Lapu-Lapu (Pusok),138,0.811,0.193895,0.275349,0.0,0.5774,False,overhead,2
+L_Mandaue_Compostela_138,Mandaue,Compostela,138,15.947,0.783255,1.112296,0.0,0.5774,False,overhead,2
 L_Compostela_Daanbantayan_230,Compostela,Daanbantayan,230,75.801,0.041825,0.020171,0.0,0.5774,False,overhead,2
 L_Daanbantayan_Tabango_230,Daanbantayan,Tabango,230,46.541,0.0754,0.121,200.0,0.645,True,submarine_xlpe,2
 L_Tabango_Kananga_230,Tabango,Kananga,230,28.71,0.06,0.4,9.0,0.5774,False,overhead,2
