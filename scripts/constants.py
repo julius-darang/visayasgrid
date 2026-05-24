@@ -63,6 +63,14 @@ LINE_IMPEDANCE_OVERRIDES: dict[frozenset, dict] = {
     # ~5 km spur to CEDC Toledo City coal plant. Coord fix (2026-05-24) revealed
     # inherited r_total was calibrated to wrong ~94.5 km; use 138 kV ACSR standard.
     frozenset({"05MAGDUGO", "05DAANLUNSOD"}): OVERHEAD_DEFAULTS[138],
+    # Leyte corridor — inherited r/x is 20–50× a physically reasonable 230 kV
+    # overhead conductor (r=3.218 and 1.723 Ω/km vs ~0.06 for ACSR Drake).
+    # Root cause: PyPSA-PH stores total line impedance in Ω, not per-km values;
+    # dividing by haversine distance amplifies any coordinate or length error.
+    frozenset({"04KANANGA", "04ORMOC"}):   OVERHEAD_DEFAULTS[230],
+    frozenset({"04TABANGO", "04KANANGA"}): OVERHEAD_DEFAULTS[230],
+    # Colon–Quiot 138 kV urban spur — same issue, r=2.013 Ω/km inherited.
+    frozenset({"05COLON", "05QUIOT"}):     OVERHEAD_DEFAULTS[138],
 }
 
 # ─── Load modeling ────────────────────────────────────────────────────────────
