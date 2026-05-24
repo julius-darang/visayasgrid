@@ -1,5 +1,6 @@
 import { overloadedLines, voltageViolations } from "../lib/grid.js";
 import { Chevron } from "./icons.jsx";
+import { usePersistentState } from "../hooks/usePersistentState.js";
 
 function sum(features, field) {
   return features.reduce((s, f) => s + Number(f.properties[field] || 0), 0);
@@ -20,6 +21,9 @@ const WRAP =
   "absolute left-16 top-4 z-[1000] w-[min(14rem,calc(100vw-5rem))] rounded-lg border border-slate-200 bg-white/95 text-xs shadow-sm backdrop-blur animate-fade-in dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200 md:left-4 md:w-56";
 
 export default function StatsPanel({ buses, lines, manifest, onFocus }) {
+  // Hook must be called before any early returns (React rules).
+  const [panelOpen, setPanelOpen] = usePersistentState("vg-stats-open", false);
+
   const features = buses.features;
   if (!features.length) {
     return (
@@ -59,7 +63,11 @@ export default function StatsPanel({ buses, lines, manifest, onFocus }) {
 
   return (
     <div className={WRAP}>
-      <details className="group">
+      <details
+        className="group"
+        open={panelOpen}
+        onToggle={(e) => setPanelOpen(e.currentTarget.open)}
+      >
         <summary className="flex cursor-pointer select-none items-center gap-2 rounded-lg px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-slate-400 marker:hidden focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500">
           <span>Visayas snapshot</span>
           {alertCount > 0 && (

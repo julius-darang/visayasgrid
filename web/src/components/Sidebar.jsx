@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { ISLANDS, VOLTAGE_LEVELS, VOLTAGE_COLORS } from "../lib/styles.js";
 import InfoButton from "./InfoButton.jsx";
 import { Chevron, CloseButton } from "./icons.jsx";
+import { usePersistentState } from "../hooks/usePersistentState.js";
 
 function toggle(set, value) {
   const next = new Set(set);
@@ -12,9 +13,17 @@ function toggle(set, value) {
 
 // Collapsible section: keeps the sidebar uncluttered while the summary
 // (e.g. "6 / 8") still shows state at a glance.
-function Disclosure({ title, summary, defaultOpen = false, children }) {
+// Supports controlled mode (open + onToggle) for persistent state, and
+// uncontrolled mode (defaultOpen) for one-off cases.
+function Disclosure({ title, summary, open, onToggle, defaultOpen = false, children }) {
+  const isControlled = open !== undefined;
+  const detailsProps = isControlled
+    ? { open, onToggle: (e) => onToggle(e.currentTarget.open) }
+    : defaultOpen
+    ? { open: true }
+    : {};
   return (
-    <details className="group mb-4" {...(defaultOpen ? { open: true } : {})}>
+    <details className="group mb-4" {...detailsProps}>
       <summary className="flex cursor-pointer select-none items-center justify-between rounded py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400 marker:hidden focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500">
         <span>{title}</span>
         <span className="flex items-center gap-1.5 normal-case tracking-normal">
@@ -90,6 +99,22 @@ export default function Sidebar({
   const [query, setQuery] = useState("");
   const [info, setInfo] = useState({});
   const [active, setActive] = useState(-1);
+  const [copied, setCopied] = useState(false);
+
+  // Persist open/closed state of each disclosure panel across page loads.
+  const [displayOpen, setDisplayOpen] = usePersistentState("vg-disc-display", false);
+  const [islandsOpen, setIslandsOpen] = usePersistentState("vg-disc-islands", true);
+  const [voltagesOpen, setVoltagesOpen] = usePersistentState("vg-disc-voltages", true);
+
+  const copyLink = () => {
+    navigator.clipboard
+      .writeText(window.location.href)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      })
+      .catch(() => {});
+  };
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
@@ -200,6 +225,8 @@ export default function Sidebar({
       <Disclosure
         title="Display"
         summary={colorMode === "pu" ? "Voltage (pu)" : "Nominal kV"}
+        open={displayOpen}
+        onToggle={setDisplayOpen}
       >
         <div className="mb-3">
           <div className="mb-1 text-[10px] text-slate-400 dark:text-slate-500">
@@ -269,7 +296,8 @@ export default function Sidebar({
       <Disclosure
         title="Islands"
         summary={`${selectedIslands.length} / ${ISLANDS.length}`}
-        defaultOpen
+        open={islandsOpen}
+        onToggle={setIslandsOpen}
       >
         <AllNone
           onAll={() => setSelectedIslands(ISLANDS)}
@@ -295,7 +323,8 @@ export default function Sidebar({
       <Disclosure
         title="Voltage"
         summary={`${selectedVoltages.length} / ${VOLTAGE_LEVELS.length}`}
-        defaultOpen
+        open={voltagesOpen}
+        onToggle={setVoltagesOpen}
       >
         <AllNone
           onAll={() => setSelectedVoltages(VOLTAGE_LEVELS)}
@@ -363,6 +392,32 @@ export default function Sidebar({
             />
           </svg>
           <span>Data table</span>
+        </button>
+        <button
+          onClick={copyLink}
+          aria-label="Copy shareable link to clipboard"
+          className={`flex w-full items-center justify-center gap-1.5 rounded-md border px-2.5 py-2 text-xs transition focus-visible:ring-2 focus-visible:ring-sky-500 md:py-1.5 ${
+            copied
+              ? "border-emerald-300 text-emerald-700 dark:border-emerald-700 dark:text-emerald-400"
+              : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
+          }`}
+        >
+          {copied ? (
+            <>
+              <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M2 7.5l3.5 3.5L12 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              </svg>
+              <span>Copied!</span>
+            </>
+          ) : (
+            <>
+              <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M5.5 8.5a2.8 2.8 0 0 0 3.8.3l1.4-1.4a2.8 2.8 0 0 0-3.9-3.9L6 4.2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" fill="none" />
+                <path d="M8.5 5.5a2.8 2.8 0 0 0-3.8-.3L3.3 6.6a2.8 2.8 0 0 0 3.9 3.9L8 9.8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" fill="none" />
+              </svg>
+              <span>Copy link</span>
+            </>
+          )}
         </button>
         <button
           onClick={onReset}

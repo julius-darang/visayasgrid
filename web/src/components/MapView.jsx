@@ -127,6 +127,10 @@ export default function MapView({
           !dim &&
           pmw != null &&
           Math.abs(pmw) >= FLOW_ARROW_MIN_MW;
+        const isSelectedLine =
+          selected?.kind === "line" &&
+          selected.feature.properties.from_bus === lp.from_bus &&
+          selected.feature.properties.to_bus === lp.to_bus;
         let arrow = null;
         if (showArrow) {
           const [a, b] = coords;
@@ -150,6 +154,18 @@ export default function MapView({
                 click: () => onSelect({ kind: "line", feature: f }),
               }}
             />
+            {/* Selection halo rendered on top of the line */}
+            {isSelectedLine && (
+              <Polyline
+                positions={coords}
+                pathOptions={{
+                  color: "#0ea5e9",
+                  weight: 5,
+                  opacity: 0.5,
+                  interactive: false,
+                }}
+              />
+            )}
             {arrow}
           </Fragment>
         );
@@ -168,6 +184,9 @@ export default function MapView({
           colorMode === "pu"
             ? colorForVoltagePu(f.properties.vm_pu)
             : colorForVoltage(v);
+        const isSelectedBus =
+          selected?.kind === "bus" &&
+          selected.feature.properties.name === f.properties.name;
 
         return (
           <Fragment key={`bus-${i}`}>
@@ -226,6 +245,21 @@ export default function MapView({
                 </Tooltip>
               )}
             </CircleMarker>
+            {/* Selection halo — sky-blue ring that makes the selected bus unmistakable */}
+            {isSelectedBus && (
+              <CircleMarker
+                center={[y, x]}
+                radius={radius + 7}
+                pathOptions={{
+                  color: "#0ea5e9",
+                  weight: 2.5,
+                  fillColor: "transparent",
+                  fillOpacity: 0,
+                  opacity: 0.9,
+                  interactive: false,
+                }}
+              />
+            )}
           </Fragment>
         );
       })}

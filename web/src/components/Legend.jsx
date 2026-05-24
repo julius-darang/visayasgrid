@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePersistentState } from "../hooks/usePersistentState.js";
 import {
   VOLTAGE_LEVELS,
   VOLTAGE_COLORS,
@@ -62,12 +63,17 @@ export default function Legend({
 }) {
   // Collapsed by default so the map stays the focus; the summary chip is
   // always available to expand the colour reference on demand.
+  const [legendOpen, setLegendOpen] = usePersistentState("vg-legend-open", false);
   const [info, setInfo] = useState({});
   const toggle = (k) => setInfo((s) => ({ ...s, [k]: !s[k] }));
 
   return (
     <div className="absolute bottom-4 left-4 z-[1000] max-w-[calc(100vw-2rem)] rounded-lg border border-slate-200 bg-white/95 text-[11px] shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200">
-      <details className="group">
+      <details
+        className="group"
+        open={legendOpen}
+        onToggle={(e) => setLegendOpen(e.currentTarget.open)}
+      >
         <summary className="flex cursor-pointer select-none items-center gap-2 rounded-lg px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-slate-400 marker:hidden focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500">
           <span>Legend</span>
           <Chevron />
