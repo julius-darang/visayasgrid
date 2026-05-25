@@ -47,12 +47,13 @@ describe("colorForVoltagePu", () => {
 
 describe("radiusForBus", () => {
   it("scales base radius by nominal voltage", () => {
-    expect(radiusForBus({ v_nom: 230 })).toBe(6);
-    expect(radiusForBus({ v_nom: 69 })).toBe(4);
+    expect(radiusForBus({ v_nom: 230 })).toBe(4.5);
+    expect(radiusForBus({ v_nom: 69 })).toBe(3);
   });
   it("adds a bounded bump for generation capacity", () => {
-    const r = radiusForBus({ v_nom: 230, gen_capacity_mw: 1000 });
-    expect(r).toBeGreaterThan(6);
-    expect(r).toBeLessThanOrEqual(12);
+    const plain = radiusForBus({ v_nom: 230 });
+    const withGen = radiusForBus({ v_nom: 230, gen_capacity_mw: 1000 });
+    expect(withGen).toBeGreaterThan(plain);
+    expect(withGen).toBeLessThanOrEqual(plain + 4);
   });
 });

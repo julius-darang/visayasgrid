@@ -1,3 +1,6 @@
+import { useEffect, useRef } from "react";
+import { CloseButton } from "./icons.jsx";
+
 const ISLAND_DATA = [
   { name: "Cebu",    load: "~530 MW", gen: "Coal, Geothermal, Solar, Diesel",       note: "Grid hub; densest substation concentration" },
   { name: "Leyte",   load: "~210 MW", gen: "Geothermal (dominant), Solar, Diesel",  note: "Hosts the HVDC terminus at Ormoc" },
@@ -37,12 +40,28 @@ function Prose({ children }) {
 }
 
 export default function AboutModal({ onClose }) {
+  const closeRef = useRef(null);
+
+  useEffect(() => {
+    closeRef.current?.focus();
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
   return (
     <div
-      className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/40 backdrop-blur-sm"
+      className="fixed inset-0 z-[1300] flex items-center justify-center bg-black/40 backdrop-blur-sm"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div className="relative mx-4 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="About this visualization"
+        className="relative mx-4 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900"
+      >
         {/* Header */}
         <div className="flex items-start justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-700">
           <div>
@@ -53,13 +72,12 @@ export default function AboutModal({ onClose }) {
               About this visualization
             </p>
           </div>
-          <button
+          <CloseButton
+            ref={closeRef}
             onClick={onClose}
-            className="ml-4 shrink-0 rounded-md px-2 py-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200"
-            aria-label="Close"
-          >
-            ✕
-          </button>
+            label="Close about"
+            className="ml-4 shrink-0"
+          />
         </div>
 
         {/* Scrollable body */}
@@ -329,7 +347,7 @@ export default function AboutModal({ onClose }) {
           </span>
           <button
             onClick={onClose}
-            className="rounded-md bg-slate-900 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-300"
+            className="rounded-md bg-slate-900 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-slate-700 focus-visible:ring-2 focus-visible:ring-sky-500 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-300"
           >
             Close
           </button>

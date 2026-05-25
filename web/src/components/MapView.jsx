@@ -127,6 +127,10 @@ export default function MapView({
           !dim &&
           pmw != null &&
           Math.abs(pmw) >= FLOW_ARROW_MIN_MW;
+        const isSelectedLine =
+          selected?.kind === "line" &&
+          selected.feature.properties.from_bus === lp.from_bus &&
+          selected.feature.properties.to_bus === lp.to_bus;
         let arrow = null;
         if (showArrow) {
           const [a, b] = coords;
@@ -150,6 +154,18 @@ export default function MapView({
                 click: () => onSelect({ kind: "line", feature: f }),
               }}
             />
+            {/* Selection halo rendered on top of the line */}
+            {isSelectedLine && (
+              <Polyline
+                positions={coords}
+                pathOptions={{
+                  color: "#0ea5e9",
+                  weight: 5,
+                  opacity: 0.5,
+                  interactive: false,
+                }}
+              />
+            )}
             {arrow}
           </Fragment>
         );
@@ -168,16 +184,19 @@ export default function MapView({
           colorMode === "pu"
             ? colorForVoltagePu(f.properties.vm_pu)
             : colorForVoltage(v);
+        const isSelectedBus =
+          selected?.kind === "bus" &&
+          selected.feature.properties.name === f.properties.name;
 
         return (
           <Fragment key={`bus-${i}`}>
             {hasGen && display.rings && (
               <CircleMarker
                 center={[y, x]}
-                radius={radius + 3}
+                radius={radius + 2.5}
                 pathOptions={{
                   color: colorForCarrier(f.properties.primary_carrier),
-                  weight: 2,
+                  weight: 1.25,
                   fillColor: "transparent",
                   fillOpacity: 0,
                   opacity: dim ? 0.15 : 1,
@@ -189,15 +208,15 @@ export default function MapView({
             {isHvdc && (
               <CircleMarker
                 center={[y, x]}
-                radius={radius + 5}
+                radius={radius + 4}
                 pathOptions={{
                   color: "#7c3aed",
-                  weight: 2,
+                  weight: 1.25,
                   fillColor: "transparent",
                   fillOpacity: 0,
                   opacity: dim ? 0.15 : 1,
                   interactive: false,
-                  dashArray: "4 3",
+                  dashArray: "3 3",
                 }}
               />
             )}
@@ -206,7 +225,7 @@ export default function MapView({
               radius={radius}
               pathOptions={{
                 color: busStroke,
-                weight: 1,
+                weight: 0.75,
                 opacity: dim ? 0.2 : 1,
                 fillColor: fill,
                 fillOpacity: dim ? 0.2 : 0.92,
@@ -226,6 +245,21 @@ export default function MapView({
                 </Tooltip>
               )}
             </CircleMarker>
+            {/* Selection halo — sky-blue ring that makes the selected bus unmistakable */}
+            {isSelectedBus && (
+              <CircleMarker
+                center={[y, x]}
+                radius={radius + 7}
+                pathOptions={{
+                  color: "#0ea5e9",
+                  weight: 2.5,
+                  fillColor: "transparent",
+                  fillOpacity: 0,
+                  opacity: 0.9,
+                  interactive: false,
+                }}
+              />
+            )}
           </Fragment>
         );
       })}
