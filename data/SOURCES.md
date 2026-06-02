@@ -80,7 +80,27 @@ correctly modeled as the system slack (HVDC import/export) [S8].
    length and only *looked* normal; the true line is ~5.3 km. Recompute from
    conductor tables (138 kV ACSR ≈ 0.12 Ω/km). [estimate] — *still open.*
 5. **Verify all 52 bus coordinates** against OSM/OpenInfraMap (currently
-   `pypsa-ph`). [S5] — *still open.*
+   `pypsa-ph`). [S5] — *in progress; 32 of 52 now `sourced` after 2026-05-24 and two 2026-05-27 passes.*
+6. **Voltage discrepancies vs OSM — two sub-categories:**
+   - **6a. Dual-voltage substations (true schema problem).** OSM confirms that
+     **E.B. Magalona**, **Barotac Viejo**, and **Tongonan** each have
+     co-located 138 kV and 230 kV yards. Our one-bus-per-location schema can
+     only carry a single `v_nom`. Current state is internally consistent
+     (Magalona=230 to match the submarine 230 kV cable; Barotac=138 and
+     Tongonan=138 to match their local feeders), but it understates the
+     topology: the 230 kV submarine arrives at a 138 kV-tagged Barotac in the
+     model, and Tongonan's 230 kV evacuation to Kananga isn't represented.
+     Fix is a schema decision — either (a) split each into two buses with a
+     transformer, or (b) document the rule "bus voltage = level of the dominant
+     transmission line" and accept the simplification.
+   - **6b. Safe-flip candidates (no schema change needed).** **Lapu-Lapu
+     (Pusok)** is currently `v_nom=230` (inherited from PyPSA-PH) but its only
+     attached line `L_Mandaue_Lapu-Lapu_Pusok_138` is 138 kV, and OSM
+     way/616007566 confirms the substation as 138 kV ("Lapu-Lapu Gas Insulated
+     Substation"). Flipping Pusok 230→138 *improves* internal consistency
+     rather than breaking it — defer only because we're keeping voltage changes
+     in one decision block.
+   [S5/S6/S7] — *still open.*
 
 ## Per-bus provenance (52 buses)
 
@@ -93,35 +113,35 @@ trace to PyPSA-PH unless noted).
 | 1 | Babatngon | Leyte | 138 | 124.896699 | 11.395501 | substation | pypsa-ph | verify vs OSM |
 | 2 | Calbayog | Samar | 138 | 124.637913 | 12.055139 | substation | pypsa-ph | verify vs OSM |
 | 3 | Isabel | Leyte | 138 | 124.448930 | 10.919333 | substation | sourced [S5] | Isabel/LIDE industrial area; confirmed 2026-05-24 |
-| 4 | Kananga | Leyte | 230 | 124.551309 | 11.164993 | substation | pypsa-ph | Tongonan geothermal hub; check 230 kV r/x |
-| 5 | Maasin | Leyte | 138 | 124.779131 | 10.162555 | substation | pypsa-ph | Leyte–Bohol cable landing |
+| 4 | Kananga | Leyte | 230 | 124.551309 | 11.164993 | substation | pypsa-ph (re-search) | OSM/OIM search inconclusive 2026-05-27 — trace 230 kV between Tabango and Ormoc next block |
+| 5 | Maasin | Leyte | 138 | 124.779131 | 10.162555 | substation | sourced [S5] | Leyte–Bohol cable landing; confirmed 2026-05-27 |
 | 6 | Ormoc | Leyte | 350 | 124.644678 | 11.087485 | hvdc | sourced (role) | Leyte–Luzon HVDC terminal, slack [S8] |
 | 7 | Paranas (Wright) | Samar | 138 | 125.041352 | 11.766751 | substation | pypsa-ph | verify vs OSM |
 | 8 | Sta. Rita | Samar | 138 | 125.002051 | 11.395008 | substation | pypsa-ph | verify vs OSM |
-| 9 | Tabango | Leyte | 230 | 124.343486 | 11.323472 | substation | pypsa-ph | Leyte–Cebu cable landing |
-| 10 | Tongonan | Leyte | 138 | 124.637558 | 11.161314 | generator | pypsa-ph | geothermal |
-| 11 | Calong-calong | Cebu | 138 | 123.667107 | 10.415730 | substation | pypsa-ph | verify vs OSM |
-| 12 | Cebu | Cebu | 138 | 123.940856 | 10.365228 | substation | pypsa-ph | verify vs OSM |
+| 9 | Tabango | Leyte | 230 | 124.343486 | 11.323472 | substation | sourced [S5] | Leyte–Cebu cable landing; confirmed 2026-05-27 |
+| 10 | Tongonan | Leyte | 138 | 124.643492 | 11.140405 | generator | sourced [S5] | geothermal; corrected ~2.5 km S; OSM way/493145451; OSM shows dual 138/230 kV — see fix #6; 2026-05-27 |
+| 11 | Calong-calong | Cebu | 138 | 123.668582 | 10.415726 | substation | sourced [S5] | corrected ~0.15 km; OSM way/611678737 labeled "Magdugo 138 kV" (separate from our Magdugo 230 at 10.346 — likely same Magdugo electrical complex, different yard); 2026-05-27 |
+| 12 | Cebu | Cebu | 138 | 123.918420 | 10.359868 | substation | sourced [S5] | corrected ~2.5 km W; OSM way/222760842 (Cebu City substation); 2026-05-27 |
 | 13 | Colon | Cebu | 138 | 123.759877 | 10.222684 | substation | sourced [S5] | confirmed 2026-05-24 |
-| 14 | Compostela | Cebu | 230 | 124.006598 | 10.466498 | substation | pypsa-ph | verify vs OSM |
-| 15 | Daanbantayan | Cebu | 230 | 123.956809 | 11.146434 | substation | pypsa-ph | north Cebu; verify vs OSM |
+| 14 | Compostela | Cebu | 230 | 124.006598 | 10.466498 | substation | sourced [S5] | NE Cebu 230 kV backbone node; confirmed 2026-05-27 |
+| 15 | Daanbantayan | Cebu | 230 | 124.066134 | 11.252493 | substation | sourced [S5] | Leyte–Cebu submarine cable landing (Cebu side); corrected ~14 km NE; OSM way/246390064; 2026-05-27 |
 | 16 | Daan Lungsod | Cebu | 230 | 123.641023 | 10.387158 | substation | sourced [S9] | CEDC coal, Toledo City; fixed 2026-05-24 |
-| 17 | Dumanjug | Cebu | 230 | 123.440547 | 10.036174 | substation | pypsa-ph | verify vs OSM |
-| 18 | KSPC | Cebu | 230 | 123.762681 | 10.218271 | generator | pypsa-ph | KEPCO SPC Naga coal |
-| 19 | Lapu-Lapu (Pusok) | Cebu | 230 | 123.968307 | 10.323833 | substation | pypsa-ph | Mactan |
-| 20 | Magdugo | Cebu | 230 | 123.665698 | 10.345742 | substation | pypsa-ph | Cebu 230 kV hub |
+| 17 | Dumanjug | Cebu | 230 | 123.440547 | 10.036174 | substation | sourced [S5] | CNP 230 kV backbone (Cebu W); confirmed 2026-05-27 |
+| 18 | KSPC | Cebu | 230 | 123.762681 | 10.218271 | generator | sourced [S5] | KEPCO-SPC Naga coal; confirmed 2026-05-27 |
+| 19 | Lapu-Lapu (Pusok) | Cebu | 230 | 123.967921 | 10.323788 | substation | sourced [S5] | Mactan GIS; corrected ~0.05 km; OSM way/616007566 ("Lapu-Lapu Gas Insulated Substation") tagged 138 kV — see fix #6 (safe-flip candidate); 2026-05-27 |
+| 20 | Magdugo | Cebu | 230 | 123.665698 | 10.345742 | substation | sourced [S5] | Cebu 230 kV hub; confirmed 2026-05-27 |
 | 21 | Mandaue | Cebu | 138 | 123.963596 | 10.329460 | substation | sourced [S5] | corrected ~0.6 km; OSM way/616007569; fixed 2026-05-24 |
-| 22 | Naga (Visayas) | Cebu | 138 | 123.757037 | 10.254430 | substation | pypsa-ph | Naga, Cebu (not Luzon Naga) |
-| 23 | Quiot | Cebu | 138 | 123.856109 | 10.287923 | substation | pypsa-ph | check r/x of feeder line |
-| 24 | Samboan | Cebu | 138 | 123.311701 | 9.552395 | substation | pypsa-ph | Cebu–Negros cable landing [S6] |
-| 25 | Therma Visayas | Cebu | 138 | 123.635129 | 10.358562 | generator | pypsa-ph | TVI coal |
+| 22 | Naga (Visayas) | Cebu | 138 | 123.758582 | 10.223256 | substation | sourced [S5] | Naga, Cebu (not Luzon Naga); corrected ~3.5 km S — now sits very close to Colon (10.222684) suggesting they may share a substation complex; OSM way/229365726; 2026-05-27 |
+| 23 | Quiot | Cebu | 138 | 123.855494 | 10.287685 | substation | sourced [S5] | corrected ~0.08 km; OSM way/332492141; r/x of feeder line still anomalous — see fix #4; 2026-05-27 |
+| 24 | Samboan | Cebu | 138 | 123.308399 | 9.551115 | substation | sourced [S5] | Cebu–Negros cable landing [S6]; corrected ~0.4 km W; OSM way/1181079743; 2026-05-27 |
+| 25 | Therma Visayas | Cebu | 138 | 123.602486 | 10.350191 | generator | sourced [S5] | TVI coal; corrected ~3.6 km W; OSM node/4208297198; 2026-05-27 |
 | 26 | Toledo BESS | Cebu | 138 | 123.706851 | 10.341147 | bess | sourced [S5] | was Magdugo duplicate; corrected ~4 km; OSM way/616838559; fixed 2026-05-24 |
 | 27 | Toledo | Cebu | 138 | 123.706851 | 10.341147 | substation | sourced [S5] | was Magdugo duplicate; corrected ~4 km; OSM way/616838559; fixed 2026-05-24 |
-| 28 | Amlan | Negros | 138 | 123.224812 | 9.457757 | substation | pypsa-ph | Cebu–Negros cable landing [S6] |
+| 28 | Amlan | Negros | 138 | 123.224812 | 9.457757 | substation | sourced [S5] | Cebu–Negros cable landing [S6]; confirmed 2026-05-27 |
 | 29 | Bacolod | Negros | 230 | 122.989272 | 10.629460 | substation | sourced [S5] | corrected ~13 km; 230 kV OSM way/1175248269, 138 kV OSM rel/15283858 co-located; fixed 2026-05-24 |
 | 30 | Cadiz | Negros | 230 | 123.288247 | 10.934822 | substation | sourced [S5] | confirmed 2026-05-24 |
-| 31 | Calatrava | Negros | 230 | 123.460695 | 10.553562 | substation | pypsa-ph | Cebu–Negros 230 kV landing — verify |
-| 32 | E.B. Magalona | Negros | 230 | 122.967281 | 10.884745 | substation | pypsa-ph | Negros–Panay landing (see fix #1) |
+| 31 | Calatrava | Negros | 230 | 123.460695 | 10.553562 | substation | sourced [S5] | Cebu–Negros 230 kV landing; confirmed 2026-05-27 |
+| 32 | E.B. Magalona | Negros | 230 | 122.964067 | 10.895112 | substation | sourced [S5] | Negros–Panay landing (see fix #1); corrected ~1.2 km N; OSM way/1426217205; dual 138/230 kV site confirmed — see fix #6; 2026-05-27 |
 | 33 | Helios Solar | Negros | 230 | 123.298579 | 10.924203 | generator | pypsa-ph | solar |
 | 34 | Kabankalan | Negros | 138 | 122.848185 | 10.019242 | substation | pypsa-ph | verify vs OSM |
 | 35 | Kabankalan BESS | Negros | 138 | 122.851692 | 10.019979 | bess | pypsa-ph | verify vs OSM |
@@ -133,7 +153,7 @@ trace to PyPSA-PH unless noted).
 | 41 | Tapal | Bohol | 138 | 124.519576 | 10.060901 | substation | pypsa-ph | verify vs OSM |
 | 42 | Ubay | Bohol | 138 | 124.511428 | 10.026670 | substation | sourced [S5] | Leyte–Bohol cable landing; confirmed 2026-05-24 |
 | 43 | Bantap | Panay | 69 | 122.582826 | 10.728734 | substation | pypsa-ph | Panay–Guimaras 69 kV landing |
-| 44 | Barotac Viejo | Panay | 138 | 122.870264 | 11.032835 | substation | pypsa-ph | Negros–Panay landing (see fix #1) |
+| 44 | Barotac Viejo | Panay | 138 | 122.870264 | 11.032835 | substation | sourced [S5] (coord) | Negros–Panay landing (see fix #1); coord confirmed 2026-05-27; OSM shows dual 138/230 kV yard — see fix #6 |
 | 45 | Buenavista (Guimaras) | Guimaras | 138 | 122.659216 | 10.717583 | substation | pypsa-ph | check v_nom vs 69 kV cable |
 | 46 | Concepcion | Panay | 138 | 123.121373 | 11.189132 | substation | pypsa-ph | coal |
 | 47 | Dingle | Panay | 138 | 122.630830 | 11.024534 | substation | sourced [S5] | Panay hub; OSM labeled "Panay Diesel Power Plant 3"; confirmed 2026-05-24 |
@@ -166,6 +186,51 @@ trace to PyPSA-PH unless noted).
   fix #4). `generators.csv` unchanged. `build_data.py` / geojson not yet
   regenerated — pending redeploy.
 
+- **2026-05-27** — Second 10-bus coordinate pass against OpenInfraMap [S5],
+  targeting the inter-island cable landings and backbone hubs.
+  5 confirmed, 3 corrected, 1 deferred, 1 surfaced fix #6.
+  - Confirmed (no change): Tabango, Maasin, Magdugo, Amlan, Calatrava.
+  - Tongonan (04TONGONA): 124.6376,11.1613 → 124.6435,11.1404 (~2.5 km S);
+    OSM way/493145451; site also shows a 230 kV yard → fix #6.
+  - Samboan (05SAMBOAN): 123.3117,9.5524 → 123.3084,9.5511 (~0.4 km W);
+    OSM way/1181079743.
+  - E.B. Magalona (06GAHIT): 122.9673,10.8847 → 122.9641,10.8951 (~1.2 km N);
+    OSM way/1426217205; OSM confirms dual 138/230 kV yards → fix #6.
+  - Barotac Viejo: coord confirmed; OSM shows 230 kV yard alongside the
+    inherited 138 kV → fix #6 (no coord edit).
+  - Kananga: OSM/OIM search inconclusive; tagged `pypsa-ph (re-search)` for
+    next block — trace 230 kV between Tabango and Ormoc.
+  Bus verification count: 22 of 52 now `sourced` (previous undercount of "16"
+  in this entry was off — 13 sourced pre-tonight per 2026-05-24 + 9 newly
+  sourced this batch = 22).
+  `process_temp.py` not yet re-run; `data/temp/buses.csv` mirrored manually.
+
+- **2026-05-27 (batch 2)** — Cebu-region 10-bus coordinate pass against
+  OpenInfraMap [S5]. 3 confirmed, 7 corrected, 1 surfaced fix #6b.
+  - Confirmed (no change): Compostela, Dumanjug, KSPC.
+  - Daanbantayan (05DAANBNTAY): 123.9568,11.1464 → 124.0661,11.2525
+    (~14 km NE); OSM way/246390064. Leyte–Cebu submarine cable landing —
+    correct coord matters for the cable rendering.
+  - Lapu-Lapu (Pusok) (05LAPULAPU): 123.9683,10.3238 → 123.9679,10.3238
+    (~0.05 km); OSM way/616007566 "Lapu-Lapu Gas Insulated Substation"
+    tagged 138 kV → fix #6b (safe voltage flip candidate, deferred).
+  - Cebu (05CEBU): 123.9409,10.3652 → 123.9184,10.3599 (~2.5 km W);
+    OSM way/222760842.
+  - Naga (Visayas) (05NAGA): 123.7570,10.2544 → 123.7586,10.2233
+    (~3.5 km S); OSM way/229365726. Now sits ~50 m from Colon — possible
+    co-location; flag for future check.
+  - Quiot (05QUIOT): 123.8561,10.2879 → 123.8555,10.2877 (~0.08 km);
+    OSM way/332492141. Doesn't address the anomalous feeder r/x (fix #4).
+  - Calong-calong (05CALUNG): 123.6671,10.4157 → 123.6686,10.4157
+    (~0.15 km); OSM way/611678737 labeled "Magdugo 138 kV" — OSM-name
+    oddity, kept bus name.
+  - Therma Visayas (05THERMA): 123.6351,10.3586 → 123.6025,10.3502
+    (~3.6 km W); OSM node/4208297198.
+  Bus verification count: 32 of 52 now `sourced`. Remaining 20 are
+  mostly Negros load substations, Bohol/Samar/Panay rural nodes, and
+  the small generator/BESS buses.
+  `process_temp.py` not yet re-run; `data/temp/buses.csv` mirrored manually.
+
 - **2026-05-24 (fix #5)** — Human-led coordinate spot-check of 10 highest-load
   substations vs OpenInfraMap [S5]. 6 confirmed, 4 corrected:
   - Bacolod (06BACOLOD): 123.1146,10.6763 → 122.9893,10.6295 (~13 km WSW);
@@ -182,8 +247,14 @@ trace to PyPSA-PH unless noted).
 
 ## Next actions (subsequent blocks this week)
 
-1. Re-run `build_data.py`, confirm the topology gate passes, regenerate the
-   geojson, and redeploy (carry tonight's CSV fixes through to the live map).
+1. Re-run `process_temp.py` + `build_data.py`, confirm the topology gate
+   passes, regenerate the geojson, and redeploy (carry the 2026-05-24 and
+   2026-05-27 CSV fixes through to the live map).
 2. Add the Cebu–Bohol (CBIP) 230 kV interconnection (fix #2).
 3. Recompute anomalous impedances from conductor tables (fix #4).
 4. ~~Spot-verify ~10 highest-load substation coordinates against OpenInfraMap [S5].~~ **DONE 2026-05-24** (fix #5).
+5. ~~Verify 10 inter-island landings + backbone hubs against OpenInfraMap [S5].~~ **DONE 2026-05-27** (5 confirmed, 3 corrected, 1 deferred, surfaced fix #6).
+6. ~~Cebu cluster (10 buses): metro 230/138 hubs + Leyte–Cebu landing + major generators.~~ **DONE 2026-05-27 (batch 2)** (3 confirmed, 7 corrected, surfaced fix #6b).
+7. Re-locate Kananga substation on OSM/OIM (trace 230 kV Tabango → Ormoc).
+8. Decide on voltage schema (fix #6a + 6b) before next coord pass.
+9. Next coord pass — remaining 20 buses, suggested split: Negros load (Kabankalan/BESS, Mabinay, San Carlos, Helios, Palinpinon 1/2) + Panay/Guimaras (Nabas, Panitan, San Jose, Bantap, Buenavista, Concepcion) + Samar/Leyte/Bohol (Babatngon, Calbayog, Sta. Rita, Paranas, Corella, Tapal).

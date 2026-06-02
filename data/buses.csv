@@ -8,30 +8,30 @@ Ormoc,124.6446783,11.08748498,350,350,Leyte,hvdc,36.0,10.8,True,3,67.0,17.95,"Ge
 Paranas (Wright),125.0413517,11.76675071,138,138,Samar,substation,36.0,10.8,False,3,15.2,6.08,ROR,ROR
 Sta. Rita,125.0020505,11.39500758,138,138,Samar,substation,36.0,10.8,False,3,0.0,0.0,,
 Tabango,124.3434864,11.32347232,230,230,Leyte,substation,24.0,7.2,False,2,0.0,0.0,,
-Tongonan,124.6375583,11.16131421,138,138,Leyte,generator,12.0,3.6,False,1,120.5,102.42,Geothermal,Geothermal
+Tongonan,124.643492,11.140405,138,138,Leyte,generator,12.0,3.6,False,1,120.5,102.42,Geothermal,Geothermal
 Argao,123.61,9.879,230,230,Cebu,substation,0.0,0.0,False,0,0.0,0.0,,
-Calong-calong,123.6671074,10.41572975,138,138,Cebu,substation,48.0,14.4,False,4,49.0,12.25,Solar,Solar
-Cebu,123.9408559,10.36522781,138,138,Cebu,substation,36.0,10.8,False,3,0.0,0.0,,
+Calong-calong,123.668582,10.415726,138,138,Cebu,substation,48.0,14.4,False,4,49.0,12.25,Solar,Solar
+Cebu,123.91842,10.359868,138,138,Cebu,substation,36.0,10.8,False,3,0.0,0.0,,
 Colon,123.7598772,10.22268355,138,138,Cebu,substation,60.0,18.0,False,5,0.0,0.0,,
 Compostela,124.0065977,10.46649795,230,230,Cebu,substation,36.0,10.8,False,3,0.0,0.0,,
-Daanbantayan,123.956809,11.14643391,230,230,Cebu,substation,24.0,7.2,False,2,0.0,0.0,,
+Daanbantayan,124.066134,11.252493,230,230,Cebu,substation,24.0,7.2,False,2,0.0,0.0,,
 Daan Lungsod,123.641023,10.387158,230,230,Cebu,substation,12.0,3.6,False,1,249.7,199.76,Coal,Coal
 Dumanjug,123.4405471,10.03617433,230,230,Cebu,substation,0.0,0.0,False,0,0.0,0.0,,
 KSPC,123.7626806,10.21827094,230,230,Cebu,generator,24.0,7.2,False,2,206.0,164.8,Coal,Coal
-Lapu-Lapu (Pusok),123.9683067,10.32383347,230,230,Cebu,substation,24.0,7.2,False,2,45.5,13.65,Diesel,Diesel
+Lapu-Lapu (Pusok),123.967921,10.323788,230,230,Cebu,substation,24.0,7.2,False,2,45.5,13.65,Diesel,Diesel
 Magdugo,123.665698,10.3457421,230,230,Cebu,substation,30.0,9.0,False,0,0.0,0.0,,
 Mandaue,123.963596,10.32946,138,138,Cebu,substation,60.0,18.0,False,5,0.0,0.0,,
-Naga (Visayas),123.7570366,10.2544303,138,138,Cebu,substation,48.0,14.4,False,4,33.0,9.9,Diesel,Diesel
-Quiot,123.8561088,10.28792262,138,138,Cebu,substation,12.0,3.6,False,1,65.0,19.5,Diesel,Diesel
-Samboan,123.3117005,9.552394872,138,138,Cebu,substation,24.0,7.2,False,2,0.0,0.0,,
-Therma Visayas,123.6351288,10.35856192,138,138,Cebu,generator,24.0,7.2,False,2,338.0,270.4,Coal,Coal
+Naga (Visayas),123.758582,10.223256,138,138,Cebu,substation,48.0,14.4,False,4,33.0,9.9,Diesel,Diesel
+Quiot,123.855494,10.287685,138,138,Cebu,substation,12.0,3.6,False,1,65.0,19.5,Diesel,Diesel
+Samboan,123.308399,9.551115,138,138,Cebu,substation,24.0,7.2,False,2,0.0,0.0,,
+Therma Visayas,123.602486,10.350191,138,138,Cebu,generator,24.0,7.2,False,2,338.0,270.4,Coal,Coal
 Toledo BESS,123.706851,10.341147,138,138,Cebu,bess,0.0,0.0,False,0,0.0,0.0,,
 Toledo,123.706851,10.341147,138,138,Cebu,substation,48.0,14.4,False,4,123.6,78.88,"Coal,Diesel",Coal
 Amlan,123.2248121,9.457756504,138,138,Negros,substation,36.0,10.8,False,3,27.4,12.38,"Biomass,ROR,Solar",Solar
 Bacolod,122.989272,10.62946,230,230,Negros,substation,96.0,28.8,False,8,132.1,60.47,"Biomass,Diesel,Solar",Biomass
 Cadiz,123.2882465,10.93482221,230,230,Negros,substation,60.0,18.0,False,5,84.4,40.86,"Biomass,Solar",Biomass
 Calatrava,123.4606946,10.55356153,230,230,Negros,substation,24.0,7.2,False,2,0.0,0.0,,
-E.B. Magalona,122.9672809,10.88474544,230,230,Negros,substation,25.0,7.5,False,0,0.0,0.0,,
+E.B. Magalona,122.964067,10.895112,230,230,Negros,substation,25.0,7.5,False,0,0.0,0.0,,
 Helios Solar,123.2985792,10.92420288,230,230,Negros,generator,12.0,3.6,False,1,105.0,26.25,Solar,Solar
 Kabankalan,122.848185,10.0192417,138,138,Negros,substation,36.0,10.8,False,3,30.0,21.0,Biomass,Biomass
 Kabankalan BESS,122.8516924,10.01997881,138,138,Negros,bess,12.0,3.6,False,1,0.0,0.0,,
