@@ -118,7 +118,7 @@
         "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 1.3878
+        "va_degree": 1.3907
       }
     },
     {
@@ -148,7 +148,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 0.4031
+        "va_degree": 0.3988
       }
     },
     {
@@ -269,7 +269,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 1.8575
+        "va_degree": 1.8668
       }
     },
     {
@@ -277,14 +277,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          124.6375583,
-          11.16131421
+          124.643492,
+          11.140405
         ]
       },
       "properties": {
         "name": "Tongonan",
-        "x": 124.6375583,
-        "y": 11.16131421,
+        "x": 124.643492,
+        "y": 11.140405,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Leyte",
@@ -329,7 +329,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.1273
+        "va_degree": 8.078
       }
     },
     {
@@ -337,14 +337,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.6671074,
-          10.41572975
+          123.668582,
+          10.415726
         ]
       },
       "properties": {
         "name": "Calong-calong",
-        "x": 123.6671074,
-        "y": 10.41572975,
+        "x": 123.668582,
+        "y": 10.415726,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Cebu",
@@ -359,7 +359,7 @@
         "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.6994
+        "va_degree": 8.6473
       }
     },
     {
@@ -367,14 +367,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.9408559,
-          10.36522781
+          123.91842,
+          10.359868
         ]
       },
       "properties": {
         "name": "Cebu",
-        "x": 123.9408559,
-        "y": 10.36522781,
+        "x": 123.91842,
+        "y": 10.359868,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Cebu",
@@ -389,7 +389,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 6.7703
+        "va_degree": 6.711
       }
     },
     {
@@ -419,7 +419,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.5078
+        "va_degree": 8.4551
       }
     },
     {
@@ -449,7 +449,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 2.2633
+        "va_degree": 2.1758
       }
     },
     {
@@ -457,14 +457,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.956809,
-          11.14643391
+          124.066134,
+          11.252493
         ]
       },
       "properties": {
         "name": "Daanbantayan",
-        "x": 123.956809,
-        "y": 11.14643391,
+        "x": 124.066134,
+        "y": 11.252493,
         "v_nom": 230,
         "voltages_kv": 230,
         "island": "Cebu",
@@ -479,7 +479,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 2.161
+        "va_degree": 2.0727
       }
     },
     {
@@ -509,7 +509,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 9.1766
+        "va_degree": 9.1245
       }
     },
     {
@@ -539,7 +539,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.4707
+        "va_degree": 8.4197
       }
     },
     {
@@ -569,7 +569,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.5288
+        "va_degree": 8.4761
       }
     },
     {
@@ -577,14 +577,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.9683067,
-          10.32383347
+          123.967921,
+          10.323788
         ]
       },
       "properties": {
         "name": "Lapu-Lapu (Pusok)",
-        "x": 123.9683067,
-        "y": 10.32383347,
+        "x": 123.967921,
+        "y": 10.323788,
         "v_nom": 230,
         "voltages_kv": 230,
         "island": "Cebu",
@@ -599,7 +599,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 6.5165
+        "va_degree": 6.456
       }
     },
     {
@@ -629,7 +629,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.7207
+        "va_degree": 8.6685
       }
     },
     {
@@ -659,7 +659,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 6.5199
+        "va_degree": 6.4595
       }
     },
     {
@@ -667,14 +667,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.7570366,
-          10.2544303
+          123.758582,
+          10.223256
         ]
       },
       "properties": {
         "name": "Naga (Visayas)",
-        "x": 123.7570366,
-        "y": 10.2544303,
+        "x": 123.758582,
+        "y": 10.223256,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Cebu",
@@ -689,7 +689,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 7.798
+        "va_degree": 7.7454
       }
     },
     {
@@ -697,14 +697,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.8561088,
-          10.28792262
+          123.855494,
+          10.287685
         ]
       },
       "properties": {
         "name": "Quiot",
-        "x": 123.8561088,
-        "y": 10.28792262,
+        "x": 123.855494,
+        "y": 10.287685,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Cebu",
@@ -719,7 +719,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.629
+        "va_degree": 8.5756
       }
     },
     {
@@ -727,14 +727,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.3117005,
-          9.552394872
+          123.308399,
+          9.551115
         ]
       },
       "properties": {
         "name": "Samboan",
-        "x": 123.3117005,
-        "y": 9.552394872,
+        "x": 123.308399,
+        "y": 9.551115,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Cebu",
@@ -749,7 +749,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 9.4089
+        "va_degree": 9.3592
       }
     },
     {
@@ -757,14 +757,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.6351288,
-          10.35856192
+          123.602486,
+          10.350191
         ]
       },
       "properties": {
         "name": "Therma Visayas",
-        "x": 123.6351288,
-        "y": 10.35856192,
+        "x": 123.602486,
+        "y": 10.350191,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Cebu",
@@ -779,7 +779,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.7985
+        "va_degree": 8.7463
       }
     },
     {
@@ -809,7 +809,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.6994
+        "va_degree": 8.6473
       }
     },
     {
@@ -839,7 +839,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.7248
+        "va_degree": 8.6724
       }
     },
     {
@@ -869,7 +869,7 @@
         "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 9.6401
+        "va_degree": 9.5849
       }
     },
     {
@@ -899,7 +899,7 @@
         "primary_carrier": "Biomass",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.4134
+        "va_degree": 8.3605
       }
     },
     {
@@ -929,7 +929,7 @@
         "primary_carrier": "Biomass",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.487
+        "va_degree": 8.4343
       }
     },
     {
@@ -959,7 +959,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.5614
+        "va_degree": 8.5089
       }
     },
     {
@@ -967,14 +967,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          122.9672809,
-          10.88474544
+          122.964067,
+          10.895112
         ]
       },
       "properties": {
         "name": "E.B. Magalona",
-        "x": 122.9672809,
-        "y": 10.88474544,
+        "x": 122.964067,
+        "y": 10.895112,
         "v_nom": 230,
         "voltages_kv": 230,
         "island": "Negros",
@@ -989,7 +989,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.4376
+        "va_degree": 8.3848
       }
     },
     {
@@ -1019,7 +1019,7 @@
         "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.4913
+        "va_degree": 8.4386
       }
     },
     {
@@ -1049,7 +1049,7 @@
         "primary_carrier": "Biomass",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.5285
+        "va_degree": 8.475
       }
     },
     {
@@ -1079,7 +1079,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.5261
+        "va_degree": 8.4725
       }
     },
     {
@@ -1109,7 +1109,7 @@
         "primary_carrier": "Biomass",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.8955
+        "va_degree": 8.8413
       }
     },
     {
@@ -1139,7 +1139,7 @@
         "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 10.0333
+        "va_degree": 9.9781
       }
     },
     {
@@ -1169,7 +1169,7 @@
         "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 10.1603
+        "va_degree": 10.1051
       }
     },
     {
@@ -1199,7 +1199,7 @@
         "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.5923
+        "va_degree": 8.5398
       }
     },
     {
@@ -1229,7 +1229,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 6.9334
+        "va_degree": 6.8898
       }
     },
     {
@@ -1259,7 +1259,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 1.9791
+        "va_degree": 1.9627
       }
     },
     {
@@ -1289,7 +1289,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 1.9977
+        "va_degree": 1.9813
       }
     },
     {
@@ -1319,7 +1319,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 7.3316
+        "va_degree": 7.2861
       }
     },
     {
@@ -1349,7 +1349,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 7.7891
+        "va_degree": 7.7309
       }
     },
     {
@@ -1379,7 +1379,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.5283
+        "va_degree": 8.4701
       }
     },
     {
@@ -1409,7 +1409,7 @@
         "primary_carrier": "Wind",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 7.5458
+        "va_degree": 7.4877
       }
     },
     {
@@ -1439,7 +1439,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 9.805
+        "va_degree": 9.7469
       }
     },
     {
@@ -1469,7 +1469,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 7.8912
+        "va_degree": 7.833
       }
     },
     {
@@ -1499,7 +1499,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 9.0141
+        "va_degree": 8.9559
       }
     },
     {
@@ -1529,7 +1529,7 @@
         "primary_carrier": "Wind",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 6.5218
+        "va_degree": 6.4636
       }
     },
     {
@@ -1559,7 +1559,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 7.0397
+        "va_degree": 6.9816
       }
     },
     {
@@ -1589,7 +1589,7 @@
         "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.0171
+        "va_degree": 7.9589
       }
     },
     {
@@ -1619,7 +1619,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.3436
+        "va_degree": 8.2855
       }
     }
   ]
