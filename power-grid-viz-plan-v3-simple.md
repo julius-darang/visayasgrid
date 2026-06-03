@@ -196,7 +196,11 @@ Submarine cables: dashed stroke (`dashArray: "6 4"`), regardless of loading colo
 - Create Vercel project → import repo — done
 - Root directory: `web`; build command: `npm run build`; output: `dist` — done
 - Verify production URL works on desktop + mobile — done
-- **Shipped:** live on Vercel as of 2026-05-24. Production URL: _TODO — paste the public Vercel URL here._
+- **Shipped:** live on Vercel as of 2026-05-24. Production URL: **https://visayasgrid.vercel.app**
+  - Source-verified dataset confirmed live 2026-06-03: production deploy of commit `e3a65ad`
+    (2026-06-02 22:18 PHT) serves manifest 54 buses / 60 lines / 7 submarine; CBIP
+    `L_Argao_Maribojoc_230` present; Bacolod at corrected coord [122.989, 10.629]. Phase 6
+    "Shipped" criterion met.
 
 ### Phase 5 — Buffer (Days 13–14)
 - Polish, bug fixes, write `README.md` with screenshots

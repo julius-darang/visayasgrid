@@ -15,6 +15,10 @@
 
 ## Audit context
 
+**Live deployment:** https://visayasgrid.vercel.app — verified 2026-06-03 to serve this
+dataset (commit `e3a65ad`, deployed 2026-06-02): manifest 54 buses / 60 lines / 7 submarine,
+CBIP `L_Argao_Maribojoc_230` present, fix-#5 coordinates live.
+
 The current dataset is **not bespoke**: `data/temp/` is a Visayas slice of
 **PyPSA-PH v1.0** (Arizeo C. Salac, DESTEC, University of Pisa) — 192 buses /
 236 lines / 425 generators nationally, NGCP code scheme, demand benchmarked to
@@ -66,41 +70,41 @@ correctly modeled as the system slack (HVDC import/export) [S8].
    `{06GAHIT, 08STBARBRA}` (no line exists between them) instead of the real
    crossing `{06GAHIT, 08BAROTAC}`. Corrected; `L_Barotac_Viejo_EB_Magalona_230`
    is now `submarine_xlpe`. [S1/S3/S6]
-2. **Missing Cebu–Bohol 230 kV (CBIP).** Add Argao (Cebu) ↔ Maribojoc (Bohol)
-   230 kV, energized 2024-11-27. Data currently has only the older Leyte–Bohol
-   tie (Maasin–Ubay). [S7] — *still open.*
+2. ~~**Missing Cebu–Bohol 230 kV (CBIP).**~~ **DONE 2026-05-24** (commit 6700bcd).
+   Added Argao (Cebu) ↔ Maribojoc (Bohol) 230 kV as `L_Argao_Maribojoc_230`
+   (`submarine_xlpe`), energized 2024-11-27. Data previously had only the older
+   Leyte–Bohol tie (Maasin–Ubay). [S7]
 3. ~~**Duplicate coordinates.**~~ **DONE 2026-05-24.** `05DAANLUNSOD` carried
    Daanbantayan's coordinate (north Cebu). Daan Lungsod is the CEDC coal complex
    in Toledo City; relocated to 10.387158, 123.641023 in `data/temp/buses.csv`. [S9]
-4. **Anomalous inherited impedances.** Several lines carry r/x far above normal
-   ACSR values: `L_Kananga_Ormoc_230` r=3.218 Ω/km (~20× a typical 230 kV
-   conductor); `L_Tabango_Kananga_230` r=1.723; `L_Colon_Quiot_138` r=2.013;
-   and **newly exposed by fix #3:** `L_Magdugo_Daan_Lungsod_138` now r=2.136 Ω/km
-   — the inherited `r_total` (~11.4 Ω) was being divided by the wrong 94.5 km
-   length and only *looked* normal; the true line is ~5.3 km. Recompute from
-   conductor tables (138 kV ACSR ≈ 0.12 Ω/km). [estimate] — *still open.*
+4. ~~**Anomalous inherited impedances.**~~ **DONE 2026-05-24** (commit b1050ff).
+   Several lines carried r/x far above normal ACSR values: `L_Kananga_Ormoc_230`
+   r=3.218 Ω/km (~20× a typical 230 kV conductor); `L_Tabango_Kananga_230`
+   r=1.723; `L_Colon_Quiot_138` r=2.013; and exposed by fix #3,
+   `L_Magdugo_Daan_Lungsod_138` r=2.136 Ω/km (inherited `r_total` ~11.4 Ω divided
+   by the wrong 94.5 km length; true line ~5.3 km). Recomputed from conductor
+   tables — the 230 kV corridor lines now carry r=0.06 / x=0.40 Ω/km and the
+   138 kV lines r=0.10 / x=0.42 Ω/km. [estimate]
 5. **Verify all 52 bus coordinates** against OSM/OpenInfraMap (currently
    `pypsa-ph`). [S5] — *in progress; 32 of 52 now `sourced` after 2026-05-24 and two 2026-05-27 passes.*
 6. **Voltage discrepancies vs OSM — two sub-categories:**
-   - **6a. Dual-voltage substations (true schema problem).** OSM confirms that
-     **E.B. Magalona**, **Barotac Viejo**, and **Tongonan** each have
-     co-located 138 kV and 230 kV yards. Our one-bus-per-location schema can
-     only carry a single `v_nom`. Current state is internally consistent
-     (Magalona=230 to match the submarine 230 kV cable; Barotac=138 and
-     Tongonan=138 to match their local feeders), but it understates the
-     topology: the 230 kV submarine arrives at a 138 kV-tagged Barotac in the
-     model, and Tongonan's 230 kV evacuation to Kananga isn't represented.
-     Fix is a schema decision — either (a) split each into two buses with a
-     transformer, or (b) document the rule "bus voltage = level of the dominant
-     transmission line" and accept the simplification.
-   - **6b. Safe-flip candidates (no schema change needed).** **Lapu-Lapu
-     (Pusok)** is currently `v_nom=230` (inherited from PyPSA-PH) but its only
-     attached line `L_Mandaue_Lapu-Lapu_Pusok_138` is 138 kV, and OSM
-     way/616007566 confirms the substation as 138 kV ("Lapu-Lapu Gas Insulated
-     Substation"). Flipping Pusok 230→138 *improves* internal consistency
-     rather than breaking it — defer only because we're keeping voltage changes
-     in one decision block.
-   [S5/S6/S7] — *still open.*
+   - ~~**6a. Dual-voltage substations (true schema problem).**~~ **RESOLVED-BY-POLICY
+     2026-06-03.** OSM confirms **E.B. Magalona**, **Barotac Viejo**, and **Tongonan**
+     each have co-located 138 kV and 230 kV yards, which the one-bus-per-location
+     schema cannot both carry. **Decision (Julius, 2026-06-03): document the
+     simplification, do not split.** Codified rule: *one bus per physical location;
+     `v_nom` = the level of the dominant transmission line at that bus.* These three
+     sites are accepted **known simplifications** — Magalona=230 (matches the submarine
+     230 kV cable), Barotac=138 and Tongonan=138 (match local feeders); the co-located
+     opposite-voltage yard and any transformer between them are intentionally not
+     modelled at prototype scope. The rejected alternative (split each into two buses
+     + a transformer) is deferred to a later Engineering week if model fidelity ever
+     requires it. [S5/S6/S7]
+   - ~~**6b. Safe-flip candidate (Lapu-Lapu / Pusok).**~~ **DONE 2026-06-03.** Flipped
+     **Lapu-Lapu (Pusok)** `v_nom` 230 → 138 in `data/temp/buses.csv`. Its only attached
+     line `L_Mandaue_Lapu-Lapu_Pusok_138` is 138 kV, and OSM way/616007566 confirms the
+     substation as 138 kV ("Lapu-Lapu Gas Insulated Substation") — the flip aligns the
+     bus with its feeder and improves internal consistency. [S5]
 
 ## Per-bus provenance (52 buses)
 
@@ -128,7 +132,7 @@ trace to PyPSA-PH unless noted).
 | 16 | Daan Lungsod | Cebu | 230 | 123.641023 | 10.387158 | substation | sourced [S9] | CEDC coal, Toledo City; fixed 2026-05-24 |
 | 17 | Dumanjug | Cebu | 230 | 123.440547 | 10.036174 | substation | sourced [S5] | CNP 230 kV backbone (Cebu W); confirmed 2026-05-27 |
 | 18 | KSPC | Cebu | 230 | 123.762681 | 10.218271 | generator | sourced [S5] | KEPCO-SPC Naga coal; confirmed 2026-05-27 |
-| 19 | Lapu-Lapu (Pusok) | Cebu | 230 | 123.967921 | 10.323788 | substation | sourced [S5] | Mactan GIS; corrected ~0.05 km; OSM way/616007566 ("Lapu-Lapu Gas Insulated Substation") tagged 138 kV — see fix #6 (safe-flip candidate); 2026-05-27 |
+| 19 | Lapu-Lapu (Pusok) | Cebu | 138 | 123.967921 | 10.323788 | substation | sourced [S5] | Mactan GIS; corrected ~0.05 km; OSM way/616007566 ("Lapu-Lapu Gas Insulated Substation") tagged 138 kV; v_nom flipped 230→138 per fix #6b 2026-06-03 |
 | 20 | Magdugo | Cebu | 230 | 123.665698 | 10.345742 | substation | sourced [S5] | Cebu 230 kV hub; confirmed 2026-05-27 |
 | 21 | Mandaue | Cebu | 138 | 123.963596 | 10.329460 | substation | sourced [S5] | corrected ~0.6 km; OSM way/616007569; fixed 2026-05-24 |
 | 22 | Naga (Visayas) | Cebu | 138 | 123.758582 | 10.223256 | substation | sourced [S5] | Naga, Cebu (not Luzon Naga); corrected ~3.5 km S — now sits very close to Colon (10.222684) suggesting they may share a substation complex; OSM way/229365726; 2026-05-27 |
@@ -177,6 +181,15 @@ trace to PyPSA-PH unless noted).
   ratings where available (CNP 400 MW, CBIP 1,200 MW) [S6/S7].
 
 ## Changelog
+
+- **2026-06-02** — Carried the 2026-05-24 and 2026-05-27 coordinate/topology
+  fixes through to the rendered geojson and redeployed (commit e3a65ad). No CSV
+  *value* changes in this commit — it propagates already-committed fixes to the
+  live map. Bookkeeping catch-up: fixes #2 (CBIP interconnection, commit 6700bcd)
+  and #4 (impedance recompute, commit b1050ff) were both committed 2026-05-24 but
+  the Discrepancies section had still listed them open until this entry; now
+  marked DONE. Verified in current `lines.csv`: `L_Argao_Maribojoc_230` present;
+  the four previously-anomalous corridor lines now carry conductor-table r/x.
 
 - **2026-05-24** — Fixes #1 and #3 applied upstream and `process_temp.py`
   re-run. Diff vs. prior generated CSVs: (a) `L_Barotac_Viejo_EB_Magalona_230`
