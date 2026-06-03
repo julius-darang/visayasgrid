@@ -114,14 +114,14 @@ trace to PyPSA-PH unless noted).
 
 | # | name | island | v_nom | x (lon) | y (lat) | bus_type | status | notes |
 |---|------|--------|------:|--------:|--------:|----------|--------|-------|
-| 1 | Babatngon | Leyte | 138 | 124.896699 | 11.395501 | substation | pypsa-ph | verify vs OSM |
-| 2 | Calbayog | Samar | 138 | 124.637913 | 12.055139 | substation | pypsa-ph | verify vs OSM |
+| 1 | Babatngon | Leyte | 138 | 124.950840 | 11.356460 | substation | sourced [S5] | OSM way/245371561 "Babatngon Substation"; corrected ~7.3 km SE; 2026-06-03 |
+| 2 | Calbayog | Samar | 138 | 124.635480 | 12.054540 | substation | sourced [S5] | OSM way/304140707 (NGCP substation); corrected ~0.3 km W; 2026-06-03 |
 | 3 | Isabel | Leyte | 138 | 124.448930 | 10.919333 | substation | sourced [S5] | Isabel/LIDE industrial area; confirmed 2026-05-24 |
-| 4 | Kananga | Leyte | 230 | 124.551309 | 11.164993 | substation | pypsa-ph (re-search) | OSM/OIM search inconclusive 2026-05-27 — trace 230 kV between Tabango and Ormoc next block |
+| 4 | Kananga | Leyte | 230 | 124.551309 | 11.164993 | substation | pypsa-ph (re-search) | OSM re-search 2026-06-03 still inconclusive: no Kananga-named substation within 16 km; nearest features are the Tongonan/Leyte geothermal cluster + its 230 kV yard (way/493145451, assigned to Tongonan). Coord unconfirmed by any power feature |
 | 5 | Maasin | Leyte | 138 | 124.779131 | 10.162555 | substation | sourced [S5] | Leyte–Bohol cable landing; confirmed 2026-05-27 |
 | 6 | Ormoc | Leyte | 350 | 124.644678 | 11.087485 | hvdc | sourced (role) | Leyte–Luzon HVDC terminal, slack [S8] |
-| 7 | Paranas (Wright) | Samar | 138 | 125.041352 | 11.766751 | substation | pypsa-ph | verify vs OSM |
-| 8 | Sta. Rita | Samar | 138 | 125.002051 | 11.395008 | substation | pypsa-ph | verify vs OSM |
+| 7 | Paranas (Wright) | Samar | 138 | 125.040600 | 11.767520 | substation | sourced [S5] | OSM way/377931160 "Paranas Substation"; confirmed ~0.1 km; 2026-06-03 |
+| 8 | Sta. Rita | Samar | 138 | 125.001640 | 11.395050 | substation | sourced [S5] | OSM way/387032394 (named "Bagolibas Substation" — the NGCP facility in Brgy. Bagolibas, Sta. Rita); confirmed ~0.0 km; 2026-06-03 |
 | 9 | Tabango | Leyte | 230 | 124.343486 | 11.323472 | substation | sourced [S5] | Leyte–Cebu cable landing; confirmed 2026-05-27 |
 | 10 | Tongonan | Leyte | 138 | 124.643492 | 11.140405 | generator | sourced [S5] | geothermal; corrected ~2.5 km S; OSM way/493145451; OSM shows dual 138/230 kV — see fix #6; 2026-05-27 |
 | 11 | Calong-calong | Cebu | 138 | 123.668582 | 10.415726 | substation | sourced [S5] | corrected ~0.15 km; OSM way/611678737 labeled "Magdugo 138 kV" (separate from our Magdugo 230 at 10.346 — likely same Magdugo electrical complex, different yard); 2026-05-27 |
@@ -153,8 +153,8 @@ trace to PyPSA-PH unless noted).
 | 37 | Palinpinon 1 | Negros | 138 | 123.177466 | 9.296893 | generator | pypsa-ph | geothermal |
 | 38 | Palinpinon 2 | Negros | 138 | 123.156892 | 9.280817 | generator | pypsa-ph | geothermal |
 | 39 | San Carlos | Negros | 138 | 123.433566 | 10.515805 | substation | pypsa-ph | verify vs OSM |
-| 40 | Corella | Bohol | 138 | 123.959325 | 9.699520 | substation | pypsa-ph | Bohol load centre |
-| 41 | Tapal | Bohol | 138 | 124.519576 | 10.060901 | substation | pypsa-ph | verify vs OSM |
+| 40 | Corella | Bohol | 138 | 123.903280 | 9.680290 | substation | sourced [S5] | OSM way/242578663 "Corella Substation - BOHECO I"; corrected ~6.5 km W; 2026-06-03 |
+| 41 | Tapal | Bohol | 138 | 124.519576 | 10.060901 | substation | pypsa-ph (re-search) | OSM re-search 2026-06-03 inconclusive: no distinct Tapal feature; only Ubay Substation (way/493029880, ~4 km, already bus #42) nearby. Coord unconfirmed |
 | 42 | Ubay | Bohol | 138 | 124.511428 | 10.026670 | substation | sourced [S5] | Leyte–Bohol cable landing; confirmed 2026-05-24 |
 | 43 | Bantap | Panay | 69 | 122.582826 | 10.728734 | substation | pypsa-ph | Panay–Guimaras 69 kV landing |
 | 44 | Barotac Viejo | Panay | 138 | 122.870264 | 11.032835 | substation | sourced [S5] (coord) | Negros–Panay landing (see fix #1); coord confirmed 2026-05-27; OSM shows dual 138/230 kV yard — see fix #6 |
@@ -181,6 +181,22 @@ trace to PyPSA-PH unless noted).
   ratings where available (CNP 400 MW, CBIP 1,200 MW) [S6/S7].
 
 ## Changelog
+
+- **2026-06-03 (Batch A — Samar/Leyte/Bohol coords)** — Verified the 7 Batch A buses
+  against OSM power features (Overpass, [S5]). 5 sourced, 2 remain re-search:
+  - **Babatngon** → 124.950840, 11.356460 (corrected ~7.3 km SE); OSM way/245371561.
+  - **Calbayog** → 124.635480, 12.054540 (corrected ~0.3 km W); OSM way/304140707 (NGCP).
+  - **Sta. Rita** → 125.001640, 11.395050 (confirmed ~0.0 km); OSM way/387032394
+    (named "Bagolibas Substation" — NGCP facility in Brgy. Bagolibas, Sta. Rita).
+  - **Paranas (Wright)** → 125.040600, 11.767520 (confirmed ~0.1 km); OSM way/377931160.
+  - **Corella** → 123.903280, 9.680290 (corrected ~6.5 km W); OSM way/242578663
+    ("Corella Substation - BOHECO I").
+  - **Tapal** — inconclusive; only Ubay Substation (way/493029880, ~4 km, already bus #42)
+    nearby; no distinct Tapal feature. Kept `pypsa-ph (re-search)`.
+  - **Kananga** — inconclusive; no Kananga-named substation within 16 km, only the Tongonan
+    geothermal cluster + its 230 kV yard (way/493145451, Tongonan's). Kept `pypsa-ph (re-search)`.
+  Bus verification count: **37 of 52 sourced** (was 32). Remaining 15: Negros load (Batch B),
+  Panay/Guimaras (Batch C), + Tapal & Kananga re-search.
 
 - **2026-06-03** — Ship gate closed + voltage cleanup. (a) Located and recorded the
   production URL `https://visayasgrid.vercel.app`; verified it serves this dataset.

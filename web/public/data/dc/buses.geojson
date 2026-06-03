@@ -6,14 +6,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          124.8966993,
-          11.39550084
+          124.95084,
+          11.35646
         ]
       },
       "properties": {
         "name": "Babatngon",
-        "x": 124.8966993,
-        "y": 11.39550084,
+        "x": 124.95084,
+        "y": 11.35646,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Leyte",
@@ -36,14 +36,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          124.6379129,
-          12.05513914
+          124.63548,
+          12.05454
         ]
       },
       "properties": {
         "name": "Calbayog",
-        "x": 124.6379129,
-        "y": 12.05513914,
+        "x": 124.63548,
+        "y": 12.05454,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Samar",
@@ -58,7 +58,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": -1.4623
+        "va_degree": -1.4624
       }
     },
     {
@@ -187,14 +187,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          125.0413517,
-          11.76675071
+          125.0406,
+          11.76752
         ]
       },
       "properties": {
         "name": "Paranas (Wright)",
-        "x": 125.0413517,
-        "y": 11.76675071,
+        "x": 125.0406,
+        "y": 11.76752,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Samar",
@@ -217,14 +217,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          125.0020505,
-          11.39500758
+          125.00164,
+          11.39505
         ]
       },
       "properties": {
         "name": "Sta. Rita",
-        "x": 125.0020505,
-        "y": 11.39500758,
+        "x": 125.00164,
+        "y": 11.39505,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Samar",
@@ -1079,7 +1079,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 8.4725
+        "va_degree": 8.4726
       }
     },
     {
@@ -1207,14 +1207,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.9593251,
-          9.699520408
+          123.90328,
+          9.68029
         ]
       },
       "properties": {
         "name": "Corella",
-        "x": 123.9593251,
-        "y": 9.699520408,
+        "x": 123.90328,
+        "y": 9.68029,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Bohol",
@@ -1469,7 +1469,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 7.833
+        "va_degree": 7.8331
       }
     },
     {

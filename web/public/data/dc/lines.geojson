@@ -1020,7 +1020,7 @@
         "cable_type": "overhead",
         "parallel": 1,
         "loading_percent": 0.0,
-        "p_from_mw": 0.0,
+        "p_from_mw": -0.0,
         "i_from_ka": 0.0
       }
     },
@@ -1185,7 +1185,7 @@
         "cable_type": "overhead",
         "parallel": 2,
         "loading_percent": 96.69,
-        "p_from_mw": 266.89,
+        "p_from_mw": 266.891,
         "i_from_ka": 1.11659
       }
     },
@@ -1251,7 +1251,7 @@
         "cable_type": "overhead",
         "parallel": 2,
         "loading_percent": 83.65,
-        "p_from_mw": 230.89,
+        "p_from_mw": 230.891,
         "i_from_ka": 0.96598
       }
     },
@@ -1317,7 +1317,7 @@
         "cable_type": "overhead",
         "parallel": 2,
         "loading_percent": 58.16,
-        "p_from_mw": 160.54,
+        "p_from_mw": 160.541,
         "i_from_ka": 0.67165
       }
     },
@@ -1350,7 +1350,7 @@
         "cable_type": "overhead",
         "parallel": 2,
         "loading_percent": 27.07,
-        "p_from_mw": 124.54,
+        "p_from_mw": 124.541,
         "i_from_ka": 0.31262
       }
     },
@@ -1383,7 +1383,7 @@
         "cable_type": "submarine_xlpe",
         "parallel": 2,
         "loading_percent": 19.56,
-        "p_from_mw": 100.54,
+        "p_from_mw": 100.541,
         "i_from_ka": 0.25238
       }
     },
@@ -1416,7 +1416,7 @@
         "cable_type": "overhead",
         "parallel": 2,
         "loading_percent": 16.64,
-        "p_from_mw": 76.54,
+        "p_from_mw": 76.541,
         "i_from_ka": 0.19213
       }
     },
@@ -1449,7 +1449,7 @@
         "cable_type": "overhead",
         "parallel": 2,
         "loading_percent": 104.58,
-        "p_from_mw": 481.13,
+        "p_from_mw": 481.131,
         "i_from_ka": 1.20774
       }
     },
@@ -1562,8 +1562,8 @@
             11.08748498
           ],
           [
-            124.8966993,
-            11.39550084
+            124.95084,
+            11.35646
           ]
         ]
       },
@@ -1572,9 +1572,9 @@
         "from_bus": "Ormoc",
         "to_bus": "Babatngon",
         "voltage_kv": 138,
-        "length_km": 43.915,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 44.829,
+        "r_ohm_per_km": 0.118155,
+        "x_ohm_per_km": 0.167792,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -1591,12 +1591,12 @@
         "type": "LineString",
         "coordinates": [
           [
-            124.8966993,
-            11.39550084
+            124.95084,
+            11.35646
           ],
           [
-            125.0020505,
-            11.39500758
+            125.00164,
+            11.39505
           ]
         ]
       },
@@ -1605,9 +1605,9 @@
         "from_bus": "Babatngon",
         "to_bus": "Sta. Rita",
         "voltage_kv": 138,
-        "length_km": 11.484,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 7.006,
+        "r_ohm_per_km": 0.197711,
+        "x_ohm_per_km": 0.280768,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -1624,12 +1624,12 @@
         "type": "LineString",
         "coordinates": [
           [
-            124.8966993,
-            11.39550084
+            124.95084,
+            11.35646
           ],
           [
-            125.0413517,
-            11.76675071
+            125.0406,
+            11.76752
           ]
         ]
       },
@@ -1638,9 +1638,9 @@
         "from_bus": "Babatngon",
         "to_bus": "Paranas (Wright)",
         "voltage_kv": 138,
-        "length_km": 44.186,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 46.742,
+        "r_ohm_per_km": 0.114019,
+        "x_ohm_per_km": 0.161917,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -1657,12 +1657,12 @@
         "type": "LineString",
         "coordinates": [
           [
-            125.0413517,
-            11.76675071
+            125.0406,
+            11.76752
           ],
           [
-            125.0020505,
-            11.39500758
+            125.00164,
+            11.39505
           ]
         ]
       },
@@ -1671,9 +1671,9 @@
         "from_bus": "Paranas (Wright)",
         "to_bus": "Sta. Rita",
         "voltage_kv": 138,
-        "length_km": 41.557,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 41.634,
+        "r_ohm_per_km": 0.120392,
+        "x_ohm_per_km": 0.170968,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -1690,12 +1690,12 @@
         "type": "LineString",
         "coordinates": [
           [
-            125.0413517,
-            11.76675071
+            125.0406,
+            11.76752
           ],
           [
-            124.6379129,
-            12.05513914
+            124.63548,
+            12.05454
           ]
         ]
       },
@@ -1704,9 +1704,9 @@
         "from_bus": "Paranas (Wright)",
         "to_bus": "Calbayog",
         "voltage_kv": 138,
-        "length_km": 54.36,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 54.419,
+        "r_ohm_per_km": 0.120484,
+        "x_ohm_per_km": 0.171099,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -1746,7 +1746,7 @@
         "cable_type": "overhead",
         "parallel": 2,
         "loading_percent": 34.72,
-        "p_from_mw": -95.84,
+        "p_from_mw": -95.839,
         "i_from_ka": 0.15809
       }
     },
@@ -1779,7 +1779,7 @@
         "cable_type": "submarine_xlpe",
         "parallel": 1,
         "loading_percent": 85.52,
-        "p_from_mw": -131.84,
+        "p_from_mw": -131.839,
         "i_from_ka": 0.55158
       }
     },
@@ -1826,8 +1826,8 @@
             10.02667044
           ],
           [
-            123.9593251,
-            9.699520408
+            123.90328,
+            9.68029
           ]
         ]
       },
@@ -1836,9 +1836,9 @@
         "from_bus": "Ubay",
         "to_bus": "Corella",
         "voltage_kv": 138,
-        "length_km": 70.58,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 76.957,
+        "r_ohm_per_km": 0.110619,
+        "x_ohm_per_km": 0.15709,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -1859,8 +1859,8 @@
             10.02667044
           ],
           [
-            123.9593251,
-            9.699520408
+            123.90328,
+            9.68029
           ]
         ]
       },
@@ -1869,9 +1869,9 @@
         "from_bus": "Ubay",
         "to_bus": "Corella",
         "voltage_kv": 69,
-        "length_km": 70.58,
-        "r_ohm_per_km": 0.078021,
-        "x_ohm_per_km": 0.479703,
+        "length_km": 76.957,
+        "r_ohm_per_km": 0.071556,
+        "x_ohm_per_km": 0.439954,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -1911,7 +1911,7 @@
         "cable_type": "submarine_xlpe",
         "parallel": 1,
         "loading_percent": 81.85,
-        "p_from_mw": 210.32,
+        "p_from_mw": 210.319,
         "i_from_ka": 0.52795
       }
     },
@@ -1944,7 +1944,7 @@
         "cable_type": "overhead",
         "parallel": 1,
         "loading_percent": 52.58,
-        "p_from_mw": -210.32,
+        "p_from_mw": -210.319,
         "i_from_ka": 0.52795
       }
     },
@@ -1958,8 +1958,8 @@
             9.748
           ],
           [
-            123.9593251,
-            9.699520408
+            123.90328,
+            9.68029
           ]
         ]
       },
@@ -1968,16 +1968,16 @@
         "from_bus": "Maribojoc",
         "to_bus": "Corella",
         "voltage_kv": 138,
-        "length_km": 14.551,
-        "r_ohm_per_km": 0.169742,
-        "x_ohm_per_km": 0.119576,
+        "length_km": 10.539,
+        "r_ohm_per_km": 0.234378,
+        "x_ohm_per_km": 0.165108,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
         "loading_percent": 152.39,
-        "p_from_mw": 210.32,
+        "p_from_mw": 210.319,
         "i_from_ka": 0.52795
       }
     }

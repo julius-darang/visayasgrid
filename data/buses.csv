@@ -1,12 +1,12 @@
 name,x,y,v_nom,voltages_kv,island,bus_type,p_mw,q_mvar,is_slack,load_count,gen_capacity_mw,gen_mw,gen_carriers,primary_carrier
-Babatngon,124.8966993,11.39550084,138,138,Leyte,substation,24.0,7.2,False,2,0.0,0.0,,
-Calbayog,124.6379129,12.05513914,138,138,Samar,substation,36.0,10.8,False,3,11.0,3.3,Diesel,Diesel
+Babatngon,124.95084,11.35646,138,138,Leyte,substation,24.0,7.2,False,2,0.0,0.0,,
+Calbayog,124.63548,12.05454,138,138,Samar,substation,36.0,10.8,False,3,11.0,3.3,Diesel,Diesel
 Isabel,124.4489301,10.91933332,138,138,Leyte,substation,72.0,21.6,False,6,70.7,21.21,Diesel,Diesel
 Kananga,124.5513085,11.16499313,230,230,Leyte,substation,12.0,3.6,False,1,490.1,416.59,Geothermal,Geothermal
 Maasin,124.7791313,10.16255469,138,138,Leyte,substation,36.0,10.8,False,3,0.0,0.0,,
 Ormoc,124.6446783,11.08748498,350,350,Leyte,hvdc,36.0,10.8,True,3,67.0,17.95,"Geothermal,Solar",Solar
-Paranas (Wright),125.0413517,11.76675071,138,138,Samar,substation,36.0,10.8,False,3,15.2,6.08,ROR,ROR
-Sta. Rita,125.0020505,11.39500758,138,138,Samar,substation,36.0,10.8,False,3,0.0,0.0,,
+Paranas (Wright),125.0406,11.76752,138,138,Samar,substation,36.0,10.8,False,3,15.2,6.08,ROR,ROR
+Sta. Rita,125.00164,11.39505,138,138,Samar,substation,36.0,10.8,False,3,0.0,0.0,,
 Tabango,124.3434864,11.32347232,230,230,Leyte,substation,24.0,7.2,False,2,0.0,0.0,,
 Tongonan,124.643492,11.140405,138,138,Leyte,generator,12.0,3.6,False,1,120.5,102.42,Geothermal,Geothermal
 Argao,123.61,9.879,230,230,Cebu,substation,0.0,0.0,False,0,0.0,0.0,,
@@ -39,7 +39,7 @@ Mabinay,122.9255255,9.729626783,138,138,Negros,substation,36.0,10.8,False,3,20.0
 Palinpinon 1,123.1774662,9.296893436,138,138,Negros,generator,12.0,3.6,False,1,110.5,93.92,Geothermal,Geothermal
 Palinpinon 2,123.1568919,9.280816763,138,138,Negros,generator,12.0,3.6,False,1,127.0,107.95,Geothermal,Geothermal
 San Carlos,123.4335661,10.51580461,138,138,Negros,substation,12.0,3.6,False,1,105.6,35.17,"Biomass,Solar",Solar
-Corella,123.9593251,9.699520408,138,138,Bohol,substation,36.0,10.8,False,3,26.1,8.82,"Diesel,ROR",Diesel
+Corella,123.90328,9.68029,138,138,Bohol,substation,36.0,10.8,False,3,26.1,8.82,"Diesel,ROR",Diesel
 Tapal,124.5195759,10.06090051,138,138,Bohol,substation,12.0,3.6,False,1,29.0,8.7,Diesel,Diesel
 Ubay,124.5114284,10.02667044,138,138,Bohol,substation,48.0,14.4,False,4,0.0,0.0,,
 Maribojoc,123.836,9.748,230,230,Bohol,substation,0.0,0.0,False,0,0.0,0.0,,
