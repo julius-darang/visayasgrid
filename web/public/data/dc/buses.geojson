@@ -1417,14 +1417,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.121373,
-          11.18913152
+          123.12058,
+          11.18827
         ]
       },
       "properties": {
         "name": "Concepcion",
-        "x": 123.121373,
-        "y": 11.18913152,
+        "x": 123.12058,
+        "y": 11.18827,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Panay",
@@ -1439,7 +1439,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.0,
-        "va_degree": 9.7469
+        "va_degree": 9.7468
       }
     },
     {
@@ -1507,14 +1507,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          122.0954808,
-          11.81440808
+          122.09507,
+          11.81427
         ]
       },
       "properties": {
         "name": "Nabas",
-        "x": 122.0954808,
-        "y": 11.81440808,
+        "x": 122.09507,
+        "y": 11.81427,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Panay",
@@ -1537,14 +1537,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          122.7926197,
-          11.49401092
+          122.75755,
+          11.46919
         ]
       },
       "properties": {
         "name": "Panitan",
-        "x": 122.7926197,
-        "y": 11.49401092,
+        "x": 122.75755,
+        "y": 11.46919,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Panay",

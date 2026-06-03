@@ -156,15 +156,15 @@ trace to PyPSA-PH unless noted).
 | 40 | Corella | Bohol | 138 | 123.903280 | 9.680290 | substation | sourced [S5] | OSM way/242578663 "Corella Substation - BOHECO I"; corrected ~6.5 km W; 2026-06-03 |
 | 41 | Tapal | Bohol | 138 | 124.519576 | 10.060901 | substation | pypsa-ph (re-search) | OSM re-search 2026-06-03 inconclusive: no distinct Tapal feature; only Ubay Substation (way/493029880, ~4 km, already bus #42) nearby. Coord unconfirmed |
 | 42 | Ubay | Bohol | 138 | 124.511428 | 10.026670 | substation | sourced [S5] | Leyte–Bohol cable landing; confirmed 2026-05-24 |
-| 43 | Bantap | Panay | 69 | 122.582826 | 10.728734 | substation | pypsa-ph | Panay–Guimaras 69 kV landing |
+| 43 | Bantap | Panay | 69 | 122.582826 | 10.728734 | substation | pypsa-ph (re-search) | OSM 2026-06-03 inconclusive: sits in the Iloilo City power cluster (multiple unnamed substations 0.6–0.8 km, e.g. way/707446503, + Panay Power station way/539156478) but no name-matched Bantap feature. Coord plausible, specific facility unconfirmed |
 | 44 | Barotac Viejo | Panay | 138 | 122.870264 | 11.032835 | substation | sourced [S5] (coord) | Negros–Panay landing (see fix #1); coord confirmed 2026-05-27; OSM shows dual 138/230 kV yard — see fix #6 |
-| 45 | Buenavista (Guimaras) | Guimaras | 138 | 122.659216 | 10.717583 | substation | pypsa-ph | check v_nom vs 69 kV cable |
-| 46 | Concepcion | Panay | 138 | 123.121373 | 11.189132 | substation | pypsa-ph | coal |
+| 45 | Buenavista (Guimaras) | Guimaras | 138 | 122.659216 | 10.717583 | substation | pypsa-ph (re-search) | OSM 2026-06-03 inconclusive: nearest substation is unnamed way/630843726 ~4.8 km W; no name-matched Buenavista feature. Coord (Guimaras side of the Bantap–Buenavista cable) plausible, unconfirmed |
+| 46 | Concepcion | Panay | 138 | 123.120580 | 11.188270 | substation | sourced [S5] | OSM substation node/3116616764, co-located with the PALM Concepcion Power Corporation plant (way/919025519); confirmed ~0.1 km; 2026-06-03 |
 | 47 | Dingle | Panay | 138 | 122.630830 | 11.024534 | substation | sourced [S5] | Panay hub; OSM labeled "Panay Diesel Power Plant 3"; confirmed 2026-05-24 |
 | 48 | Iloilo (PEDC) | Panay | 138 | 122.59255 | 10.72631 | substation | sourced [S5] | corrected ~1.2 km; OSM way/937496043; fixed 2026-05-24 |
-| 49 | Nabas | Panay | 138 | 122.095481 | 11.814408 | substation | pypsa-ph | NW Panay wind |
-| 50 | Panitan | Panay | 138 | 122.792620 | 11.494011 | substation | pypsa-ph | verify vs OSM |
-| 51 | San Jose | Panay | 138 | 122.536261 | 10.998180 | substation | pypsa-ph | Antique/Iloilo — verify |
+| 49 | Nabas | Panay | 138 | 122.095070 | 11.814270 | substation | sourced [S5] | OSM way/364959566 "Nabas Substation"; confirmed ~0.0 km; 2026-06-03 |
+| 50 | Panitan | Panay | 138 | 122.757550 | 11.469190 | substation | sourced [S5] | OSM way/245730451 "Panitan Substation" (NGCP node nearby; CAPELCO Panit-an way/1414944714); corrected ~4.7 km SW; 2026-06-03 |
+| 51 | San Jose | Panay | 138 | 122.536261 | 10.998180 | substation | pypsa-ph (re-search) | OSM 2026-06-03 inconclusive: no San Jose-named substation; nearest is Janiuay Substation (way/1174508958, ~6.4 km SW, different municipality). Coord unconfirmed |
 | 52 | Sta. Barbara | Panay | 138 | 122.558810 | 10.834803 | substation | sourced [S5] | Iloilo hub; confirmed 2026-05-24 |
 
 ## Line provenance policy
@@ -181,6 +181,23 @@ trace to PyPSA-PH unless noted).
   ratings where available (CNP 400 MW, CBIP 1,200 MW) [S6/S7].
 
 ## Changelog
+
+- **2026-06-03 (Batch C — Panay/Guimaras coords)** — Verified the 6 Batch C buses against
+  OSM power features (Overpass + Nominatim [S5]). 3 sourced, 3 re-search:
+  - **Nabas** → 122.095070, 11.814270 (confirmed ~0.0 km); OSM way/364959566 "Nabas Substation".
+  - **Panitan** → 122.757550, 11.469190 (corrected ~4.7 km SW); OSM way/245730451 "Panitan
+    Substation" (CAPELCO Panit-an + NGCP node co-located).
+  - **Concepcion** → 123.120580, 11.188270 (confirmed ~0.1 km); OSM substation node/3116616764,
+    co-located with PALM Concepcion Power Corporation (way/919025519).
+  - **San Jose (Panay)** — inconclusive; no San Jose-named substation, nearest is Janiuay
+    Substation (way/1174508958, ~6.4 km, different municipality). Kept re-search.
+  - **Bantap** — inconclusive; Iloilo City power cluster (several unnamed substations 0.6–0.8 km),
+    no name-matched feature. Kept re-search.
+  - **Buenavista (Guimaras)** — inconclusive; nearest substation unnamed (way/630843726, ~4.8 km).
+    Kept re-search.
+  Bus verification count: **46 of 52 sourced** (was 43). OSM coordinate sweep complete.
+  **Remaining 6 are re-search — not OSM-resolvable, need the NGCP TDP one-line diagram:**
+  Tapal, Kananga, Kabankalan BESS, San Jose, Bantap, Buenavista.
 
 - **2026-06-03 (Batch B — Negros load coords)** — Verified the 7 Batch B buses against
   OSM power features (Overpass [S5]). 6 sourced, 1 re-search:

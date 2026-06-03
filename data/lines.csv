@@ -1,13 +1,13 @@
 line_id,from_bus,to_bus,voltage_kv,length_km,r_ohm_per_km,x_ohm_per_km,c_nf_per_km,max_i_ka,is_submarine,cable_type,parallel
-L_Nabas_Panitan_138,Nabas,Panitan,138,83.864,0.120614,0.171283,0.0,0.5774,False,overhead,2
-L_Panitan_Dingle_138,Panitan,Dingle,138,55.105,0.120614,0.171283,0.0,0.5774,False,overhead,2
+L_Nabas_Panitan_138,Nabas,Panitan,138,81.718,0.123781,0.17578,0.0,0.5774,False,overhead,2
+L_Panitan_Dingle_138,Panitan,Dingle,138,51.339,0.129461,0.183847,0.0,0.5774,False,overhead,2
 L_Dingle_Sta_Barbara_138,Dingle,Sta. Barbara,138,22.515,0.120614,0.171283,0.0,0.5774,False,overhead,2
 L_Sta_Barbara_San_Jose_138,Sta. Barbara,San Jose,138,18.333,0.120614,0.171283,0.0,0.5774,False,overhead,1
 L_Sta_Barbara_Iloilo_PEDC_138,Sta. Barbara,Iloilo (PEDC),138,12.614,0.128296,0.182193,0.0,0.5774,False,overhead,2
 L_Sta_Barbara_Bantap_69,Sta. Barbara,Bantap,69,12.083,0.078021,0.479703,0.0,0.5774,False,overhead,1
 L_Bantap_Buenavista_Guimaras_69,Bantap,Buenavista (Guimaras),69,8.437,0.0754,0.121,200.0,0.645,True,submarine_xlpe,1
 L_Dingle_Barotac_Viejo_138,Dingle,Barotac Viejo,138,26.148,0.120614,0.171283,0.0,0.5774,False,overhead,1
-L_Barotac_Viejo_Concepcion_138,Barotac Viejo,Concepcion,138,32.446,0.219285,0.311405,0.0,0.5774,False,overhead,2
+L_Barotac_Viejo_Concepcion_138,Barotac Viejo,Concepcion,138,32.321,0.220128,0.312602,0.0,0.5774,False,overhead,2
 L_Barotac_Viejo_EB_Magalona_230,Barotac Viejo,E.B. Magalona,230,18.422,0.0754,0.121,200.0,0.645,True,submarine_xlpe,1
 L_EB_Magalona_Bacolod_230,E.B. Magalona,Bacolod,230,29.667,0.158154,0.076271,0.0,0.5774,False,overhead,2
 L_EB_Magalona_Cadiz_230,E.B. Magalona,Cadiz,230,35.669,0.16541,0.07977,0.0,0.5774,False,overhead,2

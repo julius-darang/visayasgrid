@@ -7,12 +7,12 @@
         "type": "LineString",
         "coordinates": [
           [
-            122.0954808,
-            11.81440808
+            122.09507,
+            11.81427
           ],
           [
-            122.7926197,
-            11.49401092
+            122.75755,
+            11.46919
           ]
         ]
       },
@@ -21,9 +21,9 @@
         "from_bus": "Nabas",
         "to_bus": "Panitan",
         "voltage_kv": 138,
-        "length_km": 83.864,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 81.718,
+        "r_ohm_per_km": 0.123781,
+        "x_ohm_per_km": 0.17578,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -40,8 +40,8 @@
         "type": "LineString",
         "coordinates": [
           [
-            122.7926197,
-            11.49401092
+            122.75755,
+            11.46919
           ],
           [
             122.6308302,
@@ -54,9 +54,9 @@
         "from_bus": "Panitan",
         "to_bus": "Dingle",
         "voltage_kv": 138,
-        "length_km": 55.105,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 51.339,
+        "r_ohm_per_km": 0.129461,
+        "x_ohm_per_km": 0.183847,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -275,8 +275,8 @@
             11.03283455
           ],
           [
-            123.121373,
-            11.18913152
+            123.12058,
+            11.18827
           ]
         ]
       },
@@ -285,9 +285,9 @@
         "from_bus": "Barotac Viejo",
         "to_bus": "Concepcion",
         "voltage_kv": 138,
-        "length_km": 32.446,
-        "r_ohm_per_km": 0.219285,
-        "x_ohm_per_km": 0.311405,
+        "length_km": 32.321,
+        "r_ohm_per_km": 0.220128,
+        "x_ohm_per_km": 0.312602,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,

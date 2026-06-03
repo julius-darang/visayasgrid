@@ -46,10 +46,10 @@ Maribojoc,123.836,9.748,230,230,Bohol,substation,0.0,0.0,False,0,0.0,0.0,,
 Bantap,122.5828264,10.72873409,69,69,Panay,substation,12.0,3.6,False,1,0.0,0.0,,
 Barotac Viejo,122.870264,11.03283455,138,138,Panay,substation,24.0,7.2,False,2,0.0,0.0,,
 Buenavista (Guimaras),122.6592157,10.71758251,138,138,Guimaras,substation,36.0,10.8,False,3,54.0,16.2,Wind,Wind
-Concepcion,123.121373,11.18913152,138,138,Panay,substation,24.0,7.2,False,2,135.0,108.0,Coal,Coal
+Concepcion,123.12058,11.18827,138,138,Panay,substation,24.0,7.2,False,2,135.0,108.0,Coal,Coal
 Dingle,122.6308302,11.02453374,138,138,Panay,substation,96.0,28.8,False,8,81.0,30.7,"Biomass,Diesel",Diesel
 Iloilo (PEDC),122.59255,10.72631,138,138,Panay,substation,60.0,18.0,False,5,317.4,253.92,Coal,Coal
-Nabas,122.0954808,11.81440808,138,138,Panay,substation,48.0,14.4,False,4,74.1,24.03,"Diesel,ROR,Wind",Wind
-Panitan,122.7926197,11.49401092,138,138,Panay,substation,36.0,10.8,False,3,0.0,0.0,,
+Nabas,122.09507,11.81427,138,138,Panay,substation,48.0,14.4,False,4,74.1,24.03,"Diesel,ROR,Wind",Wind
+Panitan,122.75755,11.46919,138,138,Panay,substation,36.0,10.8,False,3,0.0,0.0,,
 San Jose,122.5362605,10.99817987,138,138,Panay,substation,36.0,10.8,False,3,5.7,1.43,Solar,Solar
 Sta. Barbara,122.5588103,10.83480342,138,138,Panay,substation,60.0,18.0,False,5,32.1,10.44,"Diesel,ROR",Diesel
