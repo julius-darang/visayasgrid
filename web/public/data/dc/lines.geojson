@@ -1020,7 +1020,7 @@
         "cable_type": "overhead",
         "parallel": 1,
         "loading_percent": 0.0,
-        "p_from_mw": -0.0,
+        "p_from_mw": 0.0,
         "i_from_ka": 0.0
       }
     },
