@@ -182,6 +182,19 @@ trace to PyPSA-PH unless noted).
 
 ## Changelog
 
+- **2026-06-03** — Ship gate closed + voltage cleanup. (a) Located and recorded the
+  production URL `https://visayasgrid.vercel.app`; verified it serves this dataset.
+  (b) Fix #6b: flipped Lapu-Lapu (Pusok) `v_nom` 230→138 (OSM way/616007566) in
+  `data/temp/buses.csv`. (c) Fix #6a resolved by policy (Julius): one bus per location,
+  `v_nom` = dominant line level; no bus/transformer split — E.B. Magalona / Barotac Viejo /
+  Tongonan accepted as known simplifications. (d) Regenerated AC + DC datasets via
+  `process_temp.py` + `build_data.py` (topology gate passes, AC load flow converged; only
+  2 buses' vm_pu shifted, max Δ0.0039; system totals unchanged) — this also confirmed the
+  hand-mirrored `data/temp/buses.csv` is reproducible (closes the manual-mirror drift).
+  Committed `7851636`, pushed, Vercel redeployed; live render confirms Lapu-Lapu at 138 kV.
+  Bus verification still 32/52 sourced (Lapu-Lapu was already sourced) — remaining 20 + the
+  Kananga re-locate roll to a later Engineering week.
+
 - **2026-06-02** — Carried the 2026-05-24 and 2026-05-27 coordinate/topology
   fixes through to the rendered geojson and redeployed (commit e3a65ad). No CSV
   *value* changes in this commit — it propagates already-committed fixes to the
