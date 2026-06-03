@@ -32,13 +32,13 @@ Bacolod,122.989272,10.62946,230,230,Negros,substation,96.0,28.8,False,8,132.1,60
 Cadiz,123.2882465,10.93482221,230,230,Negros,substation,60.0,18.0,False,5,84.4,40.86,"Biomass,Solar",Biomass
 Calatrava,123.4606946,10.55356153,230,230,Negros,substation,24.0,7.2,False,2,0.0,0.0,,
 E.B. Magalona,122.964067,10.895112,230,230,Negros,substation,25.0,7.5,False,0,0.0,0.0,,
-Helios Solar,123.2985792,10.92420288,230,230,Negros,generator,12.0,3.6,False,1,105.0,26.25,Solar,Solar
-Kabankalan,122.848185,10.0192417,138,138,Negros,substation,36.0,10.8,False,3,30.0,21.0,Biomass,Biomass
+Helios Solar,123.292,10.92241,230,230,Negros,generator,12.0,3.6,False,1,105.0,26.25,Solar,Solar
+Kabankalan,122.84776,10.0186,138,138,Negros,substation,36.0,10.8,False,3,30.0,21.0,Biomass,Biomass
 Kabankalan BESS,122.8516924,10.01997881,138,138,Negros,bess,12.0,3.6,False,1,0.0,0.0,,
-Mabinay,122.9255255,9.729626783,138,138,Negros,substation,36.0,10.8,False,3,20.0,14.0,Biomass,Biomass
+Mabinay,122.92435,9.72876,138,138,Negros,substation,36.0,10.8,False,3,20.0,14.0,Biomass,Biomass
 Palinpinon 1,123.1774662,9.296893436,138,138,Negros,generator,12.0,3.6,False,1,110.5,93.92,Geothermal,Geothermal
 Palinpinon 2,123.1568919,9.280816763,138,138,Negros,generator,12.0,3.6,False,1,127.0,107.95,Geothermal,Geothermal
-San Carlos,123.4335661,10.51580461,138,138,Negros,substation,12.0,3.6,False,1,105.6,35.17,"Biomass,Solar",Solar
+San Carlos,123.43306,10.51522,138,138,Negros,substation,12.0,3.6,False,1,105.6,35.17,"Biomass,Solar",Solar
 Corella,123.90328,9.68029,138,138,Bohol,substation,36.0,10.8,False,3,26.1,8.82,"Diesel,ROR",Diesel
 Tapal,124.5195759,10.06090051,138,138,Bohol,substation,12.0,3.6,False,1,29.0,8.7,Diesel,Diesel
 Ubay,124.5114284,10.02667044,138,138,Bohol,substation,48.0,14.4,False,4,0.0,0.0,,

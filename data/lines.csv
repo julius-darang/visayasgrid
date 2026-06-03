@@ -11,13 +11,13 @@ L_Barotac_Viejo_Concepcion_138,Barotac Viejo,Concepcion,138,32.446,0.219285,0.31
 L_Barotac_Viejo_EB_Magalona_230,Barotac Viejo,E.B. Magalona,230,18.422,0.0754,0.121,200.0,0.645,True,submarine_xlpe,1
 L_EB_Magalona_Bacolod_230,E.B. Magalona,Bacolod,230,29.667,0.158154,0.076271,0.0,0.5774,False,overhead,2
 L_EB_Magalona_Cadiz_230,E.B. Magalona,Cadiz,230,35.669,0.16541,0.07977,0.0,0.5774,False,overhead,2
-L_Cadiz_Helios_Solar_138,Cadiz,Helios Solar,138,1.633,0.120614,0.171283,0.0,0.5774,False,overhead,1
+L_Cadiz_Helios_Solar_138,Cadiz,Helios Solar,138,1.44,0.136811,0.194285,0.0,0.5774,False,overhead,1
 L_Cadiz_Calatrava_230,Cadiz,Calatrava,230,46.392,0.166272,0.080186,0.0,0.5774,False,overhead,2
-L_Calatrava_San_Carlos_69,Calatrava,San Carlos,69,5.14,0.078021,0.479703,0.0,0.5774,False,overhead,2
-L_Bacolod_Kabankalan_138,Bacolod,Kabankalan,138,69.586,0.136333,0.193606,0.0,0.5774,False,overhead,2
-L_Kabankalan_Mabinay_138,Kabankalan,Mabinay,138,33.3,0.120614,0.171283,0.0,0.5774,False,overhead,2
+L_Calatrava_San_Carlos_69,Calatrava,San Carlos,69,5.225,0.076752,0.471897,0.0,0.5774,False,overhead,2
+L_Bacolod_Kabankalan_138,Bacolod,Kabankalan,138,69.666,0.136177,0.193384,0.0,0.5774,False,overhead,2
+L_Kabankalan_Mabinay_138,Kabankalan,Mabinay,138,33.303,0.120601,0.171265,0.0,0.5774,False,overhead,2
 L_Kabankalan_Kabankalan_BESS_138,Kabankalan,Kabankalan BESS,138,0.5,0.09473,0.134526,0.0,0.5774,False,overhead,1
-L_Mabinay_Amlan_138,Mabinay,Amlan,138,44.616,0.120614,0.171283,0.0,0.5774,False,overhead,2
+L_Mabinay_Amlan_138,Mabinay,Amlan,138,44.646,0.120533,0.171168,0.0,0.5774,False,overhead,2
 L_Amlan_Palinpinon_2_138,Amlan,Palinpinon 2,138,21.039,0.120614,0.171283,0.0,0.5774,False,overhead,2
 L_Amlan_Palinpinon_1_138,Amlan,Palinpinon 1,138,18.626,0.120614,0.171283,0.0,0.5774,False,overhead,2
 L_Amlan_Samboan_138,Amlan,Samboan,138,13.849,0.0754,0.121,200.0,0.645,True,submarine_xlpe,2

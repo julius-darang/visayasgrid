@@ -899,7 +899,7 @@
         "primary_carrier": "Biomass",
         "connected": true,
         "vm_pu": 1.0157,
-        "va_degree": 15.5177
+        "va_degree": 15.5178
       }
     },
     {
@@ -929,7 +929,7 @@
         "primary_carrier": "Biomass",
         "connected": true,
         "vm_pu": 1.0207,
-        "va_degree": 15.4027
+        "va_degree": 15.4028
       }
     },
     {
@@ -989,7 +989,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0174,
-        "va_degree": 15.4621
+        "va_degree": 15.4622
       }
     },
     {
@@ -997,14 +997,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.2985792,
-          10.92420288
+          123.292,
+          10.92241
         ]
       },
       "properties": {
         "name": "Helios Solar",
-        "x": 123.2985792,
-        "y": 10.92420288,
+        "x": 123.292,
+        "y": 10.92241,
         "v_nom": 230,
         "voltages_kv": 230,
         "island": "Negros",
@@ -1019,7 +1019,7 @@
         "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0208,
-        "va_degree": 15.4075
+        "va_degree": 15.4077
       }
     },
     {
@@ -1027,14 +1027,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          122.848185,
-          10.0192417
+          122.84776,
+          10.0186
         ]
       },
       "properties": {
         "name": "Kabankalan",
-        "x": 122.848185,
-        "y": 10.0192417,
+        "x": 122.84776,
+        "y": 10.0186,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Negros",
@@ -1048,8 +1048,8 @@
         "gen_carriers": "Biomass",
         "primary_carrier": "Biomass",
         "connected": true,
-        "vm_pu": 1.0081,
-        "va_degree": 16.3181
+        "vm_pu": 1.0082,
+        "va_degree": 16.318
       }
     },
     {
@@ -1079,7 +1079,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0081,
-        "va_degree": 16.3162
+        "va_degree": 16.3161
       }
     },
     {
@@ -1087,14 +1087,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          122.9255255,
-          9.729626783
+          122.92435,
+          9.72876
         ]
       },
       "properties": {
         "name": "Mabinay",
-        "x": 122.9255255,
-        "y": 9.729626783,
+        "x": 122.92435,
+        "y": 9.72876,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Negros",
@@ -1109,7 +1109,7 @@
         "primary_carrier": "Biomass",
         "connected": true,
         "vm_pu": 1.0109,
-        "va_degree": 16.6976
+        "va_degree": 16.6975
       }
     },
     {
@@ -1177,14 +1177,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.4335661,
-          10.51580461
+          123.43306,
+          10.51522
         ]
       },
       "properties": {
         "name": "San Carlos",
-        "x": 123.4335661,
-        "y": 10.51580461,
+        "x": 123.43306,
+        "y": 10.51522,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Negros",
@@ -1349,7 +1349,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 0.9731,
-        "va_degree": 11.974
+        "va_degree": 11.9741
       }
     },
     {
@@ -1379,7 +1379,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 1.0106,
-        "va_degree": 15.8222
+        "va_degree": 15.8223
       }
     },
     {
@@ -1409,7 +1409,7 @@
         "primary_carrier": "Wind",
         "connected": true,
         "vm_pu": 0.958,
-        "va_degree": 10.852
+        "va_degree": 10.8521
       }
     },
     {
@@ -1439,7 +1439,7 @@
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": 17.287
+        "va_degree": 17.2871
       }
     },
     {
@@ -1469,7 +1469,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.0001,
-        "va_degree": 15.2252
+        "va_degree": 15.2253
       }
     },
     {
@@ -1559,7 +1559,7 @@
         "primary_carrier": null,
         "connected": true,
         "vm_pu": 0.9869,
-        "va_degree": 14.4611
+        "va_degree": 14.4612
       }
     },
     {
@@ -1589,7 +1589,7 @@
         "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0023,
-        "va_degree": 15.3021
+        "va_degree": 15.3022
       }
     },
     {
@@ -1619,7 +1619,7 @@
         "primary_carrier": "Diesel",
         "connected": true,
         "vm_pu": 1.008,
-        "va_degree": 15.5586
+        "va_degree": 15.5587
       }
     }
   ]

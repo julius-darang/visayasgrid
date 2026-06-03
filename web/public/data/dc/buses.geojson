@@ -997,14 +997,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.2985792,
-          10.92420288
+          123.292,
+          10.92241
         ]
       },
       "properties": {
         "name": "Helios Solar",
-        "x": 123.2985792,
-        "y": 10.92420288,
+        "x": 123.292,
+        "y": 10.92241,
         "v_nom": 230,
         "voltages_kv": 230,
         "island": "Negros",
@@ -1027,14 +1027,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          122.848185,
-          10.0192417
+          122.84776,
+          10.0186
         ]
       },
       "properties": {
         "name": "Kabankalan",
-        "x": 122.848185,
-        "y": 10.0192417,
+        "x": 122.84776,
+        "y": 10.0186,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Negros",
@@ -1087,14 +1087,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          122.9255255,
-          9.729626783
+          122.92435,
+          9.72876
         ]
       },
       "properties": {
         "name": "Mabinay",
-        "x": 122.9255255,
-        "y": 9.729626783,
+        "x": 122.92435,
+        "y": 9.72876,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Negros",
@@ -1177,14 +1177,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.4335661,
-          10.51580461
+          123.43306,
+          10.51522
         ]
       },
       "properties": {
         "name": "San Carlos",
-        "x": 123.4335661,
-        "y": 10.51580461,
+        "x": 123.43306,
+        "y": 10.51522,
         "v_nom": 138,
         "voltages_kv": 138,
         "island": "Negros",

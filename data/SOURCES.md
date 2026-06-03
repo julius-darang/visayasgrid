@@ -146,13 +146,13 @@ trace to PyPSA-PH unless noted).
 | 30 | Cadiz | Negros | 230 | 123.288247 | 10.934822 | substation | sourced [S5] | confirmed 2026-05-24 |
 | 31 | Calatrava | Negros | 230 | 123.460695 | 10.553562 | substation | sourced [S5] | Cebu–Negros 230 kV landing; confirmed 2026-05-27 |
 | 32 | E.B. Magalona | Negros | 230 | 122.964067 | 10.895112 | substation | sourced [S5] | Negros–Panay landing (see fix #1); corrected ~1.2 km N; OSM way/1426217205; dual 138/230 kV site confirmed — see fix #6; 2026-05-27 |
-| 33 | Helios Solar | Negros | 230 | 123.298579 | 10.924203 | generator | pypsa-ph | solar |
-| 34 | Kabankalan | Negros | 138 | 122.848185 | 10.019242 | substation | pypsa-ph | verify vs OSM |
-| 35 | Kabankalan BESS | Negros | 138 | 122.851692 | 10.019979 | bess | pypsa-ph | verify vs OSM |
-| 36 | Mabinay | Negros | 138 | 122.925526 | 9.729627 | substation | pypsa-ph | verify vs OSM |
-| 37 | Palinpinon 1 | Negros | 138 | 123.177466 | 9.296893 | generator | pypsa-ph | geothermal |
-| 38 | Palinpinon 2 | Negros | 138 | 123.156892 | 9.280817 | generator | pypsa-ph | geothermal |
-| 39 | San Carlos | Negros | 138 | 123.433566 | 10.515805 | substation | pypsa-ph | verify vs OSM |
+| 33 | Helios Solar | Negros | 230 | 123.292000 | 10.922410 | generator | sourced [S5] | OSM way/805822040 "Helios Solar Energy" substation; corrected ~0.7 km W; 2026-06-03 |
+| 34 | Kabankalan | Negros | 138 | 122.847760 | 10.018600 | substation | sourced [S5] | OSM way/281402425 "Kabankalan Substation"; confirmed ~0.1 km; 2026-06-03 |
+| 35 | Kabankalan BESS | Negros | 138 | 122.851692 | 10.019979 | bess | pypsa-ph (re-search) | OSM re-search 2026-06-03 inconclusive: no battery/BESS feature in OSM; sits ~0.4 km from the OSM-confirmed Kabankalan substation (way/281402425). Coord unconfirmed |
+| 36 | Mabinay | Negros | 138 | 122.924350 | 9.728760 | substation | sourced [S5] | OSM way/281402426 "Mabinay Substation"; confirmed ~0.2 km; 2026-06-03 |
+| 37 | Palinpinon 1 | Negros | 138 | 123.177466 | 9.296893 | generator | sourced [S5] | Within OSM Palinpinon geothermal complex: relation/5495786 "Palinpinon Geothermal Power Plant I", ~0.6 km from mapped unit way/285069303; coord kept; 2026-06-03 |
+| 38 | Palinpinon 2 | Negros | 138 | 123.156892 | 9.280817 | generator | sourced [S5] | Within OSM Palinpinon geothermal complex ~1.1 km from relation/5495786 (Plant I); OSM does not separately tag Plant II — location confirmed, exact unit unverified; coord kept; 2026-06-03 |
+| 39 | San Carlos | Negros | 138 | 123.433060 | 10.515220 | substation | sourced [S5] | OSM way/1362017481 (named "San Jose Substation" — NGCP substation in Brgy. San Jose, San Carlos City, adjacent to the SaCaSol solar plant); confirmed ~0.1 km; 2026-06-03 |
 | 40 | Corella | Bohol | 138 | 123.903280 | 9.680290 | substation | sourced [S5] | OSM way/242578663 "Corella Substation - BOHECO I"; corrected ~6.5 km W; 2026-06-03 |
 | 41 | Tapal | Bohol | 138 | 124.519576 | 10.060901 | substation | pypsa-ph (re-search) | OSM re-search 2026-06-03 inconclusive: no distinct Tapal feature; only Ubay Substation (way/493029880, ~4 km, already bus #42) nearby. Coord unconfirmed |
 | 42 | Ubay | Bohol | 138 | 124.511428 | 10.026670 | substation | sourced [S5] | Leyte–Bohol cable landing; confirmed 2026-05-24 |
@@ -181,6 +181,24 @@ trace to PyPSA-PH unless noted).
   ratings where available (CNP 400 MW, CBIP 1,200 MW) [S6/S7].
 
 ## Changelog
+
+- **2026-06-03 (Batch B — Negros load coords)** — Verified the 7 Batch B buses against
+  OSM power features (Overpass [S5]). 6 sourced, 1 re-search:
+  - **Kabankalan** → 122.847760, 10.018600 (confirmed ~0.1 km); OSM way/281402425.
+  - **Mabinay** → 122.924350, 9.728760 (confirmed ~0.2 km); OSM way/281402426.
+  - **San Carlos** → 123.433060, 10.515220 (confirmed ~0.1 km); OSM way/1362017481
+    (named "San Jose Substation" — NGCP substation in Brgy. San Jose, San Carlos City,
+    beside the SaCaSol solar plant).
+  - **Helios Solar** → 123.292000, 10.922410 (corrected ~0.7 km W); OSM way/805822040
+    "Helios Solar Energy".
+  - **Palinpinon 1** → coord kept; within OSM Palinpinon geothermal complex (relation/5495786
+    "Palinpinon Geothermal Power Plant I", ~0.6 km from unit way/285069303).
+  - **Palinpinon 2** → coord kept; within the same complex (~1.1 km from Plant I relation);
+    OSM does not separately tag Plant II — location confirmed, exact unit unverified.
+  - **Kabankalan BESS** — inconclusive; no OSM battery feature; sits ~0.4 km from the
+    OSM-confirmed Kabankalan substation. Kept `pypsa-ph (re-search)`.
+  Bus verification count: **43 of 52 sourced** (was 37). Remaining 9: Panay/Guimaras
+  (Batch C, 6) + Tapal, Kananga, Kabankalan BESS re-search.
 
 - **2026-06-03 (Batch A — Samar/Leyte/Bohol coords)** — Verified the 7 Batch A buses
   against OSM power features (Overpass, [S5]). 5 sourced, 2 remain re-search:

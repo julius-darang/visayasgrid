@@ -407,8 +407,8 @@
             10.93482221
           ],
           [
-            123.2985792,
-            10.92420288
+            123.292,
+            10.92241
           ]
         ]
       },
@@ -417,9 +417,9 @@
         "from_bus": "Cadiz",
         "to_bus": "Helios Solar",
         "voltage_kv": 138,
-        "length_km": 1.633,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 1.44,
+        "r_ohm_per_km": 0.136811,
+        "x_ohm_per_km": 0.194285,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -473,8 +473,8 @@
             10.55356153
           ],
           [
-            123.4335661,
-            10.51580461
+            123.43306,
+            10.51522
           ]
         ]
       },
@@ -483,9 +483,9 @@
         "from_bus": "Calatrava",
         "to_bus": "San Carlos",
         "voltage_kv": 69,
-        "length_km": 5.14,
-        "r_ohm_per_km": 0.078021,
-        "x_ohm_per_km": 0.479703,
+        "length_km": 5.225,
+        "r_ohm_per_km": 0.076752,
+        "x_ohm_per_km": 0.471897,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -506,8 +506,8 @@
             10.62946
           ],
           [
-            122.848185,
-            10.0192417
+            122.84776,
+            10.0186
           ]
         ]
       },
@@ -516,9 +516,9 @@
         "from_bus": "Bacolod",
         "to_bus": "Kabankalan",
         "voltage_kv": 138,
-        "length_km": 69.586,
-        "r_ohm_per_km": 0.136333,
-        "x_ohm_per_km": 0.193606,
+        "length_km": 69.666,
+        "r_ohm_per_km": 0.136177,
+        "x_ohm_per_km": 0.193384,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -526,7 +526,7 @@
         "parallel": 2,
         "loading_percent": 5.68,
         "p_from_mw": -15.69,
-        "i_from_ka": 0.03938
+        "i_from_ka": 0.03939
       }
     },
     {
@@ -535,12 +535,12 @@
         "type": "LineString",
         "coordinates": [
           [
-            122.848185,
-            10.0192417
+            122.84776,
+            10.0186
           ],
           [
-            122.9255255,
-            9.729626783
+            122.92435,
+            9.72876
           ]
         ]
       },
@@ -549,9 +549,9 @@
         "from_bus": "Kabankalan",
         "to_bus": "Mabinay",
         "voltage_kv": 138,
-        "length_km": 33.3,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 33.303,
+        "r_ohm_per_km": 0.120601,
+        "x_ohm_per_km": 0.171265,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -568,8 +568,8 @@
         "type": "LineString",
         "coordinates": [
           [
-            122.848185,
-            10.0192417
+            122.84776,
+            10.0186
           ],
           [
             122.8516924,
@@ -601,8 +601,8 @@
         "type": "LineString",
         "coordinates": [
           [
-            122.9255255,
-            9.729626783
+            122.92435,
+            9.72876
           ],
           [
             123.2248121,
@@ -615,9 +615,9 @@
         "from_bus": "Mabinay",
         "to_bus": "Amlan",
         "voltage_kv": 138,
-        "length_km": 44.616,
-        "r_ohm_per_km": 0.120614,
-        "x_ohm_per_km": 0.171283,
+        "length_km": 44.646,
+        "r_ohm_per_km": 0.120533,
+        "x_ohm_per_km": 0.171168,
         "c_nf_per_km": 0.0,
         "max_i_ka": 0.5774,
         "is_submarine": false,
@@ -1020,7 +1020,7 @@
         "cable_type": "overhead",
         "parallel": 1,
         "loading_percent": 0.0,
-        "p_from_mw": 0.0,
+        "p_from_mw": -0.0,
         "i_from_ka": 0.0
       }
     },
