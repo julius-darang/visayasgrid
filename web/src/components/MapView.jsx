@@ -210,9 +210,12 @@ export default function MapView({
       {buses.features.map((f, i) => {
         const [x, y] = f.geometry.coordinates;
         const v = Number(f.properties.v_nom);
-        const radius = radiusForBus(f.properties);
-        const hasGen = (f.properties.gen_capacity_mw || 0) > 0;
+        const isGenerator = f.properties.bus_type === "generator";
         const isHvdc = f.properties.bus_type === "hvdc";
+        // Circles (generators) scale with plant capacity; squares (substations)
+        // scale only with voltage class so size stays a clean voltage signal.
+        const radius = radiusForBus(f.properties, isGenerator);
+        const hasGen = (f.properties.gen_capacity_mw || 0) > 0;
         const dim = active && !active.busNames.has(f.properties.name);
         const showLabel =
           display.labels || (active && active.busNames.has(f.properties.name));
@@ -269,8 +272,8 @@ export default function MapView({
                 }}
               />
             )}
-            {/* Generators → circle; pure substations → square */}
-            {hasGen ? (
+            {/* bus_type=generator → circle; everything else (substation, hvdc) → square */}
+            {isGenerator ? (
               <CircleMarker
                 center={[y, x]}
                 radius={radius}

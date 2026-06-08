@@ -88,12 +88,13 @@ export function colorForVoltagePu(pu) {
   return "#2d6a4f";
 }
 
-export function radiusForBus(props) {
+export function radiusForBus(props, genBoost = false) {
   const v = Number(props.v_nom);
   const base = v >= 230 ? 4.5 : v >= 138 ? 3.5 : 3;
-  // Bus with significant generation gets a size bump (logarithmic).
-  const gen = Number(props.gen_capacity_mw || 0);
-  if (gen > 0) return base + Math.min(4, Math.log10(gen + 1) * 1.8);
+  if (genBoost) {
+    const gen = Number(props.gen_capacity_mw || 0);
+    if (gen > 0) return base + Math.min(4, Math.log10(gen + 1) * 1.8);
+  }
   return base;
 }
 

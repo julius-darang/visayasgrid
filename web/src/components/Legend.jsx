@@ -12,8 +12,8 @@ import InfoButton from "./InfoButton.jsx";
 import { Chevron } from "./icons.jsx";
 
 const LEGEND_SHAPES = [
-  { shape: "circle", label: "Generator bus" },
-  { shape: "square", label: "Substation" },
+  { shape: "circle", label: "Dedicated generator" },
+  { shape: "square", label: "Substation (may have gen)" },
 ];
 
 const LEGEND_INFO = {
