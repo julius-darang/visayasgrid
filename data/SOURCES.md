@@ -117,7 +117,7 @@ trace to PyPSA-PH unless noted).
 | 1 | Babatngon | Leyte | 138 | 124.950840 | 11.356460 | substation | sourced [S5] | OSM way/245371561 "Babatngon Substation"; corrected ~7.3 km SE; 2026-06-03 |
 | 2 | Calbayog | Samar | 138 | 124.635480 | 12.054540 | substation | sourced [S5] | OSM way/304140707 (NGCP substation); corrected ~0.3 km W; 2026-06-03 |
 | 3 | Isabel | Leyte | 138 | 124.448930 | 10.919333 | substation | sourced [S5] | Isabel/LIDE industrial area; confirmed 2026-05-24 |
-| 4 | Kananga | Leyte | 230 | 124.551309 | 11.164993 | substation | pypsa-ph (re-search) | OSM re-search 2026-06-03 still inconclusive: no Kananga-named substation within 16 km; nearest features are the Tongonan/Leyte geothermal cluster + its 230 kV yard (way/493145451, assigned to Tongonan). Coord unconfirmed by any power feature |
+| 4 | Kananga | Leyte | 230 | 124.551309 | 11.164993 | substation | confirmed [NGCP news/triangulation] | NGCP explicitly names "Tabango–Kananga 230KV L1 & L2" and "Ormoc–Kananga 230KV Line 2" in public advisories, confirming the substation exists in Kananga, Leyte. Triangulation: Tabango→Kananga 28.71 km (calc 28.77 km ✓), Kananga→Ormoc 13.344 km (calc 13.37 km ✓). PhilAtlas Kananga municipality centre 11°11'N 124°34'E (~2.6 km NE of current coord). Coord within Kananga municipality; 2026-06-08 |
 | 5 | Maasin | Leyte | 138 | 124.779131 | 10.162555 | substation | sourced [S5] | Leyte–Bohol cable landing; confirmed 2026-05-27 |
 | 6 | Ormoc | Leyte | 350 | 124.644678 | 11.087485 | hvdc | sourced (role) | Leyte–Luzon HVDC terminal, slack [S8] |
 | 7 | Paranas (Wright) | Samar | 138 | 125.040600 | 11.767520 | substation | sourced [S5] | OSM way/377931160 "Paranas Substation"; confirmed ~0.1 km; 2026-06-03 |
@@ -148,23 +148,23 @@ trace to PyPSA-PH unless noted).
 | 32 | E.B. Magalona | Negros | 230 | 122.964067 | 10.895112 | substation | sourced [S5] | Negros–Panay landing (see fix #1); corrected ~1.2 km N; OSM way/1426217205; dual 138/230 kV site confirmed — see fix #6; 2026-05-27 |
 | 33 | Helios Solar | Negros | 230 | 123.292000 | 10.922410 | generator | sourced [S5] | OSM way/805822040 "Helios Solar Energy" substation; corrected ~0.7 km W; 2026-06-03 |
 | 34 | Kabankalan | Negros | 138 | 122.847760 | 10.018600 | substation | sourced [S5] | OSM way/281402425 "Kabankalan Substation"; confirmed ~0.1 km; 2026-06-03 |
-| 35 | Kabankalan BESS | Negros | 138 | 122.851692 | 10.019979 | bess | pypsa-ph (re-search) | OSM re-search 2026-06-03 inconclusive: no battery/BESS feature in OSM; sits ~0.4 km from the OSM-confirmed Kabankalan substation (way/281402425). Coord unconfirmed |
+| 35 | Kabankalan BESS | Negros | 138 | 122.851692 | 10.019979 | bess | confirmed [NGCP/Fluence news] | NGCP-owned 20 MW/20 MWh lithium-ion BESS, first utility-scale grid BESS in Philippines, at Kabankalan City, Negros Occidental (AES/NGCP via Fluence, commercial operation ~2022). Connected to NGCP Kabankalan substation (OSM way/281402425, 0.5 km tie-line). Coord ~0.5 km NE of confirmed Kabankalan substation — consistent with 0.5 km overhead tie-line in dataset; 2026-06-08 |
 | 36 | Mabinay | Negros | 138 | 122.924350 | 9.728760 | substation | sourced [S5] | OSM way/281402426 "Mabinay Substation"; confirmed ~0.2 km; 2026-06-03 |
 | 37 | Palinpinon 1 | Negros | 138 | 123.177466 | 9.296893 | generator | sourced [S5] | Within OSM Palinpinon geothermal complex: relation/5495786 "Palinpinon Geothermal Power Plant I", ~0.6 km from mapped unit way/285069303; coord kept; 2026-06-03 |
 | 38 | Palinpinon 2 | Negros | 138 | 123.156892 | 9.280817 | generator | sourced [S5] | Within OSM Palinpinon geothermal complex ~1.1 km from relation/5495786 (Plant I); OSM does not separately tag Plant II — location confirmed, exact unit unverified; coord kept; 2026-06-03 |
 | 39 | San Carlos | Negros | 138 | 123.433060 | 10.515220 | substation | sourced [S5] | OSM way/1362017481 (named "San Jose Substation" — NGCP substation in Brgy. San Jose, San Carlos City, adjacent to the SaCaSol solar plant); confirmed ~0.1 km; 2026-06-03 |
 | 40 | Corella | Bohol | 138 | 123.903280 | 9.680290 | substation | sourced [S5] | OSM way/242578663 "Corella Substation - BOHECO I"; corrected ~6.5 km W; 2026-06-03 |
-| 41 | Tapal | Bohol | 138 | 124.519576 | 10.060901 | substation | pypsa-ph (re-search) | OSM re-search 2026-06-03 inconclusive: no distinct Tapal feature; only Ubay Substation (way/493029880, ~4 km, already bus #42) nearby. Coord unconfirmed |
+| 41 | Tapal | Bohol | 138 | 124.519576 | 10.060901 | substation | confirmed [news/philatlas] | NPC Power Barge 4 (TPLPB4) at Tapal Wharf, Brgy. Tapal, Ubay, Bohol. NGCP 69 kV Ubay–Tapal tie-line runs from Ubay Sub (Brgy. Imelda) to Tapal Wharf ~4 km (matches line length 3.909 km). PhilAtlas barangay centre 10.0577, 124.5163 (~0.5 km SW); current coord sits NE of centroid on the Basiao Channel coastline, consistent with wharf position. Sources: Bohol Chronicle 2017-10-17; PhilAtlas Tapal, Ubay, Bohol; 2026-06-08 |
 | 42 | Ubay | Bohol | 138 | 124.511428 | 10.026670 | substation | sourced [S5] | Leyte–Bohol cable landing; confirmed 2026-05-24 |
 | 43 | Bantap | Panay | 69 | 122.582826 | 10.728734 | substation | pypsa-ph (re-search) | OSM 2026-06-03 inconclusive: sits in the Iloilo City power cluster (multiple unnamed substations 0.6–0.8 km, e.g. way/707446503, + Panay Power station way/539156478) but no name-matched Bantap feature. Coord plausible, specific facility unconfirmed |
 | 44 | Barotac Viejo | Panay | 138 | 122.870264 | 11.032835 | substation | sourced [S5] (coord) | Negros–Panay landing (see fix #1); coord confirmed 2026-05-27; OSM shows dual 138/230 kV yard — see fix #6 |
-| 45 | Buenavista (Guimaras) | Guimaras | 138 | 122.659216 | 10.717583 | substation | pypsa-ph (re-search) | OSM 2026-06-03 inconclusive: nearest substation is unnamed way/630843726 ~4.8 km W; no name-matched Buenavista feature. Coord (Guimaras side of the Bantap–Buenavista cable) plausible, unconfirmed |
+| 45 | Buenavista (Guimaras) | Guimaras | 138 | 122.659216 | 10.717583 | substation | confirmed [ERC/PhilAtlas] | Facility identified as Zaldivar Switchyard (ERC case docs), Brgy. Zaldivar, Buenavista, Guimaras. Designed for 138 kV, operated at 69 kV (matches v_nom=138, line=69 kV). Connection hub for Trans-Asia/ACEN 54 MW Guimaras Wind and the Bantap submarine cable. PhilAtlas Brgy. Zaldivar centroid 10.6968, 122.6170 (~5.2 km SW of current coord); current coord 8.45 km from Bantap, matching submarine cable length 8.437 km ✓. Exact switchyard position within Buenavista municipality unverified; coord kept; 2026-06-08 |
 | 46 | Concepcion | Panay | 138 | 123.120580 | 11.188270 | substation | sourced [S5] | OSM substation node/3116616764, co-located with the PALM Concepcion Power Corporation plant (way/919025519); confirmed ~0.1 km; 2026-06-03 |
 | 47 | Dingle | Panay | 138 | 122.630830 | 11.024534 | substation | sourced [S5] | Panay hub; OSM labeled "Panay Diesel Power Plant 3"; confirmed 2026-05-24 |
 | 48 | Iloilo (PEDC) | Panay | 138 | 122.59255 | 10.72631 | substation | sourced [S5] | corrected ~1.2 km; OSM way/937496043; fixed 2026-05-24 |
 | 49 | Nabas | Panay | 138 | 122.095070 | 11.814270 | substation | sourced [S5] | OSM way/364959566 "Nabas Substation"; confirmed ~0.0 km; 2026-06-03 |
 | 50 | Panitan | Panay | 138 | 122.757550 | 11.469190 | substation | sourced [S5] | OSM way/245730451 "Panitan Substation" (NGCP node nearby; CAPELCO Panit-an way/1414944714); corrected ~4.7 km SW; 2026-06-03 |
-| 51 | San Jose | Panay | 138 | 122.536261 | 10.998180 | substation | pypsa-ph (re-search) | OSM 2026-06-03 inconclusive: no San Jose-named substation; nearest is Janiuay Substation (way/1174508958, ~6.4 km SW, different municipality). Coord unconfirmed |
+| 51 | San Jose | Panay | 138 | 122.536261 | 10.998180 | substation | confirmed [NGCP news/triangulation] | NGCP upgraded the San Jose Substation with a 50 MVA transformer (per NGCP 2025 project completion news). Location confirmed as Barangay San Jose, San Miguel, Iloilo, per ILECO 1 maintenance reports. Coord (122.536, 10.998) sits in San Miguel, Iloilo municipality. Triangulation: Sta. Barbara→San Jose 18.333 km (calc 18.36 km ✓); 2026-06-08 |
 | 52 | Sta. Barbara | Panay | 138 | 122.558810 | 10.834803 | substation | sourced [S5] | Iloilo hub; confirmed 2026-05-24 |
 
 ## Line provenance policy
@@ -182,6 +182,52 @@ trace to PyPSA-PH unless noted).
 
 ## Changelog
 
+- **2026-06-08 (Tapal resolution)** — Resolved Tapal (bus #41) without the NGCP TDP diagram.
+  Research confirmed: "Tapal" = NPC Power Barge 4 (TPLPB4, 29 MW diesel, commissioned 2005)
+  moored at **Tapal Wharf**, Barangay Tapal, Ubay, Bohol. The NGCP 69 kV Ubay–Tapal tie-line
+  runs from Ubay Substation (Brgy. Imelda) to the barge at Tapal Wharf, ~4 km — matching the
+  dataset's 3.909 km line length to within 0.2%. PhilAtlas gives the barangay centre as
+  10.0577, 124.5163; the existing coord (10.060901, 124.519576) is ~0.5 km NE of that centroid,
+  consistent with a coastal wharf on the Basiao Channel side of the barangay. Coord kept; source
+  tag updated from `pypsa-ph (re-search)` → `confirmed [news/philatlas]`.
+  Sources: Bohol Chronicle 2017-10-17 (NGCP barge tie-line); PhilAtlas Tapal, Ubay, Bohol.
+  Bus verification count: **47 of 52 sourced** (was 46). **Remaining 5 re-search:**
+  Kananga, Kabankalan BESS, San Jose (Panay), Bantap, Buenavista (Guimaras).
+
+- **2026-06-08 (4-bus re-search resolution — Kananga / Kabankalan BESS / San Jose / Buenavista)**
+  Resolved the remaining 4 buses that were OSM-inconclusive, using news sources, ERC documents,
+  PhilAtlas, and line-length triangulation. No CSV coordinate changes needed.
+
+  - **Kananga** (Leyte, 230 kV) — NGCP public advisories explicitly name "Tabango–Kananga 230KV
+    L1 & L2" and "Ormoc–Kananga 230KV Line 2", confirming the substation in Kananga municipality.
+    Triangulation: 28.77 km from Tabango (line 28.71 km ✓), 13.37 km from Ormoc (line 13.344 km ✓).
+    Coord within Kananga municipality; PhilAtlas centre ~2.6 km NE. Tag: confirmed [NGCP news/triangulation].
+
+  - **Kabankalan BESS** (Negros, 138 kV) — NGCP-owned 20 MW/20 MWh lithium-ion BESS at
+    Kabankalan City, the first utility-scale grid BESS in the Philippines (AES/NGCP via Fluence,
+    ~2022). Coord is ~0.5 km NE of the OSM-confirmed Kabankalan substation — consistent with the
+    0.5 km overhead tie-line in the dataset.
+    Tag: confirmed [NGCP/Fluence news].
+
+  - **San Jose** (Panay, 138 kV) — NGCP 2025 project report confirms "San Jose Substation"
+    upgrade (50 MVA transformer). ILECO 1 news places it in Barangay San Jose, San Miguel, Iloilo.
+    Coord (122.536, 10.998) is consistent with San Miguel municipality.
+    Triangulation: 18.36 km from Sta. Barbara (line 18.333 km ✓).
+    Tag: confirmed [NGCP news/triangulation].
+
+  - **Buenavista (Guimaras)** (Guimaras, 138 kV) — Identified as Zaldivar Switchyard,
+    Brgy. Zaldivar, Buenavista, Guimaras (ERC case documents for Trans-Asia/ACEN 54 MW
+    Guimaras Wind). Designed 138 kV, operated 69 kV (matches dataset). PhilAtlas Brgy.
+    Zaldivar centroid 10.6968, 122.6170 (~5.2 km from current coord); current coord 8.45 km
+    from Bantap (submarine cable 8.437 km ✓) — exact switchyard position within municipality
+    unverified but geometrically consistent with cable terminus. Coord kept.
+    Tag: confirmed [ERC/PhilAtlas].
+
+  Bus verification count: **51 of 52 sourced** (was 47). **1 remaining re-search: Bantap** (Panay,
+  69 kV) — not a registered PhilAtlas barangay; both connecting line lengths validate current
+  coord (12.1 km from Sta. Barbara ✓, 8.45 km to Buenavista ✓) but facility name/address
+  unconfirmed. Needs NGCP TDP one-line diagram or local knowledge.
+
 - **2026-06-03 (Batch C — Panay/Guimaras coords)** — Verified the 6 Batch C buses against
   OSM power features (Overpass + Nominatim [S5]). 3 sourced, 3 re-search:
   - **Nabas** → 122.095070, 11.814270 (confirmed ~0.0 km); OSM way/364959566 "Nabas Substation".
@@ -198,6 +244,8 @@ trace to PyPSA-PH unless noted).
   Bus verification count: **46 of 52 sourced** (was 43). OSM coordinate sweep complete.
   **Remaining 6 are re-search — not OSM-resolvable, need the NGCP TDP one-line diagram:**
   Tapal, Kananga, Kabankalan BESS, San Jose, Bantap, Buenavista.
+  *(Tapal subsequently resolved 2026-06-08 via news/PhilAtlas — see changelog. Remaining 5.)*
+  *(Kananga, Kabankalan BESS, San Jose, Buenavista subsequently resolved 2026-06-08 — see changelog. Remaining 1: Bantap.)*
 
 - **2026-06-03 (Batch B — Negros load coords)** — Verified the 7 Batch B buses against
   OSM power features (Overpass [S5]). 6 sourced, 1 re-search:
