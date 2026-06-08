@@ -1,16 +1,34 @@
-# React + Vite
+# visayasgrid — Web Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite app that renders the pre-built GeoJSON power flow results on an interactive Leaflet map.
 
-Currently, two official plugins are available:
+## Dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # production build → dist/
+```
 
-## React Compiler
+## Data
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The app fetches static files from `public/data/` at runtime. Rebuild them by running the Python pipeline from the repo root:
 
-## Expanding the ESLint configuration
+```sh
+python scripts/process_temp.py && python scripts/build_data.py
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+See [`../docs/architecture.md`](../docs/architecture.md) for the full data flow.
+
+## Key source files
+
+| File | Role |
+|---|---|
+| `src/App.jsx` | Layout, filter state, scenario selector |
+| `src/components/MapView.jsx` | Leaflet map — bus/line rendering, icon caches |
+| `src/components/Sidebar.jsx` | Island/voltage filters, display toggles, bus search |
+| `src/components/InfoPanel.jsx` | Click-to-inspect details panel |
+| `src/components/StatsPanel.jsx` | Demand/generation headline numbers |
+| `src/components/Legend.jsx` | Colour scale reference |
+| `src/lib/styles.js` | Pure colour/radius/style functions |
+| `src/hooks/useGridData.js` | GeoJSON fetch + filter logic |
