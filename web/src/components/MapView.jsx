@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useMemo, useRef, memo } from "react";
 import L from "leaflet";
 import {
   MapContainer,
@@ -33,8 +33,6 @@ function MapController({ target }) {
   return null;
 }
 
-// Names of the buses/lines connected to the current selection. Used to dim
-// everything else so the selected element's local topology stands out.
 function connectedSet(selected, lines) {
   if (!selected) return null;
   const p = selected.feature.properties;
@@ -74,28 +72,40 @@ function bearing([lat1, lon1], [lat2, lon2]) {
   return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
 }
 
-function flowArrowIcon(rotation, color) {
-  return L.divIcon({
-    html: `<div style="transform: rotate(${rotation}deg); color: ${color}; font-size: 12px; line-height: 12px;">▶</div>`,
-    iconSize: [12, 12],
-    iconAnchor: [6, 6],
-    className: "flow-arrow",
-  });
+// Module-level icon caches. L.divIcon objects are stable across renders so
+// react-leaflet won't trigger DOM swaps when only opacity/selection changes.
+const _arrowCache = new Map();
+function getArrowIcon(rotation, color) {
+  const key = `${rotation}|${color}`;
+  if (!_arrowCache.has(key)) {
+    _arrowCache.set(key, L.divIcon({
+      html: `<div style="transform:rotate(${rotation}deg);color:${color};font-size:12px;line-height:12px">▶</div>`,
+      iconSize: [12, 12],
+      iconAnchor: [6, 6],
+      className: "flow-arrow",
+    }));
+  }
+  return _arrowCache.get(key);
 }
 
-function squareIconForBus(radius, fill, stroke, fillOpacity, strokeOpacity) {
-  const size = Math.round(radius * 2);
-  const pad = 1;
-  const total = size + pad * 2;
-  return L.divIcon({
-    html: `<svg width="${total}" height="${total}" viewBox="0 0 ${total} ${total}" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible"><rect x="${pad}" y="${pad}" width="${size}" height="${size}" fill="${fill}" fill-opacity="${fillOpacity}" stroke="${stroke}" stroke-opacity="${strokeOpacity}" stroke-width="0.75"/></svg>`,
-    iconSize: [total, total],
-    iconAnchor: [total / 2, total / 2],
-    className: "",
-  });
+const _squareCache = new Map();
+function getSquareIcon(radius, fill, stroke, fillOpacity, strokeOpacity) {
+  const key = `${radius}|${fill}|${stroke}|${fillOpacity}|${strokeOpacity}`;
+  if (!_squareCache.has(key)) {
+    const size = Math.round(radius * 2);
+    const pad = 1;
+    const total = size + pad * 2;
+    _squareCache.set(key, L.divIcon({
+      html: `<svg width="${total}" height="${total}" viewBox="0 0 ${total} ${total}" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible"><rect x="${pad}" y="${pad}" width="${size}" height="${size}" fill="${fill}" fill-opacity="${fillOpacity}" stroke="${stroke}" stroke-opacity="${strokeOpacity}" stroke-width="0.75"/></svg>`,
+      iconSize: [total, total],
+      iconAnchor: [total / 2, total / 2],
+      className: "",
+    }));
+  }
+  return _squareCache.get(key);
 }
 
-export default function MapView({
+export default memo(function MapView({
   buses,
   lines,
   onSelect,
@@ -108,7 +118,33 @@ export default function MapView({
 }) {
   const isDark = theme === "dark";
   const busStroke = isDark ? "#e2e8f0" : "#1e293b";
-  const active = connectedSet(selected, lines);
+
+  // Memoize connected-set — iterates all lines and is only needed when
+  // selection or topology actually changes.
+  const active = useMemo(() => connectedSet(selected, lines), [selected, lines]);
+
+  // Keep onSelect in a ref so the stable handler closures below always call
+  // the latest version without needing to be recreated themselves.
+  const onSelectRef = useRef(onSelect);
+  useEffect(() => { onSelectRef.current = onSelect; }, [onSelect]);
+
+  // Pre-compute coordinate arrays once per data load — geometry is static.
+  const lineCoords = useMemo(
+    () => lines.features.map((f) => f.geometry.coordinates.map(([x, y]) => [y, x])),
+    [lines],
+  );
+
+  // Stable per-element event handlers — recreated only when the underlying
+  // data changes, not on every selection or display toggle. This prevents
+  // react-leaflet from re-registering listeners on every render.
+  const lineHandlers = useMemo(
+    () => lines.features.map((f) => ({ click: () => onSelectRef.current({ kind: "line", feature: f }) })),
+    [lines],
+  );
+  const busHandlers = useMemo(
+    () => buses.features.map((f) => ({ click: () => onSelectRef.current({ kind: "bus", feature: f }) })),
+    [buses],
+  );
 
   return (
     <MapContainer
@@ -119,8 +155,6 @@ export default function MapView({
       zoomControl={false}
       aria-label="Interactive map of the Visayas transmission grid. Pan with arrow keys; click a bus or line for details."
     >
-      {/* Bottom-right so the +/- buttons don't sit under the mobile
-          hamburger / snapshot panel in the top-left corner. */}
       <ZoomControl position="bottomright" />
       <MapController target={focusTarget} />
       <TileLayer
@@ -131,10 +165,10 @@ export default function MapView({
       />
 
       {lines.features.map((f, i) => {
-        const coords = f.geometry.coordinates.map(([x, y]) => [y, x]);
+        const coords = lineCoords[i];
         const lp = f.properties;
         const dim = active && !active.lineKeys.has(`${lp.from_bus}|${lp.to_bus}`);
-        const pmw = f.properties.p_from_mw;
+        const pmw = lp.p_from_mw;
         const showArrow =
           display.arrows &&
           !dim &&
@@ -145,61 +179,50 @@ export default function MapView({
           selected.feature.properties.from_bus === lp.from_bus &&
           selected.feature.properties.to_bus === lp.to_bus;
         const style = lineStyle(f, lineColorMode);
-        const arrowColor =
-          lineColorMode === "voltage"
-            ? colorForVoltage(lp.voltage_kv)
-            : colorForLoading(f.properties.loading_percent);
+
         let arrow = null;
         if (showArrow) {
           const [a, b] = coords;
           const mid = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+          const arrowColor =
+            lineColorMode === "voltage"
+              ? colorForVoltage(lp.voltage_kv)
+              : colorForLoading(lp.loading_percent);
           const dir = pmw >= 0 ? bearing(a, b) : bearing(b, a);
           arrow = (
             <Marker
               position={mid}
-              icon={flowArrowIcon(dir - 90, arrowColor)}
+              icon={getArrowIcon(dir - 90, arrowColor)}
               interactive={false}
             />
           );
         }
-        const direction = (lp.p_from_mw ?? 0) >= 0 ? "→" : "←";
+
+        const direction = (pmw ?? 0) >= 0 ? "→" : "←";
         return (
           <Fragment key={`line-${i}`}>
             <Polyline
               positions={coords}
-              pathOptions={{
-                ...style,
-                opacity: dim ? 0.12 : style.opacity,
-              }}
-              eventHandlers={{
-                click: () => onSelect({ kind: "line", feature: f }),
-              }}
+              pathOptions={{ ...style, opacity: dim ? 0.12 : style.opacity }}
+              eventHandlers={lineHandlers[i]}
             >
               <Tooltip sticky>
-                <div className="font-semibold">
-                  {lp.voltage_kv} kV
-                </div>
+                <div className="font-semibold">{lp.voltage_kv} kV</div>
                 <div className="text-slate-500 dark:text-slate-400">
                   {lp.from_bus} {direction} {lp.to_bus}
                 </div>
                 {lp.loading_percent != null && (
                   <div>Loading: {Number(lp.loading_percent).toFixed(1)}%</div>
                 )}
-                {lp.p_from_mw != null && (
-                  <div>Flow: {Math.abs(Number(lp.p_from_mw)).toFixed(1)} MW</div>
+                {pmw != null && (
+                  <div>Flow: {Math.abs(Number(pmw)).toFixed(1)} MW</div>
                 )}
               </Tooltip>
             </Polyline>
-            {/* Selection halo rendered on top of the line */}
             {isSelectedLine && (
               <Polyline
                 positions={coords}
-                pathOptions={{
-                  color: "#0ea5e9",
-                  weight: 5,
-                  opacity: 0.5,
-                  interactive: false,
-                }}
+                pathOptions={{ color: "#0ea5e9", weight: 5, opacity: 0.5, interactive: false }}
               />
             )}
             {arrow}
@@ -212,8 +235,6 @@ export default function MapView({
         const v = Number(f.properties.v_nom);
         const isGenerator = f.properties.bus_type === "generator";
         const isHvdc = f.properties.bus_type === "hvdc";
-        // Circles (generators) scale with plant capacity; squares (substations)
-        // scale only with voltage class so size stays a clean voltage signal.
         const radius = radiusForBus(f.properties, isGenerator);
         const hasGen = (f.properties.gen_capacity_mw || 0) > 0;
         const dim = active && !active.busNames.has(f.properties.name);
@@ -286,19 +307,15 @@ export default function MapView({
                   fillColor: fill,
                   fillOpacity,
                 }}
-                eventHandlers={{
-                  click: () => onSelect({ kind: "bus", feature: f }),
-                }}
+                eventHandlers={busHandlers[i]}
               >
                 {label}
               </CircleMarker>
             ) : (
               <Marker
                 position={[y, x]}
-                icon={squareIconForBus(radius, fill, busStroke, fillOpacity, strokeOpacity)}
-                eventHandlers={{
-                  click: () => onSelect({ kind: "bus", feature: f }),
-                }}
+                icon={getSquareIcon(radius, fill, busStroke, fillOpacity, strokeOpacity)}
+                eventHandlers={busHandlers[i]}
               >
                 {label}
               </Marker>
@@ -323,4 +340,4 @@ export default function MapView({
       })}
     </MapContainer>
   );
-}
+});

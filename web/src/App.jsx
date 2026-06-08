@@ -130,23 +130,26 @@ export default function App() {
 
   const showHint = !hintDismissed && !loading && !error && !selected;
 
-  const dismissHint = () => {
-    setHintDismissed(true);
-    localStorage.setItem(HINT_KEY, "1");
-  };
+  // Use a ref so stable callbacks below can always read the current value
+  // without being recreated (which would bust React.memo on MapView).
+  const hintDismissedRef = useRef(hintDismissed);
+  useEffect(() => { hintDismissedRef.current = hintDismissed; }, [hintDismissed]);
 
-  const select = (s) => {
+  const select = useCallback((s) => {
     setSelected(s);
-    if (!hintDismissed) dismissHint();
-  };
+    if (!hintDismissedRef.current) {
+      setHintDismissed(true);
+      localStorage.setItem(HINT_KEY, "1");
+    }
+  }, []);
 
   // Select + recenter the map. Used by search, the data table and
   // StatsPanel alerts; plain map clicks intentionally do not recenter.
-  const focusFeature = (feature, kind) => {
+  const focusFeature = useCallback((feature, kind) => {
     select({ kind, feature });
     const c = featureCenter(feature.geometry);
     setFocusTarget({ lat: c.lat, lng: c.lng, zoom: 10, _t: Date.now() });
-  };
+  }, [select]);
 
   const toggleVoltage = (kv) =>
     setSelectedVoltages((cur) =>
