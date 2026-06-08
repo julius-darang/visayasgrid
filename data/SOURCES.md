@@ -154,7 +154,7 @@ trace to PyPSA-PH unless noted).
 | 38 | Palinpinon 2 | Negros | 138 | 123.156892 | 9.280817 | generator | sourced [S5] | Within OSM Palinpinon geothermal complex ~1.1 km from relation/5495786 (Plant I); OSM does not separately tag Plant II — location confirmed, exact unit unverified; coord kept; 2026-06-03 |
 | 39 | San Carlos | Negros | 138 | 123.433060 | 10.515220 | substation | sourced [S5] | OSM way/1362017481 (named "San Jose Substation" — NGCP substation in Brgy. San Jose, San Carlos City, adjacent to the SaCaSol solar plant); confirmed ~0.1 km; 2026-06-03 |
 | 40 | Corella | Bohol | 138 | 123.903280 | 9.680290 | substation | sourced [S5] | OSM way/242578663 "Corella Substation - BOHECO I"; corrected ~6.5 km W; 2026-06-03 |
-| 41 | Tapal | Bohol | 138 | 124.519576 | 10.060901 | substation | pypsa-ph (re-search) | OSM re-search 2026-06-03 inconclusive: no distinct Tapal feature; only Ubay Substation (way/493029880, ~4 km, already bus #42) nearby. Coord unconfirmed |
+| 41 | Tapal | Bohol | 138 | 124.519576 | 10.060901 | substation | confirmed [news/philatlas] | NPC Power Barge 4 (TPLPB4) at Tapal Wharf, Brgy. Tapal, Ubay, Bohol. NGCP 69 kV Ubay–Tapal tie-line runs from Ubay Sub (Brgy. Imelda) to Tapal Wharf ~4 km (matches line length 3.909 km). PhilAtlas barangay centre 10.0577, 124.5163 (~0.5 km SW); current coord sits NE of centroid on the Basiao Channel coastline, consistent with wharf position. Sources: Bohol Chronicle 2017-10-17; PhilAtlas Tapal, Ubay, Bohol; 2026-06-08 |
 | 42 | Ubay | Bohol | 138 | 124.511428 | 10.026670 | substation | sourced [S5] | Leyte–Bohol cable landing; confirmed 2026-05-24 |
 | 43 | Bantap | Panay | 69 | 122.582826 | 10.728734 | substation | pypsa-ph (re-search) | OSM 2026-06-03 inconclusive: sits in the Iloilo City power cluster (multiple unnamed substations 0.6–0.8 km, e.g. way/707446503, + Panay Power station way/539156478) but no name-matched Bantap feature. Coord plausible, specific facility unconfirmed |
 | 44 | Barotac Viejo | Panay | 138 | 122.870264 | 11.032835 | substation | sourced [S5] (coord) | Negros–Panay landing (see fix #1); coord confirmed 2026-05-27; OSM shows dual 138/230 kV yard — see fix #6 |
@@ -182,6 +182,18 @@ trace to PyPSA-PH unless noted).
 
 ## Changelog
 
+- **2026-06-08 (Tapal resolution)** — Resolved Tapal (bus #41) without the NGCP TDP diagram.
+  Research confirmed: "Tapal" = NPC Power Barge 4 (TPLPB4, 29 MW diesel, commissioned 2005)
+  moored at **Tapal Wharf**, Barangay Tapal, Ubay, Bohol. The NGCP 69 kV Ubay–Tapal tie-line
+  runs from Ubay Substation (Brgy. Imelda) to the barge at Tapal Wharf, ~4 km — matching the
+  dataset's 3.909 km line length to within 0.2%. PhilAtlas gives the barangay centre as
+  10.0577, 124.5163; the existing coord (10.060901, 124.519576) is ~0.5 km NE of that centroid,
+  consistent with a coastal wharf on the Basiao Channel side of the barangay. Coord kept; source
+  tag updated from `pypsa-ph (re-search)` → `confirmed [news/philatlas]`.
+  Sources: Bohol Chronicle 2017-10-17 (NGCP barge tie-line); PhilAtlas Tapal, Ubay, Bohol.
+  Bus verification count: **47 of 52 sourced** (was 46). **Remaining 5 re-search:**
+  Kananga, Kabankalan BESS, San Jose (Panay), Bantap, Buenavista (Guimaras).
+
 - **2026-06-03 (Batch C — Panay/Guimaras coords)** — Verified the 6 Batch C buses against
   OSM power features (Overpass + Nominatim [S5]). 3 sourced, 3 re-search:
   - **Nabas** → 122.095070, 11.814270 (confirmed ~0.0 km); OSM way/364959566 "Nabas Substation".
@@ -198,6 +210,7 @@ trace to PyPSA-PH unless noted).
   Bus verification count: **46 of 52 sourced** (was 43). OSM coordinate sweep complete.
   **Remaining 6 are re-search — not OSM-resolvable, need the NGCP TDP one-line diagram:**
   Tapal, Kananga, Kabankalan BESS, San Jose, Bantap, Buenavista.
+  *(Tapal subsequently resolved 2026-06-08 via news/PhilAtlas — see changelog. Remaining 5.)*
 
 - **2026-06-03 (Batch B — Negros load coords)** — Verified the 7 Batch B buses against
   OSM power features (Overpass [S5]). 6 sourced, 1 re-search:
