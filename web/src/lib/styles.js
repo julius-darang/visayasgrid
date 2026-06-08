@@ -97,10 +97,14 @@ export function radiusForBus(props) {
   return base;
 }
 
-export function lineStyle(feature) {
-  const { loading_percent, is_submarine } = feature.properties;
+export function lineStyle(feature, colorMode = "loading") {
+  const { loading_percent, is_submarine, voltage_kv } = feature.properties;
+  const color =
+    colorMode === "voltage"
+      ? colorForVoltage(voltage_kv)
+      : colorForLoading(loading_percent);
   return {
-    color: colorForLoading(loading_percent),
+    color,
     weight: 1.6,
     opacity: 0.85,
     dashArray: is_submarine ? "5 4" : undefined,

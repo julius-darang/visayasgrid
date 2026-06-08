@@ -37,6 +37,10 @@ export default function App() {
     "vg-colormode",
     "nominal",
   );
+  const [lineColorMode, setLineColorMode] = usePersistentState(
+    "vg-line-colormode",
+    "loading",
+  );
   const [display, setDisplay] = usePersistentState("vg-display", {
     labels: false,
     arrows: true,
@@ -178,6 +182,8 @@ export default function App() {
         setSelectedVoltages={setSelectedVoltages}
         colorMode={colorMode}
         setColorMode={setColorMode}
+        lineColorMode={lineColorMode}
+        setLineColorMode={setLineColorMode}
         display={display}
         setDisplay={setDisplay}
         scenario={scenario}
@@ -223,6 +229,7 @@ export default function App() {
           onSelect={select}
           theme={theme}
           colorMode={colorMode}
+          lineColorMode={lineColorMode}
           display={display}
           selected={selected}
           focusTarget={focusTarget}
@@ -235,6 +242,7 @@ export default function App() {
         />
         <Legend
           colorMode={colorMode}
+          lineColorMode={lineColorMode}
           selectedVoltages={selectedVoltages}
           onToggleVoltage={toggleVoltage}
         />

@@ -83,12 +83,25 @@ function flowArrowIcon(rotation, color) {
   });
 }
 
+function squareIconForBus(radius, fill, stroke, fillOpacity, strokeOpacity) {
+  const size = Math.round(radius * 2);
+  const pad = 1;
+  const total = size + pad * 2;
+  return L.divIcon({
+    html: `<svg width="${total}" height="${total}" viewBox="0 0 ${total} ${total}" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible"><rect x="${pad}" y="${pad}" width="${size}" height="${size}" fill="${fill}" fill-opacity="${fillOpacity}" stroke="${stroke}" stroke-opacity="${strokeOpacity}" stroke-width="0.75"/></svg>`,
+    iconSize: [total, total],
+    iconAnchor: [total / 2, total / 2],
+    className: "",
+  });
+}
+
 export default function MapView({
   buses,
   lines,
   onSelect,
   theme,
   colorMode,
+  lineColorMode,
   display,
   selected,
   focusTarget,
@@ -131,29 +144,52 @@ export default function MapView({
           selected?.kind === "line" &&
           selected.feature.properties.from_bus === lp.from_bus &&
           selected.feature.properties.to_bus === lp.to_bus;
+        const style = lineStyle(f, lineColorMode);
+        const arrowColor =
+          lineColorMode === "voltage"
+            ? colorForVoltage(lp.voltage_kv)
+            : colorForLoading(f.properties.loading_percent);
         let arrow = null;
         if (showArrow) {
           const [a, b] = coords;
           const mid = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
           const dir = pmw >= 0 ? bearing(a, b) : bearing(b, a);
-          const icon = flowArrowIcon(
-            dir - 90,
-            colorForLoading(f.properties.loading_percent),
+          arrow = (
+            <Marker
+              position={mid}
+              icon={flowArrowIcon(dir - 90, arrowColor)}
+              interactive={false}
+            />
           );
-          arrow = <Marker position={mid} icon={icon} interactive={false} />;
         }
+        const direction = (lp.p_from_mw ?? 0) >= 0 ? "→" : "←";
         return (
           <Fragment key={`line-${i}`}>
             <Polyline
               positions={coords}
               pathOptions={{
-                ...lineStyle(f),
-                opacity: dim ? 0.12 : lineStyle(f).opacity,
+                ...style,
+                opacity: dim ? 0.12 : style.opacity,
               }}
               eventHandlers={{
                 click: () => onSelect({ kind: "line", feature: f }),
               }}
-            />
+            >
+              <Tooltip sticky>
+                <div className="font-semibold">
+                  {lp.voltage_kv} kV
+                </div>
+                <div className="text-slate-500 dark:text-slate-400">
+                  {lp.from_bus} {direction} {lp.to_bus}
+                </div>
+                {lp.loading_percent != null && (
+                  <div>Loading: {Number(lp.loading_percent).toFixed(1)}%</div>
+                )}
+                {lp.p_from_mw != null && (
+                  <div>Flow: {Math.abs(Number(lp.p_from_mw)).toFixed(1)} MW</div>
+                )}
+              </Tooltip>
+            </Polyline>
             {/* Selection halo rendered on top of the line */}
             {isSelectedLine && (
               <Polyline
@@ -187,6 +223,19 @@ export default function MapView({
         const isSelectedBus =
           selected?.kind === "bus" &&
           selected.feature.properties.name === f.properties.name;
+        const fillOpacity = dim ? 0.2 : 0.92;
+        const strokeOpacity = dim ? 0.2 : 1;
+
+        const label = showLabel ? (
+          <Tooltip
+            permanent
+            direction="right"
+            offset={[radius + 2, 0]}
+            className={dim ? "bus-label bus-label-dim" : "bus-label"}
+          >
+            {f.properties.name}
+          </Tooltip>
+        ) : null;
 
         return (
           <Fragment key={`bus-${i}`}>
@@ -220,31 +269,35 @@ export default function MapView({
                 }}
               />
             )}
-            <CircleMarker
-              center={[y, x]}
-              radius={radius}
-              pathOptions={{
-                color: busStroke,
-                weight: 0.75,
-                opacity: dim ? 0.2 : 1,
-                fillColor: fill,
-                fillOpacity: dim ? 0.2 : 0.92,
-              }}
-              eventHandlers={{
-                click: () => onSelect({ kind: "bus", feature: f }),
-              }}
-            >
-              {showLabel && (
-                <Tooltip
-                  permanent
-                  direction="right"
-                  offset={[radius + 2, 0]}
-                  className={dim ? "bus-label bus-label-dim" : "bus-label"}
-                >
-                  {f.properties.name}
-                </Tooltip>
-              )}
-            </CircleMarker>
+            {/* Generators → circle; pure substations → square */}
+            {hasGen ? (
+              <CircleMarker
+                center={[y, x]}
+                radius={radius}
+                pathOptions={{
+                  color: busStroke,
+                  weight: 0.75,
+                  opacity: strokeOpacity,
+                  fillColor: fill,
+                  fillOpacity,
+                }}
+                eventHandlers={{
+                  click: () => onSelect({ kind: "bus", feature: f }),
+                }}
+              >
+                {label}
+              </CircleMarker>
+            ) : (
+              <Marker
+                position={[y, x]}
+                icon={squareIconForBus(radius, fill, busStroke, fillOpacity, strokeOpacity)}
+                eventHandlers={{
+                  click: () => onSelect({ kind: "bus", feature: f }),
+                }}
+              >
+                {label}
+              </Marker>
+            )}
             {/* Selection halo — sky-blue ring that makes the selected bus unmistakable */}
             {isSelectedBus && (
               <CircleMarker

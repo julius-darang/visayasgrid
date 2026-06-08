@@ -11,15 +11,22 @@ import {
 import InfoButton from "./InfoButton.jsx";
 import { Chevron } from "./icons.jsx";
 
+const LEGEND_SHAPES = [
+  { shape: "circle", label: "Generator bus" },
+  { shape: "square", label: "Substation" },
+];
+
 const LEGEND_INFO = {
   voltage:
-    "Fill colour of each bus by its nominal voltage level (kV). Active when “Colour buses by → Nominal kV”.",
+    'Fill colour of each bus by its nominal voltage level (kV). Active when "Colour buses by: Nominal kV". Circles = generator buses; squares = pure substations.',
   loading:
-    "Line colour by loading: power flow as a percentage of the line’s thermal rating. Over 100% means overloaded.",
+    "Line colour by loading: power flow as a percentage of the line's thermal rating. Over 100% means overloaded.",
+  linevoltage:
+    'Line colour by nominal voltage level (kV) -- same palette as bus colours. Active when "Colour lines by: Voltage kV".',
   carrier:
     "Ring around buses that have generation; the ring colour is the primary fuel type at that bus.",
   vmpu:
-    "Fill colour by per-unit voltage from the AC load flow. Outside 0.95–1.05 pu is a violation. Active when “Colour buses by → Voltage (pu)”.",
+    'Fill colour by per-unit voltage from the AC load flow. Outside 0.95-1.05 pu is a violation. Active when "Colour buses by: Voltage (pu)".',
 };
 
 function Cat({ id, title, active, info, open, onToggle, children }) {
@@ -34,7 +41,7 @@ function Cat({ id, title, active, info, open, onToggle, children }) {
           }`}
         >
           {title}
-          {active && <span className="ml-1 normal-case">• shown</span>}
+          {active && <span className="ml-1 normal-case">* shown</span>}
         </span>
         <InfoButton
           controls={id}
@@ -58,6 +65,7 @@ function Cat({ id, title, active, info, open, onToggle, children }) {
 
 export default function Legend({
   colorMode = "nominal",
+  lineColorMode = "loading",
   selectedVoltages = [],
   onToggleVoltage,
 }) {
@@ -114,26 +122,53 @@ export default function Legend({
                 );
               })}
             </div>
+            <div className="mt-2 space-y-0.5 border-t border-slate-100 pt-1.5 dark:border-slate-700">
+              {LEGEND_SHAPES.map(({ shape, label }) => (
+                <div key={shape} className="flex items-center gap-2">
+                  {shape === "circle" ? (
+                    <span className="inline-block h-2.5 w-2.5 rounded-full border border-slate-400 bg-slate-300 dark:border-slate-500 dark:bg-slate-600" />
+                  ) : (
+                    <span className="inline-block h-2.5 w-2.5 rounded-none border border-slate-400 bg-slate-300 dark:border-slate-500 dark:bg-slate-600" />
+                  )}
+                  <span>{label}</span>
+                </div>
+              ))}
+            </div>
           </Cat>
 
           <Cat
             id="legend-loading"
-            title="Line loading"
-            info={LEGEND_INFO.loading}
+            title={lineColorMode === "voltage" ? "Line voltage" : "Line loading"}
+            active={lineColorMode === "loading"}
+            info={lineColorMode === "voltage" ? LEGEND_INFO.linevoltage : LEGEND_INFO.loading}
             open={!!info.loading}
             onToggle={() => toggle("loading")}
           >
-            <div className="space-y-0.5">
-              {LOADING_SCALE.map((s) => (
-                <div key={s.label} className="flex items-center gap-2">
-                  <span
-                    className="inline-block h-0.5 w-5 rounded-full"
-                    style={{ backgroundColor: s.color }}
-                  />
-                  <span>{s.label}</span>
-                </div>
-              ))}
-            </div>
+            {lineColorMode === "voltage" ? (
+              <div className="space-y-0.5">
+                {VOLTAGE_LEVELS.map((kv) => (
+                  <div key={kv} className="flex items-center gap-2">
+                    <span
+                      className="inline-block h-0.5 w-5 rounded-full"
+                      style={{ backgroundColor: VOLTAGE_COLORS[kv] }}
+                    />
+                    <span>{kv} kV</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="space-y-0.5">
+                {LOADING_SCALE.map((s) => (
+                  <div key={s.label} className="flex items-center gap-2">
+                    <span
+                      className="inline-block h-0.5 w-5 rounded-full"
+                      style={{ backgroundColor: s.color }}
+                    />
+                    <span>{s.label}</span>
+                  </div>
+                ))}
+              </div>
+            )}
             <div className="mt-1 flex items-center gap-2 text-slate-600 dark:text-slate-400">
               <span className="inline-block h-0 w-5 border-t-2 border-dashed border-current" />
               <span>Submarine</span>
