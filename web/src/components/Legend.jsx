@@ -12,8 +12,8 @@ import InfoButton from "./InfoButton.jsx";
 import { Chevron } from "./icons.jsx";
 
 const LEGEND_SHAPES = [
-  { shape: "circle", label: "Dedicated generator" },
-  { shape: "square", label: "Substation (may have gen)" },
+  { shape: "circle", label: "Generator (fill = fuel type)" },
+  { shape: "square", label: "Substation (fill = voltage level)" },
 ];
 
 const LEGEND_INFO = {
@@ -24,7 +24,7 @@ const LEGEND_INFO = {
   linevoltage:
     'Line colour by nominal voltage level (kV) -- same palette as bus colours. Active when "Colour lines by: Voltage kV".',
   carrier:
-    "Ring around buses that have generation; the ring colour is the primary fuel type at that bus.",
+    "Ring around substation squares that carry aggregated generation; colour is the primary fuel type. Generator circles use fill colour directly instead.",
   vmpu:
     'Fill colour by per-unit voltage from the AC load flow. Outside 0.95-1.05 pu is a violation. Active when "Colour buses by: Voltage (pu)".',
 };

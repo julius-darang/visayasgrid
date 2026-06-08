@@ -219,8 +219,9 @@ export default function MapView({
         const dim = active && !active.busNames.has(f.properties.name);
         const showLabel =
           display.labels || (active && active.busNames.has(f.properties.name));
-        const fill =
-          colorMode === "pu"
+        const fill = isGenerator
+          ? colorForCarrier(f.properties.primary_carrier)
+          : colorMode === "pu"
             ? colorForVoltagePu(f.properties.vm_pu)
             : colorForVoltage(v);
         const isSelectedBus =
@@ -242,7 +243,8 @@ export default function MapView({
 
         return (
           <Fragment key={`bus-${i}`}>
-            {hasGen && display.rings && (
+            {/* Ring only on substations — generator circles already encode fuel via fill color */}
+            {hasGen && !isGenerator && display.rings && (
               <CircleMarker
                 center={[y, x]}
                 radius={radius + 2.5}
