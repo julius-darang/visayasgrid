@@ -81,6 +81,8 @@ export default function Sidebar({
   setSelectedVoltages,
   colorMode,
   setColorMode,
+  lineColorMode,
+  setLineColorMode,
   display,
   setDisplay,
   scenario,
@@ -254,6 +256,30 @@ export default function Sidebar({
           <p className="mt-1 text-[10px] text-slate-400 dark:text-slate-500">
             Voltage (pu) shows AC load-flow results only.
           </p>
+        </div>
+        <div className="mb-3">
+          <div className="mb-1 text-[10px] text-slate-400 dark:text-slate-500">
+            Colour lines by
+          </div>
+          <div className="grid grid-cols-2 gap-1">
+            {[
+              ["loading", "% Loading"],
+              ["voltage", "Voltage kV"],
+            ].map(([mode, label]) => (
+              <button
+                key={mode}
+                onClick={() => setLineColorMode(mode)}
+                aria-pressed={lineColorMode === mode}
+                className={`rounded-md border px-2 py-1.5 text-xs transition focus-visible:ring-2 focus-visible:ring-sky-500 ${
+                  lineColorMode === mode
+                    ? "border-sky-500 bg-sky-50 text-sky-700 dark:border-sky-500 dark:bg-sky-950 dark:text-sky-300"
+                    : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="space-y-1">
           {DISPLAY_TOGGLES.map(([key, label]) => (

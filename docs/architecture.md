@@ -138,17 +138,40 @@ Both filters are ANDed.
 
 ### Map rendering (`MapView.jsx`)
 
-- **Lines** — rendered as `Polyline` elements coloured by `colorForLoading(loading_percent)`. Submarine lines render with a dashed stroke (set by `lineStyle()` in `styles.js`). Lines with `|p_from_mw| ≥ 30 MW` display a `▶` flow arrow at the midpoint, oriented by bearing.
-- **Buses** — rendered as `CircleMarker` elements. Radius scales logarithmically with `gen_capacity_mw`. Fill colour is voltage-level based. Generator buses get a carrier-coloured outer ring. The HVDC bus (Ormoc) additionally gets a dashed violet outer ring.
+**Lines** are rendered as `Polyline` elements. Submarine lines render with a dashed stroke. Lines with `|p_from_mw| ≥ 30 MW` display a `▶` flow arrow at the midpoint, oriented by bearing. Hovering a line shows a sticky tooltip with voltage kV first, then loading % and MW flow.
+
+Line colour is user-selectable via a "Colour lines by" toggle in the sidebar:
+- **% Loading** (default) — green → amber → red → dark red scale keyed to thermal rating
+- **Voltage kV** — same voltage palette as bus markers
+
+**Buses** use different shapes depending on `bus_type`:
+
+| `bus_type` | Shape | Fill colour | Size |
+|---|---|---|---|
+| `"generator"` | Circle (`CircleMarker`) | Carrier/fuel colour (`colorForCarrier`) | Scales logarithmically with `gen_capacity_mw` |
+| `"substation"` | Square (`Marker` + SVG `divIcon`) | Nominal voltage colour | Fixed by voltage class |
+| `"hvdc"` | Square + dashed violet ring | Nominal voltage colour | Fixed by voltage class |
+
+Substation squares that carry aggregated generation (i.e. `gen_capacity_mw > 0` but `bus_type != "generator"`) additionally display a carrier-coloured outer ring when "Generator rings" is enabled — this signals blended generation until dedicated generator nodes are added to the dataset.
 
 ### Colour encoding (`styles.js`)
 
 | Layer | Attribute | Scheme |
 |---|---|---|
-| Bus fill | Nominal voltage | 350 kV → violet, 230 kV → red, 138 kV → amber, 69 kV → teal |
-| Generator ring | Primary carrier | Coal dark, Geothermal green, Solar yellow, Wind cyan, Hydro blue, … |
-| Line stroke | Loading percent | <50% → green, 50–80% → amber, 80–100% → red, >100% → dark red |
+| Generator circle fill | Primary carrier | Coal dark, Geothermal green, Solar yellow, Wind cyan, Hydro blue, … |
+| Substation square fill | Nominal voltage | 350 kV → violet, 230 kV → red, 138 kV → amber, 69 kV → teal |
+| Generator ring (substations only) | Primary carrier | Same carrier palette as generator circles |
+| Line stroke (loading mode) | Loading percent | <50% → green, 50–80% → amber, 80–100% → red, >100% → dark red |
+| Line stroke (voltage mode) | Nominal voltage kV | Same voltage palette as bus markers |
 | Line dash | Submarine | dashed if `is_submarine` |
+
+### Performance notes (`MapView.jsx`)
+
+`MapView` is wrapped in `React.memo` so it only re-renders when map-relevant props change (not on sidebar toggles, modal opens, etc.). Three further patterns keep hot-path rendering fast:
+
+- **Module-level icon caches** (`_squareCache`, `_arrowCache`) — `L.divIcon` objects are created once per unique parameter combination and reused. Prevents react-leaflet from DOM-swapping all square markers on every selection change.
+- **`useMemo` for topology** — `connectedSet` (the selection dim/highlight walk) and `lineCoords` (coordinate array mapping) are memoized so they only recompute when data actually changes.
+- **Stable event handlers** — `lineHandlers` and `busHandlers` arrays are `useMemo`'d on the data reference, not recreated on every display toggle or selection change. This prevents react-leaflet from re-registering click listeners on every render.
 
 ---
 

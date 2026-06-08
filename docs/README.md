@@ -16,6 +16,7 @@ Each document covers one improvement: **what** changed, **why** it was needed, a
 
 | Doc | Summary |
 |---|---|
+| [impl/V1-visualization-improvements.md](impl/V1-visualization-improvements.md) | Generator circles vs substation squares, line color toggle, hover tooltips, performance |
 | [impl/P8-constants-module.md](impl/P8-constants-module.md) | Extracted all modeling constants to `scripts/constants.py` with source citations |
 | [impl/P2-submarine-cables.md](impl/P2-submarine-cables.md) | Replaced estimated submarine cable impedances with IEC 60840 XLPE 630 mm² values |
 | [impl/P4-hvdc-interchange.md](impl/P4-hvdc-interchange.md) | Surfaced the Leyte–Luzon HVDC interchange MW in the UI |

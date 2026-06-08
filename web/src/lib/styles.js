@@ -88,19 +88,24 @@ export function colorForVoltagePu(pu) {
   return "#2d6a4f";
 }
 
-export function radiusForBus(props) {
+export function radiusForBus(props, genBoost = false) {
   const v = Number(props.v_nom);
   const base = v >= 230 ? 4.5 : v >= 138 ? 3.5 : 3;
-  // Bus with significant generation gets a size bump (logarithmic).
-  const gen = Number(props.gen_capacity_mw || 0);
-  if (gen > 0) return base + Math.min(4, Math.log10(gen + 1) * 1.8);
+  if (genBoost) {
+    const gen = Number(props.gen_capacity_mw || 0);
+    if (gen > 0) return base + Math.min(4, Math.log10(gen + 1) * 1.8);
+  }
   return base;
 }
 
-export function lineStyle(feature) {
-  const { loading_percent, is_submarine } = feature.properties;
+export function lineStyle(feature, colorMode = "loading") {
+  const { loading_percent, is_submarine, voltage_kv } = feature.properties;
+  const color =
+    colorMode === "voltage"
+      ? colorForVoltage(voltage_kv)
+      : colorForLoading(loading_percent);
   return {
-    color: colorForLoading(loading_percent),
+    color,
     weight: 1.6,
     opacity: 0.85,
     dashArray: is_submarine ? "5 4" : undefined,

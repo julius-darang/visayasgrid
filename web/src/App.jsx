@@ -37,6 +37,10 @@ export default function App() {
     "vg-colormode",
     "nominal",
   );
+  const [lineColorMode, setLineColorMode] = usePersistentState(
+    "vg-line-colormode",
+    "loading",
+  );
   const [display, setDisplay] = usePersistentState("vg-display", {
     labels: false,
     arrows: true,
@@ -126,23 +130,26 @@ export default function App() {
 
   const showHint = !hintDismissed && !loading && !error && !selected;
 
-  const dismissHint = () => {
-    setHintDismissed(true);
-    localStorage.setItem(HINT_KEY, "1");
-  };
+  // Use a ref so stable callbacks below can always read the current value
+  // without being recreated (which would bust React.memo on MapView).
+  const hintDismissedRef = useRef(hintDismissed);
+  useEffect(() => { hintDismissedRef.current = hintDismissed; }, [hintDismissed]);
 
-  const select = (s) => {
+  const select = useCallback((s) => {
     setSelected(s);
-    if (!hintDismissed) dismissHint();
-  };
+    if (!hintDismissedRef.current) {
+      setHintDismissed(true);
+      localStorage.setItem(HINT_KEY, "1");
+    }
+  }, []);
 
   // Select + recenter the map. Used by search, the data table and
   // StatsPanel alerts; plain map clicks intentionally do not recenter.
-  const focusFeature = (feature, kind) => {
+  const focusFeature = useCallback((feature, kind) => {
     select({ kind, feature });
     const c = featureCenter(feature.geometry);
     setFocusTarget({ lat: c.lat, lng: c.lng, zoom: 10, _t: Date.now() });
-  };
+  }, [select]);
 
   const toggleVoltage = (kv) =>
     setSelectedVoltages((cur) =>
@@ -178,6 +185,8 @@ export default function App() {
         setSelectedVoltages={setSelectedVoltages}
         colorMode={colorMode}
         setColorMode={setColorMode}
+        lineColorMode={lineColorMode}
+        setLineColorMode={setLineColorMode}
         display={display}
         setDisplay={setDisplay}
         scenario={scenario}
@@ -223,6 +232,7 @@ export default function App() {
           onSelect={select}
           theme={theme}
           colorMode={colorMode}
+          lineColorMode={lineColorMode}
           display={display}
           selected={selected}
           focusTarget={focusTarget}
@@ -235,6 +245,7 @@ export default function App() {
         />
         <Legend
           colorMode={colorMode}
+          lineColorMode={lineColorMode}
           selectedVoltages={selectedVoltages}
           onToggleVoltage={toggleVoltage}
         />
