@@ -102,6 +102,7 @@ DISPATCH_FACTOR: dict[str, float] = {
     "Solar":      0.25,  # Peak-hour average including night hours (DOE 2023)
     "Wind":       0.30,  # DOE 2023 wind CF average for Visayas projects
     "Diesel":     0.30,  # Peaking/backup; not fully committed at peak
+    "BESS":       1.00,  # Dependable capacity = installed for all Visayas BESS units (DOE Dec-2024)
 }
 
 # ─── Submarine cable identification ──────────────────────────────────────────

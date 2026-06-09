@@ -31,7 +31,7 @@
         "parallel": 2,
         "loading_percent": 10.37,
         "p_from_mw": -23.97,
-        "i_from_ka": 0.11978
+        "i_from_ka": 0.11972
       }
     },
     {
@@ -62,9 +62,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 22.69,
-        "p_from_mw": -60.152,
-        "i_from_ka": 0.26203
+        "loading_percent": 22.68,
+        "p_from_mw": -60.151,
+        "i_from_ka": 0.26188
       }
     },
     {
@@ -95,9 +95,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 28.95,
-        "p_from_mw": -75.265,
-        "i_from_ka": 0.33433
+        "loading_percent": 28.58,
+        "p_from_mw": -75.294,
+        "i_from_ka": 0.33007
       }
     },
     {
@@ -130,7 +130,7 @@
         "parallel": 1,
         "loading_percent": 26.18,
         "p_from_mw": 34.72,
-        "i_from_ka": 0.14961
+        "i_from_ka": 0.14958
       }
     },
     {
@@ -161,9 +161,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 73.08,
-        "p_from_mw": -192.196,
-        "i_from_ka": 0.84389
+        "loading_percent": 72.7,
+        "p_from_mw": -192.214,
+        "i_from_ka": 0.83959
       }
     },
     {
@@ -194,9 +194,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 50.81,
+        "loading_percent": 50.8,
         "p_from_mw": 32.14,
-        "i_from_ka": 0.2928
+        "i_from_ka": 0.29273
       }
     },
     {
@@ -228,8 +228,8 @@
         "cable_type": "submarine_xlpe",
         "parallel": 1,
         "loading_percent": 30.54,
-        "p_from_mw": 19.898,
-        "i_from_ka": 0.18607
+        "p_from_mw": 19.897,
+        "i_from_ka": 0.18602
       }
     },
     {
@@ -260,9 +260,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 37.52,
-        "p_from_mw": -50.855,
-        "i_from_ka": 0.21665
+        "loading_percent": 37.98,
+        "p_from_mw": -50.826,
+        "i_from_ka": 0.21927
       }
     },
     {
@@ -293,9 +293,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 31.03,
-        "p_from_mw": -82.649,
-        "i_from_ka": 0.35318
+        "loading_percent": 31.52,
+        "p_from_mw": -82.609,
+        "i_from_ka": 0.35791
       }
     },
     {
@@ -326,9 +326,9 @@
         "is_submarine": true,
         "cable_type": "submarine_xlpe",
         "parallel": 1,
-        "loading_percent": 24.11,
-        "p_from_mw": 7.353,
-        "i_from_ka": 0.15554
+        "loading_percent": 29.03,
+        "p_from_mw": 7.333,
+        "i_from_ka": 0.18727
       }
     },
     {
@@ -359,9 +359,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 9.86,
-        "p_from_mw": 23.777,
-        "i_from_ka": 0.09168
+        "loading_percent": 9.43,
+        "p_from_mw": -14.027,
+        "i_from_ka": 0.08344
       }
     },
     {
@@ -392,9 +392,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 13.23,
-        "p_from_mw": -41.47,
-        "i_from_ka": 0.15275
+        "loading_percent": 11.99,
+        "p_from_mw": -3.722,
+        "i_from_ka": 0.13843
       }
     },
     {
@@ -425,9 +425,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 6.26,
-        "p_from_mw": -14.249,
-        "i_from_ka": 0.03599
+        "loading_percent": 9.09,
+        "p_from_mw": -21.128,
+        "i_from_ka": 0.05239
       }
     },
     {
@@ -458,9 +458,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 15.2,
-        "p_from_mw": -46.536,
-        "i_from_ka": 0.17548
+        "loading_percent": 13.64,
+        "p_from_mw": -1.866,
+        "i_from_ka": 0.1575
       }
     },
     {
@@ -491,9 +491,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 8.29,
+        "loading_percent": 8.28,
         "p_from_mw": -23.165,
-        "i_from_ka": 0.09529
+        "i_from_ka": 0.09516
       }
     },
     {
@@ -524,9 +524,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 8.57,
-        "p_from_mw": -11.834,
-        "i_from_ka": 0.06577
+        "loading_percent": 11.32,
+        "p_from_mw": -21.637,
+        "i_from_ka": 0.10382
       }
     },
     {
@@ -557,9 +557,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 14.55,
-        "p_from_mw": -38.928,
-        "i_from_ka": 0.16365
+        "loading_percent": 7.0,
+        "p_from_mw": -14.131,
+        "i_from_ka": 0.06833
       }
     },
     {
@@ -590,9 +590,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 9.0,
-        "p_from_mw": 12.0,
-        "i_from_ka": 0.05195
+        "loading_percent": 16.38,
+        "p_from_mw": -22.699,
+        "i_from_ka": 0.09458
       }
     },
     {
@@ -623,9 +623,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 22.01,
-        "p_from_mw": -61.093,
-        "i_from_ka": 0.25283
+        "loading_percent": 13.32,
+        "p_from_mw": -36.164,
+        "i_from_ka": 0.14933
       }
     },
     {
@@ -656,9 +656,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 39.51,
-        "p_from_mw": -95.169,
-        "i_from_ka": 0.44981
+        "loading_percent": 42.61,
+        "p_from_mw": -96.662,
+        "i_from_ka": 0.48459
       }
     },
     {
@@ -689,9 +689,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 29.03,
-        "p_from_mw": -81.542,
-        "i_from_ka": 0.33487
+        "loading_percent": 29.0,
+        "p_from_mw": -81.543,
+        "i_from_ka": 0.33449
       }
     },
     {
@@ -722,9 +722,9 @@
         "is_submarine": true,
         "cable_type": "submarine_xlpe",
         "parallel": 2,
-        "loading_percent": 34.89,
-        "p_from_mw": 91.48,
-        "i_from_ka": 0.4501
+        "loading_percent": 43.83,
+        "p_from_mw": 118.237,
+        "i_from_ka": 0.56544
       }
     },
     {
@@ -755,9 +755,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 25.74,
-        "p_from_mw": 67.217,
-        "i_from_ka": 0.29728
+        "loading_percent": 35.91,
+        "p_from_mw": 93.802,
+        "i_from_ka": 0.41466
       }
     },
     {
@@ -788,9 +788,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 42.28,
-        "p_from_mw": -132.158,
-        "i_from_ka": 0.45991
+        "loading_percent": 48.57,
+        "p_from_mw": -163.756,
+        "i_from_ka": 0.53465
       }
     },
     {
@@ -821,9 +821,9 @@
         "is_submarine": true,
         "cable_type": "submarine_xlpe",
         "parallel": 1,
-        "loading_percent": 37.93,
-        "p_from_mw": 47.798,
-        "i_from_ka": 0.24467
+        "loading_percent": 29.67,
+        "p_from_mw": 2.934,
+        "i_from_ka": 0.19134
       }
     },
     {
@@ -854,9 +854,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 177.61,
-        "p_from_mw": -244.494,
-        "i_from_ka": 1.02515
+        "loading_percent": 176.58,
+        "p_from_mw": -244.516,
+        "i_from_ka": 1.01931
       }
     },
     {
@@ -887,9 +887,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 115.58,
-        "p_from_mw": -187.049,
-        "i_from_ka": 0.66536
+        "loading_percent": 115.73,
+        "p_from_mw": -187.047,
+        "i_from_ka": 0.66622
       }
     },
     {
@@ -920,9 +920,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 17.49,
-        "p_from_mw": 46.703,
-        "i_from_ka": 0.20067
+        "loading_percent": 12.83,
+        "p_from_mw": 31.641,
+        "i_from_ka": 0.14605
       }
     },
     {
@@ -953,9 +953,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 3,
-        "loading_percent": 41.67,
-        "p_from_mw": 172.477,
-        "i_from_ka": 0.72175
+        "loading_percent": 47.97,
+        "p_from_mw": 200.042,
+        "i_from_ka": 0.83089
       }
     },
     {
@@ -986,9 +986,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 9.55,
-        "p_from_mw": 25.599,
-        "i_from_ka": 0.10602
+        "loading_percent": 18.45,
+        "p_from_mw": 50.103,
+        "i_from_ka": 0.2131
       }
     },
     {
@@ -1019,9 +1019,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 4.89,
-        "p_from_mw": 0.0,
-        "i_from_ka": 0.00282
+        "loading_percent": 169.93,
+        "p_from_mw": -23.694,
+        "i_from_ka": 0.09802
       }
     },
     {
@@ -1052,9 +1052,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 3,
-        "loading_percent": 98.11,
-        "p_from_mw": 38.103,
-        "i_from_ka": 0.16966
+        "loading_percent": 90.45,
+        "p_from_mw": 34.622,
+        "i_from_ka": 0.15639
       }
     },
     {
@@ -1085,9 +1085,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 31.36,
-        "p_from_mw": -41.568,
-        "i_from_ka": 0.17979
+        "loading_percent": 37.12,
+        "p_from_mw": -50.132,
+        "i_from_ka": 0.21339
       }
     },
     {
@@ -1118,9 +1118,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 7.87,
-        "p_from_mw": 10.896,
-        "i_from_ka": 0.04518
+        "loading_percent": 14.14,
+        "p_from_mw": 19.554,
+        "i_from_ka": 0.0813
       }
     },
     {
@@ -1151,9 +1151,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 50.58,
-        "p_from_mw": -140.277,
-        "i_from_ka": 0.58407
+        "loading_percent": 54.96,
+        "p_from_mw": -152.182,
+        "i_from_ka": 0.63472
       }
     },
     {
@@ -1184,9 +1184,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 105.39,
-        "p_from_mw": 288.157,
-        "i_from_ka": 1.21702
+        "loading_percent": 132.58,
+        "p_from_mw": 363.583,
+        "i_from_ka": 1.53103
       }
     },
     {
@@ -1217,9 +1217,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 5.98,
+        "loading_percent": 5.99,
         "p_from_mw": -7.496,
-        "i_from_ka": 0.03305
+        "i_from_ka": 0.0331
       }
     },
     {
@@ -1250,9 +1250,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 93.37,
-        "p_from_mw": 245.374,
-        "i_from_ka": 1.07822
+        "loading_percent": 120.36,
+        "p_from_mw": 316.843,
+        "i_from_ka": 1.38986
       }
     },
     {
@@ -1283,9 +1283,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 4.61,
+        "loading_percent": 4.65,
         "p_from_mw": 10.351,
-        "i_from_ka": 0.05302
+        "i_from_ka": 0.05342
       }
     },
     {
@@ -1316,9 +1316,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 72.98,
-        "p_from_mw": 174.135,
-        "i_from_ka": 0.8428
+        "loading_percent": 98.81,
+        "p_from_mw": 245.016,
+        "i_from_ka": 1.14101
       }
     },
     {
@@ -1349,9 +1349,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 39.75,
-        "p_from_mw": 123.897,
-        "i_from_ka": 0.45909
+        "loading_percent": 55.02,
+        "p_from_mw": 182.859,
+        "i_from_ka": 0.63532
       }
     },
     {
@@ -1382,9 +1382,9 @@
         "is_submarine": true,
         "cable_type": "submarine_xlpe",
         "parallel": 2,
-        "loading_percent": 33.74,
-        "p_from_mw": 99.023,
-        "i_from_ka": 0.37235
+        "loading_percent": 42.54,
+        "p_from_mw": 157.11,
+        "i_from_ka": 0.54877
       }
     },
     {
@@ -1415,9 +1415,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 35.89,
-        "p_from_mw": 74.815,
-        "i_from_ka": 0.3907
+        "loading_percent": 35.79,
+        "p_from_mw": 132.578,
+        "i_from_ka": 0.39734
       }
     },
     {
@@ -1448,9 +1448,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 125.11,
-        "p_from_mw": 478.987,
-        "i_from_ka": 1.43786
+        "loading_percent": 152.22,
+        "p_from_mw": 638.824,
+        "i_from_ka": 1.75255
       }
     },
     {
@@ -1481,9 +1481,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 73.01,
-        "p_from_mw": -58.653,
-        "i_from_ka": 0.42154
+        "loading_percent": 86.93,
+        "p_from_mw": -60.29,
+        "i_from_ka": 0.50196
       }
     },
     {
@@ -1514,9 +1514,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 14.3,
-        "p_from_mw": 19.907,
-        "i_from_ka": 0.08257
+        "loading_percent": 14.44,
+        "p_from_mw": 19.664,
+        "i_from_ka": 0.08335
       }
     },
     {
@@ -1547,9 +1547,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 26.88,
-        "p_from_mw": 31.238,
-        "i_from_ka": 0.14986
+        "loading_percent": 28.25,
+        "p_from_mw": 31.511,
+        "i_from_ka": 0.15732
       }
     },
     {
@@ -1580,9 +1580,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 46.32,
-        "p_from_mw": 125.831,
-        "i_from_ka": 0.52959
+        "loading_percent": 46.4,
+        "p_from_mw": 125.843,
+        "i_from_ka": 0.5306
       }
     },
     {
@@ -1613,9 +1613,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 24.26,
-        "p_from_mw": 64.489,
-        "i_from_ka": 0.27921
+        "loading_percent": 24.3,
+        "p_from_mw": 64.491,
+        "i_from_ka": 0.27974
       }
     },
     {
@@ -1646,9 +1646,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 26.47,
-        "p_from_mw": 35.091,
-        "i_from_ka": 0.15022
+        "loading_percent": 26.52,
+        "p_from_mw": 35.093,
+        "i_from_ka": 0.15051
       }
     },
     {
@@ -1679,9 +1679,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 21.4,
+        "loading_percent": 21.45,
         "p_from_mw": -28.101,
-        "i_from_ka": 0.12359
+        "i_from_ka": 0.12383
       }
     },
     {
@@ -1712,9 +1712,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 12.88,
+        "loading_percent": 12.91,
         "p_from_mw": 32.906,
-        "i_from_ka": 0.14195
+        "i_from_ka": 0.14223
       }
     },
     {
@@ -1745,9 +1745,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 2,
-        "loading_percent": 22.27,
-        "p_from_mw": -35.405,
-        "i_from_ka": 0.20911
+        "loading_percent": 40.81,
+        "p_from_mw": -79.06,
+        "i_from_ka": 0.42957
       }
     },
     {
@@ -1778,9 +1778,9 @@
         "is_submarine": true,
         "cable_type": "submarine_xlpe",
         "parallel": 1,
-        "loading_percent": 72.72,
-        "p_from_mw": -72.422,
-        "i_from_ka": 0.34306
+        "loading_percent": 105.89,
+        "p_from_mw": -118.876,
+        "i_from_ka": 0.56726
       }
     },
     {
@@ -1813,7 +1813,7 @@
         "parallel": 1,
         "loading_percent": 3.54,
         "p_from_mw": 3.3,
-        "i_from_ka": 0.01961
+        "i_from_ka": 0.0196
       }
     },
     {
@@ -1844,9 +1844,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 75.83,
-        "p_from_mw": -81.448,
-        "i_from_ka": 0.42442
+        "loading_percent": 93.35,
+        "p_from_mw": -96.699,
+        "i_from_ka": 0.52491
       }
     },
     {
@@ -1877,9 +1877,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 32.52,
-        "p_from_mw": -43.467,
-        "i_from_ka": 0.18392
+        "loading_percent": 40.1,
+        "p_from_mw": -53.058,
+        "i_from_ka": 0.22682
       }
     },
     {
@@ -1910,9 +1910,9 @@
         "is_submarine": true,
         "cable_type": "submarine_xlpe",
         "parallel": 1,
-        "loading_percent": 87.22,
-        "p_from_mw": 163.244,
-        "i_from_ka": 0.56254
+        "loading_percent": 99.11,
+        "p_from_mw": 193.324,
+        "i_from_ka": 0.63923
       }
     },
     {
@@ -1943,9 +1943,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 56.8,
-        "p_from_mw": -163.244,
-        "i_from_ka": 0.56254
+        "loading_percent": 64.39,
+        "p_from_mw": -193.324,
+        "i_from_ka": 0.63923
       }
     },
     {
@@ -1976,9 +1976,9 @@
         "is_submarine": false,
         "cable_type": "overhead",
         "parallel": 1,
-        "loading_percent": 121.56,
-        "p_from_mw": 161.064,
-        "i_from_ka": 0.70188
+        "loading_percent": 145.7,
+        "p_from_mw": 190.281,
+        "i_from_ka": 0.84124
       }
     }
   ]
