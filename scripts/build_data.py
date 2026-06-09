@@ -47,9 +47,10 @@ import pandapower.topology as top
 from constants import HVDC_CAPACITY_MW
 
 ROOT = Path(__file__).resolve().parent.parent
-BUSES_CSV = ROOT / "data" / "buses.csv"
-LINES_CSV = ROOT / "data" / "lines.csv"
-OUTPUT_DIR = ROOT / "web" / "public" / "data"
+BUSES_CSV         = ROOT / "data" / "buses.csv"
+LINES_CSV         = ROOT / "data" / "lines.csv"
+LOAD_SCENARIOS_CSV = ROOT / "data" / "load_scenarios.csv"
+OUTPUT_DIR        = ROOT / "web" / "public" / "data"
 
 # Typical autotransformer parameters for the Philippine HV network.
 # (hv_kv, lv_kv) → {sn_mva, vk_percent, vkr_percent}
@@ -278,7 +279,11 @@ def emit_geojson(
     connected_buses: set[str],
     hvdc_import_mw: float | None = None,
     power_flow_mode: str = "none",
+    output_dir: Path | None = None,
+    demand_scenario: str | None = None,
 ) -> None:
+    if output_dir is None:
+        output_dir = OUTPUT_DIR
     bus_features = []
     for _, row in buses_df.iterrows():
         props = {k: _clean(v) for k, v in row.to_dict().items()}
@@ -334,20 +339,21 @@ def emit_geojson(
             "properties": props,
         })
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    (OUTPUT_DIR / "buses.geojson").write_text(
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "buses.geojson").write_text(
         json.dumps({"type": "FeatureCollection", "features": bus_features}, indent=2)
     )
-    (OUTPUT_DIR / "lines.geojson").write_text(
+    (output_dir / "lines.geojson").write_text(
         json.dumps({"type": "FeatureCollection", "features": line_features}, indent=2)
     )
-    print(f"Wrote {OUTPUT_DIR / 'buses.geojson'} ({len(bus_features)} buses)")
-    print(f"Wrote {OUTPUT_DIR / 'lines.geojson'} ({len(line_features)} lines)")
+    print(f"Wrote {output_dir / 'buses.geojson'} ({len(bus_features)} buses)")
+    print(f"Wrote {output_dir / 'lines.geojson'} ({len(line_features)} lines)")
 
     submarine_count = int(lines_df["is_submarine"].sum()) if "is_submarine" in lines_df.columns else 0
     manifest = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "power_flow_mode": power_flow_mode,
+        "demand_scenario": demand_scenario,
         "n_buses": len(bus_features),
         "n_lines": len(line_features),
         "n_submarine_lines": submarine_count,
@@ -356,8 +362,8 @@ def emit_geojson(
         "hvdc_import_mw": round(hvdc_import_mw, 1) if hvdc_import_mw is not None else None,
         "hvdc_capacity_mw": HVDC_CAPACITY_MW,
     }
-    (OUTPUT_DIR / "manifest.json").write_text(json.dumps(manifest, indent=2))
-    print(f"Wrote {OUTPUT_DIR / 'manifest.json'}")
+    (output_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
+    print(f"Wrote {output_dir / 'manifest.json'}")
 
 
 def main() -> None:
@@ -366,18 +372,41 @@ def main() -> None:
         "--mode",
         choices=["ac", "dc"],
         default="ac",
-        help="ac: AC Newton-Raphson with transformer models (default, "
-        "written to web/public/data). dc: linear DC power flow with the "
-        "simplified build, written to web/public/data/dc.",
+        help="ac: AC Newton-Raphson (default). dc: linear DC power flow.",
+    )
+    parser.add_argument(
+        "--scenario",
+        choices=["peak", "mean", "offpeak"],
+        default="peak",
+        help="Demand snapshot from data/load_scenarios.csv. "
+             "peak: coincident system max; mean: annual average; "
+             "offpeak: coincident system min. Default: peak.",
     )
     args = parser.parse_args()
     use_ac = args.mode == "ac"
 
+    # Determine output directory
     if args.mode == "dc":
-        global OUTPUT_DIR
-        OUTPUT_DIR = OUTPUT_DIR / "dc"
+        out_dir = OUTPUT_DIR / "dc"
+    elif args.scenario == "peak":
+        out_dir = OUTPUT_DIR          # root — backward-compatible default
+    else:
+        out_dir = OUTPUT_DIR / args.scenario
 
     buses_df, lines_df = load_inputs()
+
+    # Override per-bus demand from the scenarios CSV when it exists
+    if LOAD_SCENARIOS_CSV.exists() and args.mode != "dc":
+        scen_df = pd.read_csv(LOAD_SCENARIOS_CSV).set_index("name")
+        col_p = f"p_mw_{args.scenario}"
+        col_q = f"q_mvar_{args.scenario}"
+        if col_p in scen_df.columns:
+            for i, row in buses_df.iterrows():
+                if row["name"] in scen_df.index:
+                    buses_df.at[i, "p_mw"]   = float(scen_df.at[row["name"], col_p])
+                    buses_df.at[i, "q_mvar"] = float(scen_df.at[row["name"], col_q])
+            total = buses_df["p_mw"].sum()
+            print(f"Demand '{args.scenario}': {total:.0f} MW (load_scenarios.csv)")
     net, _ = build_network(buses_df, lines_df, use_ac=use_ac)
     print(
         f"Network: {len(net.bus)} buses (incl. {len(net.trafo)} transformer intermediates), "
@@ -457,6 +486,8 @@ def main() -> None:
         buses_df, lines_df, net, has_results, connected_names,
         hvdc_import_mw=hvdc_import_mw,
         power_flow_mode=power_flow_mode,
+        output_dir=out_dir,
+        demand_scenario=args.scenario if args.mode != "dc" else None,
     )
 
 

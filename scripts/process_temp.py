@@ -35,12 +35,14 @@ ROOT = Path(__file__).resolve().parent.parent
 TEMP_BUSES = ROOT / "data" / "temp" / "buses.csv"
 TEMP_LINES = ROOT / "data" / "temp" / "lines.csv"
 TEMP_GENERATORS = ROOT / "data" / "temp" / "generators.csv"
-TEMP_LOADS = ROOT / "data" / "temp" / "loads.csv"
+TEMP_LOADS   = ROOT / "data" / "temp" / "loads.csv"
+TEMP_LOADS_T = ROOT / "data" / "temp" / "loads_t.csv"
 LOAD_ESTIMATES = ROOT / "data" / "load_estimates.csv"
 
-OUT_BUSES = ROOT / "data" / "buses.csv"
-OUT_LINES = ROOT / "data" / "lines.csv"
+OUT_BUSES      = ROOT / "data" / "buses.csv"
+OUT_LINES      = ROOT / "data" / "lines.csv"
 OUT_GENERATORS = ROOT / "data" / "generators.csv"
+LOAD_SCENARIOS = ROOT / "data" / "load_scenarios.csv"
 
 
 def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -59,6 +61,80 @@ def line_voltage_from_name(name: str, default: int = 138) -> int:
         return v if v >= 30 else default
     except (ValueError, IndexError):
         return default
+
+
+def build_demand_snapshots() -> None:
+    """Collapse the 8 760-hour PyPSA-PH demand time series to three named
+    snapshots and write data/load_scenarios.csv.
+
+    Snapshots:
+      peak    — hour of maximum coincident Visayas system load
+      mean    — annual mean per bus (time-averaged)
+      offpeak — hour of minimum coincident Visayas system load
+
+    Reads data/buses.csv (the processed/manually-edited list) so it is safe
+    to call without re-running the full pipeline.
+    """
+    if not TEMP_LOADS_T.exists():
+        print(f"  {TEMP_LOADS_T.name} not found — skipping demand snapshots.")
+        return
+    if not OUT_BUSES.exists():
+        print(f"  {OUT_BUSES.name} not found — run process_temp.py first.")
+        return
+
+    buses_df = pd.read_csv(OUT_BUSES)
+    ts = pd.read_csv(TEMP_LOADS_T, index_col=0)
+
+    # Keep Visayas-prefixed columns only
+    vis_cols = [c for c in ts.columns if str(c)[:2] in VISAYAS_PREFIXES]
+    ts = ts[vis_cols].copy()
+
+    # Merge aliased codes into their canonical bus
+    for src, dst in MERGE_CODES.items():
+        if src in ts.columns:
+            if dst in ts.columns:
+                ts[dst] = ts[dst] + ts[src]
+            else:
+                ts = ts.rename(columns={src: dst})
+            if src in ts.columns:
+                ts = ts.drop(columns=[src])
+
+    # Rename NGCP codes → readable bus names (CODE_INFO)
+    name_map = {code: info[0] for code, info in CODE_INFO.items()}
+    ts = ts.rename(columns=name_map)
+
+    # Align to our bus list
+    known = set(buses_df["name"])
+    ts = ts[[c for c in ts.columns if c in known]]
+
+    # Three snapshot definitions
+    system_total = ts.sum(axis=1)
+    peak_hour    = system_total.idxmax()
+    offpeak_hour = system_total.idxmin()
+
+    rows = []
+    for bus_name in buses_df["name"]:
+        if bus_name in ts.columns:
+            p_pk = round(float(ts.loc[peak_hour,    bus_name]), 1)
+            p_mn = round(float(ts[bus_name].mean()),             1)
+            p_op = round(float(ts.loc[offpeak_hour, bus_name]), 1)
+        else:
+            p_pk = p_mn = p_op = 0.0
+        rows.append({
+            "name":           bus_name,
+            "p_mw_peak":      p_pk,
+            "q_mvar_peak":    round(p_pk * LOAD_PF_QP_RATIO, 1),
+            "p_mw_mean":      p_mn,
+            "q_mvar_mean":    round(p_mn * LOAD_PF_QP_RATIO, 1),
+            "p_mw_offpeak":   p_op,
+            "q_mvar_offpeak": round(p_op * LOAD_PF_QP_RATIO, 1),
+        })
+
+    pd.DataFrame(rows).to_csv(LOAD_SCENARIOS, index=False)
+    print(f"Wrote {LOAD_SCENARIOS.name}: {len(rows)} buses × 3 snapshots.")
+    print(f"  peak:    hour {peak_hour},  {system_total.loc[peak_hour]:.0f} MW coincident")
+    print(f"  mean:    {system_total.mean():.0f} MW time-average")
+    print(f"  offpeak: hour {offpeak_hour}, {system_total.loc[offpeak_hour]:.0f} MW coincident")
 
 
 def main() -> None:
@@ -297,4 +373,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    if "--only-snapshots" in sys.argv:
+        build_demand_snapshots()
+    else:
+        main()
+        build_demand_snapshots()

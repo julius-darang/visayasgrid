@@ -22,7 +22,14 @@ const initial = parseViewState(
   typeof window !== "undefined" ? window.location.hash : "",
 );
 
-const SCENARIOS = [{ id: "ac", label: "AC — Newton-Raphson" }];
+// Base demand scenarios always available; optional ones (mean/offpeak/dc) are
+// probed at runtime — the sidebar selector only appears when >1 are present.
+const BASE_SCENARIOS = [{ id: "peak", label: "Peak demand" }];
+const OPTIONAL_SCENARIOS = [
+  { id: "mean",    label: "Annual mean"  },
+  { id: "offpeak", label: "Off-peak"     },
+  { id: "dc",      label: "DC — linear" },
+];
 
 export default function App() {
   const [theme, toggleTheme] = useTheme();
@@ -31,8 +38,8 @@ export default function App() {
   const [selected, setSelected] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [tableOpen, setTableOpen] = useState(false);
-  const [scenario, setScenario] = useState("ac");
-  const [dcAvailable, setDcAvailable] = useState(false);
+  const [scenario, setScenario] = useState("peak");
+  const [availableOptional, setAvailableOptional] = useState(new Set());
   const [colorMode, setColorMode] = usePersistentState(
     "vg-colormode",
     "nominal",
@@ -79,25 +86,28 @@ export default function App() {
     handleLoad,
   );
 
-  // Probe for an optional pre-generated DC dataset.
+  // Probe for optional pre-generated scenario datasets (mean/offpeak/dc).
   useEffect(() => {
     let cancelled = false;
-    fetch("/data/dc/manifest.json", { method: "HEAD" })
-      .then((r) => {
-        if (!cancelled) setDcAvailable(r.ok);
-      })
-      .catch(() => {});
-    return () => {
-      cancelled = true;
-    };
+    Promise.all(
+      OPTIONAL_SCENARIOS.map(({ id }) =>
+        fetch(`/data/${id}/manifest.json`, { method: "HEAD" })
+          .then((r) => (r.ok ? id : null))
+          .catch(() => null),
+      ),
+    ).then((results) => {
+      if (cancelled) return;
+      setAvailableOptional(new Set(results.filter(Boolean)));
+    });
+    return () => { cancelled = true; };
   }, []);
 
   const scenarios = useMemo(
-    () =>
-      dcAvailable
-        ? [...SCENARIOS, { id: "dc", label: "DC — linear" }]
-        : SCENARIOS,
-    [dcAvailable],
+    () => [
+      ...BASE_SCENARIOS,
+      ...OPTIONAL_SCENARIOS.filter(({ id }) => availableOptional.has(id)),
+    ],
+    [availableOptional],
   );
 
   const filters = useMemo(
@@ -135,13 +145,15 @@ export default function App() {
   const hintDismissedRef = useRef(hintDismissed);
   useEffect(() => { hintDismissedRef.current = hintDismissed; }, [hintDismissed]);
 
+  const dismissHint = useCallback(() => {
+    setHintDismissed(true);
+    localStorage.setItem(HINT_KEY, "1");
+  }, []);
+
   const select = useCallback((s) => {
     setSelected(s);
-    if (!hintDismissedRef.current) {
-      setHintDismissed(true);
-      localStorage.setItem(HINT_KEY, "1");
-    }
-  }, []);
+    if (!hintDismissedRef.current) dismissHint();
+  }, [dismissHint]);
 
   // Select + recenter the map. Used by search, the data table and
   // StatsPanel alerts; plain map clicks intentionally do not recenter.
