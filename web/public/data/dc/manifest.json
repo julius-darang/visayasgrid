@@ -1,11 +1,12 @@
 {
-  "generated_at": "2026-06-08T12:50:42Z",
+  "generated_at": "2026-06-09T04:38:22Z",
   "power_flow_mode": "DC",
+  "demand_scenario": null,
   "n_buses": 54,
   "n_lines": 60,
   "n_submarine_lines": 7,
   "total_load_mw": 1735.0,
-  "total_gen_mw": 2210.9,
-  "hvdc_import_mw": -475.9,
+  "total_gen_mw": 2488.8,
+  "hvdc_import_mw": -753.8,
   "hvdc_capacity_mw": 440
 }
