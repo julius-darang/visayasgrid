@@ -55,6 +55,8 @@ export default function StatsPanel({ buses, lines, manifest, onFocus }) {
     byIsland[i].gen += Number(f.properties.gen_mw || 0);
   }
 
+  const SCENARIO_LABEL = { peak: "Peak demand", mean: "Annual mean", offpeak: "Off-peak" };
+  const scenarioLabel = SCENARIO_LABEL[manifest?.demand_scenario] ?? null;
   const snapshotDate = formatDate(manifest?.generated_at);
 
   const overloaded = overloadedLines(lines);
@@ -180,9 +182,11 @@ export default function StatsPanel({ buses, lines, manifest, onFocus }) {
             </table>
           </details>
 
-          {snapshotDate && (
+          {(scenarioLabel || snapshotDate) && (
             <div className="mt-2 border-t border-slate-100 pt-1.5 text-[10px] text-slate-400 dark:border-slate-800 dark:text-slate-600">
-              {manifest?.power_flow_mode ?? "DC"} flow · {snapshotDate}
+              {manifest?.power_flow_mode ?? "DC"} flow
+              {scenarioLabel && ` · ${scenarioLabel}`}
+              {snapshotDate && ` · ${snapshotDate}`}
             </div>
           )}
         </div>

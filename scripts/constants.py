@@ -102,6 +102,39 @@ DISPATCH_FACTOR: dict[str, float] = {
     "Solar":      0.25,  # Peak-hour average including night hours (DOE 2023)
     "Wind":       0.30,  # DOE 2023 wind CF average for Visayas projects
     "Diesel":     0.30,  # Peaking/backup; not fully committed at peak
+    "BESS":       1.00,  # Dependable capacity = installed for all Visayas BESS units (DOE Dec-2024)
+}
+
+# Scenario-specific generation dispatch factors.
+# "peak"    — calibrated for the coincident system peak hour (same as DISPATCH_FACTOR)
+# "mean"    — annual-average capacity factors; solar includes night hours (~18% CF)
+# "offpeak" — early-morning minimum (~04:00); solar = 0, peakers nearly idle
+# Sources: DOE PDP 2023 Table A-2 (technology CFs); IEA Southeast Asia energy report;
+#          NGCP TDP 2024 (minimum stable load coal ~50-60% rated at off-peak night).
+SCENARIO_GEN_FACTORS: dict[str, dict[str, float]] = {
+    "peak": DISPATCH_FACTOR,
+    "mean": {
+        "Coal":       0.70,
+        "Geothermal": 0.85,
+        "Biomass":    0.55,
+        "Hydro":      0.40,
+        "ROR":        0.35,
+        "Solar":      0.18,
+        "Wind":       0.28,
+        "Diesel":     0.15,
+        "BESS":       0.50,
+    },
+    "offpeak": {
+        "Coal":       0.55,
+        "Geothermal": 0.85,
+        "Biomass":    0.45,
+        "Hydro":      0.30,
+        "ROR":        0.25,
+        "Solar":      0.00,
+        "Wind":       0.28,
+        "Diesel":     0.05,
+        "BESS":       0.20,
+    },
 }
 
 # ─── Submarine cable identification ──────────────────────────────────────────

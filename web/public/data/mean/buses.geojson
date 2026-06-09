@@ -18,8 +18,8 @@
         "voltages_kv": 138,
         "island": "Leyte",
         "bus_type": "substation",
-        "p_mw": 62.9,
-        "q_mvar": 18.9,
+        "p_mw": 54.6,
+        "q_mvar": 16.4,
         "is_slack": false,
         "load_count": 2,
         "gen_capacity_mw": 0.0,
@@ -27,8 +27,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9913,
-        "va_degree": -5.1032
+        "vm_pu": 0.9917,
+        "va_degree": -2.9263
       }
     },
     {
@@ -48,17 +48,17 @@
         "voltages_kv": 138,
         "island": "Samar",
         "bus_type": "substation",
-        "p_mw": 39.5,
-        "q_mvar": 11.8,
+        "p_mw": 38.3,
+        "q_mvar": 11.5,
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 11.0,
-        "gen_mw": 3.3,
+        "gen_mw": 1.65,
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 0.9721,
-        "va_degree": -6.1761
+        "vm_pu": 0.9723,
+        "va_degree": -4.0258
       }
     },
     {
@@ -78,17 +78,17 @@
         "voltages_kv": 138,
         "island": "Leyte",
         "bus_type": "substation",
-        "p_mw": 35.0,
-        "q_mvar": 10.5,
+        "p_mw": 25.2,
+        "q_mvar": 7.6,
         "is_slack": false,
         "load_count": 6,
         "gen_capacity_mw": 70.7,
-        "gen_mw": 21.21,
+        "gen_mw": 10.6,
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 1.0148,
-        "va_degree": -3.7564
+        "vm_pu": 1.0146,
+        "va_degree": -1.6771
       }
     },
     {
@@ -118,7 +118,7 @@
         "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": 0.5811
+        "va_degree": 1.0428
       }
     },
     {
@@ -138,8 +138,8 @@
         "voltages_kv": 138,
         "island": "Leyte",
         "bus_type": "substation",
-        "p_mw": 34.6,
-        "q_mvar": 10.4,
+        "p_mw": 32.5,
+        "q_mvar": 9.8,
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 0.0,
@@ -147,8 +147,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0128,
-        "va_degree": -6.795
+        "vm_pu": 1.018,
+        "va_degree": -2.2896
       }
     },
     {
@@ -168,18 +168,18 @@
         "voltages_kv": 350,
         "island": "Leyte",
         "bus_type": "hvdc",
-        "p_mw": 61.6,
-        "q_mvar": 18.5,
+        "p_mw": 40.9,
+        "q_mvar": 12.3,
         "is_slack": true,
         "load_count": 3,
         "gen_capacity_mw": 114.5,
-        "gen_mw": 65.45,
+        "gen_mw": 37.15,
         "gen_carriers": "Geothermal,Solar,BESS",
         "primary_carrier": "Solar",
         "connected": true,
         "vm_pu": 1.0,
         "va_degree": 0.0,
-        "hvdc_import_mw": -128.5
+        "hvdc_import_mw": -355.0
       }
     },
     {
@@ -204,12 +204,12 @@
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 15.2,
-        "gen_mw": 6.08,
+        "gen_mw": 5.32,
         "gen_carriers": "ROR",
         "primary_carrier": "ROR",
         "connected": true,
-        "vm_pu": 0.9805,
-        "va_degree": -5.728
+        "vm_pu": 0.9808,
+        "va_degree": -3.5683
       }
     },
     {
@@ -229,8 +229,8 @@
         "voltages_kv": 138,
         "island": "Samar",
         "bus_type": "substation",
-        "p_mw": 11.0,
-        "q_mvar": 3.3,
+        "p_mw": 11.3,
+        "q_mvar": 3.4,
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 0.0,
@@ -238,8 +238,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9896,
-        "va_degree": -5.205
+        "vm_pu": 0.9899,
+        "va_degree": -3.0307
       }
     },
     {
@@ -268,8 +268,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0407,
-        "va_degree": -1.1357
+        "vm_pu": 1.0414,
+        "va_degree": 0.2747
       }
     },
     {
@@ -289,8 +289,8 @@
         "voltages_kv": 138,
         "island": "Leyte",
         "bus_type": "generator",
-        "p_mw": 9.8,
-        "q_mvar": 2.9,
+        "p_mw": 10.0,
+        "q_mvar": 3.0,
         "is_slack": false,
         "load_count": 1,
         "gen_capacity_mw": 123.0,
@@ -299,7 +299,7 @@
         "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": -3.5415
+        "va_degree": -1.4659
       }
     },
     {
@@ -328,8 +328,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0243,
-        "va_degree": -8.4152
+        "vm_pu": 1.0137,
+        "va_degree": 2.3728
       }
     },
     {
@@ -349,17 +349,17 @@
         "voltages_kv": 138,
         "island": "Cebu",
         "bus_type": "substation",
-        "p_mw": 34.1,
-        "q_mvar": 10.2,
+        "p_mw": 20.6,
+        "q_mvar": 6.2,
         "is_slack": false,
         "load_count": 4,
         "gen_capacity_mw": 49.0,
-        "gen_mw": 12.25,
+        "gen_mw": 8.82,
         "gen_carriers": "Solar",
         "primary_carrier": "Solar",
         "connected": true,
-        "vm_pu": 1.0067,
-        "va_degree": -8.7146
+        "vm_pu": 1.0094,
+        "va_degree": 2.3821
       }
     },
     {
@@ -379,8 +379,8 @@
         "voltages_kv": 138,
         "island": "Cebu",
         "bus_type": "substation",
-        "p_mw": 186.0,
-        "q_mvar": 55.8,
+        "p_mw": 141.4,
+        "q_mvar": 42.4,
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 0.0,
@@ -388,8 +388,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9508,
-        "va_degree": -10.6044
+        "vm_pu": 0.9665,
+        "va_degree": -0.036
       }
     },
     {
@@ -409,8 +409,8 @@
         "voltages_kv": 138,
         "island": "Cebu",
         "bus_type": "substation",
-        "p_mw": 163.5,
-        "q_mvar": 49.0,
+        "p_mw": 139.2,
+        "q_mvar": 41.8,
         "is_slack": false,
         "load_count": 5,
         "gen_capacity_mw": 0.0,
@@ -418,8 +418,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9925,
-        "va_degree": -9.1045
+        "vm_pu": 0.9985,
+        "va_degree": 1.9596
       }
     },
     {
@@ -439,8 +439,8 @@
         "voltages_kv": 230,
         "island": "Cebu",
         "bus_type": "substation",
-        "p_mw": 48.1,
-        "q_mvar": 14.4,
+        "p_mw": 39.2,
+        "q_mvar": 11.8,
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 0.0,
@@ -448,8 +448,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0319,
-        "va_degree": -1.851
+        "vm_pu": 1.0391,
+        "va_degree": 0.0432
       }
     },
     {
@@ -469,8 +469,8 @@
         "voltages_kv": 230,
         "island": "Cebu",
         "bus_type": "substation",
-        "p_mw": 35.3,
-        "q_mvar": 10.6,
+        "p_mw": 27.4,
+        "q_mvar": 8.2,
         "is_slack": false,
         "load_count": 2,
         "gen_capacity_mw": 0.0,
@@ -478,8 +478,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0387,
-        "va_degree": -1.7413
+        "vm_pu": 1.042,
+        "va_degree": -0.0043
       }
     },
     {
@@ -499,17 +499,17 @@
         "voltages_kv": 230,
         "island": "Cebu",
         "bus_type": "substation",
-        "p_mw": 26.3,
-        "q_mvar": 7.9,
+        "p_mw": 25.3,
+        "q_mvar": 7.6,
         "is_slack": false,
         "load_count": 1,
         "gen_capacity_mw": 249.7,
-        "gen_mw": 199.76,
+        "gen_mw": 174.79,
         "gen_carriers": "Coal",
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": -6.5538
+        "va_degree": 4.9711
       }
     },
     {
@@ -538,8 +538,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0246,
-        "va_degree": -7.3881
+        "vm_pu": 1.0247,
+        "va_degree": 3.9044
       }
     },
     {
@@ -559,17 +559,17 @@
         "voltages_kv": 230,
         "island": "Cebu",
         "bus_type": "generator",
-        "p_mw": 16.1,
-        "q_mvar": 4.8,
+        "p_mw": 15.7,
+        "q_mvar": 4.7,
         "is_slack": false,
         "load_count": 2,
         "gen_capacity_mw": 221.0,
-        "gen_mw": 176.8,
+        "gen_mw": 154.7,
         "gen_carriers": "Coal",
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": -4.6156
+        "va_degree": 5.8261
       }
     },
     {
@@ -589,17 +589,17 @@
         "voltages_kv": 138,
         "island": "Cebu",
         "bus_type": "substation",
-        "p_mw": 158.8,
-        "q_mvar": 47.6,
+        "p_mw": 122.3,
+        "q_mvar": 36.7,
         "is_slack": false,
         "load_count": 2,
         "gen_capacity_mw": 45.5,
-        "gen_mw": 13.65,
+        "gen_mw": 6.82,
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 0.9466,
-        "va_degree": -10.729
+        "vm_pu": 0.9633,
+        "va_degree": -0.2808
       }
     },
     {
@@ -628,8 +628,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0249,
-        "va_degree": -7.0446
+        "vm_pu": 1.0273,
+        "va_degree": 4.5082
       }
     },
     {
@@ -649,8 +649,8 @@
         "voltages_kv": 138,
         "island": "Cebu",
         "bus_type": "substation",
-        "p_mw": 135.9,
-        "q_mvar": 40.8,
+        "p_mw": 94.1,
+        "q_mvar": 28.2,
         "is_slack": false,
         "load_count": 5,
         "gen_capacity_mw": 0.0,
@@ -658,8 +658,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9476,
-        "va_degree": -10.6872
+        "vm_pu": 0.964,
+        "va_degree": -0.2484
       }
     },
     {
@@ -679,17 +679,17 @@
         "voltages_kv": 138,
         "island": "Cebu",
         "bus_type": "substation",
-        "p_mw": 0.2,
-        "q_mvar": 0.1,
+        "p_mw": 0.1,
+        "q_mvar": 0.0,
         "is_slack": false,
         "load_count": 4,
         "gen_capacity_mw": 44.6,
-        "gen_mw": 13.37,
+        "gen_mw": 6.69,
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 0.9925,
-        "va_degree": -8.8554
+        "vm_pu": 0.9986,
+        "va_degree": 2.0827
       }
     },
     {
@@ -709,17 +709,17 @@
         "voltages_kv": 138,
         "island": "Cebu",
         "bus_type": "substation",
-        "p_mw": 121.3,
-        "q_mvar": 36.4,
+        "p_mw": 89.7,
+        "q_mvar": 26.9,
         "is_slack": false,
         "load_count": 1,
         "gen_capacity_mw": 65.0,
-        "gen_mw": 19.5,
+        "gen_mw": 9.75,
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 0.9748,
-        "va_degree": -10.6531
+        "vm_pu": 0.9854,
+        "va_degree": 0.7568
       }
     },
     {
@@ -739,8 +739,8 @@
         "voltages_kv": 138,
         "island": "Cebu",
         "bus_type": "substation",
-        "p_mw": 3.8,
-        "q_mvar": 1.1,
+        "p_mw": 3.3,
+        "q_mvar": 1.0,
         "is_slack": false,
         "load_count": 2,
         "gen_capacity_mw": 0.0,
@@ -748,8 +748,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0169,
-        "va_degree": -6.4776
+        "vm_pu": 1.0212,
+        "va_degree": 5.6766
       }
     },
     {
@@ -769,17 +769,17 @@
         "voltages_kv": 138,
         "island": "Cebu",
         "bus_type": "generator",
-        "p_mw": 28.9,
-        "q_mvar": 8.7,
+        "p_mw": 28.4,
+        "q_mvar": 8.5,
         "is_slack": false,
         "load_count": 2,
         "gen_capacity_mw": 338.0,
-        "gen_mw": 270.4,
+        "gen_mw": 236.6,
         "gen_carriers": "Coal",
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": -8.8192
+        "va_degree": 2.4169
       }
     },
     {
@@ -804,12 +804,12 @@
         "is_slack": false,
         "load_count": 0,
         "gen_capacity_mw": 23.7,
-        "gen_mw": 23.7,
+        "gen_mw": 11.85,
         "gen_carriers": "BESS",
         "primary_carrier": "BESS",
         "connected": true,
-        "vm_pu": 1.0064,
-        "va_degree": -5.8504
+        "vm_pu": 1.0099,
+        "va_degree": 3.8049
       }
     },
     {
@@ -829,17 +829,17 @@
         "voltages_kv": 138,
         "island": "Cebu",
         "bus_type": "substation",
-        "p_mw": 77.1,
-        "q_mvar": 23.1,
+        "p_mw": 72.7,
+        "q_mvar": 21.8,
         "is_slack": false,
         "load_count": 4,
         "gen_capacity_mw": 123.6,
-        "gen_mw": 78.88,
+        "gen_mw": 64.52,
         "gen_carriers": "Coal,Diesel",
         "primary_carrier": "Coal",
         "connected": true,
-        "vm_pu": 1.0012,
-        "va_degree": -8.787
+        "vm_pu": 1.0047,
+        "va_degree": 2.2694
       }
     },
     {
@@ -859,17 +859,17 @@
         "voltages_kv": 138,
         "island": "Negros",
         "bus_type": "substation",
-        "p_mw": 97.3,
-        "q_mvar": 29.2,
+        "p_mw": 63.1,
+        "q_mvar": 18.9,
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 27.4,
-        "gen_mw": 12.38,
+        "gen_mw": 9.52,
         "gen_carriers": "Biomass,ROR,Solar",
         "primary_carrier": "Solar",
         "connected": true,
-        "vm_pu": 1.0172,
-        "va_degree": -6.1723
+        "vm_pu": 1.0216,
+        "va_degree": 6.0892
       }
     },
     {
@@ -889,17 +889,17 @@
         "voltages_kv": 230,
         "island": "Negros",
         "bus_type": "substation",
-        "p_mw": 225.0,
-        "q_mvar": 67.5,
+        "p_mw": 139.9,
+        "q_mvar": 42.0,
         "is_slack": false,
         "load_count": 8,
         "gen_capacity_mw": 172.1,
-        "gen_mw": 88.47,
+        "gen_mw": 66.43,
         "gen_carriers": "Biomass,Diesel,Solar",
         "primary_carrier": "Biomass",
         "connected": true,
-        "vm_pu": 1.0024,
-        "va_degree": -7.5516
+        "vm_pu": 1.0255,
+        "va_degree": 4.7301
       }
     },
     {
@@ -919,17 +919,17 @@
         "voltages_kv": 230,
         "island": "Negros",
         "bus_type": "substation",
-        "p_mw": 58.6,
-        "q_mvar": 17.6,
+        "p_mw": 30.3,
+        "q_mvar": 9.1,
         "is_slack": false,
         "load_count": 5,
         "gen_capacity_mw": 84.4,
-        "gen_mw": 40.86,
+        "gen_mw": 31.44,
         "gen_carriers": "Biomass,Solar",
         "primary_carrier": "Biomass",
         "connected": true,
-        "vm_pu": 1.0159,
-        "va_degree": -7.4848
+        "vm_pu": 1.031,
+        "va_degree": 4.6163
       }
     },
     {
@@ -958,8 +958,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0246,
-        "va_degree": -7.4272
+        "vm_pu": 1.0319,
+        "va_degree": 4.4969
       }
     },
     {
@@ -988,8 +988,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0085,
-        "va_degree": -7.5594
+        "vm_pu": 1.0288,
+        "va_degree": 4.6921
       }
     },
     {
@@ -1014,12 +1014,12 @@
         "is_slack": false,
         "load_count": 1,
         "gen_capacity_mw": 132.5,
-        "gen_mw": 33.12,
+        "gen_mw": 23.85,
         "gen_carriers": "Solar",
         "primary_carrier": "Solar",
         "connected": true,
-        "vm_pu": 1.016,
-        "va_degree": -7.4751
+        "vm_pu": 1.0311,
+        "va_degree": 4.623
       }
     },
     {
@@ -1039,17 +1039,17 @@
         "voltages_kv": 138,
         "island": "Negros",
         "bus_type": "substation",
-        "p_mw": 44.4,
-        "q_mvar": 13.3,
+        "p_mw": 30.4,
+        "q_mvar": 9.1,
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 30.0,
-        "gen_mw": 21.0,
+        "gen_mw": 16.5,
         "gen_carriers": "Biomass",
         "primary_carrier": "Biomass",
         "connected": true,
-        "vm_pu": 1.0126,
-        "va_degree": -6.3312
+        "vm_pu": 1.023,
+        "va_degree": 5.6996
       }
     },
     {
@@ -1074,12 +1074,12 @@
         "is_slack": false,
         "load_count": 1,
         "gen_capacity_mw": 34.7,
-        "gen_mw": 34.7,
+        "gen_mw": 17.35,
         "gen_carriers": "BESS",
         "primary_carrier": "BESS",
         "connected": true,
-        "vm_pu": 1.0127,
-        "va_degree": -6.3243
+        "vm_pu": 1.023,
+        "va_degree": 5.703
       }
     },
     {
@@ -1099,17 +1099,17 @@
         "voltages_kv": 138,
         "island": "Negros",
         "bus_type": "substation",
-        "p_mw": 9.0,
-        "q_mvar": 2.7,
+        "p_mw": 7.2,
+        "q_mvar": 2.2,
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 20.0,
-        "gen_mw": 14.0,
+        "gen_mw": 11.0,
         "gen_carriers": "Biomass",
         "primary_carrier": "Biomass",
         "connected": true,
-        "vm_pu": 1.0152,
-        "va_degree": -6.2495
+        "vm_pu": 1.0229,
+        "va_degree": 5.8718
       }
     },
     {
@@ -1129,8 +1129,8 @@
         "voltages_kv": 138,
         "island": "Negros",
         "bus_type": "generator",
-        "p_mw": 6.6,
-        "q_mvar": 2.0,
+        "p_mw": 4.9,
+        "q_mvar": 1.5,
         "is_slack": false,
         "load_count": 1,
         "gen_capacity_mw": 110.5,
@@ -1138,8 +1138,8 @@
         "gen_carriers": "Geothermal",
         "primary_carrier": "Geothermal",
         "connected": true,
-        "vm_pu": 1.0222,
-        "va_degree": -5.7673
+        "vm_pu": 1.0267,
+        "va_degree": 6.4968
       }
     },
     {
@@ -1159,8 +1159,8 @@
         "voltages_kv": 138,
         "island": "Negros",
         "bus_type": "generator",
-        "p_mw": 7.1,
-        "q_mvar": 2.1,
+        "p_mw": 5.9,
+        "q_mvar": 1.8,
         "is_slack": false,
         "load_count": 1,
         "gen_capacity_mw": 128.9,
@@ -1169,7 +1169,7 @@
         "primary_carrier": "Geothermal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": -5.4836
+        "va_degree": 6.9549
       }
     },
     {
@@ -1189,17 +1189,17 @@
         "voltages_kv": 138,
         "island": "Negros",
         "bus_type": "substation",
-        "p_mw": 0.6,
-        "q_mvar": 0.2,
+        "p_mw": 0.5,
+        "q_mvar": 0.1,
         "is_slack": false,
         "load_count": 1,
         "gen_capacity_mw": 105.6,
-        "gen_mw": 35.17,
+        "gen_mw": 26.22,
         "gen_carriers": "Biomass,Solar",
         "primary_carrier": "Solar",
         "connected": true,
-        "vm_pu": 1.0259,
-        "va_degree": -6.3652
+        "vm_pu": 1.0331,
+        "va_degree": 5.2756
       }
     },
     {
@@ -1219,17 +1219,17 @@
         "voltages_kv": 138,
         "island": "Bohol",
         "bus_type": "substation",
-        "p_mw": 64.9,
-        "q_mvar": 19.5,
+        "p_mw": 49.8,
+        "q_mvar": 14.9,
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 26.1,
-        "gen_mw": 8.82,
+        "gen_mw": 5.9,
         "gen_carriers": "Diesel,ROR",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 1.009,
-        "va_degree": -8.8202
+        "vm_pu": 1.0139,
+        "va_degree": -0.7356
       }
     },
     {
@@ -1254,12 +1254,12 @@
         "is_slack": false,
         "load_count": 1,
         "gen_capacity_mw": 29.0,
-        "gen_mw": 8.7,
+        "gen_mw": 4.35,
         "gen_carriers": "Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 1.014,
-        "va_degree": -7.4697
+        "vm_pu": 1.0197,
+        "va_degree": -1.9753
       }
     },
     {
@@ -1279,17 +1279,17 @@
         "voltages_kv": 138,
         "island": "Bohol",
         "bus_type": "substation",
-        "p_mw": 32.6,
-        "q_mvar": 9.8,
+        "p_mw": 25.9,
+        "q_mvar": 7.8,
         "is_slack": false,
         "load_count": 4,
         "gen_capacity_mw": 23.3,
-        "gen_mw": 23.3,
+        "gen_mw": 11.65,
         "gen_carriers": "BESS",
         "primary_carrier": "BESS",
         "connected": true,
-        "vm_pu": 1.0138,
-        "va_degree": -7.5173
+        "vm_pu": 1.0196,
+        "va_degree": -1.9988
       }
     },
     {
@@ -1318,8 +1318,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.026,
-        "va_degree": -8.5471
+        "vm_pu": 1.0154,
+        "va_degree": 1.9215
       }
     },
     {
@@ -1339,8 +1339,8 @@
         "voltages_kv": 69,
         "island": "Panay",
         "bus_type": "substation",
-        "p_mw": 21.0,
-        "q_mvar": 6.3,
+        "p_mw": 16.1,
+        "q_mvar": 4.8,
         "is_slack": false,
         "load_count": 1,
         "gen_capacity_mw": 0.0,
@@ -1348,8 +1348,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9926,
-        "va_degree": -11.1153
+        "vm_pu": 1.0037,
+        "va_degree": 4.9497
       }
     },
     {
@@ -1378,8 +1378,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 1.0134,
-        "va_degree": -7.8086
+        "vm_pu": 1.0271,
+        "va_degree": 5.8821
       }
     },
     {
@@ -1399,17 +1399,17 @@
         "voltages_kv": 138,
         "island": "Guimaras",
         "bus_type": "substation",
-        "p_mw": 10.5,
-        "q_mvar": 3.1,
+        "p_mw": 8.0,
+        "q_mvar": 2.4,
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 54.0,
-        "gen_mw": 16.2,
+        "gen_mw": 15.12,
         "gen_carriers": "Wind",
         "primary_carrier": "Wind",
         "connected": true,
-        "vm_pu": 0.9907,
-        "va_degree": -10.7574
+        "vm_pu": 1.0029,
+        "va_degree": 5.3735
       }
     },
     {
@@ -1429,17 +1429,17 @@
         "voltages_kv": 138,
         "island": "Panay",
         "bus_type": "substation",
-        "p_mw": 15.4,
-        "q_mvar": 4.6,
+        "p_mw": 14.4,
+        "q_mvar": 4.3,
         "is_slack": false,
         "load_count": 2,
         "gen_capacity_mw": 135.0,
-        "gen_mw": 108.0,
+        "gen_mw": 94.5,
         "gen_carriers": "Coal",
         "primary_carrier": "Coal",
         "connected": true,
-        "vm_pu": 1.02,
-        "va_degree": -6.0534
+        "vm_pu": 1.0408,
+        "va_degree": 7.039
       }
     },
     {
@@ -1459,17 +1459,17 @@
         "voltages_kv": 138,
         "island": "Panay",
         "bus_type": "substation",
-        "p_mw": 49.5,
-        "q_mvar": 14.8,
+        "p_mw": 39.1,
+        "q_mvar": 11.7,
         "is_slack": false,
         "load_count": 8,
         "gen_capacity_mw": 81.0,
-        "gen_mw": 30.7,
+        "gen_mw": 18.55,
         "gen_carriers": "Biomass,Diesel",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 1.0028,
-        "va_degree": -9.3086
+        "vm_pu": 1.0121,
+        "va_degree": 5.5908
       }
     },
     {
@@ -1489,17 +1489,17 @@
         "voltages_kv": 138,
         "island": "Panay",
         "bus_type": "substation",
-        "p_mw": 133.9,
-        "q_mvar": 40.2,
+        "p_mw": 99.0,
+        "q_mvar": 29.7,
         "is_slack": false,
         "load_count": 5,
         "gen_capacity_mw": 317.4,
-        "gen_mw": 253.92,
+        "gen_mw": 222.18,
         "gen_carriers": "Coal",
         "primary_carrier": "Coal",
         "connected": true,
         "vm_pu": 1.02,
-        "va_degree": -9.2517
+        "va_degree": 6.299
       }
     },
     {
@@ -1519,17 +1519,17 @@
         "voltages_kv": 138,
         "island": "Panay",
         "bus_type": "substation",
-        "p_mw": 72.5,
-        "q_mvar": 21.8,
+        "p_mw": 57.7,
+        "q_mvar": 17.3,
         "is_slack": false,
         "load_count": 4,
         "gen_capacity_mw": 74.1,
-        "gen_mw": 24.03,
+        "gen_mw": 21.18,
         "gen_carriers": "Diesel,ROR,Wind",
         "primary_carrier": "Wind",
         "connected": true,
-        "vm_pu": 0.961,
-        "va_degree": -11.27
+        "vm_pu": 0.9817,
+        "va_degree": 4.0833
       }
     },
     {
@@ -1549,8 +1549,8 @@
         "voltages_kv": 138,
         "island": "Panay",
         "bus_type": "substation",
-        "p_mw": 42.9,
-        "q_mvar": 12.9,
+        "p_mw": 35.0,
+        "q_mvar": 10.5,
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 0.0,
@@ -1558,8 +1558,8 @@
         "gen_carriers": null,
         "primary_carrier": null,
         "connected": true,
-        "vm_pu": 0.9809,
-        "va_degree": -10.4233
+        "vm_pu": 0.9961,
+        "va_degree": 4.7091
       }
     },
     {
@@ -1579,17 +1579,17 @@
         "voltages_kv": 138,
         "island": "Panay",
         "bus_type": "substation",
-        "p_mw": 18.9,
-        "q_mvar": 5.7,
+        "p_mw": 13.1,
+        "q_mvar": 3.9,
         "is_slack": false,
         "load_count": 3,
         "gen_capacity_mw": 5.7,
-        "gen_mw": 1.42,
+        "gen_mw": 1.03,
         "gen_carriers": "Solar",
         "primary_carrier": "Solar",
         "connected": true,
-        "vm_pu": 1.0068,
-        "va_degree": -9.5704
+        "vm_pu": 1.0123,
+        "va_degree": 5.8224
       }
     },
     {
@@ -1609,17 +1609,17 @@
         "voltages_kv": 138,
         "island": "Panay",
         "bus_type": "substation",
-        "p_mw": 80.0,
-        "q_mvar": 24.0,
+        "p_mw": 59.6,
+        "q_mvar": 17.9,
         "is_slack": false,
         "load_count": 5,
         "gen_capacity_mw": 32.1,
-        "gen_mw": 10.44,
+        "gen_mw": 6.43,
         "gen_carriers": "Diesel,ROR",
         "primary_carrier": "Diesel",
         "connected": true,
-        "vm_pu": 1.0097,
-        "va_degree": -9.4409
+        "vm_pu": 1.0143,
+        "va_degree": 5.9125
       }
     }
   ]

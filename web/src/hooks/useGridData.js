@@ -2,13 +2,16 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const EMPTY = { type: "FeatureCollection", features: [] };
 
-// Each scenario is a sub-folder of /data; "ac" is the deployed default
-// at the root for backward compatibility.
+// Demand scenarios live in /data/{scenario}/ except "peak" which is the
+// root (/data/) for backward compatibility. "ac" is also treated as root
+// so any bookmarked URLs from before the demand-scenario migration keep working.
 function baseFor(scenario) {
-  return !scenario || scenario === "ac" ? "/data" : `/data/${scenario}`;
+  return !scenario || scenario === "ac" || scenario === "peak"
+    ? "/data"
+    : `/data/${scenario}`;
 }
 
-export function useGridData(scenario = "ac", onLoad) {
+export function useGridData(scenario = "peak", onLoad) {
   const [buses, setBuses] = useState(EMPTY);
   const [lines, setLines] = useState(EMPTY);
   const [manifest, setManifest] = useState(null);
