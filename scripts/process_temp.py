@@ -20,6 +20,7 @@ from constants import (
     CODE_INFO,
     DISPATCH_FACTOR,
     DROP_CODES,
+    SCENARIO_GEN_FACTORS,
     HVDC_CAPACITY_MW,  # noqa: F401 — re-exported for pipeline consistency
     LINE_IMPEDANCE_OVERRIDES,
     LOAD_MW_PER_FEEDER,
@@ -43,6 +44,7 @@ OUT_BUSES      = ROOT / "data" / "buses.csv"
 OUT_LINES      = ROOT / "data" / "lines.csv"
 OUT_GENERATORS = ROOT / "data" / "generators.csv"
 LOAD_SCENARIOS = ROOT / "data" / "load_scenarios.csv"
+GEN_SCENARIOS  = ROOT / "data" / "gen_scenarios.csv"
 
 
 def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -135,6 +137,50 @@ def build_demand_snapshots() -> None:
     print(f"  peak:    hour {peak_hour},  {system_total.loc[peak_hour]:.0f} MW coincident")
     print(f"  mean:    {system_total.mean():.0f} MW time-average")
     print(f"  offpeak: hour {offpeak_hour}, {system_total.loc[offpeak_hour]:.0f} MW coincident")
+
+
+def build_gen_scenarios() -> None:
+    """Compute per-bus dispatched generation for each demand scenario and
+    write data/gen_scenarios.csv.
+
+    Applies SCENARIO_GEN_FACTORS (peak / mean / offpeak) to each generator's
+    p_nom_mw, then aggregates by substation (bus name).
+    Reads data/generators.csv so it is safe to call without re-running the
+    full pipeline.
+    """
+    if not OUT_GENERATORS.exists():
+        print(f"  {OUT_GENERATORS.name} not found — skipping gen scenarios.")
+        return
+    if not OUT_BUSES.exists():
+        print(f"  {OUT_BUSES.name} not found — skipping gen scenarios.")
+        return
+
+    gens  = pd.read_csv(OUT_GENERATORS)
+    buses = pd.read_csv(OUT_BUSES)[["name"]]
+
+    scenarios = list(SCENARIO_GEN_FACTORS.keys())
+    for scen, factors in SCENARIO_GEN_FACTORS.items():
+        gens[f"_dm_{scen}"] = gens.apply(
+            lambda r, f=factors: float(r["p_nom_mw"]) * f.get(r["carrier"], 0.5),
+            axis=1,
+        )
+
+    agg = gens.groupby("substation").agg(
+        **{f"gen_mw_{s}": (f"_dm_{s}", "sum") for s in scenarios}
+    ).reset_index().rename(columns={"substation": "name"})
+
+    for col in [f"gen_mw_{s}" for s in scenarios]:
+        agg[col] = agg[col].round(2)
+
+    result = buses.merge(agg, on="name", how="left")
+    for col in [f"gen_mw_{s}" for s in scenarios]:
+        result[col] = result[col].fillna(0.0)
+
+    result.to_csv(GEN_SCENARIOS, index=False)
+    print(f"Wrote {GEN_SCENARIOS.name}: {len(result)} buses × {len(scenarios)} gen snapshots.")
+    for scen in scenarios:
+        total = result[f"gen_mw_{scen}"].sum()
+        print(f"  {scen}: {total:.0f} MW dispatched")
 
 
 def main() -> None:
@@ -376,6 +422,8 @@ if __name__ == "__main__":
     import sys
     if "--only-snapshots" in sys.argv:
         build_demand_snapshots()
+        build_gen_scenarios()
     else:
         main()
         build_demand_snapshots()
+        build_gen_scenarios()

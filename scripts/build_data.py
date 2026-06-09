@@ -50,7 +50,8 @@ ROOT = Path(__file__).resolve().parent.parent
 BUSES_CSV         = ROOT / "data" / "buses.csv"
 LINES_CSV         = ROOT / "data" / "lines.csv"
 LOAD_SCENARIOS_CSV = ROOT / "data" / "load_scenarios.csv"
-OUTPUT_DIR        = ROOT / "web" / "public" / "data"
+GEN_SCENARIOS_CSV  = ROOT / "data" / "gen_scenarios.csv"
+OUTPUT_DIR         = ROOT / "web" / "public" / "data"
 
 # Typical autotransformer parameters for the Philippine HV network.
 # (hv_kv, lv_kv) → {sn_mva, vk_percent, vkr_percent}
@@ -407,6 +408,17 @@ def main() -> None:
                     buses_df.at[i, "q_mvar"] = float(scen_df.at[row["name"], col_q])
             total = buses_df["p_mw"].sum()
             print(f"Demand '{args.scenario}': {total:.0f} MW (load_scenarios.csv)")
+
+    # Override per-bus generation dispatch from the gen scenarios CSV
+    if GEN_SCENARIOS_CSV.exists() and args.mode != "dc":
+        gen_scen_df = pd.read_csv(GEN_SCENARIOS_CSV).set_index("name")
+        col_g = f"gen_mw_{args.scenario}"
+        if col_g in gen_scen_df.columns:
+            for i, row in buses_df.iterrows():
+                if row["name"] in gen_scen_df.index:
+                    buses_df.at[i, "gen_mw"] = float(gen_scen_df.at[row["name"], col_g])
+            total_gen = buses_df["gen_mw"].sum()
+            print(f"Generation '{args.scenario}': {total_gen:.0f} MW (gen_scenarios.csv)")
     net, _ = build_network(buses_df, lines_df, use_ac=use_ac)
     print(
         f"Network: {len(net.bus)} buses (incl. {len(net.trafo)} transformer intermediates), "
