@@ -38,6 +38,7 @@ The current dataset is **not bespoke**: `data/temp/` is a Visayas slice of
 | S7 | Philstar — NGCP fully energizes P19.8B Cebu-Bohol interconnection (2024-11-27) | CBIP (Cebu–Bohol 230 kV) | https://www.philstar.com/business/2024/11/27/2403125/ngcp-fully-energizes-p198-billion-cebu-bohol-interconnection |
 | S8 | HVDC Leyte–Luzon (Wikipedia) | Ormoc 350 kV HVDC slack terminal | https://en.wikipedia.org/wiki/HVDC_Leyte%E2%80%93Luzon |
 | S9 | Global Energy Monitor — Cebu Energy power station (GCPT) | Daan Lungsod / CEDC coal coordinate (10.387158, 123.641023, "exact") | https://www.gem.wiki/Cebu_Energy_power_station |
+| S10 | PyPSA-PH v1.0 — `loads_t.csv` (Salac, U. Pisa) — hourly demand time series | Multi-scenario demand snapshots (peak/mean/offpeak): 8760 h × 192 Philippine buses; Visayas coincident peak 2307 MW (hour ~4/20 14:00), mean 1759 MW, offpeak 1197 MW (hour ~1/10 04:00); 2023-vintage | https://zenodo.org/records/15586573 |
 
 ## Inter-island interconnections — verified 2026-05-24
 
@@ -181,6 +182,42 @@ trace to PyPSA-PH unless noted).
   ratings where available (CNP 400 MW, CBIP 1,200 MW) [S6/S7].
 
 ## Changelog
+
+- **2026-06-09 (DOE Dec-2024 generation reconciliation + multi-scenario demand snapshots)**
+
+  **Generation corrections (DOE "List of Existing Power Plants for Visayas Grid as of December 2024"):**
+  Capacity and dispatch values in `data/generators.csv` and `data/buses.csv` reconciled against the
+  official DOE Dec-2024 plant list. Key corrections:
+  - Tongonan (Leyte): 120.5 → 123.0 MW installed / 102.42 → 104.55 MW dispatch [DOE Dec-2024]
+  - Leyte-A / Kananga geothermal: 490.1 → 610.2 MW installed / 416.58 → 518.67 MW dispatch [DOE]
+  - KSPC G01 & G02 (Naga coal): 103.0 → 110.5 MW each / 82.4 → 88.4 MW dispatch [DOE]
+  - TPVI (Therma Visayas diesel, 6 units): 5.5 → 7.43 MW each / 1.65 → 2.23 MW dispatch [DOE]
+  - Helios Solar (Negros): 105.0 → 132.5 MW installed / 26.25 → 33.13 MW dispatch [DOE]
+  - Nasulo / Palinpinon 2 (Negros): 47.5 → 49.4 MW installed / 40.38 → 41.99 MW dispatch [DOE]
+  - New plants added: Bacolod Biomass 40 MW; Kabankalan BESS ×2 (22.5 + 12.2 MW);
+    Toledo BESS 23.7 MW; Ubay BESS 23.3 MW; Ormoc BESS 47.5 MW [DOE Dec-2024]
+
+  **Multi-scenario demand snapshots [S10]:**
+  Replaced per-feeder proxy demand with real PyPSA-PH hourly data (`data/temp/loads_t.csv`
+  from Zenodo/S10). `scripts/process_temp.py` gains `build_demand_snapshots()` which finds the
+  coincident-peak, annual-mean, and coincident-minimum hours from the 8760-h time series and writes
+  `data/load_scenarios.csv` (54 buses × 3 snapshots). Scenario outputs built into
+  `web/public/data/{mean,offpeak}/` subdirectories alongside the existing peak root.
+
+  **Scenario-specific generation dispatch [S10]:**
+  `scripts/constants.py` gains `SCENARIO_GEN_FACTORS` — per-carrier capacity factors for
+  peak/mean/offpeak (solar=0 at offpeak 04:00, diesel minimal, geothermal 0.85 unchanged).
+  `scripts/process_temp.py` gains `build_gen_scenarios()` → `data/gen_scenarios.csv`.
+  `scripts/build_data.py` applies both demand and gen overrides per scenario. Resulting
+  HVDC balance: peak −128 MW, mean −355 MW, offpeak −523 MW (offpeak excess is physically
+  correct — geothermal + coal baseload exceeds 1197 MW offpeak demand in generation-rich Visayas).
+
+  **UI — scenario label in StatsPanel:** `web/src/components/StatsPanel.jsx` footer now
+  shows the active scenario from `manifest.demand_scenario`:
+  `"AC flow · Peak demand · Jun 2025"`.
+
+  Commits: `502ea71` (generation corrections), `b392956` (demand snapshots),
+  `3e89345` (scenario dispatch + UI label).
 
 - **2026-06-08 (Tapal resolution)** — Resolved Tapal (bus #41) without the NGCP TDP diagram.
   Research confirmed: "Tapal" = NPC Power Barge 4 (TPLPB4, 29 MW diesel, commissioned 2005)
