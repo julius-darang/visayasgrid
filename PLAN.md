@@ -152,7 +152,7 @@ Line loading:
 
 Submarine cables: dashed stroke (`dashArray: "6 4"`), regardless of loading color.
 
-## Phases (~2 weeks, solo)
+## Completed Phases (0–6)
 
 ### Phase 0 — Cleanup & init (Day 1)
 - `mkdir archive && mv power-grid-viz-plan-v2.md archive/`
@@ -205,7 +205,7 @@ Submarine cables: dashed stroke (`dashArray: "6 4"`), regardless of loading colo
 ### Phase 5 — Buffer (Days 13–14)
 - Polish, bug fixes, write `README.md` with screenshots
 
-## Phase 6 — Data: synthetic-derived → source-verified (CURRENT FOCUS, week of May 25 2026)
+### Phase 6 — Data: synthetic-derived → source-verified (DONE, 2026-06-14)
 
 The prototype shipped (Phase 4 live on Vercel, 2026-05-24). The remaining weakness is **data provenance**, so this is the active focus.
 
@@ -224,7 +224,140 @@ The prototype shipped (Phase 4 live on Vercel, 2026-05-24). The remaining weakne
 
 **Deliverable (this week's one shippable goal):** updated `data/buses.csv` + `data/lines.csv` reconciled against the above, plus a new **`data/SOURCES.md`** recording provenance per field (`sourced` | `pypsa-ph` | `standard-table estimate`) with a real citation for each sourced value. Then re-run `process_temp.py && build_data.py`, confirm the topology gate passes, and redeploy.
 
-## Critical Files To Create
+**Status: DONE 2026-06-14.** 51/52 buses sourced; 1 deferred (Bantap, bus #43 — coord plausible but facility unconfirmed without NGCP one-line diagrams). SOURCES.md changelog documents all work. AC load flow live on Vercel with manifest, multi-scenario demand snapshots, and DOE Dec-2024 generation reconciliation.
+
+---
+
+## Upcoming Phases (7–9) — planned Jun 2026
+
+The dataset is source-verified at the main transmission level (138/230 kV backbone + submarine
+interconnections + major generators). The remaining gap is **coverage completeness**: the 69 kV
+sub-transmission network has many load-end substations not yet included, and not all DOE-listed
+generators are wired into the model. Phases 7–9 fill those gaps systematically, returning to the
+same Phase 6 methodology (source-first, never fabricate, document provenance).
+
+**Sources for all three phases (cite, never fabricate a URL):**
+- NGCP TDP 2023–2040 Consultation Report: https://ngcp.ph/Attachment-Uploads/TDP%202023-2040%20Consultation%20Report-2023-06-15-07-54-06.pdf
+- NGCP TDP 2022–2040 Report: https://ngcp.ph/Attachment-Uploads/Transmission%20Development%20Plan%202022-2040%20Report-2023-01-04-10-49-08.pdf
+- DOE "List of Existing Power Plants for Visayas Grid as of December 2024" (already used in Phase 6)
+- OSM / OpenInfraMap: https://wiki.openstreetmap.org/wiki/Power_networks/Philippines · https://openinframap.org/
+- ERC case documents (plant registration, switchyard approvals)
+- Local knowledge (user's own familiarity with Visayas substations)
+
+### Phase 7 — 69 kV sub-transmission layer (week 1)
+
+**Goal:** Complete the 69 kV network. Currently only 5 69 kV lines exist (Sta. Barbara↔Bantap,
+Bantap↔Buenavista, Ubay↔Tapal, Calatrava↔San Carlos, plus the isolated Bantap 69 kV bus).
+Many real-world 69 kV load-end substations and their connecting lines are missing from PyPSA-PH's
+Visayas slice.
+
+**Approach — systematic sweep:**
+1. **Audit** — Map all known 69 kV substations per island from NGCP TDP one-line diagrams, OSM
+   power substation layer, and OpenInfraMap
+2. **Source** — For each missing substation: name, coordinates (OSM/OpenInfraMap), connecting
+   higher-voltage bus, line length (haversine), load estimate (MW from feeder count or proxy)
+3. **Add buses** — Insert new rows in `data/temp/buses.csv` with NGCP-style code; `process_temp.py`
+   picks them up automatically
+4. **Add lines** — Add corresponding 69 kV lines in `data/temp/` or via `data/lines.csv` overrides
+5. **Impedances** — Use standard 69 kV ACSR conductor-table values (estimate, flagged in SOURCES.md)
+6. **Load estimates** — Assign initial P/Q for new distribution substations (default 5–15 MW per
+   feeder, documented in SOURCES.md)
+7. **Verify** — Re-run `process_temp.py && build_data.py`, confirm topology gate passes, AC load
+   flow converges, HVDC balance remains realistic
+8. **Provenance** — Update `data/SOURCES.md` with all new entries
+
+**Existing 69 kV buses that stay:** Bantap (deferred re-search from Phase 6).
+
+**Deliverable:** Expanded dataset with all identifiable 69 kV sub-transmission substations and
+their connecting lines. Pipeline verified, deployed, live on Vercel.
+
+---
+
+### Phase 8 — Missing generators (week 2)
+
+**Goal:** Match DOE Dec-2024 plant list completely. Current `data/generators.csv` has 115 units;
+the DOE list for Visayas has more. Every plant on the DOE list should either be wired into the
+model or explicitly documented as excluded (with reason).
+
+**Approach:**
+1. **Cross-reference** — Systematic comparison of DOE Dec-2024 Visayas plant list vs current
+   `generators.csv`. Identify missing plants by island, fuel type, and capacity
+2. **Connection bus** — For each missing plant: determine which substation bus it connects to
+   (NGCP TDP one-line, ERC filings, OSM plant footprints, local knowledge)
+3. **Add generators** — Insert new rows in `data/temp/generators.csv` with type, capacity,
+   dispatch (default to capacity factor from `constants.py` per carrier)
+4. **New generator buses** — If a plant connects at a location that is not yet a bus in the
+   model, add a new bus (substation or generator type) following Phase 7 methodology
+5. **New 69 kV lines** — If a generator connects via a dedicated 69 kV spur line not yet in
+   the dataset, add it (counts toward Phase 7 completeness as well)
+6. **PV bus assignment** — Large generators (≥100 MW dispatched) become PV buses per existing
+   `build_data.py` logic; smaller ones remain PQ injections
+7. **Verify** — Re-run pipeline, confirm load flow convergence, check:
+   - Total dispatched generation remains plausible (~2,200 MW peak)
+   - HVDC interchange stays within ±200 MW physical range
+   - No voltage violations beyond existing ±5% outliers
+8. **Provenance** — Update `data/SOURCES.md` with generator source citations
+
+**Edge cases:**
+- Decommissioned plants on DOE list: verify status, exclude with note
+- Plants under construction: include if committed with `status=construction`
+- Co-located plants at same bus: aggregate or model as separate units (consistent with
+  existing generator.csv schema of one row per unit)
+
+**Deliverable:** Full generator coverage matching DOE Dec-2024 Visayas list. Pipeline verified,
+deployed, live on Vercel.
+
+---
+
+### Phase 9 — Network reconciliation & validation (weeks 3–4)
+
+**Goal:** Close the loop. After adding 69 kV substations (Phase 7) and generators (Phase 8),
+the network has grown beyond the original 54-bus, 60-line dataset. Phase 9 is a comprehensive
+audit to ensure everything is consistent, source-verified, and production-ready.
+
+**Approach:**
+1. **Topology audit**
+   - No orphan buses (every bus connected to at least one line)
+   - No duplicate lines (verify parallel circuits are correctly modeled)
+   - All cross-voltage connections have transformer intermediates (verify
+     `build_data.py` inserted them correctly)
+   - Verify line connectivity against NGCP TDP and OSM route maps
+2. **Impedance review**
+   - All new 69 kV lines use standard conductor-table values (r=0.15–0.22 Ω/km,
+     x=0.40–0.45 Ω/km per ACSR typical)
+   - Flag any anomalous inherited values (following fix #4 methodology from Phase 6)
+3. **Coordinate source sweep**
+   - Apply Phase 6 methodology to all new buses: verify against OSM/OpenInfraMap
+   - Tag each as `sourced` or `pypsa-ph (estimate)` in SOURCES.md
+   - Resolve Bantap if NGCP TDP one-line data becomes available
+4. **Generator connectivity audit**
+   - Verify each generator's `bus` field references a real bus in `buses.csv`
+   - Verify total dispatched generation by island matches DOE aggregates within ±10%
+   - Flag any generator with implausibly high/low capacity factor
+5. **Full pipeline** — `process_temp.py && build_data.py` in both AC and DC modes
+   - Topology gate passes (zero unsupplied buses)
+   - AC Newton-Raphson converges
+   - DC fallback also converges (for comparison dataset)
+   - Manifest correctly reports element counts
+6. **SOURCES.md** — Final provenance pass for all elements added in Phases 7–8
+7. **Deploy** — Commit data + GeoJSON, push, verify production URL renders correctly on
+   desktop and mobile
+
+**Verification gate (must all pass):**
+| Check | Criterion |
+|-------|-----------|
+| Topology | `unsupplied_buses(net)` is empty |
+| AC load flow | `runpp` converges, prints "AC load flow converged" |
+| DC fallback | `rundcpp` converges (for CI comparison dataset) |
+| Manifest | element counts match CSV row counts |
+| Vercel | production URL loads, renders all elements |
+| SOURCES.md | all new entries have source tag + citation |
+
+**Deliverable:** Fully reconciled, source-verified dataset covering the complete Visayas
+transmission network (all voltage layers) with full generator coverage. Phase 6 methodology
+applied end-to-end. Production-ready.
+
+## Critical Files Created
 
 | Path | Purpose |
 |---|---|
