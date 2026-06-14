@@ -1,0 +1,72 @@
+# Weekly Log
+
+The accountability record. One entry per week. The point isn't to look productive — it's to make "did it ship?" impossible to dodge. Keep old entries; just append new ones at the top.
+
+Block key: `D` = did the block, `-` = missed, `.` = not a planned night.
+
+---
+
+## Week 3 — Jun 08 to Jun 14, 2026
+
+- **Focus project:** visayasgrid (Electrical Engineering)
+- **The one shippable goal:** Update `docs/README.md` and `docs/architecture.md` to reflect the project's current state — AC load flow with DC fallback, dual build modes (`--mode ac / --mode dc`), GitHub Actions CI/CD (auto-built DC dataset), and the expanded frontend (DataTable, AboutModal, grid.js, viewState.js, per-unit voltage colours).
+- **Shipped?** (Y) — 2026-06-14. Both docs updated and consistent. `README.md` reorganized with DC pipeline step, AC/DC output distinction, and live site URL. `architecture.md` rewritten end-to-end: corrected "DC-only" to "AC with DC fallback", added dual-mode pipeline diagram, CI/CD section with GH Actions, comprehensive component listing, colour encoding table for per-unit voltage, and a References section with 9 cited sources (NGCP TDP, IEC/IEEE standards, PGC, DOE PDP).
+- **Blocks:** Mon `.` Tue `.` Wed `.` Thu `.` Fri `.` Sat `.` Sun `D`
+- **Notes:** Documentation catch-up week. The project had accumulated significant divergence between what the docs said (DC-only) and what the code actually does (AC load flow, dual modes, CI/CD, richer frontend). This entry closes that gap. No code changes — pure documentation. Rolled items from Week 2 (remaining 20 bus coordinates, Kananga relocation) still deferred to Week 5 per original plan.
+- **Parking lot (ideas I resisted this week):**
+
+---
+
+## Week 2 — Jun 01 to Jun 07, 2026
+
+- **Focus project:** visayasgrid (Electrical Engineering)
+- **The one shippable goal:** [draft — confirm Mon AM] Ship the source-verified Visayas dataset LIVE on the deployed Vercel map. Concretely: finish the NGCP TDP + OSM/OpenInfraMap reconciliation started in Week 1 (buses + lines + the 4 submarine interconnections + Cebu–Negros–Panay 230 kV backbone), commit `data/buses.csv`, `data/lines.csv`, and `data/SOURCES.md` with per-field provenance, and redeploy so the rendered map shows verified data — not the PyPSA-PH temp set. "Shipped" = production URL renders the verified buses/lines AND `SOURCES.md` distinguishes sourced vs. standard-table-estimate vs. PyPSA-PH-derived for every field.
+- **Shipped?** (Y) — 2026-06-03. Both criteria met & verified live: production
+  https://visayasgrid.vercel.app renders the verified dataset (54 buses / 60 lines /
+  7 submarine, CBIP line present, fix-#5 coords live), and `SOURCES.md` tags provenance
+  (`sourced` / `pypsa-ph` / `estimate`) for every field. Residual refinement (20 coords
+  still `pypsa-ph`, Kananga) is honestly tagged, not blocking — rolled to Week 5.
+- **Blocks:** Mon `.` Tue `.` Wed `.` Thu `.` Fri `.` Sat `.` Sun `.`  _(left for Julius — evidence: Tue 2026-06-02 22:18 commit + a Wed 2026-06-03 session both ran)_
+- **Notes:** Drafted by automated Sunday planning, 2026-05-31. Rotation table default for Jun 01–07 is Electrical Engineering (powergrid / visayasgrid). Choosing visayasgrid over powergrid because (a) Week 1's data work likely has loose ends to close before context decays and (b) visayasgrid already has a live Vercel target, so "shippable" is unambiguous. If Week 1's reconciliation actually got fully done, this week reduces to deploy + verify on production and Julius should narrow the goal Monday morning. Engineering remains the protected priority — no splits into TUTORIALS / Conquer Self / website this week. WIP=1. Week 1's own Sunday review still needs to be filled in by Julius (Shipped Y/N + block marks).
+- **Mid-week status (2026-06-03, from git/data — not yet a self-report):** The core deliverable is largely DONE in the data. `data/buses.csv` (54 buses), `data/lines.csv` (60 lines), and `data/SOURCES.md` (full per-field provenance) are committed. The 4+ submarine interconnections (actually 7, incl. the new Cebu–Bohol CBIP) and the Cebu–Negros–Panay 230 kV backbone are all represented. Week 1's source-verified fixes #2 (CBIP) and #4 (impedances) were committed 2026-05-24; commit e3a65ad (Tue 2026-06-02 22:18) carried the coordinate/topology fixes through to the rendered geojson. **Open before "Shipped":** (a) confirm the production Vercel URL actually re-renders the verified data — the literal shipped criterion, still unverified; (b) bus-coordinate verification is 32/52 sourced (20 rural/load nodes left); (c) the dual-voltage schema decision (fix #6a/6b) and Kananga relocation are still deferred. NOTE: the Tue 2026-06-02 22:18 commit is hard evidence a block ran that night — consider marking Tue `D`. Block marks left blank for Julius to set honestly.
+- **Session close (2026-06-03):** Supersedes the mid-week status above. Ship gate
+  CLOSED — production URL located (`https://visayasgrid.vercel.app`, recorded in v3 plan +
+  SOURCES.md) and verified to serve the verified dataset. Applied fix #6b (Lapu-Lapu
+  230→138 kV, OSM-confirmed) and resolved #6a by policy (document the one-bus-per-location
+  simplification — no bus/transformer split). Regenerated AC+DC datasets through
+  `process_temp.py` + `build_data.py` (topology gate passes, load flow converged), which
+  also confirmed the hand-mirrored temp data is reproducible (drift closed). Committed
+  (`7851636`), rebased onto origin/main, pushed → Vercel redeployed; live render confirms
+  Lapu-Lapu at 138 kV. **Rolled to Week 5 (Jun 22–28):** finish the remaining 20 bus
+  coordinates (Negros load / Panay-Guimaras / Samar-Leyte-Bohol) + Kananga relocation
+  against OSM/OpenInfraMap — careful per-substation verification, no fabrication.
+- **Parking lot (ideas I resisted this week):**
+  - Splitting dual-voltage substations into bus+transformer (the rejected #6a alternative) —
+    revisit only if model fidelity ever demands it.
+
+---
+
+## Week 1 — May 25 to May 31, 2026
+
+- **Focus project:** visayasgrid (Electrical Engineering)
+- **The one shippable goal:** Source-verified Visayas transmission dataset. Reconcile every bus + line in `data/buses.csv` / `data/lines.csv` against PRIMARY sources — NGCP TDP 2023–2040 (substation list, voltage levels, Cebu–Negros–Panay 230 kV backbone, the 4 submarine interconnections) and OSM/OpenInfraMap (coordinates, routing) — replacing the PyPSA-PH-derived temp set. Deliverable: updated CSVs + a new `data/SOURCES.md` logging provenance per field (sourced vs. standard-table estimate vs. PyPSA-PH), each with a real citation. No fabricated values or URLs.
+- **Shipped?** ( )
+- **Blocks:** Mon `.` Tue `.` Wed `.` Thu `.` Fri `.` Sat `.` Sun `.`
+- **Notes:** Vercel deploy SHIPPED 2026-05-24 (the prior goal — done early; add the production URL to the v3 plan). Week now pivots to DATA, still inside the Electrical Engineering anchor. Key finding: the current "synthetic" temp set is actually a Visayas slice of PyPSA-PH v1.0 (Salac, U. Pisa — 192 buses / 236 lines / 425 gens, NGCP-coded, demand benchmarked 2023), so "gather real data" = go upstream to primary NGCP/OSM sources and validate. Honest scope: substations, voltages, coordinates, topology, submarine links, and published ratings are sourceable; per-line r/x impedances stay standard ACSR/XLPE conductor-table estimates (NGCP doesn't publish them) — flag which is which in SOURCES.md. Tonight's block (7:30–9:30 PM): pull the NGCP TDP 2023–2040 Visayas chapter + OpenInfraMap, start `data/SOURCES.md`, reconcile the ~52-bus list first. Sources: NGCP TDP https://ngcp.ph/Attachment-Uploads/TDP%202023-2040%20Consultation%20Report-2023-06-15-07-54-06.pdf · PyPSA-PH https://github.com/arizeosalac/PyPSA-PH · OSM PH power https://wiki.openstreetmap.org/wiki/Power_networks/Philippines
+- **Sunday review (2026-05-24):** Turn-of-season review — Week 1 (May 25–31) begins tomorrow, so the DATA goal hasn't started yet (all blocks still `.`, nothing to mark shipped/missed). What DID ship this past week: the visayasgrid Vercel deploy (the prior goal) — done early today. ✔ Parking lot empty, nothing to triage. Rotation confirmed: Week 1 = visayasgrid, Electrical Engineering anchor, WIP=1. Roll into next week: first block (Mon 7:30–9:30 PM) = pull NGCP TDP 2023–2040 Visayas chapter + OpenInfraMap, start `data/SOURCES.md`, reconcile the ~52-bus list first.
+- **Parking lot (ideas I resisted this week):**
+
+---
+
+## Template — copy this for each new week
+
+```
+## Week N — <start date> to <end date>, <year>
+
+- **Focus project:** <project> (<identity>)
+- **The one shippable goal:** <single concrete deliverable>
+- **Shipped?** (Y / N)
+- **Blocks:** Mon `.` Tue `.` Wed `.` Thu `.` Fri `.` Sat `.` Sun `.`
+- **Notes:**
+- **Parking lot (ideas I resisted this week):**
+```

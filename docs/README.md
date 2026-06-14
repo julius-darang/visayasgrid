@@ -17,23 +17,26 @@ Each document covers one improvement: **what** changed, **why** it was needed, a
 | Doc | Summary |
 |---|---|
 | [impl/V1-visualization-improvements.md](impl/V1-visualization-improvements.md) | Generator circles vs substation squares, line color toggle, hover tooltips, performance |
-| [impl/P8-constants-module.md](impl/P8-constants-module.md) | Extracted all modeling constants to `scripts/constants.py` with source citations |
-| [impl/P2-submarine-cables.md](impl/P2-submarine-cables.md) | Replaced estimated submarine cable impedances with IEC 60840 XLPE 630 mm² values |
-| [impl/P4-hvdc-interchange.md](impl/P4-hvdc-interchange.md) | Surfaced the Leyte–Luzon HVDC interchange MW in the UI |
-| [impl/P6-provenance-manifest.md](impl/P6-provenance-manifest.md) | Added `manifest.json` build metadata and "DC flow · date" footer |
 | [impl/P1-ac-loadflow-implemented.md](impl/P1-ac-loadflow-implemented.md) | AC Newton-Raphson load flow — transformer insertion, PV buses, voltage profile |
 | [impl/P1-ac-loadflow-deferred.md](impl/P1-ac-loadflow-deferred.md) | Original deferral analysis (mixed-voltage network; transformer models needed) |
+| [impl/P2-submarine-cables.md](impl/P2-submarine-cables.md) | Replaced estimated submarine cable impedances with IEC 60840 XLPE 630 mm² values |
+| [impl/P4-hvdc-interchange.md](impl/P4-hvdc-interchange.md) | Surfaced the Leyte–Luzon HVDC interchange MW in the UI |
+| [impl/P6-provenance-manifest.md](impl/P6-provenance-manifest.md) | Added `manifest.json` build metadata and flow-mode footer |
+| [impl/P8-constants-module.md](impl/P8-constants-module.md) | Extracted all modeling constants to `scripts/constants.py` with source citations |
 
 ---
 
 ## Pipeline quick reference
 
 ```sh
-# Rebuild clean CSVs from raw NGCP source data
+# Step 1 — rebuild clean CSVs from raw NGCP source data
 python scripts/process_temp.py
 
-# Run DC load flow → regenerate GeoJSON + manifest.json
+# Step 2a — run AC load flow → regenerate GeoJSON + manifest.json
 python scripts/build_data.py
+
+# Step 2b — run DC linear load flow → web/public/data/dc/
+python scripts/build_data.py --mode dc
 
 # Or both in sequence:
 python scripts/process_temp.py && python scripts/build_data.py
@@ -42,7 +45,14 @@ python scripts/process_temp.py && python scripts/build_data.py
 cd web && npm run dev
 ```
 
-Outputs committed to the repo (Vercel reads them as static assets):
-- `web/public/data/buses.geojson`
-- `web/public/data/lines.geojson`
-- `web/public/data/manifest.json`
+Outputs committed to the repo:
+- `web/public/data/buses.geojson` (AC)
+- `web/public/data/lines.geojson` (AC)
+- `web/public/data/manifest.json` (AC)
+- `web/public/data/dc/` — DC scenario (auto-built by GitHub Actions)
+
+---
+
+## Live site
+
+https://visayasgrid.vercel.app
