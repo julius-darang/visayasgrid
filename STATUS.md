@@ -6,7 +6,7 @@ status: active
 stack: React+Vite · Leaflet · static JSON · pandas build
 entry: web/ (npm run dev) · deploy Vercel
 has_repo: true
-updated: 2026-07-31
+updated: 2026-08-14
 ---
 
 # visayasgrid
@@ -22,7 +22,7 @@ deferred re-search. Phase 8 (missing generators) and Phase 9 (network reconcilia
 follow.
 
 ## Conventions
-- `.pi/skills/grid-data-provenance/` — per-field `SOURCES.md` tags (sourced/pypsa-ph/estimate); source-first, never fabricate.
+- `archive/pi-skills/grid-data-provenance/` — per-field `SOURCES.md` tags (sourced/pypsa-ph/estimate); source-first, never fabricate.
 
 ## Pointers
 - PLAN: `PLAN.md` (Phases 7–9 scoped). Data: `data/{buses,lines,generators,SOURCES}.csv`.
