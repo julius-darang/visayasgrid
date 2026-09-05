@@ -6,7 +6,7 @@ import Legend from "./components/Legend.jsx";
 import StatsPanel from "./components/StatsPanel.jsx";
 import DataTable from "./components/DataTable.jsx";
 import AboutModal from "./components/AboutModal.jsx";
-import { useGridData, filterFeatures } from "./hooks/useGridData.js";
+import { useGridData, filterFeatures, filterLines } from "./hooks/useGridData.js";
 import { useTheme } from "./hooks/useTheme.js";
 import { usePersistentState } from "./hooks/usePersistentState.js";
 import { ISLANDS, VOLTAGE_LEVELS, MAP } from "./lib/styles.js";
@@ -119,8 +119,8 @@ export default function App() {
     [buses, filters],
   );
   const visibleLines = useMemo(
-    () => filterFeatures(lines, filters),
-    [lines, filters],
+    () => filterLines(lines, buses, filters),
+    [lines, buses, filters],
   );
 
   // Keep the URL hash in sync with the shareable view state (history

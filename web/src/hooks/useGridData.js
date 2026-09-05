@@ -74,3 +74,23 @@ export function filterFeatures(fc, { islands, voltages }) {
   });
   return { type: "FeatureCollection", features: filtered };
 }
+
+export function filterLines(lines, buses, { islands, voltages }) {
+  const islandByBus = new Map(
+    (buses?.features ?? []).map((feature) => [
+      feature.properties.name,
+      feature.properties.island,
+    ]),
+  );
+  const islandSet = islands ? new Set(islands) : null;
+  const voltageFiltered = filterFeatures(lines, { voltages });
+  const features = voltageFiltered.features.filter((feature) => {
+    if (!islandSet) return true;
+    const { from_bus: fromBus, to_bus: toBus } = feature.properties;
+    const fromIsland = islandByBus.get(fromBus);
+    const toIsland = islandByBus.get(toBus);
+    if (!fromIsland && !toIsland) return true;
+    return islandSet.has(fromIsland) || islandSet.has(toIsland);
+  });
+  return { type: "FeatureCollection", features };
+}
