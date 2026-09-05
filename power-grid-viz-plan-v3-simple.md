@@ -69,7 +69,7 @@ Explicitly **not** using: Supabase, Render, FastAPI, PostGIS, Docker, OSMnx, Geo
 
 ## Folder Decision
 
-**Reuse `/Users/julius/polymath/Projects/visayasgrid`.** Archive the v2 plan into a subfolder rather than delete it — useful reference if scope ever expands.
+**Reuse `/Users/julius/polymath/projects/visayasgrid`.** Archive the v2 plan into a subfolder rather than delete it — useful reference if scope ever expands.
 
 ## Project Structure
 
