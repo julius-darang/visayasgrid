@@ -11,13 +11,30 @@ function baseFor(scenario) {
     : `/data/${scenario}`;
 }
 
+export async function fetchGridData(base, fetcher = fetch) {
+  const files = ["buses.geojson", "lines.geojson", "manifest.json"];
+  const responses = await Promise.all(
+    files.map(async (file) => {
+      const response = await fetcher(`${base}/${file}`);
+      if (!response.ok) {
+        throw new Error(`Couldn't load ${file}.`);
+      }
+      return response.json();
+    }),
+  );
+  return responses;
+}
+
 export function useGridData(scenario = "peak", onLoad) {
   const [buses, setBuses] = useState(EMPTY);
   const [lines, setLines] = useState(EMPTY);
   const [manifest, setManifest] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loadedKey, setLoadedKey] = useState(null);
+  const [failure, setFailure] = useState(null);
   const [nonce, setNonce] = useState(0);
+  const requestKey = `${scenario}:${nonce}`;
+  const error = failure?.key === requestKey ? failure.error : null;
+  const loading = loadedKey !== requestKey && !error;
 
   const onLoadRef = useRef(onLoad);
   useEffect(() => {
@@ -25,36 +42,30 @@ export function useGridData(scenario = "peak", onLoad) {
   }, [onLoad]);
 
   const reload = useCallback(() => {
-    setError(null);
-    setLoading(true);
     setNonce((n) => n + 1);
   }, []);
 
   useEffect(() => {
     let cancelled = false;
     const base = baseFor(scenario);
-    Promise.all([
-      fetch(`${base}/buses.geojson`).then((r) => (r.ok ? r.json() : EMPTY)),
-      fetch(`${base}/lines.geojson`).then((r) => (r.ok ? r.json() : EMPTY)),
-      fetch(`${base}/manifest.json`).then((r) => (r.ok ? r.json() : null)),
-    ])
+    fetchGridData(base)
       .then(([b, l, m]) => {
         if (cancelled) return;
         setBuses(b);
         setLines(l);
         setManifest(m);
-        setLoading(false);
+        setLoadedKey(requestKey);
+        setFailure(null);
         onLoadRef.current?.(b, l);
       })
       .catch((e) => {
         if (cancelled) return;
-        setError(e);
-        setLoading(false);
+        setFailure({ key: requestKey, error: e });
       });
     return () => {
       cancelled = true;
     };
-  }, [nonce, scenario]);
+  }, [requestKey, scenario]);
 
   return { buses, lines, manifest, loading, error, reload };
 }
