@@ -38,7 +38,7 @@ export default function App() {
   const [selected, setSelected] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [tableOpen, setTableOpen] = useState(false);
-  const [scenario, setScenario] = useState("peak");
+  const [scenario, setScenario] = useState(initial.scenario);
   const [availableOptional, setAvailableOptional] = useState(new Set());
   const [colorMode, setColorMode] = usePersistentState(
     "vg-colormode",
@@ -129,6 +129,7 @@ export default function App() {
     const qs = encodeViewState({
       islands: selectedIslands,
       voltages: selectedVoltages,
+      scenario,
       selected,
     });
     window.history.replaceState(
@@ -136,7 +137,7 @@ export default function App() {
       "",
       qs ? `#${qs}` : window.location.pathname + window.location.search,
     );
-  }, [selectedIslands, selectedVoltages, selected]);
+  }, [selectedIslands, selectedVoltages, scenario, selected]);
 
   const showHint = !hintDismissed && !loading && !error && !selected;
 

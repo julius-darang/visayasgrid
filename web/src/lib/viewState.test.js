@@ -20,6 +20,15 @@ describe("parseViewState", () => {
     expect(s.islands).toEqual(ISLANDS);
     expect(s.voltages).toEqual(VOLTAGE_LEVELS);
   });
+  it("preserves explicit empty filters and a valid scenario", () => {
+    const s = parseViewState("#islands=&kv=&scenario=offpeak");
+    expect(s.islands).toEqual([]);
+    expect(s.voltages).toEqual([]);
+    expect(s.scenario).toBe("offpeak");
+  });
+  it("defaults an unknown scenario to peak", () => {
+    expect(parseViewState("#scenario=unknown").scenario).toBe("peak");
+  });
 });
 
 describe("encodeViewState", () => {
@@ -53,6 +62,16 @@ describe("encodeViewState", () => {
       },
     });
     expect(qs).toBe("sel=line%3AA%7CB");
+  });
+  it("encodes an alternate scenario and explicit empty filters", () => {
+    expect(
+      encodeViewState({
+        islands: [],
+        voltages: [],
+        scenario: "dc",
+        selected: null,
+      }),
+    ).toBe("islands=&kv=&scenario=dc");
   });
 });
 
