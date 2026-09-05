@@ -16,6 +16,11 @@ import {
   parseSel,
 } from "./lib/viewState.js";
 import { featureCenter } from "./lib/grid.js";
+import {
+  DEFAULT_BUS_COLOR_MODE,
+  DEFAULT_LINE_COLOR_MODE,
+  DEFAULT_DISPLAY,
+} from "./lib/preferences.js";
 
 const HINT_KEY = "vg-hint-seen";
 const initial = parseViewState(
@@ -42,17 +47,16 @@ export default function App() {
   const [availableOptional, setAvailableOptional] = useState(new Set());
   const [colorMode, setColorMode] = usePersistentState(
     "vg-colormode",
-    "nominal",
+    DEFAULT_BUS_COLOR_MODE,
   );
   const [lineColorMode, setLineColorMode] = usePersistentState(
     "vg-line-colormode",
-    "loading",
+    DEFAULT_LINE_COLOR_MODE,
   );
-  const [display, setDisplay] = usePersistentState("vg-display", {
-    labels: false,
-    arrows: true,
-    rings: false,
-  });
+  const [display, setDisplay] = usePersistentState(
+    "vg-display",
+    DEFAULT_DISPLAY,
+  );
   const [focusTarget, setFocusTarget] = useState(null);
   const [showAbout, setShowAbout] = useState(false);
   const [hintDismissed, setHintDismissed] = useState(

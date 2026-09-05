@@ -89,7 +89,7 @@ export default function StatsPanel({ buses, lines, manifest, onFocus }) {
           {/* Headline only — Demand + Net. Secondary figures live under
               "More detail" so the panel stays scannable at a glance.
               Net uses emerald/rose (balance scale), deliberately distinct
-              from the line-loading colour scale. */}
+              from the line-loading color scale. */}
           <div className="grid grid-cols-2 gap-x-3 gap-y-1">
             <span className="text-slate-500 dark:text-slate-400">Demand</span>
             <span className="text-right font-semibold tabular-nums">{totalLoad.toFixed(0)} MW</span>

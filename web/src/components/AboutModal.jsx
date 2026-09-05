@@ -266,11 +266,11 @@ export default function AboutModal({ onClose }) {
             </p>
             <ul className="space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
               {[
-                { label: "Bus colour",     detail: "Indicates nominal voltage class — purple 350 kV, red 230 kV, amber 138 kV, teal 69 kV. The Ormoc bus also has a dashed violet outer ring marking it as the HVDC interchange point." },
-                { label: "Generator ring", detail: "Coloured outer ring around a bus shows its primary generation fuel type. Ring size grows logarithmically with installed capacity." },
-                { label: "Line colour",    detail: "Green = < 50% loaded, amber = 50–80%, red = 80–100%, dark red = overloaded (> 100%). Dashed lines are submarine cables." },
+                { label: "Bus color",     detail: "Indicates nominal voltage class — purple 350 kV, red 230 kV, amber 138 kV, teal 69 kV. The Ormoc bus also has a dashed violet outer ring marking it as the HVDC interchange point." },
+                { label: "Generator ring", detail: "Colored outer ring around a bus shows its primary generation fuel type. Ring size grows logarithmically with installed capacity." },
+                { label: "Line color",    detail: "Defaults to nominal voltage: purple 350 kV, red 230 kV, amber 138 kV, teal 69 kV. Switch to % Loading for green < 50%, amber 50–80%, red 80–100%, and dark red > 100%. Dashed lines are submarine cables." },
                 { label: "Flow arrows",    detail: "Triangular arrow at the midpoint of a line carrying ≥ 30 MW shows the direction of active power flow (from the sending end to the receiving end)." },
-                { label: "Voltage (pu) scale", detail: "Bus dot fill colour in the legend's fourth column. Green = nominal (0.97–1.03 pu), amber = caution (0.95–0.97 or 1.03–1.05 pu), red = violation (outside ±5% band)." },
+                { label: "Voltage (pu) scale", detail: "Bus dot fill color in the legend's fourth column. Green = nominal (0.97–1.03 pu), amber = caution (0.95–0.97 or 1.03–1.05 pu), red = violation (outside ±5% band)." },
               ].map(({ label, detail }) => (
                 <li key={label} className="flex gap-2 leading-relaxed">
                   <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400 dark:bg-slate-600" />
