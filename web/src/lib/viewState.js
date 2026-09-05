@@ -1,5 +1,7 @@
 import { ISLANDS, VOLTAGE_LEVELS } from "./styles.js";
 
+const SCENARIOS = new Set(["peak", "mean", "offpeak", "dc"]);
+
 // Pure encode/decode for the shareable view state carried in the URL
 // hash. Kept separate from React so it can be unit-tested.
 
@@ -8,14 +10,18 @@ export function parseViewState(hash) {
 
   let islands = ISLANDS;
   const i = p.get("islands");
-  if (i) {
+  if (p.has("islands") && i === "") {
+    islands = [];
+  } else if (i) {
     const picked = ISLANDS.filter((x) => i.split(",").includes(x));
     if (picked.length) islands = picked;
   }
 
   let voltages = VOLTAGE_LEVELS;
   const kv = p.get("kv");
-  if (kv) {
+  if (p.has("kv") && kv === "") {
+    voltages = [];
+  } else if (kv) {
     const picked = kv
       .split(",")
       .map(Number)
@@ -23,10 +29,16 @@ export function parseViewState(hash) {
     if (picked.length) voltages = picked;
   }
 
-  return { islands, voltages, sel: p.get("sel") };
+  const scenario = p.get("scenario");
+  return {
+    islands,
+    voltages,
+    scenario: SCENARIOS.has(scenario) ? scenario : "peak",
+    sel: p.get("sel"),
+  };
 }
 
-export function encodeViewState({ islands, voltages, selected }) {
+export function encodeViewState({ islands, voltages, scenario = "peak", selected }) {
   const p = new URLSearchParams();
   if (islands && islands.length !== ISLANDS.length) {
     p.set("islands", islands.join(","));
@@ -34,6 +46,7 @@ export function encodeViewState({ islands, voltages, selected }) {
   if (voltages && voltages.length !== VOLTAGE_LEVELS.length) {
     p.set("kv", voltages.join(","));
   }
+  if (scenario !== "peak") p.set("scenario", scenario);
   if (selected) {
     const pr = selected.feature.properties;
     p.set(
