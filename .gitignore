@@ -29,3 +29,6 @@ dist/
 
 # Large raw OSM dump (28 MB) — kept locally for reference, not committed
 archive/osm-pipeline/visayas_power_raw.geojson
+
+# Commit the variable template, never local values
+!.env.example

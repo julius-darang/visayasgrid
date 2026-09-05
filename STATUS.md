@@ -6,7 +6,7 @@ status: active
 stack: React+Vite · Leaflet · static JSON · pandas build
 entry: web/ (npm run dev) · deploy Vercel
 has_repo: true
-updated: 2026-08-14
+updated: 2026-08-16
 ---
 
 # visayasgrid

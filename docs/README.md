@@ -6,7 +6,15 @@ Build documents and implementation journals for the Visayas transmission grid vi
 
 ## Start here
 
-**[architecture.md](architecture.md)** — Full project flow from raw NGCP data to the Leaflet frontend. Read this first to understand how the pieces connect.
+1. [Project README](../README.md) — purpose, quick start and boundaries.
+2. [Architecture](architecture.md) — implemented data and UI flow.
+3. [Development guide](development.md) — setup, rebuild, verification and deployment.
+4. [Data guide](../data/README.md) — input ownership, schemas and scenario interpretation.
+5. [Repository assessment](assessment.md) — legibility rating, evidence and remaining issues.
+
+Current status lives in [STATUS.md](../STATUS.md); planned improvements remain in [PLAN.md](../PLAN.md). The [public project story](https://juliusdarang.com/proj/visayasgrid.html) explains motivation for a general reader.
+
+The journals below are historical implementation records, not setup instructions or a guarantee of current behavior. In particular, P1's deferral was superseded by its implemented journal, and constants/scenario behavior evolved further afterward.
 
 ---
 
@@ -26,33 +34,6 @@ Each document covers one improvement: **what** changed, **why** it was needed, a
 
 ---
 
-## Pipeline quick reference
+## Working on the project
 
-```sh
-# Step 1 — rebuild clean CSVs from raw NGCP source data
-python scripts/process_temp.py
-
-# Step 2a — run AC load flow → regenerate GeoJSON + manifest.json
-python scripts/build_data.py
-
-# Step 2b — run DC linear load flow → web/public/data/dc/
-python scripts/build_data.py --mode dc
-
-# Or both in sequence:
-python scripts/process_temp.py && python scripts/build_data.py
-
-# Frontend dev server
-cd web && npm run dev
-```
-
-Outputs committed to the repo:
-- `web/public/data/buses.geojson` (AC)
-- `web/public/data/lines.geojson` (AC)
-- `web/public/data/manifest.json` (AC)
-- `web/public/data/dc/` — DC scenario (auto-built by GitHub Actions)
-
----
-
-## Live site
-
-https://visayasgrid.vercel.app
+Use the [development guide](development.md) to choose a frontend-only build, full CSV preparation, snapshot-only preparation or a scenario rebuild. A default build updates peak only. Rebuild the other scenario directories explicitly when relevant.

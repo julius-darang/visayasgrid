@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useMemo, useRef, memo } from "react";
 import L from "leaflet";
+import { basemapFor } from "../lib/basemap.js";
 import {
   MapContainer,
   TileLayer,
@@ -57,11 +58,6 @@ function connectedSet(selected, lines) {
   return { busNames, lineKeys };
 }
 
-const TILE_URLS = {
-  light: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-  dark: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-};
-
 function bearing([lat1, lon1], [lat2, lon2]) {
   const toRad = (d) => (d * Math.PI) / 180;
   const φ1 = toRad(lat1);
@@ -117,6 +113,7 @@ export default memo(function MapView({
   focusTarget,
 }) {
   const isDark = theme === "dark";
+  const basemap = basemapFor(theme, import.meta.env.VITE_CARTO_API_KEY);
   const busStroke = isDark ? "#e2e8f0" : "#1e293b";
 
   // Memoize connected-set — iterates all lines and is only needed when
@@ -157,12 +154,7 @@ export default memo(function MapView({
     >
       <ZoomControl position="bottomright" />
       <MapController target={focusTarget} />
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        url={TILE_URLS[isDark ? "dark" : "light"]}
-        subdomains="abcd"
-        maxZoom={19}
-      />
+      <TileLayer {...basemap} />
 
       {lines.features.map((f, i) => {
         const coords = lineCoords[i];

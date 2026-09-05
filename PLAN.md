@@ -1,8 +1,10 @@
 # Visayas Power Grid Visualization — Simple Prototype Plan
 
+> Historical plan and ongoing roadmap. Earlier phase descriptions record original choices; for implemented behavior and current setup, use [README.md](README.md) and [docs/architecture.md](docs/architecture.md). Phases 7–9 remain the planned improvements.
+
 ## Context
 
-The v2 plan ([power-grid-viz-plan-v2.md](power-grid-viz-plan-v2.md)) is 10–11 weeks of work: OSM extraction, synthetic distribution generation, PostGIS, FastAPI, Docker on Oracle Cloud. Too heavy for a prototype.
+The v2 plan ([power-grid-viz-plan-v2.md](archive/power-grid-viz-plan-v2.md)) is 10–11 weeks of work: OSM extraction, synthetic distribution generation, PostGIS, FastAPI, Docker on Oracle Cloud. Too heavy for a prototype.
 
 This plan keeps the **vision** (visualize and model the Visayas transmission grid using public NGCP data) but strips everything that doesn't serve it at the prototype stage. Target: a working public URL in ~2 weeks with the simplest possible stack.
 
