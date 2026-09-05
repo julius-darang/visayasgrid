@@ -71,7 +71,7 @@ const DISPLAY_INFO = {
   arrows:
     "Arrowheads on lines show the direction power flows, drawn only on lines carrying about 30 MW or more.",
   rings:
-    "A coloured ring around buses that have generation; the ring colour is the fuel type (see the Legend).",
+    "A colored ring around buses that have generation; the ring color is the fuel type (see the Legend).",
 };
 
 export default function Sidebar({
@@ -232,7 +232,7 @@ export default function Sidebar({
       >
         <div className="mb-3">
           <div className="mb-1 text-[10px] text-slate-400 dark:text-slate-500">
-            Colour buses by
+            Color buses by
           </div>
           <div className="grid grid-cols-2 gap-1">
             {[
@@ -259,7 +259,7 @@ export default function Sidebar({
         </div>
         <div className="mb-3">
           <div className="mb-1 text-[10px] text-slate-400 dark:text-slate-500">
-            Colour lines by
+            Color lines by
           </div>
           <div className="grid grid-cols-2 gap-1">
             {[
@@ -478,7 +478,7 @@ export default function Sidebar({
         <button
           onClick={onToggleTheme}
           className="flex w-full items-center justify-between rounded-md border border-slate-200 px-2.5 py-2 text-xs text-slate-600 transition hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 md:py-1.5"
-          aria-label="Toggle colour theme"
+          aria-label="Toggle color theme"
         >
           <span>{theme === "dark" ? "Dark" : "Light"} theme</span>
           <span aria-hidden="true">{theme === "dark" ? "☾" : "☀"}</span>

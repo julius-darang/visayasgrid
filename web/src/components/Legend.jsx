@@ -18,15 +18,15 @@ const LEGEND_SHAPES = [
 
 const LEGEND_INFO = {
   voltage:
-    'Fill colour of each bus by its nominal voltage level (kV). Active when "Colour buses by: Nominal kV". Circles = generator buses; squares = pure substations.',
+    'Fill color of each bus by its nominal voltage level (kV). Active when "Color buses by: Nominal kV". Circles = generator buses; squares = pure substations.',
   loading:
-    "Line colour by loading: power flow as a percentage of the line's thermal rating. Over 100% means overloaded.",
+    "Line color by loading: power flow as a percentage of the line's thermal rating. Over 100% means overloaded.",
   linevoltage:
-    'Line colour by nominal voltage level (kV) -- same palette as bus colours. Active when "Colour lines by: Voltage kV".',
+    'Line color by nominal voltage level (kV) -- same palette as bus colors. Active when "Color lines by: Voltage kV".',
   carrier:
-    "Ring around substation squares that carry aggregated generation; colour is the primary fuel type. Generator circles use fill colour directly instead.",
+    "Ring around substation squares that carry aggregated generation; color is the primary fuel type. Generator circles use fill color directly instead.",
   vmpu:
-    'Fill colour by per-unit voltage from the AC load flow. Outside 0.95-1.05 pu is a violation. Active when "Colour buses by: Voltage (pu)".',
+    'Fill color by per-unit voltage from the AC load flow. Outside 0.95-1.05 pu is a violation. Active when "Color buses by: Voltage (pu)".',
 };
 
 function Cat({ id, title, active, info, open, onToggle, children }) {
@@ -70,7 +70,7 @@ export default function Legend({
   onToggleVoltage,
 }) {
   // Collapsed by default so the map stays the focus; the summary chip is
-  // always available to expand the colour reference on demand.
+  // always available to expand the color reference on demand.
   const [legendOpen, setLegendOpen] = usePersistentState("vg-legend-open", false);
   const [info, setInfo] = useState({});
   const toggle = (k) => setInfo((s) => ({ ...s, [k]: !s[k] }));

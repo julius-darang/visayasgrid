@@ -9,10 +9,10 @@ import {
 } from "./styles.js";
 
 describe("colorForLoading", () => {
-  it("returns the unknown colour for null", () => {
+  it("returns the unknown color for null", () => {
     expect(colorForLoading(null)).toBe("#94a3b8");
   });
-  it("maps each band to the shared scale colours", () => {
+  it("maps each band to the shared scale colors", () => {
     expect(colorForLoading(10)).toBe(LOADING_SCALE[0].color); // < 50
     expect(colorForLoading(65)).toBe(LOADING_SCALE[1].color); // 50–80
     expect(colorForLoading(90)).toBe(LOADING_SCALE[2].color); // 80–100

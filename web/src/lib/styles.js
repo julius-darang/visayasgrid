@@ -52,7 +52,7 @@ export function colorForCarrier(carrier) {
 
 export const LOADING_UNKNOWN_COLOR = "#94a3b8";
 
-// Single source for the line-loading colour scale. The legend renders this
+// Single source for the line-loading color scale. The legend renders this
 // array directly so the map and legend can never drift apart.
 export const LOADING_SCALE = [
   { label: "< 50%", color: "#2d6a4f" },
@@ -73,7 +73,7 @@ export function colorForLoading(pct) {
   return LOAD_LOW;
 }
 
-// Voltage magnitude colour scale for AC load flow results.
+// Voltage magnitude color scale for AC load flow results.
 // Green = nominal (±3%), amber = caution (±3–5%), red = violation (outside ±5%).
 export const VM_PU_SCALE = [
   { label: "0.95–0.97 / 1.03–1.05", color: "#f4a261" },
