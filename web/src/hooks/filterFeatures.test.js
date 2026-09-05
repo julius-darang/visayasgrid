@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { filterFeatures } from "./useGridData.js";
+import { filterFeatures, filterLines } from "./useGridData.js";
 
 const fc = {
   type: "FeatureCollection",
@@ -45,5 +45,49 @@ describe("filterFeatures", () => {
     expect(
       filterFeatures(fc, { islands: [], voltages: [230] }).features,
     ).toHaveLength(0);
+  });
+});
+
+describe("filterLines", () => {
+  const buses = {
+    type: "FeatureCollection",
+    features: [
+      { properties: { name: "Cebu A", island: "Cebu" } },
+      { properties: { name: "Cebu B", island: "Cebu" } },
+      { properties: { name: "Bohol A", island: "Bohol" } },
+      { properties: { name: "Leyte A", island: "Leyte" } },
+    ],
+  };
+  const lines = {
+    type: "FeatureCollection",
+    features: [
+      { properties: { from_bus: "Cebu A", to_bus: "Cebu B", voltage_kv: 230 } },
+      { properties: { from_bus: "Cebu A", to_bus: "Bohol A", voltage_kv: 230 } },
+      { properties: { from_bus: "Bohol A", to_bus: "Leyte A", voltage_kv: 138 } },
+    ],
+  };
+
+  it("keeps a line when either endpoint is on a selected island", () => {
+    const result = filterLines(lines, buses, {
+      islands: ["Cebu"],
+      voltages: [230, 138],
+    });
+    expect(result.features).toHaveLength(2);
+  });
+
+  it("removes all lines when no islands are selected", () => {
+    const result = filterLines(lines, buses, {
+      islands: [],
+      voltages: [230, 138],
+    });
+    expect(result.features).toEqual([]);
+  });
+
+  it("still applies the voltage filter", () => {
+    const result = filterLines(lines, buses, {
+      islands: ["Cebu"],
+      voltages: [138],
+    });
+    expect(result.features).toEqual([]);
   });
 });
