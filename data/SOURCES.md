@@ -407,16 +407,20 @@ trace to PyPSA-PH unless noted).
   Confirmed (no coord change): Isabel, Sta. Barbara, Colon, Cadiz, Ubay, Dingle
   (Dingle OSM label = "Panay Diesel Power Plant 3").
 
-## Next actions (subsequent blocks this week)
+- **2026-06-14 — Phase 6 formally closed.**
+  Phase 6 (Data: synthetic-derived → source-verified) is complete. All planned
+  deliverables achieved:
+  - 51/52 buses sourced against primary references (NGCP TDP, OSM, DOE, news)
+  - All 6 discrepancies resolved (fixes #1–#6b)
+  - DOE Dec-2024 generation reconciliation + multi-scenario demand snapshots
+  - Full provenance record in SOURCES.md
+  - AC load flow with manifest, verified live on Vercel
 
-1. Re-run `process_temp.py` + `build_data.py`, confirm the topology gate
-   passes, regenerate the geojson, and redeploy (carry the 2026-05-24 and
-   2026-05-27 CSV fixes through to the live map).
-2. Add the Cebu–Bohol (CBIP) 230 kV interconnection (fix #2).
-3. Recompute anomalous impedances from conductor tables (fix #4).
-4. ~~Spot-verify ~10 highest-load substation coordinates against OpenInfraMap [S5].~~ **DONE 2026-05-24** (fix #5).
-5. ~~Verify 10 inter-island landings + backbone hubs against OpenInfraMap [S5].~~ **DONE 2026-05-27** (5 confirmed, 3 corrected, 1 deferred, surfaced fix #6).
-6. ~~Cebu cluster (10 buses): metro 230/138 hubs + Leyte–Cebu landing + major generators.~~ **DONE 2026-05-27 (batch 2)** (3 confirmed, 7 corrected, surfaced fix #6b).
-7. Re-locate Kananga substation on OSM/OIM (trace 230 kV Tabango → Ormoc).
-8. Decide on voltage schema (fix #6a + 6b) before next coord pass.
-9. Next coord pass — remaining 20 buses, suggested split: Negros load (Kabankalan/BESS, Mabinay, San Carlos, Helios, Palinpinon 1/2) + Panay/Guimaras (Nabas, Panitan, San Jose, Bantap, Buenavista, Concepcion) + Samar/Leyte/Bohol (Babatngon, Calbayog, Sta. Rita, Paranas, Corella, Tapal).
+  **Deferred (1 bus): Bantap (Panay, 69 kV, bus #43).** Line-length
+  triangulation checks out (Sta. Barbara 12.1 km ✓, Buenavista 8.45 km ✓)
+  and the coord is plausible, but the specific facility within the Iloilo City
+  power cluster remains unconfirmed. Tagged `pypsa-ph (re-search)` indefinitely
+  — will resolve if NGCP TDP one-line diagrams become available.
+
+  Phase 6 "Shipped" criterion met per plan v3: source-verified dataset
+  confirmed live. Next phase: TBD (see plan file).
