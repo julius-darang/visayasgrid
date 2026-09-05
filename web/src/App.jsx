@@ -86,6 +86,12 @@ export default function App() {
     handleLoad,
   );
 
+  const changeScenario = useCallback((nextScenario) => {
+    setSelected(null);
+    setFocusTarget(null);
+    setScenario(nextScenario);
+  }, []);
+
   // Probe for optional pre-generated scenario datasets (mean/offpeak/dc).
   useEffect(() => {
     let cancelled = false;
@@ -202,7 +208,7 @@ export default function App() {
         display={display}
         setDisplay={setDisplay}
         scenario={scenario}
-        setScenario={setScenario}
+        setScenario={changeScenario}
         scenarios={scenarios}
         buses={buses}
         onPick={(f) => {
